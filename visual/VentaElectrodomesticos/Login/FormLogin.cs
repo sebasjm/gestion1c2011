@@ -22,9 +22,7 @@ namespace VentaElectrodomesticos.Login
         {
             SqlConnection myConnection = new SqlConnection("user id=gd;" +
                                        "password=gd2011;server=localhost\\SQLSERVER2005;" +
-                                       "Trusted_Connection=yes;" +
-                                       "database=GD1C2011; " +
-                                       "connection timeout=1");
+                                       "database=GD1C2011; ");
             try
             {
                 myConnection.Open();
