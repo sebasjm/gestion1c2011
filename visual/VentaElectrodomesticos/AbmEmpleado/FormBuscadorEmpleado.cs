@@ -7,18 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VentaElectrodomesticos.AbmUsuario
+namespace VentaElectrodomesticos.AbmEmpleado
 {
-    public partial class FormAbmUsuario : Form
+    public partial class FormBuscadorEmpleado : Form
     {
-        public FormAbmUsuario()
+        public FormBuscadorEmpleado()
         {
             InitializeComponent();
-        }
-
-        private void FormAbmUsuario_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

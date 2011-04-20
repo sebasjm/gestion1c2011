@@ -15,5 +15,15 @@ namespace VentaElectrodomesticos.AbmProducto
         {
             InitializeComponent();
         }
+
+        private void lDni_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lMail_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

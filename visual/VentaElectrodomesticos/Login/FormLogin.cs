@@ -18,7 +18,14 @@ namespace VentaElectrodomesticos.Login
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+ 
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bAceptar_Click(object sender, EventArgs e)
         {
             SqlConnection myConnection = new SqlConnection("user id=gd;" +
                                        "password=gd2011;server=localhost\\SQLSERVER2005;" +
@@ -37,11 +44,11 @@ namespace VentaElectrodomesticos.Login
                 {
                     resultado = resultado + myReader["cli_nombre"].ToString() + " = " + myReader["cli_apellido"].ToString() + "\n";
                 }
-                label1.Text = "resultado = " + resultado;
+                tUsername.Text = "resultado = " + resultado;
             }
             catch (Exception es)
             {
-                label1.Text = es.ToString();
+                tUsername.Text = es.ToString();
                 Console.WriteLine(es.ToString());
             }
         }
