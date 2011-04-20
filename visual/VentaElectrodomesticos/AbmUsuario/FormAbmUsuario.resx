@@ -144,7 +144,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lEmpleado.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="lUsername.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -171,7 +171,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lUsername.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="lPassword.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -198,7 +198,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lPassword.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="chkListadoRoles.Items" xml:space="preserve">
     <value>Analista</value>
@@ -213,7 +213,7 @@
     <value>7, 20</value>
   </data>
   <data name="chkListadoRoles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 94</value>
+    <value>224, 94</value>
   </data>
   <data name="chkListadoRoles.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -234,7 +234,7 @@
     <value>15, 120</value>
   </data>
   <data name="grpListadoRoles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 127</value>
+    <value>237, 127</value>
   </data>
   <data name="grpListadoRoles.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -252,13 +252,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;grpListadoRoles.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="tUsername.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 49</value>
   </data>
   <data name="tUsername.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 20</value>
+    <value>160, 20</value>
   </data>
   <data name="tUsername.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -273,7 +273,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tUsername.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="tPassword.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 81</value>
@@ -282,7 +282,7 @@
     <value>*</value>
   </data>
   <data name="tPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 20</value>
+    <value>160, 20</value>
   </data>
   <data name="tPassword.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -297,13 +297,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tPassword.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="cmbEmpleado.Location" type="System.Drawing.Point, System.Drawing">
     <value>91, 16</value>
   </data>
   <data name="cmbEmpleado.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
+    <value>161, 21</value>
   </data>
   <data name="cmbEmpleado.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -318,7 +318,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cmbEmpleado.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="bCancelar.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 272</value>
@@ -342,10 +342,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bCancelar.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="bAceptar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>140, 272</value>
+    <value>177, 272</value>
   </data>
   <data name="bAceptar.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -366,6 +366,30 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bAceptar.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="bLimpiar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 272</value>
+  </data>
+  <data name="bLimpiar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="bLimpiar.TabIndex" type="System.Int32, mscorlib">
+    <value>61</value>
+  </data>
+  <data name="bLimpiar.Text" xml:space="preserve">
+    <value>Limpiar</value>
+  </data>
+  <data name="&gt;&gt;bLimpiar.Name" xml:space="preserve">
+    <value>bLimpiar</value>
+  </data>
+  <data name="&gt;&gt;bLimpiar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bLimpiar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bLimpiar.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -375,7 +399,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>237, 321</value>
+    <value>274, 321</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">

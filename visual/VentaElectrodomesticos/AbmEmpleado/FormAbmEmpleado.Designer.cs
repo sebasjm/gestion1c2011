@@ -53,6 +53,7 @@
             this.lCalle = new System.Windows.Forms.Label();
             this.bAceptar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
+            this.bLimpiar = new System.Windows.Forms.Button();
             this.grpDireccion.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -269,11 +270,21 @@
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
             // 
+            // bLimpiar
+            // 
+            this.bLimpiar.Location = new System.Drawing.Point(203, 263);
+            this.bLimpiar.Name = "bLimpiar";
+            this.bLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.bLimpiar.TabIndex = 61;
+            this.bLimpiar.Text = "Limpiar";
+            this.bLimpiar.UseVisualStyleBackColor = true;
+            // 
             // FormAbmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(458, 311);
+            this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bAceptar);
             this.Controls.Add(this.grpDireccion);
@@ -330,5 +341,6 @@
         private System.Windows.Forms.Label lCalle;
         private System.Windows.Forms.Button bAceptar;
         private System.Windows.Forms.Button bCancelar;
+        private System.Windows.Forms.Button bLimpiar;
     }
 }

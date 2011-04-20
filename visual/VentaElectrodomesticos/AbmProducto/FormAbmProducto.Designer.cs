@@ -40,6 +40,7 @@
             this.lCodProd = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtCodigoProducto = new System.Windows.Forms.TextBox();
+            this.bLimpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bCancelar
@@ -144,11 +145,21 @@
             this.txtCodigoProducto.Size = new System.Drawing.Size(121, 20);
             this.txtCodigoProducto.TabIndex = 45;
             // 
+            // bLimpiar
+            // 
+            this.bLimpiar.Location = new System.Drawing.Point(98, 157);
+            this.bLimpiar.Name = "bLimpiar";
+            this.bLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.bLimpiar.TabIndex = 60;
+            this.bLimpiar.Text = "Limpiar";
+            this.bLimpiar.UseVisualStyleBackColor = true;
+            // 
             // FormAbmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(271, 196);
+            this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bAceptar);
             this.Controls.Add(this.txtPrecio);
@@ -183,5 +194,6 @@
         private System.Windows.Forms.Label lCodProd;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtCodigoProducto;
+        private System.Windows.Forms.Button bLimpiar;
     }
 }

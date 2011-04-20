@@ -39,6 +39,7 @@
             this.cmbEmpleado = new System.Windows.Forms.ComboBox();
             this.bCancelar = new System.Windows.Forms.Button();
             this.bAceptar = new System.Windows.Forms.Button();
+            this.bLimpiar = new System.Windows.Forms.Button();
             this.grpListadoRoles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,10 +103,17 @@
             this.bAceptar.Name = "bAceptar";
             this.bAceptar.UseVisualStyleBackColor = true;
             // 
+            // bLimpiar
+            // 
+            resources.ApplyResources(this.bLimpiar, "bLimpiar");
+            this.bLimpiar.Name = "bLimpiar";
+            this.bLimpiar.UseVisualStyleBackColor = true;
+            // 
             // FormAbmUsuario
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.bAceptar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.cmbEmpleado);
@@ -135,5 +143,6 @@
         private System.Windows.Forms.ComboBox cmbEmpleado;
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bAceptar;
+        private System.Windows.Forms.Button bLimpiar;
     }
 }
