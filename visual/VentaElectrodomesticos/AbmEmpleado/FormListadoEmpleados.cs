@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace VentaElectrodomesticos.AbmEmpleado
 {
-    public partial class FormBuscadorEmpleado : Form
+    public partial class FormListadoEmpleados : Form
     {
-        public FormBuscadorEmpleado()
+        public FormListadoEmpleados()
         {
             InitializeComponent();
         }
