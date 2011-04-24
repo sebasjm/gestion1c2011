@@ -54,11 +54,11 @@
     <Compile Include="AbmCliente\FormAbmCliente.Designer.cs">
       <DependentUpon>FormAbmCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmCliente\FormListadoCliente.cs">
+    <Compile Include="AbmCliente\FormListadoClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmCliente\FormListadoCliente.Designer.cs">
-      <DependentUpon>FormListadoCliente.cs</DependentUpon>
+    <Compile Include="AbmCliente\FormListadoClientes.Designer.cs">
+      <DependentUpon>FormListadoClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmEmpleado\FormAbmEmpleado.cs">
       <SubType>Form</SubType>
@@ -90,11 +90,23 @@
     <Compile Include="AbmRol\FormAbmRol.Designer.cs">
       <DependentUpon>FormAbmRol.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmRol\FormListadoRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\FormListadoRoles.Designer.cs">
+      <DependentUpon>FormListadoRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmUsuario\FormAbmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AbmUsuario\FormAbmUsuario.Designer.cs">
       <DependentUpon>FormAbmUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmUsuario\FormListadoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmUsuario\FormListadoUsuarios.Designer.cs">
+      <DependentUpon>FormListadoUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="AsignacionStock\FormAsignacionStock.cs">
       <SubType>Form</SubType>
@@ -145,8 +157,8 @@
       <DependentUpon>FormAbmCliente.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmCliente\FormListadoCliente.resx">
-      <DependentUpon>FormListadoCliente.cs</DependentUpon>
+    <EmbeddedResource Include="AbmCliente\FormListadoClientes.resx">
+      <DependentUpon>FormListadoClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmEmpleado\FormAbmEmpleado.resx">
       <DependentUpon>FormAbmEmpleado.cs</DependentUpon>
@@ -166,9 +178,15 @@
       <DependentUpon>FormAbmRol.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\FormListadoRoles.resx">
+      <DependentUpon>FormListadoRoles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmUsuario\FormAbmUsuario.resx">
       <DependentUpon>FormAbmUsuario.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmUsuario\FormListadoUsuarios.resx">
+      <DependentUpon>FormListadoUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AsignacionStock\FormAsignacionStock.resx">
       <DependentUpon>FormAsignacionStock.cs</DependentUpon>

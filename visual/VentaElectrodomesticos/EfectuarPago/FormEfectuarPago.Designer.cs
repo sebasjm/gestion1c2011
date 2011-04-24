@@ -95,6 +95,7 @@
             this.bBuscarCliente.TabIndex = 26;
             this.bBuscarCliente.Text = "Buscar Cliente";
             this.bBuscarCliente.UseVisualStyleBackColor = true;
+            this.bBuscarCliente.Click += new System.EventHandler(this.bBuscarCliente_Click);
             // 
             // cmbCliente
             // 

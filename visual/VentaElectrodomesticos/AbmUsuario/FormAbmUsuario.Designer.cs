@@ -37,10 +37,14 @@
             this.tUsername = new System.Windows.Forms.TextBox();
             this.tPassword = new System.Windows.Forms.TextBox();
             this.cmbEmpleado = new System.Windows.Forms.ComboBox();
-            this.bCancelar = new System.Windows.Forms.Button();
-            this.bAceptar = new System.Windows.Forms.Button();
-            this.bLimpiar = new System.Windows.Forms.Button();
-            this.bAgregarOtro = new System.Windows.Forms.Button();
+            this.bCrearOtro = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.bCrear = new System.Windows.Forms.Button();
+            this.bBuscarEmpleado = new System.Windows.Forms.Button();
+            this.txtConfirmarPassword = new System.Windows.Forms.TextBox();
+            this.bBuscar = new System.Windows.Forms.Button();
+            this.lConfirmarPassword = new System.Windows.Forms.Label();
             this.grpListadoRoles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,38 +96,66 @@
             resources.ApplyResources(this.cmbEmpleado, "cmbEmpleado");
             this.cmbEmpleado.Name = "cmbEmpleado";
             // 
-            // bCancelar
+            // bCrearOtro
             // 
-            resources.ApplyResources(this.bCancelar, "bCancelar");
-            this.bCancelar.Name = "bCancelar";
-            this.bCancelar.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.bCrearOtro, "bCrearOtro");
+            this.bCrearOtro.Name = "bCrearOtro";
+            this.bCrearOtro.UseVisualStyleBackColor = true;
             // 
-            // bAceptar
+            // button2
             // 
-            resources.ApplyResources(this.bAceptar, "bAceptar");
-            this.bAceptar.Name = "bAceptar";
-            this.bAceptar.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.Name = "button2";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // bLimpiar
+            // button3
             // 
-            resources.ApplyResources(this.bLimpiar, "bLimpiar");
-            this.bLimpiar.Name = "bLimpiar";
-            this.bLimpiar.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // bAgregarOtro
+            // bCrear
             // 
-            resources.ApplyResources(this.bAgregarOtro, "bAgregarOtro");
-            this.bAgregarOtro.Name = "bAgregarOtro";
-            this.bAgregarOtro.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.bCrear, "bCrear");
+            this.bCrear.Name = "bCrear";
+            this.bCrear.UseVisualStyleBackColor = true;
+            // 
+            // bBuscarEmpleado
+            // 
+            resources.ApplyResources(this.bBuscarEmpleado, "bBuscarEmpleado");
+            this.bBuscarEmpleado.Name = "bBuscarEmpleado";
+            this.bBuscarEmpleado.UseVisualStyleBackColor = true;
+            this.bBuscarEmpleado.Click += new System.EventHandler(this.bBuscarEmpleado_Click);
+            // 
+            // txtConfirmarPassword
+            // 
+            resources.ApplyResources(this.txtConfirmarPassword, "txtConfirmarPassword");
+            this.txtConfirmarPassword.Name = "txtConfirmarPassword";
+            // 
+            // bBuscar
+            // 
+            resources.ApplyResources(this.bBuscar, "bBuscar");
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.UseVisualStyleBackColor = true;
+            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
+            // 
+            // lConfirmarPassword
+            // 
+            resources.ApplyResources(this.lConfirmarPassword, "lConfirmarPassword");
+            this.lConfirmarPassword.Name = "lConfirmarPassword";
             // 
             // FormAbmUsuario
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.bAgregarOtro);
-            this.Controls.Add(this.bLimpiar);
-            this.Controls.Add(this.bAceptar);
-            this.Controls.Add(this.bCancelar);
+            this.Controls.Add(this.lConfirmarPassword);
+            this.Controls.Add(this.bBuscar);
+            this.Controls.Add(this.txtConfirmarPassword);
+            this.Controls.Add(this.bBuscarEmpleado);
+            this.Controls.Add(this.bCrearOtro);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.bCrear);
             this.Controls.Add(this.cmbEmpleado);
             this.Controls.Add(this.tPassword);
             this.Controls.Add(this.tUsername);
@@ -149,9 +181,13 @@
         private System.Windows.Forms.TextBox tUsername;
         private System.Windows.Forms.TextBox tPassword;
         private System.Windows.Forms.ComboBox cmbEmpleado;
-        private System.Windows.Forms.Button bCancelar;
-        private System.Windows.Forms.Button bAceptar;
-        private System.Windows.Forms.Button bLimpiar;
-        private System.Windows.Forms.Button bAgregarOtro;
+        private System.Windows.Forms.Button bCrearOtro;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bCrear;
+        private System.Windows.Forms.Button bBuscarEmpleado;
+        private System.Windows.Forms.TextBox txtConfirmarPassword;
+        private System.Windows.Forms.Button bBuscar;
+        private System.Windows.Forms.Label lConfirmarPassword;
     }
 }

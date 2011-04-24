@@ -31,16 +31,17 @@
             this.lNombre = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.bCancelar = new System.Windows.Forms.Button();
-            this.bAceptar = new System.Windows.Forms.Button();
-            this.bLimpiar = new System.Windows.Forms.Button();
-            this.bAgregarOtro = new System.Windows.Forms.Button();
+            this.bCrearOtro = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.bCrear = new System.Windows.Forms.Button();
+            this.bBuscar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lNombre
             // 
             this.lNombre.AutoSize = true;
-            this.lNombre.Location = new System.Drawing.Point(9, 15);
+            this.lNombre.Location = new System.Drawing.Point(12, 48);
             this.lNombre.Name = "lNombre";
             this.lNombre.Size = new System.Drawing.Size(44, 13);
             this.lNombre.TabIndex = 0;
@@ -48,7 +49,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(59, 12);
+            this.txtNombre.Location = new System.Drawing.Point(62, 45);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(275, 20);
             this.txtNombre.TabIndex = 1;
@@ -68,56 +69,67 @@
             "Tablero de Control",
             "Clientes Premium",
             "Mejores Categorías"});
-            this.checkedListBox1.Location = new System.Drawing.Point(12, 51);
+            this.checkedListBox1.Location = new System.Drawing.Point(15, 84);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(322, 124);
             this.checkedListBox1.TabIndex = 2;
             // 
-            // bCancelar
+            // bCrearOtro
             // 
-            this.bCancelar.Location = new System.Drawing.Point(12, 204);
-            this.bCancelar.Name = "bCancelar";
-            this.bCancelar.Size = new System.Drawing.Size(75, 23);
-            this.bCancelar.TabIndex = 3;
-            this.bCancelar.Text = "Cancelar";
-            this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCrearOtro.Location = new System.Drawing.Point(222, 243);
+            this.bCrearOtro.Name = "bCrearOtro";
+            this.bCrearOtro.Size = new System.Drawing.Size(116, 23);
+            this.bCrearOtro.TabIndex = 76;
+            this.bCrearOtro.Text = "Crear y Continuar";
+            this.bCrearOtro.UseVisualStyleBackColor = true;
             // 
-            // bAceptar
+            // button2
             // 
-            this.bAceptar.Location = new System.Drawing.Point(259, 204);
-            this.bAceptar.Name = "bAceptar";
-            this.bAceptar.Size = new System.Drawing.Size(75, 23);
-            this.bAceptar.TabIndex = 4;
-            this.bAceptar.Text = "Aceptar";
-            this.bAceptar.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(76, 214);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(58, 23);
+            this.button2.TabIndex = 75;
+            this.button2.Text = "Limpiar";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // bLimpiar
+            // button3
             // 
-            this.bLimpiar.Location = new System.Drawing.Point(93, 204);
-            this.bLimpiar.Name = "bLimpiar";
-            this.bLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.bLimpiar.TabIndex = 61;
-            this.bLimpiar.Text = "Limpiar";
-            this.bLimpiar.UseVisualStyleBackColor = true;
+            this.button3.Location = new System.Drawing.Point(12, 214);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(58, 23);
+            this.button3.TabIndex = 74;
+            this.button3.Text = "Cancelar";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // bAgregarOtro
+            // bCrear
             // 
-            this.bAgregarOtro.Location = new System.Drawing.Point(178, 204);
-            this.bAgregarOtro.Name = "bAgregarOtro";
-            this.bAgregarOtro.Size = new System.Drawing.Size(75, 23);
-            this.bAgregarOtro.TabIndex = 63;
-            this.bAgregarOtro.Text = "Agregar Otro";
-            this.bAgregarOtro.UseVisualStyleBackColor = true;
+            this.bCrear.Location = new System.Drawing.Point(222, 214);
+            this.bCrear.Name = "bCrear";
+            this.bCrear.Size = new System.Drawing.Size(116, 23);
+            this.bCrear.TabIndex = 73;
+            this.bCrear.Text = "Crear";
+            this.bCrear.UseVisualStyleBackColor = true;
+            // 
+            // bBuscar
+            // 
+            this.bBuscar.Location = new System.Drawing.Point(15, 12);
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.Size = new System.Drawing.Size(100, 22);
+            this.bBuscar.TabIndex = 77;
+            this.bBuscar.Text = "Buscar";
+            this.bBuscar.UseVisualStyleBackColor = true;
+            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
             // 
             // FormAbmRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 242);
-            this.Controls.Add(this.bAgregarOtro);
-            this.Controls.Add(this.bLimpiar);
-            this.Controls.Add(this.bAceptar);
-            this.Controls.Add(this.bCancelar);
+            this.ClientSize = new System.Drawing.Size(349, 285);
+            this.Controls.Add(this.bBuscar);
+            this.Controls.Add(this.bCrearOtro);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.bCrear);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lNombre);
@@ -134,9 +146,10 @@
         private System.Windows.Forms.Label lNombre;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.Button bCancelar;
-        private System.Windows.Forms.Button bAceptar;
-        private System.Windows.Forms.Button bLimpiar;
-        private System.Windows.Forms.Button bAgregarOtro;
+        private System.Windows.Forms.Button bCrearOtro;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bCrear;
+        private System.Windows.Forms.Button bBuscar;
     }
 }

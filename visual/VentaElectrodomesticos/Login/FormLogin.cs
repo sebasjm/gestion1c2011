@@ -51,8 +51,10 @@ namespace VentaElectrodomesticos.Login
                 Console.WriteLine(es.ToString());
             }
              */
-             Login login = new Login();
-             login.s
+            // Login login = new Login();
+            String cadena = "hernan";
+             lUsername.Text =  Login.sha256encrypt( cadena);
+             lUsername.Text = ""+lUsername.Text.Length;
         }
     }
 }
