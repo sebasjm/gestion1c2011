@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.bCancelar = new System.Windows.Forms.Button();
-            this.bAceptar = new System.Windows.Forms.Button();
+            this.bCrear = new System.Windows.Forms.Button();
             this.grpDireccion = new System.Windows.Forms.GroupBox();
             this.txtDeptoPiso = new System.Windows.Forms.TextBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
@@ -50,27 +50,28 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.bLimpiar = new System.Windows.Forms.Button();
-            this.bAgregarOtro = new System.Windows.Forms.Button();
+            this.bCrearOtro = new System.Windows.Forms.Button();
+            this.bBuscar = new System.Windows.Forms.Button();
             this.grpDireccion.SuspendLayout();
             this.SuspendLayout();
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(16, 198);
+            this.bCancelar.Location = new System.Drawing.Point(18, 241);
             this.bCancelar.Name = "bCancelar";
-            this.bCancelar.Size = new System.Drawing.Size(75, 23);
+            this.bCancelar.Size = new System.Drawing.Size(94, 23);
             this.bCancelar.TabIndex = 44;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
             // 
-            // bAceptar
+            // bCrear
             // 
-            this.bAceptar.Location = new System.Drawing.Point(360, 198);
-            this.bAceptar.Name = "bAceptar";
-            this.bAceptar.Size = new System.Drawing.Size(75, 23);
-            this.bAceptar.TabIndex = 43;
-            this.bAceptar.Text = "Aceptar";
-            this.bAceptar.UseVisualStyleBackColor = true;
+            this.bCrear.Location = new System.Drawing.Point(332, 241);
+            this.bCrear.Name = "bCrear";
+            this.bCrear.Size = new System.Drawing.Size(105, 23);
+            this.bCrear.TabIndex = 43;
+            this.bCrear.Text = "Crear";
+            this.bCrear.UseVisualStyleBackColor = true;
             // 
             // grpDireccion
             // 
@@ -80,7 +81,7 @@
             this.grpDireccion.Controls.Add(this.lDeptoPiso);
             this.grpDireccion.Controls.Add(this.lNumero);
             this.grpDireccion.Controls.Add(this.lCalle);
-            this.grpDireccion.Location = new System.Drawing.Point(16, 98);
+            this.grpDireccion.Location = new System.Drawing.Point(18, 141);
             this.grpDireccion.Name = "grpDireccion";
             this.grpDireccion.Size = new System.Drawing.Size(419, 79);
             this.grpDireccion.TabIndex = 42;
@@ -137,14 +138,14 @@
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(291, 41);
+            this.txtTelefono.Location = new System.Drawing.Point(293, 84);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(121, 20);
             this.txtTelefono.TabIndex = 41;
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(291, 13);
+            this.txtMail.Location = new System.Drawing.Point(293, 56);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(121, 20);
             this.txtMail.TabIndex = 40;
@@ -152,7 +153,7 @@
             // cmbProvincia
             // 
             this.cmbProvincia.FormattingEnabled = true;
-            this.cmbProvincia.Location = new System.Drawing.Point(291, 67);
+            this.cmbProvincia.Location = new System.Drawing.Point(293, 110);
             this.cmbProvincia.Name = "cmbProvincia";
             this.cmbProvincia.Size = new System.Drawing.Size(121, 21);
             this.cmbProvincia.TabIndex = 37;
@@ -160,7 +161,7 @@
             // lProvincia
             // 
             this.lProvincia.AutoSize = true;
-            this.lProvincia.Location = new System.Drawing.Point(220, 70);
+            this.lProvincia.Location = new System.Drawing.Point(222, 113);
             this.lProvincia.Name = "lProvincia";
             this.lProvincia.Size = new System.Drawing.Size(51, 13);
             this.lProvincia.TabIndex = 34;
@@ -169,7 +170,7 @@
             // lTelefono
             // 
             this.lTelefono.AutoSize = true;
-            this.lTelefono.Location = new System.Drawing.Point(220, 41);
+            this.lTelefono.Location = new System.Drawing.Point(222, 84);
             this.lTelefono.Name = "lTelefono";
             this.lTelefono.Size = new System.Drawing.Size(49, 13);
             this.lTelefono.TabIndex = 33;
@@ -178,7 +179,7 @@
             // lMail
             // 
             this.lMail.AutoSize = true;
-            this.lMail.Location = new System.Drawing.Point(220, 13);
+            this.lMail.Location = new System.Drawing.Point(222, 56);
             this.lMail.Name = "lMail";
             this.lMail.Size = new System.Drawing.Size(26, 13);
             this.lMail.TabIndex = 32;
@@ -186,7 +187,7 @@
             // 
             // txtDni
             // 
-            this.txtDni.Location = new System.Drawing.Point(85, 67);
+            this.txtDni.Location = new System.Drawing.Point(87, 110);
             this.txtDni.MaxLength = 8;
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(100, 20);
@@ -195,7 +196,7 @@
             // lDni
             // 
             this.lDni.AutoSize = true;
-            this.lDni.Location = new System.Drawing.Point(14, 67);
+            this.lDni.Location = new System.Drawing.Point(16, 110);
             this.lDni.Name = "lDni";
             this.lDni.Size = new System.Drawing.Size(26, 13);
             this.lDni.TabIndex = 30;
@@ -204,7 +205,7 @@
             // lApellido
             // 
             this.lApellido.AutoSize = true;
-            this.lApellido.Location = new System.Drawing.Point(14, 40);
+            this.lApellido.Location = new System.Drawing.Point(16, 83);
             this.lApellido.Name = "lApellido";
             this.lApellido.Size = new System.Drawing.Size(44, 13);
             this.lApellido.TabIndex = 29;
@@ -213,7 +214,7 @@
             // lNombre
             // 
             this.lNombre.AutoSize = true;
-            this.lNombre.Location = new System.Drawing.Point(14, 13);
+            this.lNombre.Location = new System.Drawing.Point(16, 56);
             this.lNombre.Name = "lNombre";
             this.lNombre.Size = new System.Drawing.Size(44, 13);
             this.lNombre.TabIndex = 28;
@@ -221,45 +222,56 @@
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(85, 40);
+            this.txtApellido.Location = new System.Drawing.Point(87, 83);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(100, 20);
             this.txtApellido.TabIndex = 27;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(85, 13);
+            this.txtNombre.Location = new System.Drawing.Point(87, 56);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 26;
             // 
             // bLimpiar
             // 
-            this.bLimpiar.Location = new System.Drawing.Point(139, 198);
+            this.bLimpiar.Location = new System.Drawing.Point(131, 241);
             this.bLimpiar.Name = "bLimpiar";
-            this.bLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.bLimpiar.Size = new System.Drawing.Size(94, 23);
             this.bLimpiar.TabIndex = 61;
             this.bLimpiar.Text = "Limpiar";
             this.bLimpiar.UseVisualStyleBackColor = true;
             // 
-            // bAgregarOtro
+            // bCrearOtro
             // 
-            this.bAgregarOtro.Location = new System.Drawing.Point(249, 198);
-            this.bAgregarOtro.Name = "bAgregarOtro";
-            this.bAgregarOtro.Size = new System.Drawing.Size(75, 23);
-            this.bAgregarOtro.TabIndex = 62;
-            this.bAgregarOtro.Text = "Agregar Otro";
-            this.bAgregarOtro.UseVisualStyleBackColor = true;
+            this.bCrearOtro.Location = new System.Drawing.Point(332, 270);
+            this.bCrearOtro.Name = "bCrearOtro";
+            this.bCrearOtro.Size = new System.Drawing.Size(105, 23);
+            this.bCrearOtro.TabIndex = 62;
+            this.bCrearOtro.Text = "Crear y Continuar";
+            this.bCrearOtro.UseVisualStyleBackColor = true;
+            // 
+            // bBuscar
+            // 
+            this.bBuscar.Location = new System.Drawing.Point(12, 12);
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.Size = new System.Drawing.Size(100, 22);
+            this.bBuscar.TabIndex = 63;
+            this.bBuscar.Text = "Buscar";
+            this.bBuscar.UseVisualStyleBackColor = true;
+            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
             // 
             // FormAbmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 237);
-            this.Controls.Add(this.bAgregarOtro);
+            this.ClientSize = new System.Drawing.Size(451, 307);
+            this.Controls.Add(this.bBuscar);
+            this.Controls.Add(this.bCrearOtro);
             this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.bCancelar);
-            this.Controls.Add(this.bAceptar);
+            this.Controls.Add(this.bCrear);
             this.Controls.Add(this.grpDireccion);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtMail);
@@ -286,7 +298,7 @@
         #endregion
 
         private System.Windows.Forms.Button bCancelar;
-        private System.Windows.Forms.Button bAceptar;
+        private System.Windows.Forms.Button bCrear;
         private System.Windows.Forms.GroupBox grpDireccion;
         private System.Windows.Forms.TextBox txtDeptoPiso;
         private System.Windows.Forms.TextBox txtNumero;
@@ -307,7 +319,8 @@
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Button bLimpiar;
-        private System.Windows.Forms.Button bAgregarOtro;
+        private System.Windows.Forms.Button bCrearOtro;
+        private System.Windows.Forms.Button bBuscar;
 
     }
 }

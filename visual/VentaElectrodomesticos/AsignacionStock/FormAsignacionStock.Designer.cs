@@ -106,6 +106,7 @@
             this.bProducto.TabIndex = 6;
             this.bProducto.Text = "Buscar";
             this.bProducto.UseVisualStyleBackColor = true;
+            this.bProducto.Click += new System.EventHandler(this.bProducto_Click);
             // 
             // bAuditor
             // 
@@ -115,6 +116,7 @@
             this.bAuditor.TabIndex = 7;
             this.bAuditor.Text = "Buscar";
             this.bAuditor.UseVisualStyleBackColor = true;
+            this.bAuditor.Click += new System.EventHandler(this.bAuditor_Click);
             // 
             // dataGridView1
             // 

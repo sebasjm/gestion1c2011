@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.grpFiltrosBusqueda = new System.Windows.Forms.GroupBox();
-            this.bLimpiar = new System.Windows.Forms.Button();
-            this.bBuscar = new System.Windows.Forms.Button();
-            this.bCancelar = new System.Windows.Forms.Button();
             this.cmbTipoEmpleado = new System.Windows.Forms.ComboBox();
             this.cmbSucursal = new System.Windows.Forms.ComboBox();
             this.cmbProvincia = new System.Windows.Forms.ComboBox();
@@ -44,10 +41,14 @@
             this.lNombre = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
+            this.bBuscar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.bCancelar = new System.Windows.Forms.Button();
+            this.bLimpiar = new System.Windows.Forms.Button();
             this.grpFiltrosBusqueda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -72,33 +73,6 @@
             this.grpFiltrosBusqueda.TabIndex = 0;
             this.grpFiltrosBusqueda.TabStop = false;
             this.grpFiltrosBusqueda.Text = "Filtros Búsqueda de Empleado";
-            // 
-            // bLimpiar
-            // 
-            this.bLimpiar.Location = new System.Drawing.Point(13, 149);
-            this.bLimpiar.Name = "bLimpiar";
-            this.bLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.bLimpiar.TabIndex = 1;
-            this.bLimpiar.Text = "Limpiar";
-            this.bLimpiar.UseVisualStyleBackColor = true;
-            // 
-            // bBuscar
-            // 
-            this.bBuscar.Location = new System.Drawing.Point(429, 149);
-            this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(75, 23);
-            this.bBuscar.TabIndex = 2;
-            this.bBuscar.Text = "Buscar";
-            this.bBuscar.UseVisualStyleBackColor = true;
-            // 
-            // bCancelar
-            // 
-            this.bCancelar.Location = new System.Drawing.Point(219, 148);
-            this.bCancelar.Name = "bCancelar";
-            this.bCancelar.Size = new System.Drawing.Size(75, 23);
-            this.bCancelar.TabIndex = 3;
-            this.bCancelar.Text = "Cancelar";
-            this.bCancelar.UseVisualStyleBackColor = true;
             // 
             // cmbTipoEmpleado
             // 
@@ -200,6 +174,15 @@
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 34;
             // 
+            // bBuscar
+            // 
+            this.bBuscar.Location = new System.Drawing.Point(430, 138);
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.Size = new System.Drawing.Size(75, 23);
+            this.bBuscar.TabIndex = 2;
+            this.bBuscar.Text = "Buscar";
+            this.bBuscar.UseVisualStyleBackColor = true;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
@@ -208,7 +191,7 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(13, 179);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 167);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(491, 207);
             this.dataGridView1.TabIndex = 4;
@@ -228,17 +211,45 @@
             this.Column3.HeaderText = "Column3";
             this.Column3.Name = "Column3";
             // 
-            // FormEmpleadoListado
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(432, 380);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Seleccionar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // bCancelar
+            // 
+            this.bCancelar.Location = new System.Drawing.Point(13, 380);
+            this.bCancelar.Name = "bCancelar";
+            this.bCancelar.Size = new System.Drawing.Size(75, 23);
+            this.bCancelar.TabIndex = 12;
+            this.bCancelar.Text = "Cancelar";
+            this.bCancelar.UseVisualStyleBackColor = true;
+            // 
+            // bLimpiar
+            // 
+            this.bLimpiar.Location = new System.Drawing.Point(97, 380);
+            this.bLimpiar.Name = "bLimpiar";
+            this.bLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.bLimpiar.TabIndex = 11;
+            this.bLimpiar.Text = "Limpiar";
+            this.bLimpiar.UseVisualStyleBackColor = true;
+            // 
+            // FormListadoEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 400);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(519, 417);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.bCancelar);
-            this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.bLimpiar);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.grpFiltrosBusqueda);
-            this.Name = "FormEmpleadoListado";
+            this.Name = "FormListadoEmpleados";
             this.Text = "Listado de Selección de Empleado";
             this.grpFiltrosBusqueda.ResumeLayout(false);
             this.grpFiltrosBusqueda.PerformLayout();
@@ -250,9 +261,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grpFiltrosBusqueda;
-        private System.Windows.Forms.Button bLimpiar;
         private System.Windows.Forms.Button bBuscar;
-        private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.ComboBox cmbTipoEmpleado;
         private System.Windows.Forms.ComboBox cmbSucursal;
         private System.Windows.Forms.ComboBox cmbProvincia;
@@ -269,5 +278,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bCancelar;
+        private System.Windows.Forms.Button bLimpiar;
     }
 }

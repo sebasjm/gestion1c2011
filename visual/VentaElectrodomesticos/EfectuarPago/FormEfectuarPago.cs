@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using VentaElectrodomesticos.AbmCliente;
+
 
 namespace VentaElectrodomesticos.EfectuarPago
 {
@@ -14,6 +16,12 @@ namespace VentaElectrodomesticos.EfectuarPago
         public FormEfectuarPago()
         {
             InitializeComponent();
+        }
+
+        private void bBuscarCliente_Click(object sender, EventArgs e)
+        {
+            FormListadoClientes form = new FormListadoClientes();
+            form.ShowDialog(this);
         }
     }
 }
