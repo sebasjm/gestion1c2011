@@ -132,6 +132,7 @@
     <Compile Include="Login\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\Login.cs" />
     <Compile Include="MejoresCategorias\FormMejoresCategorias.cs">
       <SubType>Form</SubType>
     </Compile>

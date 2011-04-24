@@ -27,6 +27,7 @@ namespace VentaElectrodomesticos.Login
 
         private void bAceptar_Click(object sender, EventArgs e)
         {
+            /*
             SqlConnection myConnection = new SqlConnection("user id=gd;" +
                                        "password=gd2011;server=localhost\\SQLSERVER2005;" +
                                        "database=GD1C2011; ");
@@ -49,6 +50,9 @@ namespace VentaElectrodomesticos.Login
                 tUsername.Text = es.ToString();
                 Console.WriteLine(es.ToString());
             }
+             */
+             Login login = new Login();
+             login.s
         }
     }
 }
