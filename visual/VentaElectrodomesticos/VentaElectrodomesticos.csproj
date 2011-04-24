@@ -60,11 +60,11 @@
     <Compile Include="AbmEmpleado\FormAbmEmpleado.Designer.cs">
       <DependentUpon>FormAbmEmpleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmEmpleado\FormBuscadorEmpleado.cs">
+    <Compile Include="AbmEmpleado\FormListadoEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmEmpleado\FormBuscadorEmpleado.Designer.cs">
-      <DependentUpon>FormBuscadorEmpleado.cs</DependentUpon>
+    <Compile Include="AbmEmpleado\FormListadoEmpleados.Designer.cs">
+      <DependentUpon>FormListadoEmpleados.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmProducto\FormAbmProducto.cs">
       <SubType>Form</SubType>
@@ -72,11 +72,11 @@
     <Compile Include="AbmProducto\FormAbmProducto.Designer.cs">
       <DependentUpon>FormAbmProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmProducto\FormBuscadorProducto.cs">
+    <Compile Include="AbmProducto\FormListadoProductos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmProducto\FormBuscadorProducto.Designer.cs">
-      <DependentUpon>FormBuscadorProducto.cs</DependentUpon>
+    <Compile Include="AbmProducto\FormListadoProductos.Designer.cs">
+      <DependentUpon>FormListadoProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmRol\FormAbmRol.cs">
       <SubType>Form</SubType>
@@ -142,15 +142,15 @@
       <DependentUpon>FormAbmEmpleado.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmEmpleado\FormBuscadorEmpleado.resx">
-      <DependentUpon>FormBuscadorEmpleado.cs</DependentUpon>
+    <EmbeddedResource Include="AbmEmpleado\FormListadoEmpleados.resx">
+      <DependentUpon>FormListadoEmpleados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmProducto\FormAbmProducto.resx">
       <DependentUpon>FormAbmProducto.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmProducto\FormBuscadorProducto.resx">
-      <DependentUpon>FormBuscadorProducto.cs</DependentUpon>
+    <EmbeddedResource Include="AbmProducto\FormListadoProductos.resx">
+      <DependentUpon>FormListadoProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\FormAbmRol.resx">
       <DependentUpon>FormAbmRol.cs</DependentUpon>

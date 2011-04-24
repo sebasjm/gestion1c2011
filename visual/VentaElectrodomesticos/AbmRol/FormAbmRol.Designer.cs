@@ -33,6 +33,7 @@
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.bCancelar = new System.Windows.Forms.Button();
             this.bAceptar = new System.Windows.Forms.Button();
+            this.bLimpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lNombre
@@ -82,18 +83,28 @@
             // 
             // bAceptar
             // 
-            this.bAceptar.Location = new System.Drawing.Point(178, 214);
+            this.bAceptar.Location = new System.Drawing.Point(190, 214);
             this.bAceptar.Name = "bAceptar";
             this.bAceptar.Size = new System.Drawing.Size(75, 23);
             this.bAceptar.TabIndex = 4;
             this.bAceptar.Text = "Aceptar";
             this.bAceptar.UseVisualStyleBackColor = true;
             // 
+            // bLimpiar
+            // 
+            this.bLimpiar.Location = new System.Drawing.Point(109, 214);
+            this.bLimpiar.Name = "bLimpiar";
+            this.bLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.bLimpiar.TabIndex = 61;
+            this.bLimpiar.Text = "Limpiar";
+            this.bLimpiar.UseVisualStyleBackColor = true;
+            // 
             // FormAbmRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 262);
+            this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.bAceptar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.checkedListBox1);
@@ -114,5 +125,6 @@
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bAceptar;
+        private System.Windows.Forms.Button bLimpiar;
     }
 }
