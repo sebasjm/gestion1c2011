@@ -7,16 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VentaElectrodomesticos.AbmCliente
+namespace VentaElectrodomesticos.AbmRol
 {
-    public partial class FormListadoCliente : Form
+    public partial class FormListadoRoles : Form
     {
-        public FormListadoCliente()
+        public FormListadoRoles()
         {
             InitializeComponent();
         }
 
-        private void grpFiltrosBusqueda_Enter(object sender, EventArgs e)
+        private void FormListadoRoles_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bLimpiar_Click(object sender, EventArgs e)
         {
 
         }

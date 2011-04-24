@@ -113,6 +113,7 @@
             this.bBuscarCliente.TabIndex = 6;
             this.bBuscarCliente.Text = "Buscar Cliente";
             this.bBuscarCliente.UseVisualStyleBackColor = true;
+            this.bBuscarCliente.Click += new System.EventHandler(this.bBuscarCliente_Click);
             // 
             // lListadoProductos
             // 
@@ -131,6 +132,7 @@
             this.bBuscarProducto.TabIndex = 9;
             this.bBuscarProducto.Text = "Buscar Producto";
             this.bBuscarProducto.UseVisualStyleBackColor = true;
+            this.bBuscarProducto.Click += new System.EventHandler(this.bBuscarProducto_Click);
             // 
             // lDescuento
             // 

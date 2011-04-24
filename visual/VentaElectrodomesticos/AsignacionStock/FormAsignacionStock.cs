@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using VentaElectrodomesticos.AbmProducto;
+using VentaElectrodomesticos.AbmEmpleado;
 
 namespace VentaElectrodomesticos.AsignacionStock
 {
@@ -14,6 +16,18 @@ namespace VentaElectrodomesticos.AsignacionStock
         public FormAsignacionStock()
         {
             InitializeComponent();
+        }
+
+        private void bProducto_Click(object sender, EventArgs e)
+        {
+            FormListadoProductos form = new FormListadoProductos();
+            form.ShowDialog(this);
+        }
+
+        private void bAuditor_Click(object sender, EventArgs e)
+        {
+            FormListadoEmpleados form = new FormListadoEmpleados();
+            form.ShowDialog(this);
         }
     }
 }
