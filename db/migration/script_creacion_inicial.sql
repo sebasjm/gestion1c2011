@@ -44,7 +44,7 @@ CREATE TABLE [gd_esquema].[Producto](
 	[nombre] [varchar](10) NOT NULL,
 	[descripcion] [varchar](50) NULL,
 	[precio] [float] NOT NULL,
-	[marca_id] [smallint](10) NOT NULL,
+	[marca_id] [smallint] NOT NULL,
 	[categoria_id] [int] NOT NULL
 ) ON [PRIMARY]
 
