@@ -50,12 +50,13 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.bLimpiar = new System.Windows.Forms.Button();
+            this.bAgregarOtro = new System.Windows.Forms.Button();
             this.grpDireccion.SuspendLayout();
             this.SuspendLayout();
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(17, 254);
+            this.bCancelar.Location = new System.Drawing.Point(16, 198);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
             this.bCancelar.TabIndex = 44;
@@ -64,7 +65,7 @@
             // 
             // bAceptar
             // 
-            this.bAceptar.Location = new System.Drawing.Point(361, 254);
+            this.bAceptar.Location = new System.Drawing.Point(360, 198);
             this.bAceptar.Name = "bAceptar";
             this.bAceptar.Size = new System.Drawing.Size(75, 23);
             this.bAceptar.TabIndex = 43;
@@ -79,7 +80,7 @@
             this.grpDireccion.Controls.Add(this.lDeptoPiso);
             this.grpDireccion.Controls.Add(this.lNumero);
             this.grpDireccion.Controls.Add(this.lCalle);
-            this.grpDireccion.Location = new System.Drawing.Point(17, 154);
+            this.grpDireccion.Location = new System.Drawing.Point(16, 98);
             this.grpDireccion.Name = "grpDireccion";
             this.grpDireccion.Size = new System.Drawing.Size(419, 79);
             this.grpDireccion.TabIndex = 42;
@@ -136,22 +137,22 @@
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(85, 128);
+            this.txtTelefono.Location = new System.Drawing.Point(291, 41);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefono.Size = new System.Drawing.Size(121, 20);
             this.txtTelefono.TabIndex = 41;
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(85, 98);
+            this.txtMail.Location = new System.Drawing.Point(291, 13);
             this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(100, 20);
+            this.txtMail.Size = new System.Drawing.Size(121, 20);
             this.txtMail.TabIndex = 40;
             // 
             // cmbProvincia
             // 
             this.cmbProvincia.FormattingEnabled = true;
-            this.cmbProvincia.Location = new System.Drawing.Point(291, 10);
+            this.cmbProvincia.Location = new System.Drawing.Point(291, 67);
             this.cmbProvincia.Name = "cmbProvincia";
             this.cmbProvincia.Size = new System.Drawing.Size(121, 21);
             this.cmbProvincia.TabIndex = 37;
@@ -159,7 +160,7 @@
             // lProvincia
             // 
             this.lProvincia.AutoSize = true;
-            this.lProvincia.Location = new System.Drawing.Point(206, 13);
+            this.lProvincia.Location = new System.Drawing.Point(220, 70);
             this.lProvincia.Name = "lProvincia";
             this.lProvincia.Size = new System.Drawing.Size(51, 13);
             this.lProvincia.TabIndex = 34;
@@ -168,7 +169,7 @@
             // lTelefono
             // 
             this.lTelefono.AutoSize = true;
-            this.lTelefono.Location = new System.Drawing.Point(14, 128);
+            this.lTelefono.Location = new System.Drawing.Point(220, 41);
             this.lTelefono.Name = "lTelefono";
             this.lTelefono.Size = new System.Drawing.Size(49, 13);
             this.lTelefono.TabIndex = 33;
@@ -177,7 +178,7 @@
             // lMail
             // 
             this.lMail.AutoSize = true;
-            this.lMail.Location = new System.Drawing.Point(14, 98);
+            this.lMail.Location = new System.Drawing.Point(220, 13);
             this.lMail.Name = "lMail";
             this.lMail.Size = new System.Drawing.Size(26, 13);
             this.lMail.TabIndex = 32;
@@ -234,18 +235,28 @@
             // 
             // bLimpiar
             // 
-            this.bLimpiar.Location = new System.Drawing.Point(197, 254);
+            this.bLimpiar.Location = new System.Drawing.Point(139, 198);
             this.bLimpiar.Name = "bLimpiar";
             this.bLimpiar.Size = new System.Drawing.Size(75, 23);
             this.bLimpiar.TabIndex = 61;
             this.bLimpiar.Text = "Limpiar";
             this.bLimpiar.UseVisualStyleBackColor = true;
             // 
+            // bAgregarOtro
+            // 
+            this.bAgregarOtro.Location = new System.Drawing.Point(249, 198);
+            this.bAgregarOtro.Name = "bAgregarOtro";
+            this.bAgregarOtro.Size = new System.Drawing.Size(75, 23);
+            this.bAgregarOtro.TabIndex = 62;
+            this.bAgregarOtro.Text = "Agregar Otro";
+            this.bAgregarOtro.UseVisualStyleBackColor = true;
+            // 
             // FormAbmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 293);
+            this.ClientSize = new System.Drawing.Size(451, 237);
+            this.Controls.Add(this.bAgregarOtro);
             this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bAceptar);
@@ -296,6 +307,7 @@
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Button bLimpiar;
+        private System.Windows.Forms.Button bAgregarOtro;
 
     }
 }
