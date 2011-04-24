@@ -49,6 +49,7 @@
             this.lNombre = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
+            this.bLimpiar = new System.Windows.Forms.Button();
             this.grpDireccion.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -231,11 +232,21 @@
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 26;
             // 
+            // bLimpiar
+            // 
+            this.bLimpiar.Location = new System.Drawing.Point(197, 254);
+            this.bLimpiar.Name = "bLimpiar";
+            this.bLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.bLimpiar.TabIndex = 61;
+            this.bLimpiar.Text = "Limpiar";
+            this.bLimpiar.UseVisualStyleBackColor = true;
+            // 
             // FormAbmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(451, 293);
+            this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bAceptar);
             this.Controls.Add(this.grpDireccion);
@@ -284,6 +295,7 @@
         private System.Windows.Forms.Label lNombre;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.Button bLimpiar;
 
     }
 }
