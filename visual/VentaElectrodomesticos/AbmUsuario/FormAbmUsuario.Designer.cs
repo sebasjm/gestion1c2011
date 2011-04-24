@@ -40,6 +40,7 @@
             this.bCancelar = new System.Windows.Forms.Button();
             this.bAceptar = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
+            this.bAgregarOtro = new System.Windows.Forms.Button();
             this.grpListadoRoles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,10 +110,17 @@
             this.bLimpiar.Name = "bLimpiar";
             this.bLimpiar.UseVisualStyleBackColor = true;
             // 
+            // bAgregarOtro
+            // 
+            resources.ApplyResources(this.bAgregarOtro, "bAgregarOtro");
+            this.bAgregarOtro.Name = "bAgregarOtro";
+            this.bAgregarOtro.UseVisualStyleBackColor = true;
+            // 
             // FormAbmUsuario
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.bAgregarOtro);
             this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.bAceptar);
             this.Controls.Add(this.bCancelar);
@@ -144,5 +152,6 @@
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bAceptar;
         private System.Windows.Forms.Button bLimpiar;
+        private System.Windows.Forms.Button bAgregarOtro;
     }
 }

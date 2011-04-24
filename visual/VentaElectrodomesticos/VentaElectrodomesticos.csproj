@@ -54,6 +54,12 @@
     <Compile Include="AbmCliente\FormAbmCliente.Designer.cs">
       <DependentUpon>FormAbmCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmCliente\FormListadoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\FormListadoCliente.Designer.cs">
+      <DependentUpon>FormListadoCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmEmpleado\FormAbmEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     <EmbeddedResource Include="AbmCliente\FormAbmCliente.resx">
       <DependentUpon>FormAbmCliente.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\FormListadoCliente.resx">
+      <DependentUpon>FormListadoCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmEmpleado\FormAbmEmpleado.resx">
       <DependentUpon>FormAbmEmpleado.cs</DependentUpon>
