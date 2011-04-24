@@ -52,6 +52,14 @@ CREATE TABLE [la_huerta].[Sucursal](
 	unique (telefono)
 ) ON [PRIMARY]
 
+CREATE TABLE [la_huerta].[Usuario](
+	[id] [int] NOT NULL,
+	[username] [varchar](10) NOT NULL,
+	[password] [varchar](64) NOT NULL,
+	primary key (id),
+	unique (username)
+) ON [PRIMARY]
+
 CREATE TABLE [la_huerta].[Empleado](
 	[dni] [int] NOT NULL,
 	[nombre] [varchar](50) NOT NULL,
@@ -65,16 +73,9 @@ CREATE TABLE [la_huerta].[Empleado](
 	primary key (dni),
     foreign key (tipoEmpleado_id) references [la_huerta].[TipoEmpleado](id),
     foreign key (sucursal_id) references [la_huerta].[Sucursal](id),
+    foreign key (usuario_id) references [la_huerta].[Usuario](id),
 	unique (mail),
 	unique (usuario_id)
-) ON [PRIMARY]
-
-CREATE TABLE [la_huerta].[Usuario](
-	[id] [int] NOT NULL,
-	[username] [varchar](10) NOT NULL,
-	[password] [varchar](64) NOT NULL,
-	primary key (id),
-	unique (username)
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Categoria](
@@ -106,8 +107,9 @@ CREATE TABLE [la_huerta].[Factura](
 	[total] [float] NOT NULL,
 	[fecha] [datetime] NOT NULL,
 	[cuotas] [tinyint] NOT NULL,
-	[cliente] [int] NOT NULL,
+	[cliente_dni] [int] NOT NULL,
 	primary key (numero),
+    foreign key (cliente_dni) references [la_huerta].[Cliente](dni),
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Stock](
@@ -135,7 +137,8 @@ CREATE TABLE [la_huerta].[Pago](
 	[cuotas] [int] NOT NULL,
 	[empleado_dni] [int] NOT NULL,
 	primary key (factura_numero,fecha),
-    foreign key (empleado_dni) references [la_huerta].[Empleado](dni)
+    foreign key (empleado_dni) references [la_huerta].[Empleado](dni),
+    foreign key (factura_numero) references [la_huerta].[Factura](numero)
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Rol](
@@ -180,3 +183,15 @@ CREATE TABLE [la_huerta].[ItemFactura](
     foreign key (producto_id) references [la_huerta].[Producto](id)
 ) ON [PRIMARY]
 
+GO
+-- Carga de datos
+
+INSERT INTO [la_huerta].[TipoSucursal] 
+SELECT 
+	row_number() OVER (ORDER BY suc_tipo) AS id, 
+	suc_tipo
+FROM gd_esquema.Maestra
+GROUP BY suc_tipo
+ORDER BY suc_tipo
+
+GO
