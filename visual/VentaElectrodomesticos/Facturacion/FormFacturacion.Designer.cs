@@ -219,7 +219,7 @@
             this.Total});
             this.dataListadoProductos.Location = new System.Drawing.Point(15, 132);
             this.dataListadoProductos.Name = "dataListadoProductos";
-            this.dataListadoProductos.Size = new System.Drawing.Size(441, 150);
+            this.dataListadoProductos.Size = new System.Drawing.Size(455, 150);
             this.dataListadoProductos.TabIndex = 19;
             // 
             // Producto

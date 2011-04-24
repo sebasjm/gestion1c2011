@@ -41,6 +41,7 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtCodigoProducto = new System.Windows.Forms.TextBox();
             this.bLimpiar = new System.Windows.Forms.Button();
+            this.bAgregarOtro = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bCancelar
@@ -54,7 +55,7 @@
             // 
             // bAceptar
             // 
-            this.bAceptar.Location = new System.Drawing.Point(179, 157);
+            this.bAceptar.Location = new System.Drawing.Point(259, 157);
             this.bAceptar.Name = "bAceptar";
             this.bAceptar.Size = new System.Drawing.Size(75, 23);
             this.bAceptar.TabIndex = 58;
@@ -65,7 +66,7 @@
             // 
             this.txtPrecio.Location = new System.Drawing.Point(133, 121);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(121, 20);
+            this.txtPrecio.Size = new System.Drawing.Size(201, 20);
             this.txtPrecio.TabIndex = 55;
             // 
             // cmbCategoria
@@ -73,7 +74,7 @@
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Location = new System.Drawing.Point(133, 94);
             this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(121, 21);
+            this.cmbCategoria.Size = new System.Drawing.Size(201, 21);
             this.cmbCategoria.TabIndex = 54;
             // 
             // lCategoria
@@ -100,7 +101,7 @@
             this.txtDescripcion.Location = new System.Drawing.Point(133, 63);
             this.txtDescripcion.MaxLength = 8;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(121, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(201, 20);
             this.txtDescripcion.TabIndex = 50;
             // 
             // lDescripcion
@@ -135,14 +136,14 @@
             // 
             this.txtNombre.Location = new System.Drawing.Point(133, 36);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(121, 20);
+            this.txtNombre.Size = new System.Drawing.Size(201, 20);
             this.txtNombre.TabIndex = 46;
             // 
             // txtCodigoProducto
             // 
             this.txtCodigoProducto.Location = new System.Drawing.Point(133, 9);
             this.txtCodigoProducto.Name = "txtCodigoProducto";
-            this.txtCodigoProducto.Size = new System.Drawing.Size(121, 20);
+            this.txtCodigoProducto.Size = new System.Drawing.Size(201, 20);
             this.txtCodigoProducto.TabIndex = 45;
             // 
             // bLimpiar
@@ -154,11 +155,21 @@
             this.bLimpiar.Text = "Limpiar";
             this.bLimpiar.UseVisualStyleBackColor = true;
             // 
+            // bAgregarOtro
+            // 
+            this.bAgregarOtro.Location = new System.Drawing.Point(179, 157);
+            this.bAgregarOtro.Name = "bAgregarOtro";
+            this.bAgregarOtro.Size = new System.Drawing.Size(75, 23);
+            this.bAgregarOtro.TabIndex = 63;
+            this.bAgregarOtro.Text = "Agregar Otro";
+            this.bAgregarOtro.UseVisualStyleBackColor = true;
+            // 
             // FormAbmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(271, 196);
+            this.ClientSize = new System.Drawing.Size(347, 196);
+            this.Controls.Add(this.bAgregarOtro);
             this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bAceptar);
@@ -195,5 +206,6 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtCodigoProducto;
         private System.Windows.Forms.Button bLimpiar;
+        private System.Windows.Forms.Button bAgregarOtro;
     }
 }

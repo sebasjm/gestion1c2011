@@ -40,6 +40,10 @@
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bAsignarOtro = new System.Windows.Forms.Button();
+            this.bLimpiar = new System.Windows.Forms.Button();
+            this.bCancelar = new System.Windows.Forms.Button();
+            this.bAceptar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,7 +126,7 @@
             this.Stock});
             this.dataGridView1.Location = new System.Drawing.Point(19, 120);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(271, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(362, 150);
             this.dataGridView1.TabIndex = 8;
             // 
             // Producto
@@ -140,11 +144,51 @@
             this.Stock.HeaderText = "Stock";
             this.Stock.Name = "Stock";
             // 
+            // bAsignarOtro
+            // 
+            this.bAsignarOtro.Location = new System.Drawing.Point(206, 276);
+            this.bAsignarOtro.Name = "bAsignarOtro";
+            this.bAsignarOtro.Size = new System.Drawing.Size(75, 23);
+            this.bAsignarOtro.TabIndex = 66;
+            this.bAsignarOtro.Text = "Asignar Otro";
+            this.bAsignarOtro.UseVisualStyleBackColor = true;
+            // 
+            // bLimpiar
+            // 
+            this.bLimpiar.Location = new System.Drawing.Point(110, 276);
+            this.bLimpiar.Name = "bLimpiar";
+            this.bLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.bLimpiar.TabIndex = 65;
+            this.bLimpiar.Text = "Limpiar";
+            this.bLimpiar.UseVisualStyleBackColor = true;
+            // 
+            // bCancelar
+            // 
+            this.bCancelar.Location = new System.Drawing.Point(16, 276);
+            this.bCancelar.Name = "bCancelar";
+            this.bCancelar.Size = new System.Drawing.Size(75, 23);
+            this.bCancelar.TabIndex = 64;
+            this.bCancelar.Text = "Cancelar";
+            this.bCancelar.UseVisualStyleBackColor = true;
+            // 
+            // bAceptar
+            // 
+            this.bAceptar.Location = new System.Drawing.Point(306, 276);
+            this.bAceptar.Name = "bAceptar";
+            this.bAceptar.Size = new System.Drawing.Size(75, 23);
+            this.bAceptar.TabIndex = 63;
+            this.bAceptar.Text = "Aceptar";
+            this.bAceptar.UseVisualStyleBackColor = true;
+            // 
             // FormAsignacionStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 292);
+            this.ClientSize = new System.Drawing.Size(390, 312);
+            this.Controls.Add(this.bAsignarOtro);
+            this.Controls.Add(this.bLimpiar);
+            this.Controls.Add(this.bCancelar);
+            this.Controls.Add(this.bAceptar);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.bAuditor);
             this.Controls.Add(this.bProducto);
@@ -177,5 +221,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
+        private System.Windows.Forms.Button bAsignarOtro;
+        private System.Windows.Forms.Button bLimpiar;
+        private System.Windows.Forms.Button bCancelar;
+        private System.Windows.Forms.Button bAceptar;
     }
 }
