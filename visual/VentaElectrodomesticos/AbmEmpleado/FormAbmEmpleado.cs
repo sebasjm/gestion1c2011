@@ -16,14 +16,14 @@ namespace VentaElectrodomesticos.AbmEmpleado
             InitializeComponent();
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void bBuscar_Click(object sender, EventArgs e)
         {
-
+            FormListadoEmpleados form = new FormListadoEmpleados();
+            form.ShowDialog(this);
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
+    
 
-        }
+
     }
 }

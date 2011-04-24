@@ -6,19 +6,20 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using VentaElectrodomesticos.AbmEmpleado;
 
-namespace VentaElectrodomesticos.AbmProducto
+namespace VentaElectrodomesticos.AbmUsuario
 {
-    public partial class FormAbmProducto : Form
+    public partial class FormListadoUsuarios : Form
     {
-        public FormAbmProducto()
+        public FormListadoUsuarios()
         {
             InitializeComponent();
         }
 
-        private void bBuscar_Click(object sender, EventArgs e)
+        private void bBuscarEmpleado_Click(object sender, EventArgs e)
         {
-            FormListadoProductos form = new FormListadoProductos();
+            FormListadoEmpleados form = new FormListadoEmpleados();
             form.ShowDialog(this);
         }
     }

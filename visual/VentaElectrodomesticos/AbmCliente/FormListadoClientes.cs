@@ -9,19 +9,16 @@ using System.Windows.Forms;
 
 namespace VentaElectrodomesticos.AbmCliente
 {
-    public partial class FormAbmCliente : Form
+    public partial class FormListadoClientes : Form
     {
-        public FormAbmCliente()
+        public FormListadoClientes()
         {
             InitializeComponent();
         }
 
-        private void bBuscar_Click(object sender, EventArgs e)
+        private void grpFiltrosBusqueda_Enter(object sender, EventArgs e)
         {
-            FormListadoClientes form = new FormListadoClientes();
-            form.ShowDialog(this);
+
         }
-
-
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace VentaElectrodomesticos.AbmCliente
 {
-    partial class FormListadoCliente
+    partial class FormListadoClientes
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -44,6 +44,7 @@
             this.lNombre = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grpFiltrosBusqueda.SuspendLayout();
             this.SuspendLayout();
@@ -78,7 +79,7 @@
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(215, 98);
+            this.bCancelar.Location = new System.Drawing.Point(13, 342);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
             this.bCancelar.TabIndex = 8;
@@ -96,7 +97,7 @@
             // 
             // bLimpiar
             // 
-            this.bLimpiar.Location = new System.Drawing.Point(9, 99);
+            this.bLimpiar.Location = new System.Drawing.Point(97, 342);
             this.bLimpiar.Name = "bLimpiar";
             this.bLimpiar.Size = new System.Drawing.Size(75, 23);
             this.bLimpiar.TabIndex = 6;
@@ -187,18 +188,28 @@
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 34;
             // 
-            // FormListadoCliente
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(425, 342);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Seleccionar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // FormListadoClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(523, 351);
+            this.ClientSize = new System.Drawing.Size(523, 387);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.grpFiltrosBusqueda);
-            this.Name = "FormListadoCliente";
-            this.Text = "FormListadoCliente";
+            this.Name = "FormListadoClientes";
+            this.Text = "Listado de Selección de Clientes";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.grpFiltrosBusqueda.ResumeLayout(false);
             this.grpFiltrosBusqueda.PerformLayout();
@@ -224,5 +235,6 @@
         private System.Windows.Forms.Label lNombre;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.Button button1;
     }
 }
