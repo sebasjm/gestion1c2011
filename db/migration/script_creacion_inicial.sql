@@ -184,8 +184,12 @@ CREATE TABLE [la_huerta].[ItemFactura](
 ) ON [PRIMARY]
 
 GO
--- Carga de datos
 
+-----------------------------------------
+-- Carga de datos
+-----------------------------------------
+
+-- 2 
 INSERT INTO [la_huerta].[TipoSucursal] 
 SELECT 
 	row_number() OVER (ORDER BY suc_tipo) AS id, 
@@ -194,4 +198,174 @@ FROM gd_esquema.Maestra
 GROUP BY suc_tipo
 ORDER BY suc_tipo
 
+-- 140
+INSERT INTO [la_huerta].[Cliente] 
+SELECT 
+	cli_dni as dni, 
+	cli_nombre as nombre,
+	cli_apellido as apellido,
+	cli_mail as mail
+FROM gd_esquema.Maestra
+WHERE cli_dni is not null
+GROUP BY cli_dni, cli_nombre, cli_apellido, cli_mail
+ORDER BY cli_dni
+
+-- 26855
+INSERT INTO [la_huerta].[Factura] 
+SELECT 
+	factura_nro as numero,
+	factura_descuento as descuento,
+	factura_total as total,
+	factura_fecha as fecha,
+	factura_cant_coutas as cuotas,
+	cli_dni as cliente_dni
+FROM gd_esquema.Maestra 
+WHERE cli_dni is not null
+GROUP BY 
+	factura_nro,
+	factura_descuento,
+	factura_total,
+	factura_fecha,
+	factura_cant_coutas,
+	cli_dni
+
+-- 11
+INSERT INTO [la_huerta].[Marca] 
+SELECT 
+	row_number() OVER (ORDER BY producto_marca) AS id, 
+	producto_marca as marca
+FROM gd_esquema.Maestra 
+WHERE producto_marca is not null
+GROUP BY 
+	producto_marca
+ORDER BY producto_marca
+
+-- 24
+INSERT INTO [la_huerta].[Provincia] 
+SELECT 
+	row_number() OVER (ORDER BY suc_provincia) AS id, 
+	suc_provincia as nombre
+FROM gd_esquema.Maestra 
+WHERE suc_provincia is not null
+GROUP BY 
+	suc_provincia
+ORDER BY suc_provincia
+
+-- 24
+INSERT INTO [la_huerta].[Sucursal] 
+SELECT 
+	row_number() OVER (ORDER BY suc_dir) AS id, 
+	suc_dir as direccion,
+	suc_tel as telefono,
+	ts.id as tipo,
+	p.id as provincia
+FROM gd_esquema.Maestra 
+JOIN la_huerta.TipoSucursal as ts ON suc_tipo = ts.nombre
+JOIN la_huerta.Provincia as p ON suc_provincia = p.nombre
+WHERE suc_dir is not null
+GROUP BY 
+	suc_dir,
+	suc_tel,
+	ts.id,
+	p.id
+ORDER BY suc_dir
+
+-- 2
+INSERT INTO [la_huerta].[TipoEmpleado] 
+SELECT 
+	row_number() OVER (ORDER BY empleado_tipo) AS id, 
+    empleado_tipo
+FROM gd_esquema.Maestra 
+WHERE empleado_tipo is not null
+GROUP BY 
+	empleado_tipo
+ORDER BY empleado_tipo
+
+-- 53
+INSERT INTO [la_huerta].[Empleado] 
+SELECT 
+	empleado_dni as dni,
+    empleado_nombre as nombre,
+	empleado_apellido as apellido,
+	empleado_mail as mail,
+	empleado_dir as direccion,
+	te.id as tipoEmpleado_id,
+	s.id as sucursal_id,
+	1 as activo,
+	NULL as usuario_id
+FROM gd_esquema.Maestra 
+JOIN la_huerta.TipoEmpleado as te ON empleado_tipo = te.nombre
+JOIN la_huerta.Provincia as p ON empleado_provincia = p.nombre
+JOIN la_huerta.Sucursal as s ON p.id = s.provincia_id
+WHERE empleado_dni is not null
+GROUP BY 
+	empleado_dni,
+    empleado_nombre,
+	empleado_apellido,
+	empleado_mail,
+	empleado_dir,
+	te.id,
+	s.id
+ORDER BY empleado_dni
+
+-- 118338
+INSERT INTO [la_huerta].[Pago] 
+SELECT 
+	factura_nro as factura,
+	pago_fecha as fecha,
+	f.cuotas * pago_monto / (f.total * (1-f.descuento)) as cuotas,
+	empleado_dni as empleado
+FROM gd_esquema.Maestra 
+JOIN la_huerta.Factura as f ON factura_nro = f.numero
+WHERE pago_fecha is not null
+GROUP BY 
+	pago_fecha,
+    pago_monto,
+	f.total,
+	f.descuento,
+	empleado_dni,
+	f.cuotas,
+	factura_nro
+ORDER BY pago_fecha
+
 GO
+
+
+
+
+
+
+
+
+
+-- preguntas
+
+-- como hacer un unique cuando la columna puede tener nulos?
+
+-- resultado raro
+/*
+SELECT cuotas, count(*)
+FROM (
+SELECT 
+	pago_fecha as fecha,
+    pago_monto,
+	f.total,
+	f.cuotas * pago_monto / (f.total * (1-f.descuento)) as cuotas,
+	empleado_dni as empleado,
+	f.cuotas as cant_cuotas,
+	factura_nro as factura
+FROM gd_esquema.Maestra 
+JOIN la_huerta.Factura as f ON factura_nro = f.numero
+WHERE pago_fecha is not null
+GROUP BY 
+	pago_fecha,
+    pago_monto,
+	f.total,
+	f.descuento,
+	empleado_dni,
+	f.cuotas,
+	factura_nro
+--ORDER BY empleado_dni
+)pepe
+group by cuotas
+*/
