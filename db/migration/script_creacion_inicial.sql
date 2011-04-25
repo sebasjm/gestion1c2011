@@ -8,7 +8,7 @@ CREATE TABLE [la_huerta].[Cliente](
 	[apellido] [varchar](50) NOT NULL,
 	[mail] [varchar](50) NOT NULL,
 	primary key (dni),
-	unique (mail)
+--	unique (mail)
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[TipoEmpleado](
