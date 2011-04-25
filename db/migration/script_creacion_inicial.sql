@@ -84,8 +84,8 @@ CREATE TABLE [la_huerta].[Categoria](
 	[nombre] [varchar](10) NOT NULL,
 	[descripcion] [varchar](50) NOT NULL,
 	primary key (id),
-    foreign key (categoria_padre) references [la_huerta].[Categoria](id),
-	unique (nombre)
+    foreign key (categoria_padre) references [la_huerta].[Categoria](id)
+--	unique (nombre)
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Producto](
@@ -327,6 +327,104 @@ GROUP BY
 	f.cuotas,
 	factura_nro
 ORDER BY pago_fecha
+
+--------------------------------
+-- Categorias (revisar se hay otra manera mejor de hacerlo)
+--------------------------------
+
+-- todas las categorias ordenadas
+select producto_cate
+from gd_esquema.Maestra
+where producto_cate is not null
+group by producto_cate
+order by producto_cate
+
+-- maxima cantidad de categorias
+-- son 4 niveles de categoria
+-- con esto se que hay que hacer union de 4 selects
+select top 1 * from (
+select max( LEN(producto_cate) - LEN(REPLACE(producto_cate, '¦', '')) ) as max_col
+from gd_esquema.Maestra
+where producto_cate is not null
+group by LEN(producto_cate) - LEN(REPLACE(producto_cate, '¦', ''))
+) tabla 
+order by  max_col desc
+
+
+-- consulta
+-- un select por cada nivel
+
+select * 
+from (
+	select substring(producto_cate,0,charindex('¦',producto_cate)) as nombre,
+	NULL as padre
+	from gd_esquema.Maestra
+	where producto_cate is not null
+	group by producto_cate
+) tabla
+where nombre <> ''
+
+union
+
+select * 
+from (
+select 
+	substring(
+		producto_cate + '¦',
+		charindex('¦',producto_cate + '¦')+1,
+		charindex('¦',producto_cate + '¦',charindex('¦',producto_cate + '¦')+1) - charindex('¦',producto_cate + '¦')-1
+	) as nombre,
+	substring(producto_cate,0,charindex('¦',producto_cate)) as padre
+	from gd_esquema.Maestra
+	where producto_cate is not null
+	group by producto_cate
+) tabla
+where nombre <> ''
+
+union
+
+select * 
+from (
+select 
+	substring(
+		producto_cate + '¦¦',
+		charindex('¦',producto_cate + '¦¦',charindex('¦',producto_cate + '¦¦')+1)+1,
+		charindex('¦',producto_cate + '¦¦',charindex('¦',producto_cate + '¦¦',charindex('¦',producto_cate + '¦¦')+1)+1) - charindex('¦',producto_cate + '¦¦',charindex('¦',producto_cate + '¦¦')+1) -1
+	) as nombre,
+	substring(
+		producto_cate + '¦',
+		charindex('¦',producto_cate + '¦')+1,
+		charindex('¦',producto_cate + '¦',charindex('¦',producto_cate + '¦')+1) - charindex('¦',producto_cate + '¦')-1
+	) as padre
+	from gd_esquema.Maestra
+	where producto_cate is not null
+	group by producto_cate
+) tabla
+where nombre <> ''
+
+union
+
+select * 
+from (
+select 
+	substring(
+		producto_cate + '¦¦¦',
+		charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1) +1,
+		charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1)+1) - charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1) -1
+	) as nombre,
+	substring(
+		producto_cate + '¦¦',
+		charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1,
+		charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1) - charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1) -1
+	) as padre
+	from gd_esquema.Maestra
+	where producto_cate is not null
+	group by producto_cate
+) tabla
+where nombre <> ''
+
+order by padre,nombre
+
 
 GO
 
