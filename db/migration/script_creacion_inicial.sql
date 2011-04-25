@@ -69,13 +69,13 @@ CREATE TABLE [la_huerta].[Empleado](
 	[tipoEmpleado_id] [tinyint] NOT NULL,
 	[sucursal_id] [int] NOT NULL,
     [activo] [bit] NOT NULL DEFAULT 1,
-    [usuario_id] [int] NOT NULL,
+    [usuario_id] [int] NULL DEFAULT NULL,
 	primary key (dni),
     foreign key (tipoEmpleado_id) references [la_huerta].[TipoEmpleado](id),
     foreign key (sucursal_id) references [la_huerta].[Sucursal](id),
-    foreign key (usuario_id) references [la_huerta].[Usuario](id),
-	unique (mail),
-	unique (usuario_id)
+    foreign key (usuario_id) references [la_huerta].[Usuario](id)
+--	unique (mail),
+--	unique (usuario_id)
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Categoria](
