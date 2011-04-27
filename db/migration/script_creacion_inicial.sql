@@ -81,8 +81,8 @@ CREATE TABLE [la_huerta].[Empleado](
 CREATE TABLE [la_huerta].[Categoria](
 	[id] [smallint] NOT NULL,
 	[categoria_padre] [smallint] NULL,
-	[nombre] [varchar](10) NOT NULL,
-	[descripcion] [varchar](50) NOT NULL,
+	[nombre] [varchar](30) NOT NULL,
+--	[descripcion] [varchar](50) NOT NULL,
 	primary key (id),
     foreign key (categoria_padre) references [la_huerta].[Categoria](id)
 --	unique (nombre)
@@ -328,20 +328,122 @@ GROUP BY
 	factura_nro
 ORDER BY pago_fecha
 
+-- 8
+insert into la_huerta.Categoria
+select 
+	row_number() OVER (ORDER BY nombre) AS id, 
+	NULL as categoria_padre,
+	nombre
+from (
+	select substring(producto_cate,0,charindex('¦',producto_cate)) as nombre
+	from gd_esquema.Maestra
+	where producto_cate is not null
+	group by producto_cate
+) tabla
+where nombre <> ''
+group by nombre
+order by nombre
+
+-- 30
+insert into la_huerta.Categoria
+select 
+	row_number() OVER (order by cat.id, tabla.nombre) + 8 AS id, 
+	cat.id,
+	tabla.nombre
+from (
+select 
+	substring(
+		producto_cate + '¦',
+		charindex('¦',producto_cate + '¦')+1,
+		charindex('¦',producto_cate + '¦',charindex('¦',producto_cate + '¦')+1) - charindex('¦',producto_cate + '¦')-1
+	) as nombre,
+	substring(producto_cate,0,charindex('¦',producto_cate)) as categoria_padre
+	from gd_esquema.Maestra
+	where producto_cate is not null
+	group by producto_cate
+) tabla
+join la_huerta.Categoria as cat on cat.nombre = tabla.categoria_padre
+where tabla.nombre <> ''
+group by cat.id, tabla.nombre
+order by cat.id, tabla.nombre
+
+
+-- 31
+insert into la_huerta.Categoria
+select 
+	row_number() OVER (order by cat.id, tabla.nombre) + 38 AS id, 
+	cat.id,
+	tabla.nombre
+from (
+select 
+	substring(
+		producto_cate + '¦¦',
+		charindex('¦',producto_cate + '¦¦',charindex('¦',producto_cate + '¦¦')+1)+1,
+		charindex('¦',producto_cate + '¦¦',charindex('¦',producto_cate + '¦¦',charindex('¦',producto_cate + '¦¦')+1)+1) - charindex('¦',producto_cate + '¦¦',charindex('¦',producto_cate + '¦¦')+1) -1
+	) as nombre,
+	substring(
+		producto_cate + '¦',
+		charindex('¦',producto_cate + '¦')+1,
+		charindex('¦',producto_cate + '¦',charindex('¦',producto_cate + '¦')+1) - charindex('¦',producto_cate + '¦')-1
+	) as categoria_padre
+	from gd_esquema.Maestra
+	where producto_cate is not null
+	group by producto_cate
+) tabla
+join la_huerta.Categoria as cat on cat.nombre = tabla.categoria_padre
+where tabla.nombre <> ''
+group by cat.id, tabla.nombre
+order by cat.id, tabla.nombre
+
+-- 24
+insert into la_huerta.Categoria
+select 
+	row_number() OVER (order by cat.id, tabla.nombre) + 69 AS id, 
+	cat.id,
+	tabla.nombre
+from (
+select 
+	substring(
+		producto_cate + '¦¦¦',
+		charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1) +1,
+		charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1)+1) - charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1) -1
+	) as nombre,
+	substring(
+		producto_cate + '¦¦',
+		charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1,
+		charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1) - charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1) -1
+	) as categoria_padre
+	from gd_esquema.Maestra
+	where producto_cate is not null
+	group by producto_cate
+) tabla
+join la_huerta.Categoria as cat on cat.nombre = tabla.categoria_padre
+where tabla.nombre <> ''
+group by cat.id, tabla.nombre
+order by cat.id, tabla.nombre
+
+
+
+
+
+
 --------------------------------
 -- Categorias (revisar se hay otra manera mejor de hacerlo)
 --------------------------------
 
 -- todas las categorias ordenadas
+/*
 select producto_cate
 from gd_esquema.Maestra
 where producto_cate is not null
 group by producto_cate
 order by producto_cate
+*/
 
 -- maxima cantidad de categorias
 -- son 4 niveles de categoria
 -- con esto se que hay que hacer union de 4 selects
+/*
 select top 1 * from (
 select max( LEN(producto_cate) - LEN(REPLACE(producto_cate, '¦', '')) ) as max_col
 from gd_esquema.Maestra
@@ -349,11 +451,11 @@ where producto_cate is not null
 group by LEN(producto_cate) - LEN(REPLACE(producto_cate, '¦', ''))
 ) tabla 
 order by  max_col desc
-
+*/
 
 -- consulta
 -- un select por cada nivel
-
+/*
 select * 
 from (
 	select substring(producto_cate,0,charindex('¦',producto_cate)) as nombre,
@@ -424,7 +526,28 @@ select
 where nombre <> ''
 
 order by padre,nombre
+*/
 
+-- para calcular el nombre maximo, hago esto por cada nivel
+/*
+select max(len(nombre)) from (
+select 
+	row_number() OVER (ORDER BY nombre) AS id, 
+	categoria_padre,
+	nombre
+from (
+	select substring(producto_cate,0,charindex('¦',producto_cate)) as nombre,
+	NULL as categoria_padre
+	from gd_esquema.Maestra
+	where producto_cate is not null
+	group by producto_cate
+) tabla
+where nombre <> ''
+group by categoria_padre,nombre
+--order by nombre
+) pepe
+order by max(len(nombre))
+*/
 
 GO
 
@@ -467,3 +590,38 @@ GROUP BY
 )pepe
 group by cuotas
 */
+
+
+--------
+-- Producto
+--------
+
+/*
+select * from la_huerta.ingresostock
+select * from la_huerta.funcionalidad
+select * from la_huerta.itemfactura
+select * from la_huerta.rol
+select * from la_huerta.rolfuncionalidad
+select * from la_huerta.usuariorol
+*/
+--INSERT INTO [la_huerta].[Producto] 
+SELECT 
+	row_number() OVER (ORDER BY producto_nombre) AS id, 
+    producto_nombre as nombre,
+	producto_desc as descripcion,
+	producto_precio as precio,
+	m.id as marca_id,
+	producto_cate
+--    cat.id as categoria_id
+FROM gd_esquema.Maestra 
+--JOIN la_huerta.Categoria as cat ON cat.nombre = producto_cate
+JOIN la_huerta.Marca as m ON m.nombre = producto_marca
+WHERE producto_nombre is not null and producto_precio <> 0
+GROUP BY 
+    producto_nombre,
+	producto_desc,
+	producto_precio,
+	m.id,
+	producto_cate
+--    cat.id
+ORDER BY producto_nombre
