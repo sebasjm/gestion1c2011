@@ -186,6 +186,30 @@ CREATE TABLE [la_huerta].[ItemFactura](
 GO
 
 -----------------------------------------
+-- Funciones
+-----------------------------------------
+
+create function la_huerta.get_categoria_fullname(  @name as varchar(200) ) 
+returns varchar(200) 
+begin
+	declare @fullname as varchar(200)
+	declare @parent as smallint
+	set @fullname = @name
+	set @parent = (select categoria_padre from la_huerta.Categoria where nombre = @name)
+	if @parent is null return null
+	while @parent is not null
+	begin
+		select 
+			@fullname = nombre + '¦' + @fullname,
+			@parent = categoria_padre 
+		from la_huerta.Categoria 
+		where id = @parent
+	end
+	return @fullname
+end
+go
+
+-----------------------------------------
 -- Carga de datos
 -----------------------------------------
 
@@ -604,6 +628,7 @@ select * from la_huerta.rol
 select * from la_huerta.rolfuncionalidad
 select * from la_huerta.usuariorol
 */
+
 --INSERT INTO [la_huerta].[Producto] 
 SELECT 
 	row_number() OVER (ORDER BY producto_nombre) AS id, 
@@ -611,10 +636,9 @@ SELECT
 	producto_desc as descripcion,
 	producto_precio as precio,
 	m.id as marca_id,
-	producto_cate
---    cat.id as categoria_id
+    cat.id as categoria_id
 FROM gd_esquema.Maestra 
---JOIN la_huerta.Categoria as cat ON cat.nombre = producto_cate
+JOIN la_huerta.Categoria as cat ON la_huerta.get_categoria_fullname( cat.nombre ) = producto_cate
 JOIN la_huerta.Marca as m ON m.nombre = producto_marca
 WHERE producto_nombre is not null and producto_precio <> 0
 GROUP BY 
@@ -622,6 +646,6 @@ GROUP BY
 	producto_desc,
 	producto_precio,
 	m.id,
-	producto_cate
---    cat.id
+    cat.id
 ORDER BY producto_nombre
+
