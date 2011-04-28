@@ -1,6 +1,10 @@
 USE gd1c2011
 GO
 
+DROP FUNCTION la_huerta.get_categoria_fullname
+
+GO
+
 DROP TABLE [la_huerta].[ItemFactura]
 DROP TABLE [la_huerta].[RolFuncionalidad]
 DROP TABLE [la_huerta].[UsuarioRol]
