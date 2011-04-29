@@ -27,34 +27,22 @@ namespace VentaElectrodomesticos.Login
 
         private void bAceptar_Click(object sender, EventArgs e)
         {
-            /*
             SqlConnection myConnection = new SqlConnection("user id=gd;" +
                                        "password=gd2011;server=localhost\\SQLSERVER2005;" +
                                        "database=GD1C2011; ");
-            try
-            {
+            String cadena = Login.sha256encrypt(tUsername.Text);
+            try {
                 myConnection.Open();
-                SqlCommand myCommand = new SqlCommand("SELECT TOP 5 cli_nombre, cli_apellido FROM gd_esquema.Maestra", myConnection);
-
-                String resultado = "";
+                SqlCommand myCommand = new SqlCommand("SELECT username FROM la_huerta.Usuario where password = '" + cadena + "'", myConnection);
 
                 SqlDataReader myReader = myCommand.ExecuteReader();
-                while (myReader.Read())
-                {
-                    resultado = resultado + myReader["cli_nombre"].ToString() + " = " + myReader["cli_apellido"].ToString() + "\n";
-                }
-                tUsername.Text = "resultado = " + resultado;
-            }
-            catch (Exception es)
-            {
+
+                lPassword.Text = myReader.HasRows ? "yeah!" : "ouch!";
+
+            } catch (Exception es) {
                 tUsername.Text = es.ToString();
                 Console.WriteLine(es.ToString());
             }
-             */
-            // Login login = new Login();
-            String cadena = "hernan";
-             lUsername.Text =  Login.sha256encrypt( cadena);
-             lUsername.Text = ""+lUsername.Text.Length;
         }
     }
 }

@@ -483,12 +483,56 @@ GROUP BY
     cat.id
 ORDER BY producto_nombre
 
+-- 179238
+INSERT INTO [la_huerta].[ItemFactura] 
+SELECT 
+	f.numero as factura_numero, 
+    p.id as producto_id,
+	producto_precio as producto_precio,
+	producto_cant
+FROM gd_esquema.Maestra 
+JOIN la_huerta.Factura as f ON f.numero = factura_nro
+JOIN la_huerta.Producto as p ON p.nombre = producto_nombre
+WHERE factura_nro is not null
+GROUP BY 
+	f.numero, 
+    p.id,
+	producto_precio,
+	producto_cant
+ORDER BY f.numero
+
+-- 174424
+insert into la_huerta.IngresoStock
+select 
+	s.id as sucursal_id, 
+	p.id as producto_id, 
+	llegada_stock_fecha as fecha, 
+	llegada_stock_cant as stock
+from gd_esquema.Maestra
+join la_huerta.Sucursal as s on s.direccion = suc_dir
+join la_huerta.Producto as p on p.nombre = producto_nombre
+where llegada_stock_fecha is not null
+group by
+	s.id, 
+	p.id, 
+	llegada_stock_fecha, 
+	llegada_stock_cant
+order by 
+	s.id, 
+	llegada_stock_fecha, 
+	p.id, 
+	llegada_stock_cant
+
+
+----------------
+-- Tablas de usuario
+----------------
+insert into la_huerta.Usuario values (1,'admin','E6B87050BFCB8143FCB8DB0170A4DC9ED00D904DDD3E2A4AD1B1E8DC0FDC9BE7')
+
 -------
 
 -/*
--select * from la_huerta.ingresostock
 -select * from la_huerta.funcionalidad
--select * from la_huerta.itemfactura
 -select * from la_huerta.rol
 -select * from la_huerta.rolfuncionalidad
 -select * from la_huerta.usuariorol
