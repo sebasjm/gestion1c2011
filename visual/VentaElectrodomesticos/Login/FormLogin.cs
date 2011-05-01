@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 using System.Data.SqlClient;
 
+using VentaElectrodomesticos.Controladores;
+using VentaElectrodomesticos.Exception;
+
 namespace VentaElectrodomesticos.Login
 {
     public partial class FormLogin : Form
@@ -25,24 +28,15 @@ namespace VentaElectrodomesticos.Login
 
         }
 
-        private void bAceptar_Click(object sender, EventArgs e)
-        {
-            SqlConnection myConnection = new SqlConnection("user id=gd;" +
-                                       "password=gd2011;server=localhost\\SQLSERVER2005;" +
-                                       "database=GD1C2011; ");
-            String cadena = Login.sha256encrypt(tUsername.Text);
+        private void bAceptar_Click(object sender, EventArgs e) {
             try {
-                myConnection.Open();
-                SqlCommand myCommand = new SqlCommand("SELECT username FROM la_huerta.Usuario where password = '" + cadena + "'", myConnection);
-
-                SqlDataReader myReader = myCommand.ExecuteReader();
-
-                lPassword.Text = myReader.HasRows ? "yeah!" : "ouch!";
-
-            } catch (Exception es) {
-                tUsername.Text = es.ToString();
-                Console.WriteLine(es.ToString());
+                Context.instance.authenticate(tUsername.Text, tPassword.Text);
+            } catch (WrongUserOrPasswordException ex) {
+                tUsername.Text = "Wrong username or password";
+                return;
             }
+            tUsername.Text = "right!";
         }
+
     }
 }
