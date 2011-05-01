@@ -60,6 +60,7 @@
     <Compile Include="AbmCliente\FormListadoClientes.Designer.cs">
       <DependentUpon>FormListadoClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmEmpleado\ComboBoxItem.cs" />
     <Compile Include="AbmEmpleado\FormAbmEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
