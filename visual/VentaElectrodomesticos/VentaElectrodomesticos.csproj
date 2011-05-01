@@ -121,12 +121,18 @@
     <Compile Include="ClientesPremium\FormClientesPremium.Designer.cs">
       <DependentUpon>FormClientesPremium.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controladores\Connection.cs" />
+    <Compile Include="Controladores\Context.cs" />
+    <Compile Include="Controladores\DAOContext.cs" />
+    <Compile Include="Controladores\Security.cs" />
+    <Compile Include="Controladores\UserDAO.cs" />
     <Compile Include="EfectuarPago\FormEfectuarPago.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EfectuarPago\FormEfectuarPago.Designer.cs">
       <DependentUpon>FormEfectuarPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exception\WrongUserOrPasswordException.cs" />
     <Compile Include="Facturacion\FormFacturacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,8 @@
     <Compile Include="MejoresCategorias\FormMejoresCategorias.Designer.cs">
       <DependentUpon>FormMejoresCategorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Mapper.cs" />
+    <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AbmCliente\FormAbmCliente.resx">
