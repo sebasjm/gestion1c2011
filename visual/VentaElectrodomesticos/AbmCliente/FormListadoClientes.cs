@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using VentaElectrodomesticos.Controladores;
+using VentaElectrodomesticos.Modelo;
 
 
 
@@ -14,80 +16,42 @@ namespace VentaElectrodomesticos.AbmCliente
 {
     public partial class FormListadoClientes : Form
     {
-        private int messageFromParent;
-        public int MessageFromParent
+        private Object messageFromParent;
+        public Object MessageFromParent
         {
             get { return messageFromParent; }
             set { messageFromParent = value; }
         }
-
         private string nombre;
         private string apellido;
-        private int dni;
-
+        private int dni = -1;
         public FormListadoClientes()
         {
             InitializeComponent();
             FillData();
             FillProvincias();
         }
-
         void FillData()
         {
-            SqlConnection sqlConnection = new SqlConnection("user id=gd;" +
-                              "password=gd2011;server=localhost\\SQLSERVER2005;" +
-                              "database=GD1C2011; ");
+            List<Cliente> clientesList = Context.instance.dao.cliente.getClientes(this.nombre, this.apellido, this.dni);
             try
             {
-
-                String strDNI = "";
-                if (dni != 0){ strDNI = " AND dni=" + dni  ; }
-                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM la_huerta.cliente WHERE " +
-                    "  LOWER(nombre) like  LOWER('%" +nombre+ "%') AND" +
-                    "  LOWER(apellido) like  LOWER('%" +apellido+"%')" +
-                    strDNI
-                    , sqlConnection);
-                sqlConnection.Open();
-                DataSet ds1 = new DataSet();
-                SqlDataAdapter adp1 = new SqlDataAdapter(sqlCommand);
-                adp1.Fill(ds1, "customer");
-                dataClientes.DataSource = ds1;
-                dataClientes.DataMember = "customer";
-                sqlConnection.Close();
+                dataClientes.DataSource = clientesList;
             }
-            catch (Exception e)
-            {
-                //Console.WriteLine(e.ToString());
-                MessageBox.Show(e.ToString(), "Error en la Consulta", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
-            }
+            catch (NullReferenceException) { }
         }
         void FillProvincias()
         {
-           SqlConnection sqlConnection = new SqlConnection("user id=gd;" +
-                              "password=gd2011;server=localhost\\SQLSERVER2005;" +
-                              "database=GD1C2011; ");
+            List<Provincia> provinciasList = Context.instance.dao.provincia.getProvincias();
             try
             {
-                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM la_huerta.provincia", sqlConnection);
-                sqlConnection.Open();
-                SqlDataReader TheReader1 = sqlCommand.ExecuteReader();
-                // Creamos un nuevo objeto DataTable
-                DataTable dt = new DataTable();
-                // Cargamos los datos del lector en el objeto DataTable
-                dt.Load(TheReader1);
-                // Configuramos el primer control ComboBox Provincias
-                cmbProvincia.DataSource = dt;
+                cmbProvincia.DataSource = provinciasList;
                 cmbProvincia.DisplayMember = "nombre";
                 cmbProvincia.ValueMember = "id";
-                sqlConnection.Close();
+                cmbProvincia.SelectedIndex = -1;
             }
-            catch (Exception e)
-            {
-                //Console.WriteLine(e.ToString());
-                MessageBox.Show(e.ToString(), "Error en la Consulta", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
-            }
+            catch (NullReferenceException) { }
         }
-
         private void bLimpiar_Click(object sender, EventArgs e)
         {
             txtApellido.Text = "";
@@ -95,7 +59,6 @@ namespace VentaElectrodomesticos.AbmCliente
             txtNombre.Text = "";
             cmbProvincia.SelectedIndex = -1;
         }
-
         private void bCancelar_Click(object sender, EventArgs e)
         {
             this.messageFromParent = 0;
@@ -103,11 +66,17 @@ namespace VentaElectrodomesticos.AbmCliente
         }
         private void bSeleccionar_Click(object sender, EventArgs e)
         {
-            int dni =  System.Int32.Parse(dataClientes["dni", dataClientes.CurrentRow.Index].Value.ToString());
-            this.messageFromParent = dni;
-            this.Close();
+            Cliente cliente = (Cliente)dataClientes.Rows[dataClientes.CurrentCell.RowIndex].DataBoundItem;
+            if (cliente != null)
+            {
+                this.messageFromParent = cliente;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un Empleado");
+            }
         }
-
         private void bBuscar_Click(object sender, EventArgs e)
         {
             this.nombre = txtNombre.Text;

@@ -224,6 +224,7 @@
             this.bLimpiar.TabIndex = 11;
             this.bLimpiar.Text = "Limpiar";
             this.bLimpiar.UseVisualStyleBackColor = true;
+            this.bLimpiar.Click += new System.EventHandler(this.bLimpiar_Click);
             // 
             // FormListadoEmpleados
             // 

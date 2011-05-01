@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using VentaElectrodomesticos.AbmEmpleado;
+using VentaElectrodomesticos.Modelo;
 
 namespace VentaElectrodomesticos.AbmUsuario
 {
@@ -25,13 +26,25 @@ namespace VentaElectrodomesticos.AbmUsuario
         private void bBuscarEmpleado_Click(object sender, EventArgs e)
         {
             FormListadoEmpleados form = new FormListadoEmpleados();
+            form.MessageFromParent = 0;
             form.ShowDialog(this);
+            if (form.MessageFromParent != null)
+            {
+                this.cargarEmpleado((Empleado)form.MessageFromParent);
+            }
+            //MessageBox.Show(form.MessageFromParent.ToString());
+            bCrearOtro.Hide();
+            bLimpiar.Text = "Borrar";
+            bCrear.Text = "Modificar";
         }
-
+        private void cargarEmpleado(Empleado cargoEmpleado){
+            string nombre = cargoEmpleado.nombre;
+        }
         private void bBuscar_Click(object sender, EventArgs e)
         {
             FormListadoUsuarios form = new FormListadoUsuarios();
             form.ShowDialog(this);
         }
+
     }
 }
