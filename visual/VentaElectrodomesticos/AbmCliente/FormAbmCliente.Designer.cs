@@ -72,6 +72,7 @@
             this.bCrear.TabIndex = 43;
             this.bCrear.Text = "Crear";
             this.bCrear.UseVisualStyleBackColor = true;
+            this.bCrear.Click += new System.EventHandler(this.bCrear_Click);
             // 
             // grpDireccion
             // 
@@ -242,6 +243,7 @@
             this.bLimpiar.TabIndex = 61;
             this.bLimpiar.Text = "Limpiar";
             this.bLimpiar.UseVisualStyleBackColor = true;
+            this.bLimpiar.Click += new System.EventHandler(this.bLimpiar_Click);
             // 
             // bCrearOtro
             // 

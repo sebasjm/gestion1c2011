@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using VentaElectrodomesticos.AbmProducto;
 using VentaElectrodomesticos.AbmEmpleado;
+using System.Data.SqlClient;
 
 namespace VentaElectrodomesticos.AsignacionStock
 {

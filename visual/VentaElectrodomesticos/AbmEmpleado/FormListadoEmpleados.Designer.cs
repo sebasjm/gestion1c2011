@@ -42,15 +42,12 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.bBuscar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.dataEmpleados = new System.Windows.Forms.DataGridView();
+            this.bSeleccionar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
             this.grpFiltrosBusqueda.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataEmpleados)).BeginInit();
             this.SuspendLayout();
             // 
             // grpFiltrosBusqueda
@@ -77,6 +74,8 @@
             // cmbTipoEmpleado
             // 
             this.cmbTipoEmpleado.FormattingEnabled = true;
+            this.cmbTipoEmpleado.Items.AddRange(new object[] {
+            "Seleccione..."});
             this.cmbTipoEmpleado.Location = new System.Drawing.Point(336, 77);
             this.cmbTipoEmpleado.Name = "cmbTipoEmpleado";
             this.cmbTipoEmpleado.Size = new System.Drawing.Size(121, 21);
@@ -85,6 +84,8 @@
             // cmbSucursal
             // 
             this.cmbSucursal.FormattingEnabled = true;
+            this.cmbSucursal.Items.AddRange(new object[] {
+            "Seleccione..."});
             this.cmbSucursal.Location = new System.Drawing.Point(336, 50);
             this.cmbSucursal.Name = "cmbSucursal";
             this.cmbSucursal.Size = new System.Drawing.Size(121, 21);
@@ -93,10 +94,13 @@
             // cmbProvincia
             // 
             this.cmbProvincia.FormattingEnabled = true;
+            this.cmbProvincia.Items.AddRange(new object[] {
+            "Seleccione..."});
             this.cmbProvincia.Location = new System.Drawing.Point(336, 20);
             this.cmbProvincia.Name = "cmbProvincia";
             this.cmbProvincia.Size = new System.Drawing.Size(121, 21);
             this.cmbProvincia.TabIndex = 43;
+            this.cmbProvincia.SelectedIndexChanged += new System.EventHandler(this.cmbProvincia_SelectedIndexChanged);
             // 
             // lTipoEmpleado
             // 
@@ -182,43 +186,26 @@
             this.bBuscar.TabIndex = 2;
             this.bBuscar.Text = "Buscar";
             this.bBuscar.UseVisualStyleBackColor = true;
+            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
             // 
-            // dataGridView1
+            // dataEmpleados
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(14, 167);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(491, 207);
-            this.dataGridView1.TabIndex = 4;
+            this.dataEmpleados.AllowUserToOrderColumns = true;
+            this.dataEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataEmpleados.Location = new System.Drawing.Point(14, 167);
+            this.dataEmpleados.Name = "dataEmpleados";
+            this.dataEmpleados.Size = new System.Drawing.Size(491, 207);
+            this.dataEmpleados.TabIndex = 4;
             // 
-            // Column1
+            // bSeleccionar
             // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(432, 380);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Seleccionar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bSeleccionar.Location = new System.Drawing.Point(432, 380);
+            this.bSeleccionar.Name = "bSeleccionar";
+            this.bSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.bSeleccionar.TabIndex = 13;
+            this.bSeleccionar.Text = "Seleccionar";
+            this.bSeleccionar.UseVisualStyleBackColor = true;
+            this.bSeleccionar.Click += new System.EventHandler(this.bSeleccionar_Click_1);
             // 
             // bCancelar
             // 
@@ -243,17 +230,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(519, 417);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bSeleccionar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bLimpiar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataEmpleados);
             this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.grpFiltrosBusqueda);
             this.Name = "FormListadoEmpleados";
             this.Text = "Listado de Selección de Empleado";
             this.grpFiltrosBusqueda.ResumeLayout(false);
             this.grpFiltrosBusqueda.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataEmpleados)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -274,11 +261,8 @@
         private System.Windows.Forms.Label lNombre;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataEmpleados;
+        private System.Windows.Forms.Button bSeleccionar;
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bLimpiar;
     }
