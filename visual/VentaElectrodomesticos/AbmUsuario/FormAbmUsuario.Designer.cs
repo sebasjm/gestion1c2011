@@ -38,7 +38,7 @@
             this.tPassword = new System.Windows.Forms.TextBox();
             this.cmbEmpleado = new System.Windows.Forms.ComboBox();
             this.bCrearOtro = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bLimpiar = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.bCrear = new System.Windows.Forms.Button();
             this.bBuscarEmpleado = new System.Windows.Forms.Button();
@@ -102,11 +102,11 @@
             this.bCrearOtro.Name = "bCrearOtro";
             this.bCrearOtro.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // bLimpiar
             // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.bLimpiar, "bLimpiar");
+            this.bLimpiar.Name = "bLimpiar";
+            this.bLimpiar.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -153,7 +153,7 @@
             this.Controls.Add(this.txtConfirmarPassword);
             this.Controls.Add(this.bBuscarEmpleado);
             this.Controls.Add(this.bCrearOtro);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.bCrear);
             this.Controls.Add(this.cmbEmpleado);
@@ -182,7 +182,7 @@
         private System.Windows.Forms.TextBox tPassword;
         private System.Windows.Forms.ComboBox cmbEmpleado;
         private System.Windows.Forms.Button bCrearOtro;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bLimpiar;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button bCrear;
         private System.Windows.Forms.Button bBuscarEmpleado;
