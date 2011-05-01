@@ -531,9 +531,9 @@ insert into la_huerta.Usuario values (1,'admin','E6B87050BFCB8143FCB8DB0170A4DC9
 
 -------
 
--/*
+/*
 -select * from la_huerta.funcionalidad
 -select * from la_huerta.rol
 -select * from la_huerta.rolfuncionalidad
 -select * from la_huerta.usuariorol
--*/
+*/
