@@ -89,16 +89,16 @@ CREATE TABLE [la_huerta].[Categoria](
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Producto](
-	[id] [int] NOT NULL,
+	[codigo] [int] NOT NULL,
 	[nombre] [varchar](70) NOT NULL, -- max 38
 	[descripcion] [varchar](200) NULL,
 	[precio] [float] NOT NULL,
 	[marca_id] [smallint] NOT NULL,
 	[categoria_id] [smallint] NOT NULL,
-	primary key (id),
+	primary key (codigo),
     foreign key (marca_id) references [la_huerta].[Marca](id),
     foreign key (categoria_id) references [la_huerta].[Categoria](id),
-	unique (nombre,marca_id)
+--	unique (nombre,marca_id)
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Factura](
@@ -114,21 +114,21 @@ CREATE TABLE [la_huerta].[Factura](
 
 CREATE TABLE [la_huerta].[Stock](
 	[sucursal_id] [int] NOT NULL,
-	[producto_id] [int] NOT NULL,
+	[producto_codigo] [int] NOT NULL,
 	[stock] [int] NOT NULL,
-	primary key (sucursal_id,producto_id),
+	primary key (sucursal_id,producto_codigo),
     foreign key (sucursal_id) references [la_huerta].[Sucursal](id),
-    foreign key (producto_id) references [la_huerta].[Producto](id)
+    foreign key (producto_codigo) references [la_huerta].[Producto](codigo)
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[IngresoStock](
 	[sucursal_id] [int] NOT NULL,
-	[producto_id] [int] NOT NULL,
+	[producto_codigo] [int] NOT NULL,
 	[fecha] [datetime] NOT NULL,
 	[stock] [int] NOT NULL,
-	primary key (sucursal_id,producto_id,fecha),
+	primary key (sucursal_id,producto_codigo,fecha),
     foreign key (sucursal_id) references [la_huerta].[Sucursal](id),
-    foreign key (producto_id) references [la_huerta].[Producto](id)
+    foreign key (producto_codigo) references [la_huerta].[Producto](codigo)
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Pago](
@@ -175,12 +175,12 @@ CREATE TABLE [la_huerta].[RolFuncionalidad](
 
 CREATE TABLE [la_huerta].[ItemFactura](
 	[factura_numero] [int] NOT NULL,
-	[producto_id] [int] NOT NULL,
+	[producto_codigo] [int] NOT NULL,
 	[producto_precio] [int] NOT NULL,	
 	[cantidad] [int] NOT NULL,
-	primary key (factura_numero,producto_id),
+	primary key (factura_numero,producto_codigo),
     foreign key (factura_numero) references [la_huerta].[Factura](numero),
-    foreign key (producto_id) references [la_huerta].[Producto](id)
+    foreign key (producto_codigo) references [la_huerta].[Producto](codigo)
 ) ON [PRIMARY]
 
 GO
@@ -188,6 +188,41 @@ GO
 -----------------------------------------
 -- Funciones
 -----------------------------------------
+
+create function la_huerta.split(  @str as varchar(200), @delimiter as char, @index as int ) 
+returns varchar(200)
+begin
+	declare @pos as int
+	declare @endpos as int
+	set @pos = 1
+	declare @sub as varchar(200)
+	set @endpos = charindex(@delimiter, @str, @pos) - @pos
+	while( @pos < len(@str) and @endpos > 0 )
+	begin
+		set @sub = substring(@str,@pos, @endpos ) 
+		set @pos = @pos + len(@sub) + 1
+		set @index = @index - 1
+		if ( @index < 0 ) return @sub
+		set @endpos = charindex(@delimiter, @str, @pos) - @pos
+	end
+	if (@index = 0) return  substring(@str,@pos,len(@str))
+	return null
+end
+go
+
+create function la_huerta.back_split(  @str as varchar(200), @delimiter as char, @index as int ) 
+returns varchar(200)
+begin
+	declare @pos as int
+	set @pos = 0
+	while ( la_huerta.split(@str, @delimiter, @pos) is not null )
+	begin
+		set @pos = @pos + 1
+	end
+	if ( @pos > @index ) return la_huerta.split(@str, @delimiter, @pos - @index  -1 )
+	return null
+end
+go
 
 create function la_huerta.get_categoria_fullname(  @categoria as varchar(200) ) 
 returns varchar(200)
@@ -375,7 +410,8 @@ select
 	NULL as categoria_padre,
 	nombre
 from (
-	select substring(producto_cate,0,charindex('¦',producto_cate)) as nombre
+	select
+	la_huerta.split(producto_cate,'¦',0) as nombre
 	from gd_esquema.Maestra
 	where producto_cate is not null
 	group by producto_cate
@@ -392,12 +428,8 @@ select
 	tabla.nombre
 from (
 select 
-	substring(
-		producto_cate + '¦',
-		charindex('¦',producto_cate + '¦')+1,
-		charindex('¦',producto_cate + '¦',charindex('¦',producto_cate + '¦')+1) - charindex('¦',producto_cate + '¦')-1
-	) as nombre,
-	substring(producto_cate,0,charindex('¦',producto_cate)) as categoria_padre
+	la_huerta.split(producto_cate,'¦',1) as nombre,
+	la_huerta.split(producto_cate,'¦',0) as categoria_padre
 	from gd_esquema.Maestra
 	where producto_cate is not null
 	group by producto_cate
@@ -416,16 +448,8 @@ select
 	tabla.nombre
 from (
 select 
-	substring(
-		producto_cate + '¦¦',
-		charindex('¦',producto_cate + '¦¦',charindex('¦',producto_cate + '¦¦')+1)+1,
-		charindex('¦',producto_cate + '¦¦',charindex('¦',producto_cate + '¦¦',charindex('¦',producto_cate + '¦¦')+1)+1) - charindex('¦',producto_cate + '¦¦',charindex('¦',producto_cate + '¦¦')+1) -1
-	) as nombre,
-	substring(
-		producto_cate + '¦',
-		charindex('¦',producto_cate + '¦')+1,
-		charindex('¦',producto_cate + '¦',charindex('¦',producto_cate + '¦')+1) - charindex('¦',producto_cate + '¦')-1
-	) as categoria_padre
+	la_huerta.split(producto_cate,'¦',2) as nombre,
+	la_huerta.split(producto_cate,'¦',1) as categoria_padre
 	from gd_esquema.Maestra
 	where producto_cate is not null
 	group by producto_cate
@@ -443,16 +467,8 @@ select
 	tabla.nombre
 from (
 select 
-	substring(
-		producto_cate + '¦¦¦',
-		charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1) +1,
-		charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1)+1) - charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1) -1
-	) as nombre,
-	substring(
-		producto_cate + '¦¦',
-		charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1,
-		charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1)+1) - charindex('¦',producto_cate + '¦¦¦',charindex('¦',producto_cate + '¦¦¦')+1) -1
-	) as categoria_padre
+	la_huerta.split(producto_cate,'¦',3) as nombre,
+	la_huerta.split(producto_cate,'¦',2) as categoria_padre
 	from gd_esquema.Maestra
 	where producto_cate is not null
 	group by producto_cate
@@ -465,8 +481,8 @@ order by cat.id, tabla.nombre
 -- 99
 INSERT INTO [la_huerta].[Producto] 
 SELECT 
-	row_number() OVER (ORDER BY producto_nombre) AS id, 
-    producto_nombre as nombre,
+	la_huerta.back_split(producto_nombre,' ',0) AS codigo, 
+    substring(producto_nombre,0,len(producto_nombre) - len(la_huerta.back_split(producto_nombre,' ',0))) as nombre,
 	producto_desc as descripcion,
 	producto_precio as precio,
 	m.id as marca_id,
@@ -487,16 +503,16 @@ ORDER BY producto_nombre
 INSERT INTO [la_huerta].[ItemFactura] 
 SELECT 
 	f.numero as factura_numero, 
-    p.id as producto_id,
+    p.codigo as producto_codigo,
 	producto_precio as producto_precio,
 	producto_cant
 FROM gd_esquema.Maestra 
 JOIN la_huerta.Factura as f ON f.numero = factura_nro
-JOIN la_huerta.Producto as p ON p.nombre = producto_nombre
+JOIN la_huerta.Producto as p ON p.codigo = la_huerta.back_split(producto_nombre,' ',0)
 WHERE factura_nro is not null
 GROUP BY 
 	f.numero, 
-    p.id,
+    p.codigo,
 	producto_precio,
 	producto_cant
 ORDER BY f.numero
@@ -505,22 +521,22 @@ ORDER BY f.numero
 insert into la_huerta.IngresoStock
 select 
 	s.id as sucursal_id, 
-	p.id as producto_id, 
+	p.codigo as producto_codigo, 
 	llegada_stock_fecha as fecha, 
 	llegada_stock_cant as stock
 from gd_esquema.Maestra
 join la_huerta.Sucursal as s on s.direccion = suc_dir
-join la_huerta.Producto as p on p.nombre = producto_nombre
+join la_huerta.Producto as p on p.codigo = la_huerta.back_split(producto_nombre,' ',0)
 where llegada_stock_fecha is not null
 group by
 	s.id, 
-	p.id, 
+	p.codigo, 
 	llegada_stock_fecha, 
 	llegada_stock_cant
 order by 
 	s.id, 
 	llegada_stock_fecha, 
-	p.id, 
+	p.codigo, 
 	llegada_stock_cant
 
 
@@ -531,9 +547,3 @@ insert into la_huerta.Usuario values (1,'admin','E6B87050BFCB8143FCB8DB0170A4DC9
 
 -------
 
-/*
--select * from la_huerta.funcionalidad
--select * from la_huerta.rol
--select * from la_huerta.rolfuncionalidad
--select * from la_huerta.usuariorol
-*/
