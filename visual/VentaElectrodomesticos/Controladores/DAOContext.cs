@@ -58,6 +58,13 @@ namespace VentaElectrodomesticos.Controladores {
             get { if (_cliente == null) _cliente = new ClienteDAO(connection); return _cliente; }
             private set { _cliente = value; }
         }
+        private RolDAO _rol;
+        public RolDAO rol
+        {
+            get { if (_rol == null) _rol = new RolDAO(connection); return _rol; }
+            private set { _rol = value; }
+        }
+        // Mapper
         public void addMapper(Type type, Mapper<Object> mapper)
         {
             mappers.Add(type, mapper);
