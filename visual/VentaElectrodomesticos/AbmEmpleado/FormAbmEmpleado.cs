@@ -123,5 +123,7 @@ namespace VentaElectrodomesticos.AbmEmpleado
         {
             this.Close();
         }
+
+
     }
 }

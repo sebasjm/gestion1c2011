@@ -32,7 +32,7 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.bCrearOtro = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bLimpiar = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.bCrear = new System.Windows.Forms.Button();
             this.bBuscar = new System.Windows.Forms.Button();
@@ -83,14 +83,14 @@
             this.bCrearOtro.Text = "Crear y Continuar";
             this.bCrearOtro.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // bLimpiar
             // 
-            this.button2.Location = new System.Drawing.Point(76, 214);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(58, 23);
-            this.button2.TabIndex = 75;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bLimpiar.Location = new System.Drawing.Point(76, 214);
+            this.bLimpiar.Name = "bLimpiar";
+            this.bLimpiar.Size = new System.Drawing.Size(58, 23);
+            this.bLimpiar.TabIndex = 75;
+            this.bLimpiar.Text = "Limpiar";
+            this.bLimpiar.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -127,7 +127,7 @@
             this.ClientSize = new System.Drawing.Size(349, 285);
             this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.bCrearOtro);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.bCrear);
             this.Controls.Add(this.checkedListBox1);
@@ -147,7 +147,7 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button bCrearOtro;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bLimpiar;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button bCrear;
         private System.Windows.Forms.Button bBuscar;
