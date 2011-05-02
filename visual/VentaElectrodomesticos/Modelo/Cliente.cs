@@ -5,16 +5,21 @@ using System.Text;
 
 namespace VentaElectrodomesticos.Modelo {
     class Cliente {
-        public int dni {
+
+        public Cliente(Int32 dni) {
+            this.dni = dni;
+        }
+
+        public Int32 dni {
+            get; private set;
+        }
+        public String nombre {
             get; set;
         }
-        public string nombre {
+        public String apellido {
             get; set;
         }
-        public string apellido {
-            get; set;
-        }
-        public string mail {
+        public String mail {
             get; set;
         }
     }

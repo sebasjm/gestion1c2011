@@ -24,10 +24,8 @@ namespace VentaElectrodomesticos.Controladores {
             public Object getInstance(SqlDataReader sdr) {
                 //MessageBox.Show("ID : " + sdr.GetValue(0) + "NOMBRE :" + sdr.GetValue(1));
                 // TODO : Ver porque tipo empleado tiene un espacio en la primary
-                String cadena = (string)sdr.GetValue(0).ToString().Trim(' ');
-                return new TipoEmpleado {
-                    id = (int)Int32.Parse(cadena),
-                    nombre = (string)sdr.GetValue(1)
+                return new TipoEmpleado( (Byte) sdr.GetValue(0) )  {
+                    nombre = (String)sdr.GetValue(1)
                 };
             }
         }

@@ -3,35 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace VentaElectrodomesticos.Modelo
-{
-    class Sucursal
-    {
-        public int id
-        {
-            get;
-            set;
+namespace VentaElectrodomesticos.Modelo {
+    class Sucursal {
+
+        public Sucursal(Int32 id) {
+            this.id = id;
         }
-        public string direccion
-        {
-            get;
-            set;
+
+        public Int32 id {
+            get; private set;
         }
-        public string telefono
-        {
-            get;
-            set;
-        }
-        public int tipoSucursal_id
-        {
-            get;
-            set;
-        }
-        public int provincia_id
-        {
+
+        public String direccion {
             get;
             set;
         }
 
+        public String telefono {
+            get;
+            set;
+        }
+
+        public Byte tipoSucursalId {
+            get;
+            set;
+        }
+
+        public Byte provinciaId {
+            get;
+            set;
+        }
     }
 }

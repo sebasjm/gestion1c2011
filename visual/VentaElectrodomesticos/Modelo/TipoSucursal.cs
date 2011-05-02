@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 namespace VentaElectrodomesticos.Modelo {
-    class Provincia {
+    class TipoSucursal {
 
-        public Provincia(Byte id) {
+        public TipoSucursal(Byte id) {
             this.id = id;
         }
 
@@ -15,9 +15,9 @@ namespace VentaElectrodomesticos.Modelo {
             private set;
         }
 
-        public String nombre {
+        public String descripcion {
             get;
-            set;
+            private set;
         }
     }
 }

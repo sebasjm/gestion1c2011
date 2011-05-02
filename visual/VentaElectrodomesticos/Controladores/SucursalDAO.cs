@@ -21,8 +21,7 @@ namespace VentaElectrodomesticos.Controladores {
         }
         class SucursalMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
-                return new Sucursal {
-                    id = (int)sdr.GetValue(0),
+                return new Sucursal( (int)sdr.GetValue(0) ) {
                     direccion = (string)sdr.GetValue(1)
                 };
             }
