@@ -144,7 +144,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lEmpleado.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>18</value>
   </data>
   <data name="lUsername.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -171,7 +171,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lUsername.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>17</value>
   </data>
   <data name="lPassword.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -198,7 +198,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lPassword.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>16</value>
+  </data>
+  <data name="chkListadoRoles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 20</value>
+  </data>
+  <data name="chkListadoRoles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>305, 94</value>
+  </data>
+  <data name="chkListadoRoles.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;chkListadoRoles.Name" xml:space="preserve">
     <value>chkListadoRoles</value>
@@ -234,103 +243,52 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;grpListadoRoles.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>15</value>
   </data>
-  <data name="chkListadoRoles.Items" xml:space="preserve">
-    <value>Analista</value>
-  </data>
-  <data name="chkListadoRoles.Items1" xml:space="preserve">
-    <value>Funcional</value>
-  </data>
-  <data name="chkListadoRoles.Items2" xml:space="preserve">
-    <value>Empleado</value>
-  </data>
-  <data name="chkListadoRoles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 20</value>
-  </data>
-  <data name="chkListadoRoles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 94</value>
-  </data>
-  <data name="chkListadoRoles.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;chkListadoRoles.Name" xml:space="preserve">
-    <value>chkListadoRoles</value>
-  </data>
-  <data name="&gt;&gt;chkListadoRoles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkListadoRoles.Parent" xml:space="preserve">
-    <value>grpListadoRoles</value>
-  </data>
-  <data name="&gt;&gt;chkListadoRoles.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tUsername.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txtUsername.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 76</value>
   </data>
-  <data name="tUsername.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 20</value>
+  <data name="txtUsername.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 20</value>
   </data>
-  <data name="tUsername.TabIndex" type="System.Int32, mscorlib">
+  <data name="txtUsername.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;tUsername.Name" xml:space="preserve">
-    <value>tUsername</value>
+  <data name="&gt;&gt;txtUsername.Name" xml:space="preserve">
+    <value>txtUsername</value>
   </data>
-  <data name="&gt;&gt;tUsername.Type" xml:space="preserve">
+  <data name="&gt;&gt;txtUsername.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tUsername.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txtUsername.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;tUsername.ZOrder" xml:space="preserve">
-    <value>10</value>
+  <data name="&gt;&gt;txtUsername.ZOrder" xml:space="preserve">
+    <value>14</value>
   </data>
-  <data name="tPassword.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txtPassword.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 108</value>
   </data>
-  <data name="tPassword.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+  <data name="txtPassword.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
     <value>*</value>
   </data>
-  <data name="tPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 20</value>
+  <data name="txtPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 20</value>
   </data>
-  <data name="tPassword.TabIndex" type="System.Int32, mscorlib">
+  <data name="txtPassword.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;tPassword.Name" xml:space="preserve">
-    <value>tPassword</value>
+  <data name="&gt;&gt;txtPassword.Name" xml:space="preserve">
+    <value>txtPassword</value>
   </data>
-  <data name="&gt;&gt;tPassword.Type" xml:space="preserve">
+  <data name="&gt;&gt;txtPassword.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tPassword.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txtPassword.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;tPassword.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="cmbEmpleado.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 43</value>
-  </data>
-  <data name="cmbEmpleado.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 21</value>
-  </data>
-  <data name="cmbEmpleado.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;cmbEmpleado.Name" xml:space="preserve">
-    <value>cmbEmpleado</value>
-  </data>
-  <data name="&gt;&gt;cmbEmpleado.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmbEmpleado.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cmbEmpleado.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;txtPassword.ZOrder" xml:space="preserve">
+    <value>13</value>
   </data>
   <data name="bCrearOtro.Location" type="System.Drawing.Point, System.Drawing">
     <value>218, 337</value>
@@ -354,7 +312,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bCrearOtro.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>9</value>
   </data>
   <data name="bLimpiar.Location" type="System.Drawing.Point, System.Drawing">
     <value>77, 308</value>
@@ -378,31 +336,31 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bLimpiar.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>10</value>
   </data>
-  <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 308</value>
+  <data name="bCancelar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 308</value>
   </data>
-  <data name="button3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="bCancelar.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 23</value>
   </data>
-  <data name="button3.TabIndex" type="System.Int32, mscorlib">
+  <data name="bCancelar.TabIndex" type="System.Int32, mscorlib">
     <value>74</value>
   </data>
-  <data name="button3.Text" xml:space="preserve">
+  <data name="bCancelar.Text" xml:space="preserve">
     <value>Cancelar</value>
   </data>
-  <data name="&gt;&gt;button3.Name" xml:space="preserve">
-    <value>button3</value>
+  <data name="&gt;&gt;bCancelar.Name" xml:space="preserve">
+    <value>bCancelar</value>
   </data>
-  <data name="&gt;&gt;button3.Type" xml:space="preserve">
+  <data name="&gt;&gt;bCancelar.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;bCancelar.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button3.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;bCancelar.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="bCrear.Location" type="System.Drawing.Point, System.Drawing">
     <value>218, 308</value>
@@ -426,13 +384,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bCrear.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>12</value>
   </data>
   <data name="bBuscarEmpleado.Location" type="System.Drawing.Point, System.Drawing">
     <value>233, 41</value>
   </data>
   <data name="bBuscarEmpleado.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 23</value>
+    <value>71, 23</value>
   </data>
   <data name="bBuscarEmpleado.TabIndex" type="System.Int32, mscorlib">
     <value>77</value>
@@ -450,7 +408,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bBuscarEmpleado.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>8</value>
   </data>
   <data name="txtConfirmarPassword.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 134</value>
@@ -459,7 +417,7 @@
     <value>*</value>
   </data>
   <data name="txtConfirmarPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 20</value>
+    <value>183, 20</value>
   </data>
   <data name="txtConfirmarPassword.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
@@ -474,19 +432,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtConfirmarPassword.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>7</value>
   </data>
   <data name="bBuscar.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 13</value>
   </data>
   <data name="bBuscar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>92, 23</value>
   </data>
   <data name="bBuscar.TabIndex" type="System.Int32, mscorlib">
     <value>79</value>
   </data>
   <data name="bBuscar.Text" xml:space="preserve">
-    <value>Buscar</value>
+    <value>Buscar Usuario</value>
   </data>
   <data name="&gt;&gt;bBuscar.Name" xml:space="preserve">
     <value>bBuscar</value>
@@ -498,7 +456,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bBuscar.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>6</value>
   </data>
   <data name="lConfirmarPassword.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -529,7 +487,181 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lConfirmarPassword.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lNombreEmpleado.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lNombreEmpleado.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 41</value>
+  </data>
+  <data name="lNombreEmpleado.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="lNombreEmpleado.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="&gt;&gt;lNombreEmpleado.Name" xml:space="preserve">
+    <value>lNombreEmpleado</value>
+  </data>
+  <data name="&gt;&gt;lNombreEmpleado.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lNombreEmpleado.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lNombreEmpleado.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 18pt, style=Bold</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>312, 41</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 29</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 18pt, style=Bold</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>312, 76</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 29</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 18pt, style=Bold</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>312, 108</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 29</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 18pt, style=Bold</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>312, 134</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 29</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 18pt, style=Bold</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 224</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 29</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>86</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>19</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -538,7 +670,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>352, 372</value>
+    <value>360, 372</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

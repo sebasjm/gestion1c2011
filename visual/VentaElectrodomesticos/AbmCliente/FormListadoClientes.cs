@@ -16,7 +16,7 @@ namespace VentaElectrodomesticos.AbmCliente
 {
     public partial class FormListadoClientes : Form
     {
-        private Object messageFromParent;
+        private Object messageFromParent = null;
         public Object MessageFromParent
         {
             get { return messageFromParent; }

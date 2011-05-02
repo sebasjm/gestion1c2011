@@ -13,7 +13,7 @@ namespace VentaElectrodomesticos.AbmRol
 {
     public partial class FormListadoRoles : Form
     {
-        private Object messageFromParent;
+        private Object messageFromParent = null;
         public Object MessageFromParent
         {
             get { return messageFromParent; }
@@ -62,7 +62,8 @@ namespace VentaElectrodomesticos.AbmRol
         }
         private void bLimpiar_Click(object sender, EventArgs e)
         {
-            txtNombre.Text = "";
+            this.txtNombre.Text = "";
+            lRoles.DataSource = null;
         }
     }
 }

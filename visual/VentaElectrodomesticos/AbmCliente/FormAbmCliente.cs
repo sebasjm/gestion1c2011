@@ -22,14 +22,14 @@ namespace VentaElectrodomesticos.AbmCliente
         private void bBuscar_Click(object sender, EventArgs e)
         {
             FormListadoClientes form = new FormListadoClientes();
-            form.MessageFromParent = 0;
+            form.MessageFromParent = null;
             form.ShowDialog(this);
             if (form.MessageFromParent != null) {
                 this.cargarCliente((Cliente)form.MessageFromParent);
+                bCrearOtro.Hide();
+                bLimpiar.Text = "Borrar";
+                bCrear.Text = "Modificar";
             }
-            bCrearOtro.Hide();
-            bLimpiar.Text = "Borrar";
-            bCrear.Text = "Modificar";
         }
         private void cargarCliente(Cliente cargoCliente)
         {

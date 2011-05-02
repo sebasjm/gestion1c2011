@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using VentaElectrodomesticos.AbmProducto;
-using VentaElectrodomesticos.AbmEmpleado;
+using VentaElectrodomesticos.AbmCliente;
 using System.Data.SqlClient;
 
 namespace VentaElectrodomesticos.Facturacion
@@ -18,15 +18,11 @@ namespace VentaElectrodomesticos.Facturacion
         {
             InitializeComponent();
         }
-
         private void bBuscarCliente_Click(object sender, EventArgs e)
         {
-            FormListadoEmpleados form = new FormListadoEmpleados();
+            FormListadoClientes form = new FormListadoClientes();
             form.ShowDialog(this);
-
-
         }
-
         private void bBuscarProducto_Click(object sender, EventArgs e)
         {
             FormListadoProductos form = new FormListadoProductos();

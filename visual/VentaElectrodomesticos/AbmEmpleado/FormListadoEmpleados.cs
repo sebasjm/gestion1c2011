@@ -14,7 +14,7 @@ namespace VentaElectrodomesticos.AbmEmpleado
 {
     public partial class FormListadoEmpleados : Form
     {
-        private Object messageFromParent;
+        private Object messageFromParent = null;
         public Object MessageFromParent
         {
             get { return messageFromParent; }
@@ -50,7 +50,7 @@ namespace VentaElectrodomesticos.AbmEmpleado
                     (TipoEmpleado)cmbTipoEmpleado.SelectedItem
                 );
             } catch (FormatException ex) {
-
+                MessageBox.Show(ex.ToString(), "Problema en Consulta");
             }
 
         }
