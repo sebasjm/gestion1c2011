@@ -123,6 +123,8 @@
     <Compile Include="Controladores\Connection.cs" />
     <Compile Include="Controladores\Context.cs" />
     <Compile Include="Controladores\DAOContext.cs" />
+    <Compile Include="Controladores\EmpleadoDAO.cs" />
+    <Compile Include="Controladores\QueryBuilder.cs" />
     <Compile Include="Controladores\Security.cs" />
     <Compile Include="Controladores\UserDAO.cs" />
     <Compile Include="EfectuarPago\FormEfectuarPago.cs">
@@ -157,7 +159,12 @@
     <Compile Include="MejoresCategorias\FormMejoresCategorias.Designer.cs">
       <DependentUpon>FormMejoresCategorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Empleado.cs" />
     <Compile Include="Modelo\Mapper.cs" />
+    <Compile Include="Modelo\Provincia.cs" />
+    <Compile Include="Modelo\Sucursal.cs" />
+    <Compile Include="Modelo\TipoEmpleado.cs" />
+    <Compile Include="Modelo\TipoSucursal.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

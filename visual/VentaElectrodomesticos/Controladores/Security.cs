@@ -9,16 +9,16 @@ using VentaElectrodomesticos.Exception;
 namespace VentaElectrodomesticos.Controladores {
     class Security {
 
-        public Usuario usuario {
+        public Usuario loggedUser {
             get; private set;
         }
 
         public Security(string user, string passwd) {
-             usuario = Context.instance.dao.user.findUserWithPassword(
+             loggedUser = Context.instance.dao.user.findUserWithPassword(
                 user,
                 sha256encrypt(passwd)
              );
-             if (usuario == null) {
+             if (loggedUser == null) {
                  throw new WrongUserOrPasswordException();
              }
         }
