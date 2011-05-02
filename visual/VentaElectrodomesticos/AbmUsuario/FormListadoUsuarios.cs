@@ -22,5 +22,7 @@ namespace VentaElectrodomesticos.AbmUsuario
             FormListadoEmpleados form = new FormListadoEmpleados();
             form.ShowDialog(this);
         }
+
+
     }
 }

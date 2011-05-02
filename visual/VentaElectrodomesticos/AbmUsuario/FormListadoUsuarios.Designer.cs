@@ -33,7 +33,7 @@
             this.tUsername = new System.Windows.Forms.TextBox();
             this.lUsername = new System.Windows.Forms.Label();
             this.lEmpleado = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bSeleccionar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -93,14 +93,14 @@
             this.lEmpleado.TabIndex = 78;
             this.lEmpleado.Text = "Empleado :";
             // 
-            // button1
+            // bSeleccionar
             // 
-            this.button1.Location = new System.Drawing.Point(358, 404);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 87;
-            this.button1.Text = "Seleccionar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bSeleccionar.Location = new System.Drawing.Point(358, 404);
+            this.bSeleccionar.Name = "bSeleccionar";
+            this.bSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.bSeleccionar.TabIndex = 87;
+            this.bSeleccionar.Text = "Seleccionar";
+            this.bSeleccionar.UseVisualStyleBackColor = true;
             // 
             // bCancelar
             // 
@@ -185,7 +185,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 437);
             this.Controls.Add(this.grpListadoRoles);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bSeleccionar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.dataGridView1);
@@ -211,7 +211,7 @@
         private System.Windows.Forms.TextBox tUsername;
         private System.Windows.Forms.Label lUsername;
         private System.Windows.Forms.Label lEmpleado;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bSeleccionar;
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bLimpiar;
         private System.Windows.Forms.DataGridView dataGridView1;

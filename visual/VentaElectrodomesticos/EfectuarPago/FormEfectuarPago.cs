@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using VentaElectrodomesticos.AbmCliente;
+using System.Data.SqlClient;
 
 
 namespace VentaElectrodomesticos.EfectuarPago

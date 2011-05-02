@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.SqlClient;
 using VentaElectrodomesticos.Modelo;
+using System.Data.SqlClient;
 
 namespace VentaElectrodomesticos.Controladores {
     class EmpleadoDAO {
-
         private Connection connection;
 
         public EmpleadoDAO(Connection connection) {
             this.connection = connection;
             Context.instance.dao.addMapper(typeof(Empleado), new EmpleadoMapper());
         }
-
 
 
         class EmpleadoMapper: Mapper<Object> {
@@ -31,16 +29,6 @@ namespace VentaElectrodomesticos.Controladores {
                 };
             }
         }
-
-        public static string filterLinker(bool first) {
-            if (first) {
-                first = false;
-                return " WHERE ";
-            } else {
-                return " and ";
-            }
-        }
-
 
         public List<Empleado> search(string nombre, string apellido, int dni, Provincia prov, Sucursal suc, TipoEmpleado tipoEmp) {
             QueryBuilder q = new QueryBuilder();

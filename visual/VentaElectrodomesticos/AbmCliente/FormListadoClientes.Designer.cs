@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataClientes = new System.Windows.Forms.DataGridView();
             this.bCancelar = new System.Windows.Forms.Button();
             this.bBuscar = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
@@ -44,38 +41,19 @@
             this.lNombre = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.bSeleccionar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataClientes)).BeginInit();
             this.grpFiltrosBusqueda.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataClientes
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(9, 129);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(491, 207);
-            this.dataGridView1.TabIndex = 9;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
+            this.dataClientes.AllowUserToOrderColumns = true;
+            this.dataClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataClientes.Location = new System.Drawing.Point(9, 129);
+            this.dataClientes.Name = "dataClientes";
+            this.dataClientes.Size = new System.Drawing.Size(491, 207);
+            this.dataClientes.TabIndex = 9;
             // 
             // bCancelar
             // 
@@ -85,6 +63,7 @@
             this.bCancelar.TabIndex = 8;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // bBuscar
             // 
@@ -94,6 +73,7 @@
             this.bBuscar.TabIndex = 7;
             this.bBuscar.Text = "Buscar";
             this.bBuscar.UseVisualStyleBackColor = true;
+            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
             // 
             // bLimpiar
             // 
@@ -103,6 +83,7 @@
             this.bLimpiar.TabIndex = 6;
             this.bLimpiar.Text = "Limpiar";
             this.bLimpiar.UseVisualStyleBackColor = true;
+            this.bLimpiar.Click += new System.EventHandler(this.bLimpiar_Click);
             // 
             // grpFiltrosBusqueda
             // 
@@ -120,7 +101,6 @@
             this.grpFiltrosBusqueda.TabIndex = 5;
             this.grpFiltrosBusqueda.TabStop = false;
             this.grpFiltrosBusqueda.Text = "Filtros Búsqueda de Cliente";
-            this.grpFiltrosBusqueda.Enter += new System.EventHandler(this.grpFiltrosBusqueda_Enter);
             // 
             // cmbProvincia
             // 
@@ -188,29 +168,30 @@
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 34;
             // 
-            // button1
+            // bSeleccionar
             // 
-            this.button1.Location = new System.Drawing.Point(425, 342);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Seleccionar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bSeleccionar.Location = new System.Drawing.Point(425, 342);
+            this.bSeleccionar.Name = "bSeleccionar";
+            this.bSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.bSeleccionar.TabIndex = 10;
+            this.bSeleccionar.Text = "Seleccionar";
+            this.bSeleccionar.UseVisualStyleBackColor = true;
+            this.bSeleccionar.Click += new System.EventHandler(this.bSeleccionar_Click);
             // 
             // FormListadoClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(523, 387);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.bSeleccionar);
+            this.Controls.Add(this.dataClientes);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.grpFiltrosBusqueda);
             this.Name = "FormListadoClientes";
             this.Text = "Listado de Selección de Clientes";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataClientes)).EndInit();
             this.grpFiltrosBusqueda.ResumeLayout(false);
             this.grpFiltrosBusqueda.PerformLayout();
             this.ResumeLayout(false);
@@ -219,10 +200,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridView dataClientes;
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.Button bLimpiar;
@@ -235,6 +213,6 @@
         private System.Windows.Forms.Label lNombre;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bSeleccionar;
     }
 }
