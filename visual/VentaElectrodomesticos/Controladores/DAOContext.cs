@@ -29,6 +29,12 @@ namespace VentaElectrodomesticos.Controladores {
             private set { _user = value; }
         }
 
+        private EmpleadoDAO _empleado;
+        public EmpleadoDAO empleado {
+            get { if (_empleado == null) _empleado = new EmpleadoDAO(connection); return _empleado; }
+            private set { _empleado = value; }
+        }
+
         public void addMapper(Type type, Mapper<Object> mapper) {
             mappers.Add(type, mapper);
         }

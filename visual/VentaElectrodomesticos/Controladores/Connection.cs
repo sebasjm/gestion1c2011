@@ -26,10 +26,6 @@ namespace VentaElectrodomesticos.Controladores {
                 _connection.Close();
         }
 
-        public T findById<T>(int id) {
-            return default(T);
-        }
-
         public List<T> query<T>(string sql, params Object[] args) {
             string s = String.Format(sql, args);
             SqlCommand cmd = new SqlCommand( String.Format(sql,args), connection);
@@ -45,7 +41,6 @@ namespace VentaElectrodomesticos.Controladores {
         public int update(string sql) {
             return 0;
         }
-
 
     }
 

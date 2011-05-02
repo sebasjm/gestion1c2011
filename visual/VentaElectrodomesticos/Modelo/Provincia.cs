@@ -4,19 +4,20 @@ using System.Linq;
 using System.Text;
 
 namespace VentaElectrodomesticos.Modelo {
-    class Usuario {
+    class Provincia {
 
-        public Usuario(int id) {
+        public Provincia(int id) {
             this.id = id;
         }
+
         public int id {
-            get; private set;
+            get;
+            private set;
         }
-        public string username {
-            get; set;
-        }
-        public string password {
-            get; set;
+
+        public string nombre {
+            get;
+            set;
         }
     }
 }
