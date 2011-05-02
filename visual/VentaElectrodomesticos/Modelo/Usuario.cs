@@ -5,8 +5,12 @@ using System.Text;
 
 namespace VentaElectrodomesticos.Modelo {
     class Usuario {
+
+        public Usuario(int id) {
+            this.id = id;
+        }
         public int id {
-            get; set;
+            get; private set;
         }
         public string username {
             get; set;

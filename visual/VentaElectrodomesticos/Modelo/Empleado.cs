@@ -5,31 +5,43 @@ using System.Text;
 
 namespace VentaElectrodomesticos.Modelo {
     class Empleado {
-        public int dni {
+
+        public Empleado(int _dni) {
+            dni = _dni;
+            activo = true;
+        }
+
+        public Int32 dni {
+            get; private set;
+        }
+        public String nombre {
             get; set;
         }
-        public string nombre {
+        public String apellido {
             get; set;
         }
-        public string apellido {
+        public String mail {
             get; set;
         }
-        public string mail {
+        public String direccion {
             get; set;
         }
-        public string direccion {
+        public Byte tipoEmpleadoId {
             get; set;
         }
-        public int tipoEmpleado_id {
-            get; set;
-        }
-        public int sucursal_id {
+        public Int32 sucursalId {
             get; set;
         }
         public Boolean activo {
-            get; set;
+            get; private set;
         }
-        public int usuario_id {
+        public void habilitar() {
+            activo = true;
+        }
+        public void bloquear() {
+            activo = false;
+        }
+        public Int32? usuarioId {
             get; set;
         }
     }

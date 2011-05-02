@@ -27,11 +27,10 @@ namespace VentaElectrodomesticos.Controladores {
         }
         class ClienteMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
-                return new Cliente {
-                    dni = (int)sdr.GetValue(0),
-                    nombre = (string)sdr.GetValue(1),
-                    apellido = (string)sdr.GetValue(2),
-                    mail = (string)sdr.GetValue(3)
+                return new Cliente((Int32)sdr.GetValue(0)) {
+                    nombre = (String)sdr.GetValue(1),
+                    apellido = (String)sdr.GetValue(2),
+                    mail = (String)sdr.GetValue(3)
                 };
             }
         }
