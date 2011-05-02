@@ -7,19 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using VentaElectrodomesticos.Modelo;
+using VentaElectrodomesticos.Controladores;
 
 namespace VentaElectrodomesticos.AbmProducto
 {
     public partial class FormListadoProductos : Form
     {
+        AutoCompleteStringCollection namesCollection = new AutoCompleteStringCollection();
         public FormListadoProductos()
         {
             InitializeComponent();
         }
-
         private void FormListadoProductos_Load(object sender, EventArgs e)
         {
-
+            List<Marca> marcasList = Context.instance.dao.marca.search("");
+             
+            foreach(Marca marca in marcasList ){
+                namesCollection.Add(marca.nombre);
+            };
+            txtNombre.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtNombre.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtNombre.AutoCompleteCustomSource = namesCollection;
         }
+
     }
 }

@@ -122,6 +122,7 @@
     </Compile>
     <Compile Include="Controladores\Connection.cs" />
     <Compile Include="Controladores\Context.cs" />
+    <Compile Include="Controladores\MarcaDAO.cs" />
     <Compile Include="Controladores\QueryBuilder.cs" />
     <Compile Include="Controladores\RolDAO.cs" />
     <Compile Include="Controladores\EmpleadoDAO.cs" />
@@ -164,6 +165,7 @@
       <DependentUpon>FormMejoresCategorias.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Cliente.cs" />
+    <Compile Include="Modelo\Marca.cs" />
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Empleado.cs" />
     <Compile Include="Modelo\Mapper.cs" />

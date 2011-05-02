@@ -71,6 +71,12 @@ namespace VentaElectrodomesticos.Controladores {
             private set { _rol = value; }
         }
 
+        private MarcaDAO _marca;
+        public MarcaDAO marca
+        {
+            get { if (_marca == null) _marca = new MarcaDAO(connection); return _marca; }
+            private set { _marca = value; }
+        }
         private static string buildConnectionURL(string user, string passwd, string server, string db) {
             return "user id=" + user 
                 + ";password=" + passwd + ";server=" + server + ";" + "database=" + db + "; ";
