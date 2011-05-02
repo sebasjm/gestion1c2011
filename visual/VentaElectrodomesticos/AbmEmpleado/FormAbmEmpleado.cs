@@ -58,7 +58,7 @@ namespace VentaElectrodomesticos.AbmEmpleado
         }
         void FillProvincias()
         {
-            List<Provincia> provinciasList = Context.instance.dao.provincia.getProvincias();
+            List<Provincia> provinciasList = Context.instance.dao.provincia.load();
             try
             {
                 cmbProvincia.DataSource = provinciasList;
@@ -70,7 +70,7 @@ namespace VentaElectrodomesticos.AbmEmpleado
         }
         void FillSucursal()
         {
-            List<Sucursal> sucursalList = Context.instance.dao.sucursal.getSucursales(this.provincia_id);
+            List<Sucursal> sucursalList = Context.instance.dao.sucursal.search(this.provincia_id);
             try
             {
                 cmbSucursal.DataSource = sucursalList;

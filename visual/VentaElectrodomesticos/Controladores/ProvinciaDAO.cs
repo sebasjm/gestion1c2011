@@ -12,23 +12,25 @@ namespace VentaElectrodomesticos.Controladores {
             this.connection = connection;
             Context.instance.dao.addMapper(typeof(Provincia), new ProvinciaMapper());
         }
-        public List<Provincia> getProvincias()
-        {
-            List<Provincia> ProvinciaList = connection.query<Provincia>(
-                    "SELECT * FROM la_huerta.Provincia");
-            return ProvinciaList ;
-        }
 
         class ProvinciaMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
-                //MessageBox.Show("ID : " + sdr.GetValue(0) + "NOMBRE :" + sdr.GetValue(1));
-                // TODO : Ver porque Provincia tiene un espacio en la primary
                 return new Provincia( (Byte) sdr.GetValue(0) ) {
                     nombre = (string)sdr.GetValue(1)
                 };
             }
         }
 
+        private List<Provincia> cache = null;
+
+        public List<Provincia> load() {
+            if (cache == null) {
+                QueryBuilder q = new QueryBuilder();
+                q.select().from("la_huerta.Provincia");
+                cache = connection.query<Provincia>(q.build(), q.getParams());
+            }
+            return cache;
+        }
     }
 
 }
