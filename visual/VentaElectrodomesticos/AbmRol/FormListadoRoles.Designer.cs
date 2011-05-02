@@ -45,6 +45,7 @@
             this.bSeleccionar.TabIndex = 84;
             this.bSeleccionar.Text = "Seleccionar";
             this.bSeleccionar.UseVisualStyleBackColor = true;
+            this.bSeleccionar.Click += new System.EventHandler(this.bSeleccionar_Click);
             // 
             // bCancelar
             // 
@@ -54,6 +55,7 @@
             this.bCancelar.TabIndex = 83;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // bLimpiar
             // 
@@ -73,14 +75,11 @@
             this.bBuscar.TabIndex = 80;
             this.bBuscar.Text = "Buscar";
             this.bBuscar.UseVisualStyleBackColor = true;
+            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
             // 
             // lRoles
             // 
             this.lRoles.FormattingEnabled = true;
-            this.lRoles.Items.AddRange(new object[] {
-            "Analista",
-            "Vendedor",
-            "Administrador"});
             this.lRoles.Location = new System.Drawing.Point(12, 82);
             this.lRoles.Name = "lRoles";
             this.lRoles.Size = new System.Drawing.Size(328, 147);
@@ -116,7 +115,6 @@
             this.Controls.Add(this.bBuscar);
             this.Name = "FormListadoRoles";
             this.Text = "Listado de Selección de Roles";
-            this.Load += new System.EventHandler(this.FormListadoRoles_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
