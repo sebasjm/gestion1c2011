@@ -5,6 +5,9 @@ using System.Text;
 using VentaElectrodomesticos.Modelo;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using VentaElectrodomesticos.Controladores;
+
+
 namespace VentaElectrodomesticos.Controladores {
     class ClienteDAO {
         private Connection connection;

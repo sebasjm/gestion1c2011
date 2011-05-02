@@ -58,11 +58,17 @@ namespace VentaElectrodomesticos.Controladores {
             get { if (_empleado == null) _empleado = new EmpleadoDAO(connection); return _empleado; }
             private set { _empleado = value; }
         }
+
         private ClienteDAO _cliente;
-        public ClienteDAO cliente
-        {
+        public ClienteDAO cliente {
             get { if (_cliente == null) _cliente = new ClienteDAO(connection); return _cliente; }
             private set { _cliente = value; }
+        }
+
+        private RolDAO _rol;
+        public RolDAO rol {
+            get { if (_rol == null) _rol = new RolDAO(connection); return _rol; }
+            private set { _rol = value; }
         }
 
         private static string buildConnectionURL(string user, string passwd, string server, string db) {

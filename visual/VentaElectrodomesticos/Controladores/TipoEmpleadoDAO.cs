@@ -13,11 +13,10 @@ namespace VentaElectrodomesticos.Controladores {
             this.connection = connection;
             Context.instance.dao.addMapper(typeof(TipoEmpleado), new TipoEmpleadoMapper());
         }
-        public List<TipoEmpleado> getTipoEmpleadoes(long provincia_id)
+        public List<TipoEmpleado> getTipoEmpleadoes()
         {
-            string provincia = (provincia_id >= 0) ? " WHERE provincia_id = " + provincia_id : "";
             List<TipoEmpleado> TipoEmpleadoList = connection.query<TipoEmpleado>(
-                    "SELECT * FROM la_huerta.TipoEmpleado" + provincia);
+                    "SELECT * FROM la_huerta.TipoEmpleado");
             return TipoEmpleadoList ;
         }
         class TipoEmpleadoMapper : Mapper<Object> {

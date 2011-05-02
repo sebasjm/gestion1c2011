@@ -215,7 +215,7 @@
             this.bCancelar.TabIndex = 12;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
-            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click_1);
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // bLimpiar
             // 

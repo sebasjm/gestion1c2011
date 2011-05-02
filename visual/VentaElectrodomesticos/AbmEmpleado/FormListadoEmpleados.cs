@@ -21,13 +21,6 @@ namespace VentaElectrodomesticos.AbmEmpleado
             set { messageFromParent = value; }
         }
 
-        private string nombre;
-        private string apellido;
-        private int dni = -1;
-        private int sucursal_id = -1 ;
-        private int provincia_id = -1;
-        private int tipoempleado_id = -1;
-
         public FormListadoEmpleados(){
             InitializeComponent();
             cmbSucursal.Items.Insert(0, "Todos los Resultados");
@@ -85,7 +78,7 @@ namespace VentaElectrodomesticos.AbmEmpleado
             catch (NullReferenceException) { }
         }
         void FillSucursal() {
-            List<Sucursal> sucursalList = Context.instance.dao.sucursal.search( this.provincia_id );
+            List<Sucursal> sucursalList = Context.instance.dao.sucursal.load();
             try{
                 cmbSucursal.DataSource = sucursalList;
                 cmbSucursal.DisplayMember = "direccion";
@@ -94,11 +87,12 @@ namespace VentaElectrodomesticos.AbmEmpleado
             }
             catch (NullReferenceException) { }
         }
+
         void FillTipoEmpleado()
         {
             try
             {
-                List<TipoEmpleado> tipoEmpleadoList = Context.instance.dao.tipoEmpleado.getTipoEmpleadoes(this.provincia_id);
+                List<TipoEmpleado> tipoEmpleadoList = Context.instance.dao.tipoEmpleado.getTipoEmpleadoes();
                 cmbTipoEmpleado.DataSource = tipoEmpleadoList;
                 cmbTipoEmpleado.DisplayMember = "nombre";
                 cmbTipoEmpleado.ValueMember = "id";
@@ -108,8 +102,11 @@ namespace VentaElectrodomesticos.AbmEmpleado
         }
         private void cmbProvincia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.provincia_id = (cmbProvincia.SelectedItem != null) ? ((Provincia)cmbProvincia.SelectedItem).id : -1;
-            FillSucursal();
+            cmbSucursal.SelectedValue = (cmbProvincia.SelectedItem != null) ? ((Provincia)cmbProvincia.SelectedItem).sucursal : null;
+        }
+
+        private void cmbSucursal_SelectedIndexChanged(object sender, EventArgs e) {
+            cmbProvincia.SelectedValue = (cmbSucursal.SelectedItem != null) ? ((Sucursal)cmbSucursal.SelectedItem).provincia : null;
         }
 
         private void bLimpiar_Click(object sender, EventArgs e)

@@ -19,7 +19,7 @@ namespace VentaElectrodomesticos.AbmRol
         private void bBuscar_Click(object sender, EventArgs e)
         {
             FormListadoRoles form = new FormListadoRoles();
-            form.MessageFromParent = 0;
+            form.MessageFromParent = null;
             form.ShowDialog(this);
             if (form.MessageFromParent != null)
             {
