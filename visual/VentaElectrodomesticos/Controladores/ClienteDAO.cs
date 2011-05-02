@@ -12,12 +12,12 @@ namespace VentaElectrodomesticos.Controladores {
             this.connection = connection;
             Context.instance.dao.addMapper(typeof(Cliente), new ClienteMapper());
         }
-        public List<Cliente> getClientes(string nombre, string apellido, int dni) {
+        public List<Cliente> search(string nombre, string apellido, int dni) {
             QueryBuilder q = new QueryBuilder();
             q.select()
                 .from("la_huerta.Cliente")
-                .filterIf(nombre.Length != 0, " nombre like '%{0}%'", nombre)
-                .filterIf(apellido.Length != 0, " apellido like '%{1}%'", apellido)
+                .filterIf(nombre != null && nombre.Length != 0, " nombre like '%{0}%'", nombre)
+                .filterIf(apellido != null && apellido.Length != 0, " apellido like '%{1}%'", apellido)
                 .filterIf(dni != 0, " dni = {2}", dni);
 
             return connection.query<Cliente>( q.build(), q.getParams() );
