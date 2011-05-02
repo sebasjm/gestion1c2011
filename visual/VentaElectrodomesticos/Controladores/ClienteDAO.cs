@@ -12,19 +12,18 @@ namespace VentaElectrodomesticos.Controladores {
             this.connection = connection;
             Context.instance.dao.addMapper(typeof(Cliente), new ClienteMapper());
         }
-        public List<Cliente> getClientes(string nombre, string apellido, int dni)
-        {
-            String strDNI = (dni >= 0) ? strDNI = " AND dni=" + dni : "";
-            List<Cliente> clientes = connection.query<Cliente>(
-                "SELECT * FROM la_huerta.cliente WHERE " +
-                " LOWER(nombre) like  LOWER('%{0}%') AND" +
-                " LOWER(apellido) like  LOWER('%{1}%')" +
-                strDNI,
-                nombre,
-                apellido
-            );
-            return clientes;
+        public List<Cliente> getClientes(string nombre, string apellido, int dni) {
+            QueryBuilder q = new QueryBuilder();
+            q.select()
+                .from("la_huerta.Cliente")
+                .filterIf(nombre.Length != 0, " nombre like '%{0}%'", nombre)
+                .filterIf(apellido.Length != 0, " apellido like '%{1}%'", apellido)
+                .filterIf(dni != 0, " dni = {2}", dni);
+
+            return connection.query<Cliente>( q.build(), q.getParams() );
         }
+
+
         class ClienteMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
                 return new Cliente((Int32)sdr.GetValue(0)) {
