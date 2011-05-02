@@ -6,16 +6,16 @@ using System.Text;
 namespace VentaElectrodomesticos.Modelo {
     class TipoSucursal {
 
-        public TipoSucursal(int id) {
+        public TipoSucursal(Byte id) {
             this.id = id;
         }
 
-        public int id {
+        public Byte id {
             get;
             private set;
         }
 
-        public string descripcion {
+        public String descripcion {
             get;
             private set;
         }

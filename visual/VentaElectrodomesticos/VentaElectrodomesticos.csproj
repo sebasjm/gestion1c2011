@@ -122,6 +122,10 @@
     </Compile>
     <Compile Include="Controladores\Connection.cs" />
     <Compile Include="Controladores\Context.cs" />
+    <Compile Include="Controladores\ClienteDAO.cs" />
+    <Compile Include="Controladores\TipoEmpleadoDAO.cs" />
+    <Compile Include="Controladores\ProvinciaDAO.cs" />
+    <Compile Include="Controladores\SucursalDAO.cs" />
     <Compile Include="Controladores\DAOContext.cs" />
     <Compile Include="Controladores\EmpleadoDAO.cs" />
     <Compile Include="Controladores\QueryBuilder.cs" />
@@ -152,13 +156,13 @@
     <Compile Include="Login\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login\Login.cs" />
     <Compile Include="MejoresCategorias\FormMejoresCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MejoresCategorias\FormMejoresCategorias.Designer.cs">
       <DependentUpon>FormMejoresCategorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Empleado.cs" />
     <Compile Include="Modelo\Mapper.cs" />
     <Compile Include="Modelo\Provincia.cs" />

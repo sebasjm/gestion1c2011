@@ -6,16 +6,16 @@ using System.Text;
 namespace VentaElectrodomesticos.Modelo {
     class Provincia {
 
-        public Provincia(int id) {
+        public Provincia(Byte id) {
             this.id = id;
         }
 
-        public int id {
+        public Byte id {
             get;
             private set;
         }
 
-        public string nombre {
+        public String nombre {
             get;
             set;
         }

@@ -6,30 +6,30 @@ using System.Text;
 namespace VentaElectrodomesticos.Modelo {
     class Sucursal {
 
-        public Sucursal(int id) {
+        public Sucursal(Int32 id) {
             this.id = id;
         }
 
-        public int id {
+        public Int32 id {
             get; private set;
         }
 
-        public string direccion {
+        public String direccion {
             get;
             set;
         }
 
-        public string telefono {
+        public String telefono {
             get;
             set;
         }
 
-        public int tipoSucursalId {
+        public Byte tipoSucursalId {
             get;
             set;
         }
 
-        public int provinciaId {
+        public Byte provinciaId {
             get;
             set;
         }
