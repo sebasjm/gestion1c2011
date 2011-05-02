@@ -15,7 +15,6 @@ namespace VentaElectrodomesticos.AbmEmpleado
 {
     public partial class FormAbmEmpleado : Form
     {
-        private int provincia_id = -1;
         public FormAbmEmpleado()
         {
             InitializeComponent();
@@ -26,7 +25,7 @@ namespace VentaElectrodomesticos.AbmEmpleado
         private void bBuscar_Click(object sender, EventArgs e)
         {
             FormListadoEmpleados form = new FormListadoEmpleados();
-            form.MessageFromParent = 0;
+            form.MessageFromParent = null;
             form.ShowDialog(this);
             if (form.MessageFromParent != null)
             {
@@ -70,7 +69,7 @@ namespace VentaElectrodomesticos.AbmEmpleado
         }
         void FillSucursal()
         {
-            List<Sucursal> sucursalList = Context.instance.dao.sucursal.search(this.provincia_id);
+            List<Sucursal> sucursalList = Context.instance.dao.sucursal.load();
             try
             {
                 cmbSucursal.DataSource = sucursalList;
@@ -84,7 +83,7 @@ namespace VentaElectrodomesticos.AbmEmpleado
         {
             try
             {
-                List<TipoEmpleado> tipoEmpleadoList = Context.instance.dao.tipoEmpleado.getTipoEmpleadoes(this.provincia_id);
+                List<TipoEmpleado> tipoEmpleadoList = Context.instance.dao.tipoEmpleado.getTipoEmpleadoes();
                 cmbTipoEmpleado.DataSource = tipoEmpleadoList;
                 cmbTipoEmpleado.DisplayMember = "nombre";
                 cmbTipoEmpleado.ValueMember = "id";

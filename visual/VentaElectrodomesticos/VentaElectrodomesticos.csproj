@@ -122,6 +122,7 @@
     </Compile>
     <Compile Include="Controladores\Connection.cs" />
     <Compile Include="Controladores\Context.cs" />
+    <Compile Include="Controladores\QueryBuilder.cs" />
     <Compile Include="Controladores\RolDAO.cs" />
     <Compile Include="Controladores\EmpleadoDAO.cs" />
     <Compile Include="Controladores\ClienteDAO.cs" />

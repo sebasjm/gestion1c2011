@@ -38,9 +38,8 @@ namespace VentaElectrodomesticos.Controladores {
                 .filterIf(nombre.Length != 0, "nombre like '%{0}%' ", nombre)
                 .filterIf(apellido.Length != 0, "apellido like '%{1}%' ", apellido)
                 .filterIf(dni != 0, "dni = {2} ", dni)
-                .filterIf(prov != null, "provincia_id = {3} ", prov != null ? prov.id : 0)
-                .filterIf(suc != null, "sucursal_id = {4} ", suc != null ? suc.id : 0)
-                .filterIf(tipoEmp != null, "tipoEmpleado_id = {5} ", tipoEmp != null ? tipoEmp.id : 0);
+                .filterIf(suc != null, "sucursal_id = {3} ", suc != null ? suc.id : 0)
+                .filterIf(tipoEmp != null, "tipoEmpleado_id = {4} ", tipoEmp != null ? tipoEmp.id : 0);
             
             return connection.query<Empleado>( q.build() , q.getParams() );
         }

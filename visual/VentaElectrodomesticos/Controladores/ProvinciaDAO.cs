@@ -31,6 +31,17 @@ namespace VentaElectrodomesticos.Controladores {
             }
             return cache;
         }
+
+        public Provincia find(Byte id) {
+            if (cache == null)
+                load();
+
+            return cache.Find(
+                delegate(Provincia prov) { 
+                    return prov.id == id;
+                }
+            );
+        }
     }
 
 }

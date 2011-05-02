@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using VentaElectrodomesticos.Controladores;
 
 namespace VentaElectrodomesticos.Modelo {
     class Provincia {
@@ -18,6 +19,10 @@ namespace VentaElectrodomesticos.Modelo {
         public String nombre {
             get;
             set;
+        }
+
+        public Sucursal sucursal {
+            get { return Context.instance.dao.sucursal.findByProvincia(id); }
         }
     }
 }

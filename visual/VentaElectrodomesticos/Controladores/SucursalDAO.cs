@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using VentaElectrodomesticos.Modelo;
+using VentaElectrodomesticos.Controladores;
 using System.Data.SqlClient;
 
 namespace VentaElectrodomesticos.Controladores {
@@ -12,24 +13,39 @@ namespace VentaElectrodomesticos.Controladores {
             this.connection = connection;
             Context.instance.dao.addMapper(typeof(Sucursal), new SucursalMapper());
         }
-        public List<Sucursal> search(long provincia_id) {
-            QueryBuilder q = new QueryBuilder();
-
-            q.select()
-                .from("la_huerta.Sucursal")
-                .filterIf( true, " provincia_id = {0}", provincia_id);
-            
-            return connection.query<Sucursal>(q.build(), q.getParams());
-        }
 
         class SucursalMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
                 return new Sucursal( (int)sdr.GetValue(0) ) {
-                    direccion = (string)sdr.GetValue(1)
+                    direccion = (string)sdr.GetValue(1),
+                    telefono = (string)sdr.GetValue(2),
+                    tipoSucursalId = (Byte)sdr.GetValue(3),
+                    provinciaId = (Byte)sdr.GetValue(4)
                 };
             }
         }
 
+        private List<Sucursal> cache = null;
+
+        public List<Sucursal> load() {
+            if (cache == null) {
+                QueryBuilder q = new QueryBuilder();
+                q.select().from("la_huerta.Sucursal");
+                cache = connection.query<Sucursal>(q.build(), q.getParams());
+            }
+            return cache;
+        }
+
+        public Sucursal findByProvincia(byte id) {
+            if (cache == null)
+                load();
+
+            return cache.Find(
+                delegate(Sucursal suc) {
+                    return suc.provinciaId == id;
+                }
+            );
+        }
     }
 
 }
