@@ -60,17 +60,6 @@ namespace VentaElectrodomesticos.AbmEmpleado
             this.dni = (txtDni.Text != "") ? Int32.Parse(txtDni.Text) : -1;
             FillData();
         }
-        private void bSeleccionar_Click_1(object sender, EventArgs e)
-        {
-            Empleado empleado = (Empleado)dataEmpleados.Rows[dataEmpleados.CurrentCell.RowIndex].DataBoundItem; 
-            if (empleado != null)
-            {
-                this.messageFromParent = empleado;
-                this.Close();
-            }else{
-                MessageBox.Show("Debe seleccionar un Empleado");
-            }
-        }
         void FillProvincias()
         {
             List<Provincia> provinciasList = Context.instance.dao.provincia.getProvincias();
@@ -111,13 +100,29 @@ namespace VentaElectrodomesticos.AbmEmpleado
             this.provincia_id = (cmbProvincia.SelectedItem != null) ? ((Provincia)cmbProvincia.SelectedItem).id : -1;
             FillSucursal();
         }
-
         private void bLimpiar_Click(object sender, EventArgs e)
         {
             txtApellido.Text = "";
             txtDni.Text = "";
             txtNombre.Text = "";
             cmbProvincia.SelectedIndex = -1;
+        }
+        private void bSeleccionar_Click_1(object sender, EventArgs e)
+        {
+            Empleado empleado = (Empleado)dataEmpleados.Rows[dataEmpleados.CurrentCell.RowIndex].DataBoundItem;
+            if (empleado != null)
+            {
+                this.messageFromParent = empleado;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un Empleado");
+            }
+        }
+        private void bCancelar_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

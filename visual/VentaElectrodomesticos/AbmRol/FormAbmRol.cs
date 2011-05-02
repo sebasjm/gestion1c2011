@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using VentaElectrodomesticos.Modelo;
 
 namespace VentaElectrodomesticos.AbmRol
 {
@@ -15,11 +16,21 @@ namespace VentaElectrodomesticos.AbmRol
         {
             InitializeComponent();
         }
-
         private void bBuscar_Click(object sender, EventArgs e)
         {
             FormListadoRoles form = new FormListadoRoles();
+            form.MessageFromParent = 0;
             form.ShowDialog(this);
+            if (form.MessageFromParent != null)
+            {
+                this.cargarRol((Rol)form.MessageFromParent);
+            }
+            bCrearOtro.Hide();
+            bLimpiar.Text = "Borrar";
+            bCrear.Text = "Modificar";
+        }
+        private void cargarRol(Rol rol){
+            txtNombre.Text = rol.nombre;
         }
     }
 }
