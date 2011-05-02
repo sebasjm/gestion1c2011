@@ -18,6 +18,7 @@ namespace VentaElectrodomesticos.AbmProducto
         public FormListadoProductos()
         {
             InitializeComponent();
+            fillTree();
         }
         private void FormListadoProductos_Load(object sender, EventArgs e)
         {
@@ -29,6 +30,27 @@ namespace VentaElectrodomesticos.AbmProducto
             txtNombre.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtNombre.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txtNombre.AutoCompleteCustomSource = namesCollection;
+        }
+        private void fillTree() {
+            List<Categoria> categoriasList = Context.instance.dao.categoria.search("");
+            
+            // loop through each subdirectory
+            foreach (Categoria categoria in categoriasList)
+            {
+                // create a new node
+                TreeNode t = new TreeNode(categoria.nombre);
+                // populate the new node recursively
+                PopulateTree(d.FullName, t);
+                node.Nodes.Add(t); // add the node to the "master" node
+            }
+            // lastly, loop through each file in the directory, and add these as nodes
+            /*foreach (FileInfo f in directory.GetFiles())
+            {
+                // create a new node
+                TreeNode t = new TreeNode(f.Name);
+                // add it to the "master"
+                node.Nodes.Add(t);
+            }*/
         }
 
     }
