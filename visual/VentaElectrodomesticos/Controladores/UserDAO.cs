@@ -24,7 +24,14 @@ namespace VentaElectrodomesticos.Controladores {
                 };
             }
         }
-
+        public List<Usuario> search(string username)
+        {
+            QueryBuilder q = new QueryBuilder();
+            q.select()
+                .from("la_huerta.usuario")
+                .filterIf(username.Length != 0, "username like '%{0}%' ", username);
+            return connection.query<Usuario>(q.build(), q.getParams());
+        }
         public Usuario findUserWithPassword(string user, string passwd) {
             List<Usuario> found = connection.query<Usuario>(
                 "SELECT * FROM la_huerta.Usuario WHERE username = '{0}' and password = '{1}'",

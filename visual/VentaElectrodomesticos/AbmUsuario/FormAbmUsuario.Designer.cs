@@ -34,17 +34,22 @@
             this.lPassword = new System.Windows.Forms.Label();
             this.grpListadoRoles = new System.Windows.Forms.GroupBox();
             this.chkListadoRoles = new System.Windows.Forms.CheckedListBox();
-            this.tUsername = new System.Windows.Forms.TextBox();
-            this.tPassword = new System.Windows.Forms.TextBox();
-            this.cmbEmpleado = new System.Windows.Forms.ComboBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.bCrearOtro = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.bCancelar = new System.Windows.Forms.Button();
             this.bCrear = new System.Windows.Forms.Button();
             this.bBuscarEmpleado = new System.Windows.Forms.Button();
             this.txtConfirmarPassword = new System.Windows.Forms.TextBox();
             this.bBuscar = new System.Windows.Forms.Button();
             this.lConfirmarPassword = new System.Windows.Forms.Label();
+            this.lNombreEmpleado = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.grpListadoRoles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,28 +78,18 @@
             // chkListadoRoles
             // 
             this.chkListadoRoles.FormattingEnabled = true;
-            this.chkListadoRoles.Items.AddRange(new object[] {
-            resources.GetString("chkListadoRoles.Items"),
-            resources.GetString("chkListadoRoles.Items1"),
-            resources.GetString("chkListadoRoles.Items2")});
             resources.ApplyResources(this.chkListadoRoles, "chkListadoRoles");
             this.chkListadoRoles.Name = "chkListadoRoles";
             // 
-            // tUsername
+            // txtUsername
             // 
-            resources.ApplyResources(this.tUsername, "tUsername");
-            this.tUsername.Name = "tUsername";
+            resources.ApplyResources(this.txtUsername, "txtUsername");
+            this.txtUsername.Name = "txtUsername";
             // 
-            // tPassword
+            // txtPassword
             // 
-            resources.ApplyResources(this.tPassword, "tPassword");
-            this.tPassword.Name = "tPassword";
-            // 
-            // cmbEmpleado
-            // 
-            this.cmbEmpleado.FormattingEnabled = true;
-            resources.ApplyResources(this.cmbEmpleado, "cmbEmpleado");
-            this.cmbEmpleado.Name = "cmbEmpleado";
+            resources.ApplyResources(this.txtPassword, "txtPassword");
+            this.txtPassword.Name = "txtPassword";
             // 
             // bCrearOtro
             // 
@@ -107,18 +102,21 @@
             resources.ApplyResources(this.bLimpiar, "bLimpiar");
             this.bLimpiar.Name = "bLimpiar";
             this.bLimpiar.UseVisualStyleBackColor = true;
+            this.bLimpiar.Click += new System.EventHandler(this.bLimpiar_Click);
             // 
-            // button3
+            // bCancelar
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.bCancelar, "bCancelar");
+            this.bCancelar.Name = "bCancelar";
+            this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // bCrear
             // 
             resources.ApplyResources(this.bCrear, "bCrear");
             this.bCrear.Name = "bCrear";
             this.bCrear.UseVisualStyleBackColor = true;
+            this.bCrear.Click += new System.EventHandler(this.bCrear_Click);
             // 
             // bBuscarEmpleado
             // 
@@ -144,27 +142,72 @@
             resources.ApplyResources(this.lConfirmarPassword, "lConfirmarPassword");
             this.lConfirmarPassword.Name = "lConfirmarPassword";
             // 
+            // lNombreEmpleado
+            // 
+            this.lNombreEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.lNombreEmpleado, "lNombreEmpleado");
+            this.lNombreEmpleado.Name = "lNombreEmpleado";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Name = "label1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Name = "label2";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Name = "label3";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Name = "label4";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Name = "label5";
+            // 
             // FormAbmUsuario
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lNombreEmpleado);
             this.Controls.Add(this.lConfirmarPassword);
             this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.txtConfirmarPassword);
             this.Controls.Add(this.bBuscarEmpleado);
             this.Controls.Add(this.bCrearOtro);
             this.Controls.Add(this.bLimpiar);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bCrear);
-            this.Controls.Add(this.cmbEmpleado);
-            this.Controls.Add(this.tPassword);
-            this.Controls.Add(this.tUsername);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.grpListadoRoles);
             this.Controls.Add(this.lPassword);
             this.Controls.Add(this.lUsername);
             this.Controls.Add(this.lEmpleado);
+            this.Controls.Add(this.label5);
             this.Name = "FormAbmUsuario";
-            this.Load += new System.EventHandler(this.FormAbmUsuario_Load);
             this.grpListadoRoles.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -178,16 +221,21 @@
         private System.Windows.Forms.Label lPassword;
         private System.Windows.Forms.GroupBox grpListadoRoles;
         private System.Windows.Forms.CheckedListBox chkListadoRoles;
-        private System.Windows.Forms.TextBox tUsername;
-        private System.Windows.Forms.TextBox tPassword;
-        private System.Windows.Forms.ComboBox cmbEmpleado;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button bCrearOtro;
         private System.Windows.Forms.Button bLimpiar;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bCrear;
         private System.Windows.Forms.Button bBuscarEmpleado;
         private System.Windows.Forms.TextBox txtConfirmarPassword;
         private System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.Label lConfirmarPassword;
+        private System.Windows.Forms.Label lNombreEmpleado;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

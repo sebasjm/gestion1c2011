@@ -30,12 +30,13 @@
         {
             this.lNombre = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.chkListadoRoles = new System.Windows.Forms.CheckedListBox();
             this.bCrearOtro = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.bCrear = new System.Windows.Forms.Button();
             this.bBuscar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lNombre
@@ -51,28 +52,16 @@
             // 
             this.txtNombre.Location = new System.Drawing.Point(62, 45);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(275, 20);
+            this.txtNombre.Size = new System.Drawing.Size(244, 20);
             this.txtNombre.TabIndex = 1;
             // 
-            // checkedListBox1
+            // chkListadoRoles
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "ABM de Empleado",
-            "ABM de Rol",
-            "ABM de Usuario",
-            "ABM de Cliente",
-            "ABM de Producto",
-            "Asignación de stock",
-            "Facturación",
-            "Efectuar Pago",
-            "Tablero de Control",
-            "Clientes Premium",
-            "Mejores Categorías"});
-            this.checkedListBox1.Location = new System.Drawing.Point(15, 84);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(322, 124);
-            this.checkedListBox1.TabIndex = 2;
+            this.chkListadoRoles.FormattingEnabled = true;
+            this.chkListadoRoles.Location = new System.Drawing.Point(15, 84);
+            this.chkListadoRoles.Name = "chkListadoRoles";
+            this.chkListadoRoles.Size = new System.Drawing.Size(322, 124);
+            this.chkListadoRoles.TabIndex = 2;
             // 
             // bCrearOtro
             // 
@@ -91,6 +80,7 @@
             this.bLimpiar.TabIndex = 75;
             this.bLimpiar.Text = "Limpiar";
             this.bLimpiar.UseVisualStyleBackColor = true;
+            this.bLimpiar.Click += new System.EventHandler(this.bLimpiar_Click);
             // 
             // button3
             // 
@@ -120,17 +110,30 @@
             this.bBuscar.UseVisualStyleBackColor = true;
             this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(315, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(22, 29);
+            this.label1.TabIndex = 78;
+            this.label1.Text = "*";
+            // 
             // FormAbmRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(349, 285);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.bCrearOtro);
             this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.bCrear);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.chkListadoRoles);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lNombre);
             this.Name = "FormAbmRol";
@@ -145,11 +148,12 @@
 
         private System.Windows.Forms.Label lNombre;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox chkListadoRoles;
         private System.Windows.Forms.Button bCrearOtro;
         private System.Windows.Forms.Button bLimpiar;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button bCrear;
         private System.Windows.Forms.Button bBuscar;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -30,11 +30,10 @@ namespace VentaElectrodomesticos.AbmEmpleado
             if (form.MessageFromParent != null)
             {
                 this.cargarEmpleado((Empleado)form.MessageFromParent);
+                bCrearOtro.Hide();
+                bLimpiar.Text = "Borrar";
+                bCrear.Text = "Modificar";
             }
-            //MessageBox.Show(form.MessageFromParent.ToString());
-            bCrearOtro.Hide();
-            bLimpiar.Text = "Borrar";
-            bCrear.Text = "Modificar";
         }
         private void cargarEmpleado(Empleado cargoEmpleado)
         {
