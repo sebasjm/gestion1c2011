@@ -12,13 +12,16 @@ namespace VentaElectrodomesticos.Controladores {
             this.connection = connection;
             Context.instance.dao.addMapper(typeof(Sucursal), new SucursalMapper());
         }
-        public List<Sucursal> getSucursales(long provincia_id)
-        {
-            string provincia = (provincia_id >= 0) ? " WHERE provincia_id = " + provincia_id : "";
-            List<Sucursal> sucursalList = connection.query<Sucursal>(
-                    "SELECT * FROM la_huerta.sucursal" + provincia);
-            return sucursalList ;
+        public List<Sucursal> search(long provincia_id) {
+            QueryBuilder q = new QueryBuilder();
+
+            q.select()
+                .from("la_huerta.Sucursal")
+                .filterIf( true, " provincia_id = {0}", provincia_id);
+            
+            return connection.query<Sucursal>(q.build(), q.getParams());
         }
+
         class SucursalMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
                 return new Sucursal( (int)sdr.GetValue(0) ) {

@@ -42,7 +42,7 @@ namespace VentaElectrodomesticos.AbmCliente
         }
         void FillProvincias()
         {
-            List<Provincia> provinciasList = Context.instance.dao.provincia.getProvincias();
+            List<Provincia> provinciasList = Context.instance.dao.provincia.load();
             try
             {
                 cmbProvincia.DataSource = provinciasList;
