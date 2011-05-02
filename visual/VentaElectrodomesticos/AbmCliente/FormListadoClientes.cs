@@ -33,7 +33,7 @@ namespace VentaElectrodomesticos.AbmCliente
         }
         void FillData()
         {
-            List<Cliente> clientesList = Context.instance.dao.cliente.getClientes(this.nombre, this.apellido, this.dni);
+            List<Cliente> clientesList = Context.instance.dao.cliente.search(this.nombre, this.apellido, this.dni);
             try
             {
                 dataClientes.DataSource = clientesList;

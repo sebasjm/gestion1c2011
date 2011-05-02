@@ -29,9 +29,9 @@ namespace VentaElectrodomesticos.Controladores {
         public QueryBuilder filterIf(bool condition, string filter, object param) {
             if (condition) {
                 query += (firstFilter ? " WHERE " : " and ") + filter;
-                filters.Add(param);
                 firstFilter = false;
             }
+            filters.Add(param);
             return this;
         }
 
