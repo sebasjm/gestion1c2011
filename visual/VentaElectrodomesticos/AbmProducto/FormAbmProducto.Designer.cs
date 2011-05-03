@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.lCategoria = new System.Windows.Forms.Label();
             this.lPrecio = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
@@ -40,7 +39,7 @@
             this.txtCodigoProducto = new System.Windows.Forms.TextBox();
             this.bBuscar = new System.Windows.Forms.Button();
             this.bCrearOtro = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bLimpiar = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.bCrear = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,6 +47,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.treeCategorias = new System.Windows.Forms.TreeView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtCategoria = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtPrecio
@@ -56,14 +59,6 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(172, 20);
             this.txtPrecio.TabIndex = 55;
-            // 
-            // cmbCategoria
-            // 
-            this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(131, 122);
-            this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(172, 21);
-            this.cmbCategoria.TabIndex = 54;
             // 
             // lCategoria
             // 
@@ -144,21 +139,21 @@
             // 
             // bCrearOtro
             // 
-            this.bCrearOtro.Location = new System.Drawing.Point(216, 214);
+            this.bCrearOtro.Location = new System.Drawing.Point(339, 219);
             this.bCrearOtro.Name = "bCrearOtro";
             this.bCrearOtro.Size = new System.Drawing.Size(116, 23);
             this.bCrearOtro.TabIndex = 72;
             this.bCrearOtro.Text = "Crear y Continuar";
             this.bCrearOtro.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // bLimpiar
             // 
-            this.button2.Location = new System.Drawing.Point(70, 185);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(58, 23);
-            this.button2.TabIndex = 71;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bLimpiar.Location = new System.Drawing.Point(70, 185);
+            this.bLimpiar.Name = "bLimpiar";
+            this.bLimpiar.Size = new System.Drawing.Size(58, 23);
+            this.bLimpiar.TabIndex = 71;
+            this.bLimpiar.Text = "Limpiar";
+            this.bLimpiar.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -171,7 +166,7 @@
             // 
             // bCrear
             // 
-            this.bCrear.Location = new System.Drawing.Point(216, 185);
+            this.bCrear.Location = new System.Drawing.Point(339, 190);
             this.bCrear.Name = "bCrear";
             this.bCrear.Size = new System.Drawing.Size(116, 23);
             this.bCrear.TabIndex = 69;
@@ -238,23 +233,63 @@
             this.label5.TabIndex = 77;
             this.label5.Text = "*";
             // 
+            // treeCategorias
+            // 
+            this.treeCategorias.Location = new System.Drawing.Point(339, 40);
+            this.treeCategorias.Name = "treeCategorias";
+            this.treeCategorias.Size = new System.Drawing.Size(120, 127);
+            this.treeCategorias.TabIndex = 87;
+            this.treeCategorias.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeCategorias_AfterSelect);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(336, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(52, 13);
+            this.label6.TabIndex = 86;
+            this.label6.Text = "Categoria";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(394, 12);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(22, 29);
+            this.label7.TabIndex = 88;
+            this.label7.Text = "*";
+            // 
+            // txtCategoria
+            // 
+            this.txtCategoria.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCategoria.Location = new System.Drawing.Point(131, 122);
+            this.txtCategoria.Name = "txtCategoria";
+            this.txtCategoria.Size = new System.Drawing.Size(172, 22);
+            this.txtCategoria.TabIndex = 89;
+            // 
             // FormAbmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(345, 254);
+            this.ClientSize = new System.Drawing.Size(478, 254);
+            this.Controls.Add(this.txtCategoria);
+            this.Controls.Add(this.treeCategorias);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bCrearOtro);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.bCrear);
             this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.txtPrecio);
-            this.Controls.Add(this.cmbCategoria);
             this.Controls.Add(this.lCategoria);
             this.Controls.Add(this.lPrecio);
             this.Controls.Add(this.txtDescripcion);
@@ -274,7 +309,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtPrecio;
-        private System.Windows.Forms.ComboBox cmbCategoria;
         private System.Windows.Forms.Label lCategoria;
         private System.Windows.Forms.Label lPrecio;
         private System.Windows.Forms.TextBox txtDescripcion;
@@ -285,7 +319,7 @@
         private System.Windows.Forms.TextBox txtCodigoProducto;
         private System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.Button bCrearOtro;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bLimpiar;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button bCrear;
         private System.Windows.Forms.Label label1;
@@ -293,5 +327,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TreeView treeCategorias;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label txtCategoria;
     }
 }

@@ -42,7 +42,7 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtCodigoProducto = new System.Windows.Forms.TextBox();
             this.dataProductos = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bSeleccionar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
             this.grpFiltroBusqueda.SuspendLayout();
@@ -178,14 +178,15 @@
             this.dataProductos.Size = new System.Drawing.Size(421, 165);
             this.dataProductos.TabIndex = 76;
             // 
-            // button1
+            // bSeleccionar
             // 
-            this.button1.Location = new System.Drawing.Point(359, 411);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 79;
-            this.button1.Text = "Seleccionar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bSeleccionar.Location = new System.Drawing.Point(359, 411);
+            this.bSeleccionar.Name = "bSeleccionar";
+            this.bSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.bSeleccionar.TabIndex = 79;
+            this.bSeleccionar.Text = "Seleccionar";
+            this.bSeleccionar.UseVisualStyleBackColor = true;
+            this.bSeleccionar.Click += new System.EventHandler(this.bSeleccionar_Click);
             // 
             // bCancelar
             // 
@@ -195,6 +196,7 @@
             this.bCancelar.TabIndex = 78;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // bLimpiar
             // 
@@ -204,13 +206,14 @@
             this.bLimpiar.TabIndex = 77;
             this.bLimpiar.Text = "Limpiar";
             this.bLimpiar.UseVisualStyleBackColor = true;
+            this.bLimpiar.Click += new System.EventHandler(this.bLimpiar_Click);
             // 
             // FormListadoProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 441);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bSeleccionar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.dataProductos);
@@ -244,7 +247,7 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtCodigoProducto;
         private System.Windows.Forms.DataGridView dataProductos;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bSeleccionar;
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bLimpiar;
 
