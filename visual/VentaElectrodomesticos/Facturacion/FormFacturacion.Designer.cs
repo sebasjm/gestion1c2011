@@ -33,7 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbProvincia = new System.Windows.Forms.ComboBox();
             this.cmbSucursal = new System.Windows.Forms.ComboBox();
-            this.cmbCliente = new System.Windows.Forms.ComboBox();
             this.bBuscarCliente = new System.Windows.Forms.Button();
             this.lListadoProductos = new System.Windows.Forms.Label();
             this.bBuscarProducto = new System.Windows.Forms.Button();
@@ -51,6 +50,7 @@
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCliente = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +75,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 58);
+            this.label1.Location = new System.Drawing.Point(12, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 2;
@@ -86,7 +86,7 @@
             this.cmbProvincia.FormattingEnabled = true;
             this.cmbProvincia.Location = new System.Drawing.Point(126, 11);
             this.cmbProvincia.Name = "cmbProvincia";
-            this.cmbProvincia.Size = new System.Drawing.Size(121, 21);
+            this.cmbProvincia.Size = new System.Drawing.Size(131, 21);
             this.cmbProvincia.TabIndex = 3;
             // 
             // cmbSucursal
@@ -96,14 +96,6 @@
             this.cmbSucursal.Name = "cmbSucursal";
             this.cmbSucursal.Size = new System.Drawing.Size(121, 21);
             this.cmbSucursal.TabIndex = 4;
-            // 
-            // cmbCliente
-            // 
-            this.cmbCliente.FormattingEnabled = true;
-            this.cmbCliente.Location = new System.Drawing.Point(126, 50);
-            this.cmbCliente.Name = "cmbCliente";
-            this.cmbCliente.Size = new System.Drawing.Size(121, 21);
-            this.cmbCliente.TabIndex = 5;
             // 
             // bBuscarCliente
             // 
@@ -118,7 +110,7 @@
             // lListadoProductos
             // 
             this.lListadoProductos.AutoSize = true;
-            this.lListadoProductos.Location = new System.Drawing.Point(12, 103);
+            this.lListadoProductos.Location = new System.Drawing.Point(12, 98);
             this.lListadoProductos.Name = "lListadoProductos";
             this.lListadoProductos.Size = new System.Drawing.Size(110, 13);
             this.lListadoProductos.TabIndex = 7;
@@ -244,11 +236,20 @@
             this.Total.HeaderText = "Total";
             this.Total.Name = "Total";
             // 
+            // txtCliente
+            // 
+            this.txtCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCliente.Location = new System.Drawing.Point(128, 48);
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.Size = new System.Drawing.Size(129, 21);
+            this.txtCliente.TabIndex = 20;
+            // 
             // FormFacturacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 403);
+            this.Controls.Add(this.txtCliente);
             this.Controls.Add(this.dataListadoProductos);
             this.Controls.Add(this.txtCuotas);
             this.Controls.Add(this.lCuotas);
@@ -262,7 +263,6 @@
             this.Controls.Add(this.bBuscarProducto);
             this.Controls.Add(this.lListadoProductos);
             this.Controls.Add(this.bBuscarCliente);
-            this.Controls.Add(this.cmbCliente);
             this.Controls.Add(this.cmbSucursal);
             this.Controls.Add(this.cmbProvincia);
             this.Controls.Add(this.label1);
@@ -284,7 +284,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbProvincia;
         private System.Windows.Forms.ComboBox cmbSucursal;
-        private System.Windows.Forms.ComboBox cmbCliente;
         private System.Windows.Forms.Button bBuscarCliente;
         private System.Windows.Forms.Label lListadoProductos;
         private System.Windows.Forms.Button bBuscarProducto;
@@ -302,5 +301,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.Label txtCliente;
     }
 }

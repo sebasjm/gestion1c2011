@@ -90,6 +90,12 @@ namespace VentaElectrodomesticos.Controladores {
             get { if (_producto == null) _producto = new ProductoDAO(connection); return _producto; }
             private set { _producto = value; }
         }
+        private StockDAO _stock;
+        public StockDAO stock
+        {
+            get { if (_stock == null) _stock = new StockDAO(connection); return _stock; }
+            private set { _stock = value; }
+        }
         private static string buildConnectionURL(string user, string passwd, string server, string db) {
             return "user id=" + user 
                 + ";password=" + passwd + ";server=" + server + ";" + "database=" + db + "; ";
