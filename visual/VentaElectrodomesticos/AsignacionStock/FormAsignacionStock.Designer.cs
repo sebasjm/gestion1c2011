@@ -117,6 +117,7 @@
             this.bAsignarOtro.TabIndex = 66;
             this.bAsignarOtro.Text = "Asignar Otro";
             this.bAsignarOtro.UseVisualStyleBackColor = true;
+            this.bAsignarOtro.Click += new System.EventHandler(this.bAsignarOtro_Click);
             // 
             // bLimpiar
             // 
@@ -126,6 +127,7 @@
             this.bLimpiar.TabIndex = 65;
             this.bLimpiar.Text = "Limpiar";
             this.bLimpiar.UseVisualStyleBackColor = true;
+            this.bLimpiar.Click += new System.EventHandler(this.bLimpiar_Click);
             // 
             // bCancelar
             // 
@@ -135,6 +137,7 @@
             this.bCancelar.TabIndex = 64;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // bAceptar
             // 
@@ -144,6 +147,7 @@
             this.bAceptar.TabIndex = 63;
             this.bAceptar.Text = "Aceptar";
             this.bAceptar.UseVisualStyleBackColor = true;
+            this.bAceptar.Click += new System.EventHandler(this.bAceptar_Click);
             // 
             // txtProducto
             // 

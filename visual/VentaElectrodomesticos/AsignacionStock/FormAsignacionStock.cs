@@ -72,13 +72,53 @@ namespace VentaElectrodomesticos.AsignacionStock
         }
         void fillStock()
         {
-            dataStock.DataSource = Context.instance.dao.stock.search(this.sucursal , this.producto ,0 );
+            List<Stock> stocks = Context.instance.dao.stock.search(this.sucursal , this.producto ,0 );
+            dataStock.Rows.Clear();
+            dataStock.ColumnCount = 3;
+            dataStock.ColumnHeadersVisible = true;
+            dataStock.Columns[0].Name = "Producto";
+            dataStock.Columns[1].Name = "Sucursal";
+            dataStock.Columns[2].Name = "Stock";
+            int r = 0;
+            foreach(Stock stock in stocks )
+            {
+                dataStock.Rows.Add();
+                dataStock.Rows[r].Cells[0].Value = stock.producto_codigo;
+                dataStock.Rows[r].Cells[1].Value = stock.sucursal.direccion;
+                dataStock.Rows[r].Cells[2].Value = stock.stock;
+                r++;
+            }
         }
-
         private void cmbSucursal_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.sucursal = (Sucursal)cmbSucursal.SelectedItem;
             fillStock();
+        }
+        private void bAceptar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("¿Esta seguro que desea asignar Stock?", "Asignar Stock");
+        }
+
+        private void bCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void bLimpiar_Click(object sender, EventArgs e)
+        {
+            this.cmbSucursal.SelectedIndex = -1;
+            this.txtAuditor.Text = "";
+            this.txtProducto.Text = "";
+            this.dataStock.Rows.Clear();
+        }
+
+        private void bAsignarOtro_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("¿Esta seguro que desea asignar Stock y volver a cargar otro?", "Asignar Stock");
+            this.cmbSucursal.SelectedIndex = -1;
+            this.txtAuditor.Text = "";
+            this.txtProducto.Text = "";
+            this.dataStock.Rows.Clear();
         }
    }
 }

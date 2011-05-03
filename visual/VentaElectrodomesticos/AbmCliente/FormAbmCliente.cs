@@ -33,14 +33,10 @@ namespace VentaElectrodomesticos.AbmCliente
         }
         private void cargarCliente(Cliente cargoCliente)
         {
-            try
-            {
                 txtApellido.Text = cargoCliente.apellido;
                 txtNombre.Text = cargoCliente.nombre;
                 txtDni.Text = cargoCliente.dni.ToString();
                 txtMail.Text = cargoCliente.mail;
-            }
-            catch (IndexOutOfRangeException) { /* TODO : Error que no se porque sucede */  }
         }
         void FillProvincias()
         {
