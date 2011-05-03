@@ -52,7 +52,6 @@ namespace VentaElectrodomesticos.AbmRol
                 chkListadoRoles.Items.Add(permisos[n]);
             }
         }
-
         private void bLimpiar_Click(object sender, EventArgs e)
         {
             this.txtNombre.Text = "";

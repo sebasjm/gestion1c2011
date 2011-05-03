@@ -24,6 +24,7 @@ namespace VentaElectrodomesticos.Controladores {
             }
         }
 
+
         public List<Stock> search(Sucursal sucursal , Producto producto  , int cantidad)
         {
             QueryBuilder q = new QueryBuilder();
@@ -34,6 +35,7 @@ namespace VentaElectrodomesticos.Controladores {
                 .filterIf(cantidad!= 0, "stock = {2} ", cantidad);
             return connection.query<Stock>(q.build(), q.getParams());
         }
+
            }
 
 }

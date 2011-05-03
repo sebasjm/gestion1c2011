@@ -46,10 +46,6 @@
             this.lCuotas = new System.Windows.Forms.Label();
             this.txtCuotas = new System.Windows.Forms.TextBox();
             this.dataListadoProductos = new System.Windows.Forms.DataGridView();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtCliente = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoProductos)).BeginInit();
             this.SuspendLayout();
@@ -129,7 +125,7 @@
             // lDescuento
             // 
             this.lDescuento.AutoSize = true;
-            this.lDescuento.Location = new System.Drawing.Point(15, 294);
+            this.lDescuento.Location = new System.Drawing.Point(15, 305);
             this.lDescuento.Name = "lDescuento";
             this.lDescuento.Size = new System.Drawing.Size(62, 13);
             this.lDescuento.TabIndex = 10;
@@ -137,15 +133,15 @@
             // 
             // txtDescuento
             // 
-            this.txtDescuento.Location = new System.Drawing.Point(126, 294);
+            this.txtDescuento.Location = new System.Drawing.Point(126, 298);
             this.txtDescuento.Name = "txtDescuento";
-            this.txtDescuento.Size = new System.Drawing.Size(100, 20);
+            this.txtDescuento.Size = new System.Drawing.Size(121, 20);
             this.txtDescuento.TabIndex = 11;
             // 
             // lFormaPago
             // 
             this.lFormaPago.AutoSize = true;
-            this.lFormaPago.Location = new System.Drawing.Point(15, 324);
+            this.lFormaPago.Location = new System.Drawing.Point(15, 327);
             this.lFormaPago.Name = "lFormaPago";
             this.lFormaPago.Size = new System.Drawing.Size(82, 13);
             this.lFormaPago.TabIndex = 12;
@@ -158,6 +154,7 @@
             this.cmbFormasPago.Name = "cmbFormasPago";
             this.cmbFormasPago.Size = new System.Drawing.Size(121, 21);
             this.cmbFormasPago.TabIndex = 13;
+            this.cmbFormasPago.SelectedIndexChanged += new System.EventHandler(this.cmbFormasPago_SelectedIndexChanged);
             // 
             // bCancelar
             // 
@@ -206,35 +203,10 @@
             // 
             this.dataListadoProductos.AllowUserToOrderColumns = true;
             this.dataListadoProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListadoProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Producto,
-            this.Descripcion,
-            this.Cantidad,
-            this.Total});
             this.dataListadoProductos.Location = new System.Drawing.Point(15, 132);
             this.dataListadoProductos.Name = "dataListadoProductos";
             this.dataListadoProductos.Size = new System.Drawing.Size(455, 150);
             this.dataListadoProductos.TabIndex = 19;
-            // 
-            // Producto
-            // 
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
             // 
             // txtCliente
             // 
@@ -297,10 +269,6 @@
         private System.Windows.Forms.Label lCuotas;
         private System.Windows.Forms.TextBox txtCuotas;
         private System.Windows.Forms.DataGridView dataListadoProductos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.Label txtCliente;
     }
 }

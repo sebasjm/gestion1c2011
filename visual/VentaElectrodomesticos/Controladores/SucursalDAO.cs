@@ -35,6 +35,14 @@ namespace VentaElectrodomesticos.Controladores {
             }
             return cache;
         }
+        public Sucursal findById(byte id)
+        {
+            QueryBuilder q = new QueryBuilder();
+            q.select().from("la_huerta.Sucursal")
+            .filterIf(id != 0, "id = {0}",id);
+            List<Sucursal> lista = connection.query <Sucursal>(q.build(), q.getParams());
+            return lista[0];
+        }
 
         public Sucursal findByProvincia(byte id) {
             if (cache == null)

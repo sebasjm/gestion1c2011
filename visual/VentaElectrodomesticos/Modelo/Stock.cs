@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using VentaElectrodomesticos.Controladores;
 
 namespace VentaElectrodomesticos.Modelo {
     class Stock {
@@ -14,6 +15,12 @@ namespace VentaElectrodomesticos.Modelo {
         public int stock
         {
             get; set;
+        }
+        public Sucursal sucursal
+        {
+            get { 
+                return Context.instance.dao.sucursal.findById(Byte.Parse( "" + this.sucursal_id )) ;
+            }
         }
     }
 }
