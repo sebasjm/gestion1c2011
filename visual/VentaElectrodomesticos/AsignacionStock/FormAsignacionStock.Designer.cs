@@ -35,9 +35,6 @@
             this.bProducto = new System.Windows.Forms.Button();
             this.bAuditor = new System.Windows.Forms.Button();
             this.dataStock = new System.Windows.Forms.DataGridView();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bAsignarOtro = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
@@ -81,6 +78,7 @@
             this.cmbSucursal.Name = "cmbSucursal";
             this.cmbSucursal.Size = new System.Drawing.Size(117, 21);
             this.cmbSucursal.TabIndex = 4;
+            this.cmbSucursal.SelectedIndexChanged += new System.EventHandler(this.cmbSucursal_SelectedIndexChanged);
             // 
             // bProducto
             // 
@@ -106,29 +104,10 @@
             // 
             this.dataStock.AllowUserToOrderColumns = true;
             this.dataStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Producto,
-            this.Descripcion,
-            this.Stock});
             this.dataStock.Location = new System.Drawing.Point(19, 120);
             this.dataStock.Name = "dataStock";
             this.dataStock.Size = new System.Drawing.Size(362, 150);
             this.dataStock.TabIndex = 8;
-            // 
-            // Producto
-            // 
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripción";
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // Stock
-            // 
-            this.Stock.HeaderText = "Stock";
-            this.Stock.Name = "Stock";
             // 
             // bAsignarOtro
             // 
@@ -218,9 +197,6 @@
         private System.Windows.Forms.Button bProducto;
         private System.Windows.Forms.Button bAuditor;
         private System.Windows.Forms.DataGridView dataStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
         private System.Windows.Forms.Button bAsignarOtro;
         private System.Windows.Forms.Button bLimpiar;
         private System.Windows.Forms.Button bCancelar;

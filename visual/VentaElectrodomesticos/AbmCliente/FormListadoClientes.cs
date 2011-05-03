@@ -86,5 +86,6 @@ namespace VentaElectrodomesticos.AbmCliente
             this.dni = System.Int32.Parse(txtDni.Text);}
             FillData();
         }
+
   }
 }
