@@ -116,6 +116,5 @@ namespace VentaElectrodomesticos.AbmEmpleado
             txtNombre.Text = "";
             cmbProvincia.SelectedIndex = -1;
         }
-
     }
 }

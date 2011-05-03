@@ -168,6 +168,7 @@
     </Compile>
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Categoria.cs" />
+    <Compile Include="Modelo\IngresoStock.cs" />
     <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Modelo\Marca.cs" />
     <Compile Include="Modelo\Rol.cs" />
