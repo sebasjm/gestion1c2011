@@ -12,8 +12,16 @@ using VentaElectrodomesticos.Controladores;
 
 namespace VentaElectrodomesticos.AbmProducto
 {
+
     public partial class FormListadoProductos : Form
     {
+        private Object messageFromParent = null;
+        public Object MessageFromParent
+        {
+            get { return messageFromParent; }
+            set { messageFromParent = value; }
+        }
+
         List<Categoria> items = new List<Categoria>();
         AutoCompleteStringCollection namesCollection = new AutoCompleteStringCollection();
         public FormListadoProductos()
@@ -35,14 +43,13 @@ namespace VentaElectrodomesticos.AbmProducto
         }
         private void buildtree()
         {
-            this.items = Context.instance.dao.categoria.search("");
+            this.items = Context.instance.dao.categoria.search( 0 , "");
             treeCategorias.Nodes.Clear();    // Clear any existing items
             treeCategorias.BeginUpdate();    // prevent overhead and flicker
             LoadBaseNodes();            // load all the lowest tree nodes
             treeCategorias.EndUpdate();      // re-enable the tree
             treeCategorias.Refresh();        // refresh the <strong class="highlight">treeview</strong> display
         }
-
         private void LoadBaseNodes()
         {
             int baseParent = 0;                 // Find the lowest root category parent value
@@ -83,12 +90,17 @@ namespace VentaElectrodomesticos.AbmProducto
         {
             float precioDesde = (txtPrecioDesde.Text == "")? 0 : float.Parse(txtPrecioDesde.Text);
             float precioHasta = (txtPrecioHasta.Text == "")? 0 : float.Parse(txtPrecioHasta.Text);
-            int indice = 11;// (treeCategorias.SelectedNode.Index == null) ? 0 : treeCategorias.SelectedNode.Index;
-
+            TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
+            int indice = 0;
+            if(NodoSeleccionado == null){
+                indice = 0;
+            }
+            else { 
+                Categoria cate = (Categoria)NodoSeleccionado.Tag;
+                indice = cate.id;}
             List<Marca> valor = (txtNombre.Text != "") ? Context.instance.dao.marca.search(txtNombre.Text) : null;
             String nombre = "";
             int marca = 0;
-            
             if (valor == null)
             {
                 nombre = txtNombre.Text;
@@ -116,6 +128,34 @@ namespace VentaElectrodomesticos.AbmProducto
         private void bBuscar_Click(object sender, EventArgs e)
         {
             FillData();
+        }
+
+        private void bCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void bLimpiar_Click(object sender, EventArgs e)
+        {
+            txtCodigoProducto.Text = "";
+            txtNombre.Text = "";
+            txtPrecioDesde.Text = "";
+            txtPrecioHasta.Text = "";
+            treeCategorias.CollapseAll();
+        }
+
+        private void bSeleccionar_Click(object sender, EventArgs e)
+        {
+            Producto prod = (Producto)dataProductos.Rows[dataProductos.CurrentCell.RowIndex].DataBoundItem;
+            if (prod != null)
+            {
+                this.messageFromParent = prod;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un Producto");
+            }
         }
     }
 }
