@@ -123,6 +123,7 @@
     <Compile Include="Controladores\Connection.cs" />
     <Compile Include="Controladores\Context.cs" />
     <Compile Include="Controladores\CategoriaDAO.cs" />
+    <Compile Include="Controladores\ProductoDAO.cs" />
     <Compile Include="Controladores\MarcaDAO.cs" />
     <Compile Include="Controladores\QueryBuilder.cs" />
     <Compile Include="Controladores\RolDAO.cs" />
@@ -167,6 +168,7 @@
     </Compile>
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Categoria.cs" />
+    <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Modelo\Marca.cs" />
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Empleado.cs" />

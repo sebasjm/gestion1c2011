@@ -78,11 +78,17 @@ namespace VentaElectrodomesticos.Controladores {
             private set { _marca = value; }
         }
 
-        private CategoriaDAO _Categoria;
-        public CategoriaDAO Categoria
+        private CategoriaDAO _categoria;
+        public CategoriaDAO categoria
         {
-            get { if (_Categoria == null) _Categoria = new CategoriaDAO(connection); return _Categoria; }
-            private set { _Categoria = value; }
+            get { if (_categoria == null) _categoria = new CategoriaDAO(connection); return _categoria; }
+            private set { _categoria = value; }
+        }
+        private ProductoDAO _producto;
+        public ProductoDAO producto
+        {
+            get { if (_producto == null) _producto = new ProductoDAO(connection); return _producto; }
+            private set { _producto = value; }
         }
         private static string buildConnectionURL(string user, string passwd, string server, string db) {
             return "user id=" + user 
