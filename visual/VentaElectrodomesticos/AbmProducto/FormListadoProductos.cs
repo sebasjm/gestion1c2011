@@ -84,9 +84,26 @@ namespace VentaElectrodomesticos.AbmProducto
             float precioDesde = (txtPrecioDesde.Text == "")? 0 : float.Parse(txtPrecioDesde.Text);
             float precioHasta = (txtPrecioHasta.Text == "")? 0 : float.Parse(txtPrecioHasta.Text);
             int indice = 11;// (treeCategorias.SelectedNode.Index == null) ? 0 : treeCategorias.SelectedNode.Index;
+
+            List<Marca> valor = (txtNombre.Text != "") ? Context.instance.dao.marca.search(txtNombre.Text) : null;
+            String nombre = "";
+            int marca = 0;
+            
+            if (valor == null)
+            {
+                nombre = txtNombre.Text;
+                marca = 0;
+            }
+            else {
+                nombre = "";
+                if (valor.Count > 1) { MessageBox.Show("Debe Elegir una marca ", "Selección de Marca"); }
+                marca = valor[0].id;
+            }
+            
             List<Producto> productosList = Context.instance.dao.producto.search(
                 txtCodigoProducto.Text,
-                txtNombre.Text,
+                nombre,
+                marca,
                 indice,
                 precioDesde,
                 precioHasta);
