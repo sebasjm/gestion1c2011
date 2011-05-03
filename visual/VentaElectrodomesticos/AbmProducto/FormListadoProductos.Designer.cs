@@ -41,13 +41,13 @@
             this.lCodProd = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtCodigoProducto = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataProductos = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
             this.grpFiltroBusqueda.SuspendLayout();
             this.grpPrecios.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // bBuscar
@@ -58,6 +58,7 @@
             this.bBuscar.TabIndex = 71;
             this.bBuscar.Text = "Buscar";
             this.bBuscar.UseVisualStyleBackColor = true;
+            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
             // 
             // grpFiltroBusqueda
             // 
@@ -168,14 +169,14 @@
             this.txtCodigoProducto.Size = new System.Drawing.Size(121, 20);
             this.txtCodigoProducto.TabIndex = 80;
             // 
-            // dataGridView1
+            // dataProductos
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 240);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(421, 165);
-            this.dataGridView1.TabIndex = 76;
+            this.dataProductos.AllowUserToOrderColumns = true;
+            this.dataProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataProductos.Location = new System.Drawing.Point(13, 240);
+            this.dataProductos.Name = "dataProductos";
+            this.dataProductos.Size = new System.Drawing.Size(421, 165);
+            this.dataProductos.TabIndex = 76;
             // 
             // button1
             // 
@@ -212,7 +213,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bLimpiar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataProductos);
             this.Controls.Add(this.grpFiltroBusqueda);
             this.Controls.Add(this.bBuscar);
             this.Name = "FormListadoProductos";
@@ -222,7 +223,7 @@
             this.grpFiltroBusqueda.PerformLayout();
             this.grpPrecios.ResumeLayout(false);
             this.grpPrecios.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataProductos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -242,7 +243,7 @@
         private System.Windows.Forms.Label lCodProd;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtCodigoProducto;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataProductos;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bLimpiar;

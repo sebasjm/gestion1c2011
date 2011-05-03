@@ -26,14 +26,14 @@ namespace VentaElectrodomesticos.Controladores {
         }
         class CategoriaMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
-                //MessageBox.Show("ID : " + sdr.GetValue(0) + "NOMBRE :" + sdr.GetValue(1));
-                // TODO : Ver porque tipo empleado tiene un espacio en la primary
-                String cadena = (string)sdr.GetValue(0).ToString().Trim(' ');
-                String cadena2 = (string)sdr.GetValue(1).ToString().Trim(' ');
+                // TODO : Ver como resolver categoria padre con nulo
+
+                String nom = (sdr.GetValue(2) == DBNull.Value) ? "" : (String)sdr.GetValue(2) ;
+                Int16 padre = (sdr.GetValue(1) == DBNull.Value) ? (Int16)0 : (Int16)sdr.GetValue(1);
                 return new Categoria {
-                    id = (int)Int16.Parse(cadena),
-                    categoria_padre = (int)Int16.Parse(cadena2),
-                    nombre = (string)sdr.GetValue(1)
+                    id = (Int16)sdr.GetValue(0),
+                    categoria_padre =padre,
+                    nombre = nom
                 };
             }
         }
