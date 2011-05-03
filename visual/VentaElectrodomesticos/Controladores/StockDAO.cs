@@ -17,13 +17,23 @@ namespace VentaElectrodomesticos.Controladores {
             public Object getInstance(SqlDataReader sdr) {
                 return new Stock
                 {
-                    sucursal_id = (Byte)sdr.GetValue(0),
-                    producto_codigo = (Byte)sdr.GetValue(1),
-                    stock = (Byte)sdr.GetValue(2)
+                    sucursal_id = (int)sdr.GetValue(0),
+                    producto_codigo = (int)sdr.GetValue(1),
+                    stock = (int)sdr.GetValue(2)
                 };
             }
         }
 
+        public List<Stock> search(Sucursal sucursal , Producto producto  , int cantidad)
+        {
+            QueryBuilder q = new QueryBuilder();
+            q.select()
+                .from("la_huerta.Stock")
+                .filterIf(sucursal != null, "sucursal_id = {0} ",sucursal != null ? sucursal.id : 0)
+                .filterIf(producto != null, "codigo_producto = {1}' ",producto != null ? producto.codigo : 0)
+                .filterIf(cantidad!= 0, "stock = {2} ", cantidad);
+            return connection.query<Stock>(q.build(), q.getParams());
+        }
            }
 
 }
