@@ -72,7 +72,7 @@ namespace VentaElectrodomesticos.AsignacionStock
         }
         void fillStock()
         {
-            List<Stock> stocks = Context.instance.dao.stock.search(this.sucursal , this.producto ,0 );
+            List<Stock> stocks = Context.instance.dao.stock.search(this.sucursal , this.producto );
             dataStock.Rows.Clear();
             dataStock.ColumnCount = 3;
             dataStock.ColumnHeadersVisible = true;

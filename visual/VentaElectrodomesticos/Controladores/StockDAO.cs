@@ -25,14 +25,14 @@ namespace VentaElectrodomesticos.Controladores {
         }
 
 
-        public List<Stock> search(Sucursal sucursal , Producto producto  , int cantidad)
+        public List<Stock> search(Sucursal sucursal , Producto producto )
         {
             QueryBuilder q = new QueryBuilder();
             q.select()
                 .from("la_huerta.Stock")
                 .filterIf(sucursal != null, "sucursal_id = {0} ",sucursal != null ? sucursal.id : 0)
-                .filterIf(producto != null, "codigo_producto = {1}' ",producto != null ? producto.codigo : 0)
-                .filterIf(cantidad!= 0, "stock = {2} ", cantidad);
+                .filterIf(producto != null, "producto_codigo = {1} ",producto != null ? producto.codigo : 0);
+
             return connection.query<Stock>(q.build(), q.getParams());
         }
 
