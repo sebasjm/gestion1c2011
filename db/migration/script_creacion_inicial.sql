@@ -40,7 +40,7 @@ CREATE TABLE [la_huerta].[TipoSucursal](
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Sucursal](
-	[id] [int] NOT NULL,
+	[id] [tinyint] NOT NULL,
 	[direccion] [varchar](60) NOT NULL,
 	[telefono] [varchar](20) NOT NULL,
 	[tipoSucursal_id] [tinyint] NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE [la_huerta].[Empleado](
 	[mail] [varchar](50) NOT NULL,
 	[direccion] [varchar](60) NOT NULL,
 	[tipoEmpleado_id] [tinyint] NOT NULL,
-	[sucursal_id] [int] NOT NULL,
+	[sucursal_id] [tinyint] NOT NULL,
     [activo] [bit] NOT NULL DEFAULT 1,
     [usuario_id] [int] NULL DEFAULT NULL,
 	primary key (dni),
@@ -113,7 +113,7 @@ CREATE TABLE [la_huerta].[Factura](
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Stock](
-	[sucursal_id] [int] NOT NULL,
+	[sucursal_id] [tinyint] NOT NULL,
 	[producto_codigo] [int] NOT NULL,
 	[stock] [int] NOT NULL,
 	primary key (sucursal_id,producto_codigo),
@@ -122,7 +122,7 @@ CREATE TABLE [la_huerta].[Stock](
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[IngresoStock](
-	[sucursal_id] [int] NOT NULL,
+	[sucursal_id] [tinyint] NOT NULL,
 	[producto_codigo] [int] NOT NULL,
 	[fecha] [datetime] NOT NULL,
 	[stock] [int] NOT NULL,
