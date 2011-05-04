@@ -123,6 +123,7 @@
     <Compile Include="Controladores\Connection.cs" />
     <Compile Include="Controladores\Context.cs" />
     <Compile Include="Controladores\CategoriaDAO.cs" />
+    <Compile Include="Controladores\FacturaDAO.cs" />
     <Compile Include="Controladores\StockDAO.cs" />
     <Compile Include="Controladores\ProductoDAO.cs" />
     <Compile Include="Controladores\MarcaDAO.cs" />
@@ -170,6 +171,7 @@
     </Compile>
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Categoria.cs" />
+    <Compile Include="Modelo\Factura.cs" />
     <Compile Include="Modelo\IngresoStock.cs" />
     <Compile Include="Modelo\Stock.cs" />
     <Compile Include="Modelo\Producto.cs" />

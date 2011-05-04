@@ -47,6 +47,7 @@
             this.txtCuotas = new System.Windows.Forms.TextBox();
             this.dataListadoProductos = new System.Windows.Forms.DataGridView();
             this.txtCliente = new System.Windows.Forms.Label();
+            this.lErrorDescuento = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,6 +138,7 @@
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(121, 20);
             this.txtDescuento.TabIndex = 11;
+            this.txtDescuento.TextChanged += new System.EventHandler(this.txtDescuento_TextChanged);
             // 
             // lFormaPago
             // 
@@ -176,12 +178,11 @@
             // 
             // lMontoTotal
             // 
-            this.lMontoTotal.AutoSize = true;
-            this.lMontoTotal.Location = new System.Drawing.Point(155, 361);
+            this.lMontoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lMontoTotal.Location = new System.Drawing.Point(123, 348);
             this.lMontoTotal.Name = "lMontoTotal";
-            this.lMontoTotal.Size = new System.Drawing.Size(117, 13);
+            this.lMontoTotal.Size = new System.Drawing.Size(235, 48);
             this.lMontoTotal.TabIndex = 16;
-            this.lMontoTotal.Text = "Monto Total : 20 Pesos";
             // 
             // lCuotas
             // 
@@ -198,6 +199,7 @@
             this.txtCuotas.Name = "txtCuotas";
             this.txtCuotas.Size = new System.Drawing.Size(100, 20);
             this.txtCuotas.TabIndex = 18;
+            this.txtCuotas.TextChanged += new System.EventHandler(this.txtCuotas_TextChanged);
             // 
             // dataListadoProductos
             // 
@@ -216,11 +218,20 @@
             this.txtCliente.Size = new System.Drawing.Size(129, 21);
             this.txtCliente.TabIndex = 20;
             // 
+            // lErrorDescuento
+            // 
+            this.lErrorDescuento.ForeColor = System.Drawing.Color.Red;
+            this.lErrorDescuento.Location = new System.Drawing.Point(267, 301);
+            this.lErrorDescuento.Name = "lErrorDescuento";
+            this.lErrorDescuento.Size = new System.Drawing.Size(166, 16);
+            this.lErrorDescuento.TabIndex = 21;
+            // 
             // FormFacturacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 403);
+            this.Controls.Add(this.lErrorDescuento);
             this.Controls.Add(this.txtCliente);
             this.Controls.Add(this.dataListadoProductos);
             this.Controls.Add(this.txtCuotas);
@@ -270,5 +281,6 @@
         private System.Windows.Forms.TextBox txtCuotas;
         private System.Windows.Forms.DataGridView dataListadoProductos;
         private System.Windows.Forms.Label txtCliente;
+        private System.Windows.Forms.Label lErrorDescuento;
     }
 }
