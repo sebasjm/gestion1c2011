@@ -7,11 +7,11 @@ using VentaElectrodomesticos.Controladores;
 namespace VentaElectrodomesticos.Modelo {
     class Sucursal {
 
-        public Sucursal(Int32 id) {
+        public Sucursal(Byte id) {
             this.id = id;
         }
 
-        public Int32 id {
+        public Byte id {
             get; private set;
         }
 
@@ -36,7 +36,7 @@ namespace VentaElectrodomesticos.Modelo {
         }
 
         public Provincia provincia {
-            get { return Context.instance.dao.provincia.find(provinciaId);  }
+            get { return Context.instance.dao.provincia.findById(provinciaId);  }
         }
     }
 }

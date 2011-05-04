@@ -44,15 +44,6 @@
             this.cmbTipoEmpleado = new System.Windows.Forms.ComboBox();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.grpDireccion = new System.Windows.Forms.GroupBox();
-            this.txtNumero = new System.Windows.Forms.TextBox();
-            this.txtCalle = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtDeptoPiso = new System.Windows.Forms.TextBox();
-            this.lDeptoPiso = new System.Windows.Forms.Label();
-            this.lNumero = new System.Windows.Forms.Label();
-            this.lCalle = new System.Windows.Forms.Label();
             this.bBuscar = new System.Windows.Forms.Button();
             this.bCrearOtro = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
@@ -66,7 +57,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.grpDireccion.SuspendLayout();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.lDireccion = new System.Windows.Forms.Label();
+            this.bModificar = new System.Windows.Forms.Button();
+            this.bEliminar = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtNombre
@@ -200,95 +195,6 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(121, 20);
             this.txtTelefono.TabIndex = 19;
-            // 
-            // grpDireccion
-            // 
-            this.grpDireccion.Controls.Add(this.txtNumero);
-            this.grpDireccion.Controls.Add(this.txtCalle);
-            this.grpDireccion.Controls.Add(this.label10);
-            this.grpDireccion.Controls.Add(this.label9);
-            this.grpDireccion.Controls.Add(this.txtDeptoPiso);
-            this.grpDireccion.Controls.Add(this.lDeptoPiso);
-            this.grpDireccion.Controls.Add(this.lNumero);
-            this.grpDireccion.Controls.Add(this.lCalle);
-            this.grpDireccion.Location = new System.Drawing.Point(24, 162);
-            this.grpDireccion.Name = "grpDireccion";
-            this.grpDireccion.Size = new System.Drawing.Size(419, 79);
-            this.grpDireccion.TabIndex = 23;
-            this.grpDireccion.TabStop = false;
-            this.grpDireccion.Text = "Dirección:";
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.Location = new System.Drawing.Point(180, 37);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(100, 20);
-            this.txtNumero.TabIndex = 27;
-            // 
-            // txtCalle
-            // 
-            this.txtCalle.Location = new System.Drawing.Point(65, 37);
-            this.txtCalle.Name = "txtCalle";
-            this.txtCalle.Size = new System.Drawing.Size(100, 20);
-            this.txtCalle.TabIndex = 26;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(227, 18);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(22, 29);
-            this.label10.TabIndex = 78;
-            this.label10.Text = "*";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(101, 17);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(22, 29);
-            this.label9.TabIndex = 77;
-            this.label9.Text = "*";
-            // 
-            // txtDeptoPiso
-            // 
-            this.txtDeptoPiso.Location = new System.Drawing.Point(295, 37);
-            this.txtDeptoPiso.Name = "txtDeptoPiso";
-            this.txtDeptoPiso.Size = new System.Drawing.Size(100, 20);
-            this.txtDeptoPiso.TabIndex = 28;
-            // 
-            // lDeptoPiso
-            // 
-            this.lDeptoPiso.AutoSize = true;
-            this.lDeptoPiso.Location = new System.Drawing.Point(292, 22);
-            this.lDeptoPiso.Name = "lDeptoPiso";
-            this.lDeptoPiso.Size = new System.Drawing.Size(99, 13);
-            this.lDeptoPiso.TabIndex = 25;
-            this.lDeptoPiso.Text = "Departamento/Piso";
-            // 
-            // lNumero
-            // 
-            this.lNumero.AutoSize = true;
-            this.lNumero.Location = new System.Drawing.Point(177, 22);
-            this.lNumero.Name = "lNumero";
-            this.lNumero.Size = new System.Drawing.Size(44, 13);
-            this.lNumero.TabIndex = 24;
-            this.lNumero.Text = "Número";
-            // 
-            // lCalle
-            // 
-            this.lCalle.AutoSize = true;
-            this.lCalle.Location = new System.Drawing.Point(65, 21);
-            this.lCalle.Name = "lCalle";
-            this.lCalle.Size = new System.Drawing.Size(30, 13);
-            this.lCalle.TabIndex = 23;
-            this.lCalle.Text = "Calle";
             // 
             // bBuscar
             // 
@@ -435,11 +341,66 @@
             this.label8.TabIndex = 76;
             this.label8.Text = "*";
             // 
+            // txtDireccion
+            // 
+            this.txtDireccion.Location = new System.Drawing.Point(88, 155);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(232, 20);
+            this.txtDireccion.TabIndex = 78;
+            // 
+            // lDireccion
+            // 
+            this.lDireccion.AutoSize = true;
+            this.lDireccion.Location = new System.Drawing.Point(17, 160);
+            this.lDireccion.Name = "lDireccion";
+            this.lDireccion.Size = new System.Drawing.Size(52, 13);
+            this.lDireccion.TabIndex = 77;
+            this.lDireccion.Text = "Dirección";
+            // 
+            // bModificar
+            // 
+            this.bModificar.Location = new System.Drawing.Point(338, 256);
+            this.bModificar.Name = "bModificar";
+            this.bModificar.Size = new System.Drawing.Size(105, 23);
+            this.bModificar.TabIndex = 79;
+            this.bModificar.Text = "Modificar";
+            this.bModificar.UseVisualStyleBackColor = true;
+            this.bModificar.Visible = false;
+            this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
+            // 
+            // bEliminar
+            // 
+            this.bEliminar.Location = new System.Drawing.Point(338, 285);
+            this.bEliminar.Name = "bEliminar";
+            this.bEliminar.Size = new System.Drawing.Size(105, 23);
+            this.bEliminar.TabIndex = 80;
+            this.bEliminar.Text = "Eliminar";
+            this.bEliminar.UseVisualStyleBackColor = true;
+            this.bEliminar.Visible = false;
+            this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(317, 155);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(22, 29);
+            this.label9.TabIndex = 81;
+            this.label9.Text = "*";
+            // 
             // FormAbmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(476, 344);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.bEliminar);
+            this.Controls.Add(this.bModificar);
+            this.Controls.Add(this.txtDireccion);
+            this.Controls.Add(this.lDireccion);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -453,7 +414,6 @@
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bCrear);
             this.Controls.Add(this.bBuscar);
-            this.Controls.Add(this.grpDireccion);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtMail);
             this.Controls.Add(this.cmbTipoEmpleado);
@@ -473,8 +433,6 @@
             this.Name = "FormAbmEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ABM Empleado";
-            this.grpDireccion.ResumeLayout(false);
-            this.grpDireccion.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -498,20 +456,11 @@
         private System.Windows.Forms.ComboBox cmbTipoEmpleado;
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.TextBox txtTelefono;
-        private System.Windows.Forms.GroupBox grpDireccion;
-        private System.Windows.Forms.TextBox txtDeptoPiso;
-        private System.Windows.Forms.TextBox txtNumero;
-        private System.Windows.Forms.TextBox txtCalle;
-        private System.Windows.Forms.Label lDeptoPiso;
-        private System.Windows.Forms.Label lNumero;
-        private System.Windows.Forms.Label lCalle;
         private System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.Button bCrearOtro;
         private System.Windows.Forms.Button bLimpiar;
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bCrear;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -520,5 +469,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.Label lDireccion;
+        private System.Windows.Forms.Button bModificar;
+        private System.Windows.Forms.Button bEliminar;
+        private System.Windows.Forms.Label label9;
     }
 }

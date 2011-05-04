@@ -23,17 +23,14 @@ namespace VentaElectrodomesticos.AbmEmpleado
 
         public FormListadoEmpleados(){
             InitializeComponent();
-            cmbSucursal.Items.Insert(0, "Todos los Resultados");
-            cmbProvincia.Items.Insert(0, "Todos los Resultados");
-            cmbTipoEmpleado.Items.Insert(0, "Todos los Resultados");
-            FillProvincias();
-            FillSucursal();
-            FillTipoEmpleado();
+            ViewHelper.fillComboProvincias(cmbProvincia);
+            ViewHelper.fillComboSucursales(cmbSucursal);
+            ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado);
         }
 
         private void bCancelar_Click(object sender, EventArgs e)
         {
-            this.messageFromParent = 0;
+            this.messageFromParent = null;
             this.Close();
         }
         private void bBuscar_Click(object sender, EventArgs e)
@@ -41,18 +38,13 @@ namespace VentaElectrodomesticos.AbmEmpleado
             if (txtDni.Text.Length == 0)
                 txtDni.Text = "0";
 
-            try {
-                dataEmpleados.DataSource = Context.instance.dao.empleado.search(txtNombre.Text,
-                    txtApellido.Text,
-                    Convert.ToInt32(txtDni.Text),
-                    (Provincia)cmbProvincia.SelectedItem,
-                    (Sucursal)cmbSucursal.SelectedItem,
-                    (TipoEmpleado)cmbTipoEmpleado.SelectedItem
-                );
-            } catch (FormatException ex) {
-                MessageBox.Show(ex.ToString(), "Problema en Consulta");
-            }
-
+            dataEmpleados.DataSource = Context.instance.dao.empleado.search(
+                txtNombre.Text,
+                txtApellido.Text,
+                Convert.ToInt32(txtDni.Text),
+                (Sucursal)cmbSucursal.SelectedItem,
+                (TipoEmpleado)cmbTipoEmpleado.SelectedItem
+            );
         }
         private void bSeleccionar_Click_1(object sender, EventArgs e)
         {
@@ -65,56 +57,25 @@ namespace VentaElectrodomesticos.AbmEmpleado
                 MessageBox.Show("Debe seleccionar un Empleado");
             }
         }
-        void FillProvincias()
-        {
-            List<Provincia> provinciasList = Context.instance.dao.provincia.load();
-            try
-            {
-                cmbProvincia.DataSource = provinciasList;
-                cmbProvincia.DisplayMember = "nombre";
-                cmbProvincia.ValueMember = "id";
-                cmbProvincia.SelectedIndex = -1;
-            }
-            catch (NullReferenceException) { }
-        }
-        void FillSucursal() {
-            List<Sucursal> sucursalList = Context.instance.dao.sucursal.load();
-            try{
-                cmbSucursal.DataSource = sucursalList;
-                cmbSucursal.DisplayMember = "direccion";
-                cmbSucursal.ValueMember = "id";
-                cmbSucursal.SelectedIndex = -1;
-            }
-            catch (NullReferenceException) { }
-        }
-
-        void FillTipoEmpleado()
-        {
-            try
-            {
-                List<TipoEmpleado> tipoEmpleadoList = Context.instance.dao.tipoEmpleado.getTipoEmpleadoes();
-                cmbTipoEmpleado.DataSource = tipoEmpleadoList;
-                cmbTipoEmpleado.DisplayMember = "nombre";
-                cmbTipoEmpleado.ValueMember = "id";
-                cmbTipoEmpleado.SelectedIndex = -1;
-            }
-            catch (NullReferenceException) { }
-        }
-        private void cmbProvincia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cmbSucursal.SelectedValue = (cmbProvincia.SelectedItem != null) ? ((Provincia)cmbProvincia.SelectedItem).sucursal : null;
-        }
-
-        private void cmbSucursal_SelectedIndexChanged(object sender, EventArgs e) {
-            cmbProvincia.SelectedValue = (cmbSucursal.SelectedItem != null) ? ((Sucursal)cmbSucursal.SelectedItem).provincia : null;
-        }
-
         private void bLimpiar_Click(object sender, EventArgs e)
         {
             txtApellido.Text = "";
             txtDni.Text = "";
             txtNombre.Text = "";
-            cmbProvincia.SelectedIndex = -1;
+            cmbProvincia.SelectedIndex = 0;
+            cmbSucursal.SelectedIndex = 0;
+            cmbTipoEmpleado.SelectedIndex = 0;
         }
+
+        private void cmbSucursal_SelectedIndexChanged(object sender, EventArgs e) {
+            cmbProvincia.SelectedItem = ((Sucursal)cmbSucursal.SelectedItem).provincia;
+            cmbProvincia.Refresh();
+        }
+
+        private void cmbProvincia_SelectedIndexChanged(object sender, EventArgs e) {
+            cmbSucursal.SelectedItem = ((Provincia)cmbProvincia.SelectedItem).sucursal;
+            cmbSucursal.Refresh();
+        }
+
     }
 }

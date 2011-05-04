@@ -22,8 +22,9 @@ namespace VentaElectrodomesticos.Controladores {
         }
 
         ~Connection() {
-            if (open)
-                _connection.Close();
+            if (open && _connection.State != System.Data.ConnectionState.Closed) {
+//                _connection.Close();
+            }
         }
 
         public List<T> query<T>(string sql, params Object[] args) {

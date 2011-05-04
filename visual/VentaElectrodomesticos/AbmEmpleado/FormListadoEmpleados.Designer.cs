@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.dataEmpleados = new System.Windows.Forms.DataGridView();
             this.grpFiltrosBusqueda = new System.Windows.Forms.GroupBox();
             this.cmbTipoEmpleado = new System.Windows.Forms.ComboBox();
             this.cmbSucursal = new System.Windows.Forms.ComboBox();
@@ -42,13 +43,24 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.bBuscar = new System.Windows.Forms.Button();
-            this.dataEmpleados = new System.Windows.Forms.DataGridView();
             this.bSeleccionar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
-            this.grpFiltrosBusqueda.SuspendLayout();
+            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataEmpleados)).BeginInit();
+            this.grpFiltrosBusqueda.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // dataEmpleados
+            // 
+            this.dataEmpleados.AllowUserToOrderColumns = true;
+            this.dataEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dni});
+            this.dataEmpleados.Location = new System.Drawing.Point(14, 167);
+            this.dataEmpleados.Name = "dataEmpleados";
+            this.dataEmpleados.Size = new System.Drawing.Size(491, 207);
+            this.dataEmpleados.TabIndex = 4;
             // 
             // grpFiltrosBusqueda
             // 
@@ -90,6 +102,7 @@
             this.cmbSucursal.Name = "cmbSucursal";
             this.cmbSucursal.Size = new System.Drawing.Size(121, 21);
             this.cmbSucursal.TabIndex = 44;
+            this.cmbSucursal.SelectedIndexChanged += new System.EventHandler(this.cmbSucursal_SelectedIndexChanged);
             // 
             // cmbProvincia
             // 
@@ -188,15 +201,6 @@
             this.bBuscar.UseVisualStyleBackColor = true;
             this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
             // 
-            // dataEmpleados
-            // 
-            this.dataEmpleados.AllowUserToOrderColumns = true;
-            this.dataEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataEmpleados.Location = new System.Drawing.Point(14, 167);
-            this.dataEmpleados.Name = "dataEmpleados";
-            this.dataEmpleados.Size = new System.Drawing.Size(491, 207);
-            this.dataEmpleados.TabIndex = 4;
-            // 
             // bSeleccionar
             // 
             this.bSeleccionar.Location = new System.Drawing.Point(432, 380);
@@ -227,6 +231,11 @@
             this.bLimpiar.UseVisualStyleBackColor = true;
             this.bLimpiar.Click += new System.EventHandler(this.bLimpiar_Click);
             // 
+            // dni
+            // 
+            this.dni.HeaderText = "dni";
+            this.dni.Name = "dni";
+            // 
             // FormListadoEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,9 +249,9 @@
             this.Controls.Add(this.grpFiltrosBusqueda);
             this.Name = "FormListadoEmpleados";
             this.Text = "Listado de Selección de Empleado";
+            ((System.ComponentModel.ISupportInitialize)(this.dataEmpleados)).EndInit();
             this.grpFiltrosBusqueda.ResumeLayout(false);
             this.grpFiltrosBusqueda.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataEmpleados)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -263,9 +272,10 @@
         private System.Windows.Forms.Label lNombre;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.DataGridView dataEmpleados;
         private System.Windows.Forms.Button bSeleccionar;
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bLimpiar;
+        private System.Windows.Forms.DataGridView dataEmpleados;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dni;
     }
 }

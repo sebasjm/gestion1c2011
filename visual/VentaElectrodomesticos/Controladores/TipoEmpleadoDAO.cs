@@ -13,16 +13,30 @@ namespace VentaElectrodomesticos.Controladores {
             this.connection = connection;
             Context.instance.dao.addMapper(typeof(TipoEmpleado), new TipoEmpleadoMapper());
         }
-        public List<TipoEmpleado> getTipoEmpleadoes()
-        {
-            List<TipoEmpleado> TipoEmpleadoList = connection.query<TipoEmpleado>(
-                    "SELECT * FROM la_huerta.TipoEmpleado");
-            return TipoEmpleadoList ;
+        private List<TipoEmpleado> cache = null;
+
+        public List<TipoEmpleado> load() {
+            if (cache == null) {
+                QueryBuilder q = new QueryBuilder();
+                q.select().from("la_huerta.TipoEmpleado");
+                cache = connection.query<TipoEmpleado>(q.build(), q.getParams());
+            }
+            return cache;
         }
+
+        public TipoEmpleado findById(Byte id) {
+            if (cache == null)
+                load();
+
+            return cache.Find(
+                delegate(TipoEmpleado tipo) {
+                    return tipo.id == id;
+                }
+            );
+        }
+
         class TipoEmpleadoMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
-                //MessageBox.Show("ID : " + sdr.GetValue(0) + "NOMBRE :" + sdr.GetValue(1));
-                // TODO : Ver porque tipo empleado tiene un espacio en la primary
                 return new TipoEmpleado( (Byte) sdr.GetValue(0) )  {
                     nombre = (String)sdr.GetValue(1)
                 };

@@ -32,7 +32,7 @@ namespace VentaElectrodomesticos.Controladores {
             return cache;
         }
 
-        public Provincia find(Byte id) {
+        public Provincia findById(Byte id) {
             if (cache == null)
                 load();
 

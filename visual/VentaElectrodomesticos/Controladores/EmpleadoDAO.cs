@@ -24,13 +24,13 @@ namespace VentaElectrodomesticos.Controladores {
                     mail = (string)sdr.GetValue(3),
                     direccion = (string)sdr.GetValue(4),
                     tipoEmpleadoId = (Byte)sdr.GetValue(5),
-                    sucursalId = (Int32)sdr.GetValue(6),
+                    sucursalId = (Byte)sdr.GetValue(6),
                     usuarioId = sdr.IsDBNull(8) ? null : (Int32?)sdr.GetValue(8)
                 };
             }
         }
 
-        public List<Empleado> search(string nombre, string apellido, int dni, Provincia prov, Sucursal suc, TipoEmpleado tipoEmp) {
+        public List<Empleado> search(string nombre, string apellido, int dni, Sucursal suc, TipoEmpleado tipoEmp) {
             QueryBuilder q = new QueryBuilder();
 
             q.select()
@@ -38,8 +38,8 @@ namespace VentaElectrodomesticos.Controladores {
                 .filterIf(nombre.Length != 0, "nombre like '%{0}%' ", nombre)
                 .filterIf(apellido.Length != 0, "apellido like '%{1}%' ", apellido)
                 .filterIf(dni != 0, "dni = {2} ", dni)
-                .filterIf(suc != null, "sucursal_id = {3} ", suc != null ? suc.id : 0)
-                .filterIf(tipoEmp != null, "tipoEmpleado_id = {4} ", tipoEmp != null ? tipoEmp.id : 0);
+                .filterIf(suc != null && suc.id != 0, "sucursal_id = {3} ", suc != null ? suc.id : 0)
+                .filterIf(tipoEmp != null && tipoEmp.id != 0, "tipoEmpleado_id = {4} ", tipoEmp != null ? tipoEmp.id : 0);
             
             return connection.query<Empleado>( q.build() , q.getParams() );
         }

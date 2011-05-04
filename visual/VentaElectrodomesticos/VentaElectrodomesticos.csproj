@@ -136,6 +136,7 @@
     <Compile Include="Controladores\DAOContext.cs" />
     <Compile Include="Controladores\Security.cs" />
     <Compile Include="Controladores\UserDAO.cs" />
+    <Compile Include="Controladores\ViewHelper.cs" />
     <Compile Include="EfectuarPago\FormEfectuarPago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +181,7 @@
     <Compile Include="Modelo\Sucursal.cs" />
     <Compile Include="Modelo\TipoEmpleado.cs" />
     <Compile Include="Modelo\Usuario.cs" />
+    <Compile Include="Modelo\View\EmpleadoSearch.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AbmCliente\FormAbmCliente.resx">

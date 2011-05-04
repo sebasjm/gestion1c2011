@@ -16,7 +16,7 @@ namespace VentaElectrodomesticos.Controladores {
 
         class SucursalMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
-                return new Sucursal( (int)sdr.GetValue(0) ) {
+                return new Sucursal( (Byte)sdr.GetValue(0) ) {
                     direccion = (string)sdr.GetValue(1),
                     telefono = (string)sdr.GetValue(2),
                     tipoSucursalId = (Byte)sdr.GetValue(3),
@@ -35,13 +35,16 @@ namespace VentaElectrodomesticos.Controladores {
             }
             return cache;
         }
-        public Sucursal findById(byte id)
-        {
-            QueryBuilder q = new QueryBuilder();
-            q.select().from("la_huerta.Sucursal")
-            .filterIf(id != 0, "id = {0}",id);
-            List<Sucursal> lista = connection.query <Sucursal>(q.build(), q.getParams());
-            return lista[0];
+
+        public Sucursal findById(byte id) {
+            if (cache == null)
+                load();
+
+            return cache.Find(
+                delegate(Sucursal suc) {
+                    return suc.id == id;
+                }
+            );
         }
 
         public Sucursal findByProvincia(byte id) {

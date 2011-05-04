@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using VentaElectrodomesticos.Controladores;
 
 namespace VentaElectrodomesticos.Modelo {
     class Empleado {
@@ -29,8 +30,12 @@ namespace VentaElectrodomesticos.Modelo {
         public Byte tipoEmpleadoId {
             get; set;
         }
-        public Int32 sucursalId {
+        public Byte sucursalId {
             get; set;
+        }
+        public String telefono {
+            get;
+            set;
         }
         public Boolean activo {
             get; private set;
@@ -43,6 +48,12 @@ namespace VentaElectrodomesticos.Modelo {
         }
         public Int32? usuarioId {
             get; set;
+        }
+        public Sucursal sucursal {
+            get { return Context.instance.dao.sucursal.findById(sucursalId); }
+        }
+        public TipoEmpleado tipoEmpleado {
+            get { return Context.instance.dao.tipoEmpleado.findById(tipoEmpleadoId); }
         }
     }
 }
