@@ -5,41 +5,32 @@ using System.Linq;
 using System.Text;
 using VentaElectrodomesticos.Controladores;
 using VentaElectrodomesticos.Modelo;
-
 namespace VentaElectrodomesticos.Controladores {
     class DAOContext {
-
         public Dictionary<Type, Mapper<Object>> mappers {
             get; private set;
         }
-
         public Connection connection;
-
         public DAOContext(string user, string passwd, string server, string db) {
             connection = new Connection( 
                 new SqlConnection( buildConnectionURL(user, passwd, server, db) )
             );
             mappers = new Dictionary<Type, Mapper<object>>();
         }
-
         public void addMapper(Type type, Mapper<Object> mapper) {
             mappers.Add(type, mapper);
         }
-
-        // TODO : SE deberia usar refletion
         private UserDAO _user;
         public UserDAO user {
             get { if (_user == null) _user = new UserDAO(connection); return _user; }
             private set { _user = value; }
         }
-
         private SucursalDAO _sucursal;
         public SucursalDAO sucursal
         {
             get { if (_sucursal == null) _sucursal = new SucursalDAO(connection); return _sucursal; }
             private set { _sucursal = value; }
         }
-
         private ProvinciaDAO _provincia;
         public ProvinciaDAO provincia
         {
@@ -58,26 +49,22 @@ namespace VentaElectrodomesticos.Controladores {
             get { if (_empleado == null) _empleado = new EmpleadoDAO(connection); return _empleado; }
             private set { _empleado = value; }
         }
-
         private ClienteDAO _cliente;
         public ClienteDAO cliente {
             get { if (_cliente == null) _cliente = new ClienteDAO(connection); return _cliente; }
             private set { _cliente = value; }
         }
-
         private RolDAO _rol;
         public RolDAO rol {
             get { if (_rol == null) _rol = new RolDAO(connection); return _rol; }
             private set { _rol = value; }
         }
-
         private MarcaDAO _marca;
         public MarcaDAO marca
         {
             get { if (_marca == null) _marca = new MarcaDAO(connection); return _marca; }
             private set { _marca = value; }
         }
-
         private CategoriaDAO _categoria;
         public CategoriaDAO categoria
         {
@@ -95,6 +82,12 @@ namespace VentaElectrodomesticos.Controladores {
         {
             get { if (_stock == null) _stock = new StockDAO(connection); return _stock; }
             private set { _stock = value; }
+        }
+        private FacturaDAO _factura;
+        public FacturaDAO factura
+        {
+            get { if (_factura == null) _factura = new FacturaDAO(connection); return _factura; }
+            private set { _factura = value; }
         }
         private static string buildConnectionURL(string user, string passwd, string server, string db) {
             return "user id=" + user 
