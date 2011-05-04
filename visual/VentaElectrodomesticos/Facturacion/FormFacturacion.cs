@@ -53,6 +53,16 @@ namespace VentaElectrodomesticos.Facturacion
                 dataListadoProductos.Rows[r].Cells[2].Value = 1;
                 dataListadoProductos.Rows[r].Cells[3].Value = produ.precio;
             }
+            if (txtCuotas.Text != "")
+            {
+                float cuota = (txtCuotas.Text != "") ? float.Parse(txtCuotas.Text) : 1;
+                float cuotas = (this.getTotal() / cuota);
+                lMontoTotal.Text = "Monto Total : " + this.getTotal() + " Pesos , " + cuotas + " Pesos en Cuotas";
+            }
+            else
+            {
+                lMontoTotal.Text = "Monto Total : " + this.getTotal() + " Pesos ";
+            }
         }
         void FillProvincias()
         {
@@ -113,7 +123,45 @@ namespace VentaElectrodomesticos.Facturacion
             dataListadoProductos.Columns[1].Name = "Descripcion";
             dataListadoProductos.Columns[2].Name = "Cantidad";
             dataListadoProductos.Columns[3].Name = "Total";
+            
+        }
+        private float getTotal() { 
+            float total = 0;
+            for(int i = 0 ; i <= (dataListadoProductos.RowCount -2);i++ ){
+                total += (float)dataListadoProductos.Rows[i].Cells[3].Value;
+            }
+            float descuento = 0;
+            if(txtDescuento.Text != "")
+                descuento = float.Parse(txtDescuento.Text);
+            descuento = (total * descuento) / 100;
+            total = total - descuento;
+            return total;
+        }
 
+        private void txtDescuento_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCuotas.Text != "")
+            {
+                float cuota = (txtCuotas.Text != "" )? float.Parse(txtCuotas.Text):1;
+                float cuotas = (this.getTotal() / cuota);
+                lMontoTotal.Text = "Monto Total : " + this.getTotal() + " Pesos , " + cuotas + " Pesos en Cuotas";
+            }
+            else
+            {
+                lMontoTotal.Text = "Monto Total : " + this.getTotal() + " Pesos ";
+            }
+        }
+
+        private void txtCuotas_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCuotas.Text != "")
+            {
+                float cuota = (txtCuotas.Text != "") ? float.Parse(txtCuotas.Text) : 1;
+                float cuotas = (this.getTotal() / cuota);
+                lMontoTotal.Text = "Monto Total : " + this.getTotal() + " Pesos , " + cuotas + " Pesos en Cuotas" ;
+            }else{
+                lMontoTotal.Text = "Monto Total : " + this.getTotal() + " Pesos ";
+            }
         }
     }
 }
