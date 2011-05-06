@@ -208,7 +208,7 @@
             // 
             // bCrearOtro
             // 
-            this.bCrearOtro.Location = new System.Drawing.Point(338, 285);
+            this.bCrearOtro.Location = new System.Drawing.Point(338, 216);
             this.bCrearOtro.Name = "bCrearOtro";
             this.bCrearOtro.Size = new System.Drawing.Size(105, 23);
             this.bCrearOtro.TabIndex = 68;
@@ -217,7 +217,7 @@
             // 
             // bLimpiar
             // 
-            this.bLimpiar.Location = new System.Drawing.Point(137, 256);
+            this.bLimpiar.Location = new System.Drawing.Point(137, 187);
             this.bLimpiar.Name = "bLimpiar";
             this.bLimpiar.Size = new System.Drawing.Size(94, 23);
             this.bLimpiar.TabIndex = 67;
@@ -227,7 +227,7 @@
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(24, 256);
+            this.bCancelar.Location = new System.Drawing.Point(24, 187);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(94, 23);
             this.bCancelar.TabIndex = 66;
@@ -237,7 +237,7 @@
             // 
             // bCrear
             // 
-            this.bCrear.Location = new System.Drawing.Point(338, 256);
+            this.bCrear.Location = new System.Drawing.Point(338, 187);
             this.bCrear.Name = "bCrear";
             this.bCrear.Size = new System.Drawing.Size(105, 23);
             this.bCrear.TabIndex = 65;
@@ -359,7 +359,7 @@
             // 
             // bModificar
             // 
-            this.bModificar.Location = new System.Drawing.Point(338, 256);
+            this.bModificar.Location = new System.Drawing.Point(338, 187);
             this.bModificar.Name = "bModificar";
             this.bModificar.Size = new System.Drawing.Size(105, 23);
             this.bModificar.TabIndex = 79;
@@ -370,7 +370,7 @@
             // 
             // bEliminar
             // 
-            this.bEliminar.Location = new System.Drawing.Point(338, 285);
+            this.bEliminar.Location = new System.Drawing.Point(338, 216);
             this.bEliminar.Name = "bEliminar";
             this.bEliminar.Size = new System.Drawing.Size(105, 23);
             this.bEliminar.TabIndex = 80;
@@ -385,7 +385,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(317, 155);
+            this.label9.Location = new System.Drawing.Point(321, 155);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(22, 29);
             this.label9.TabIndex = 81;
@@ -395,11 +395,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 344);
+            this.ClientSize = new System.Drawing.Size(476, 257);
+            this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.bEliminar);
             this.Controls.Add(this.bModificar);
-            this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.lDireccion);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);

@@ -10,7 +10,6 @@ using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
-
 namespace VentaElectrodomesticos.AbmEmpleado {
     public partial class FormAbmEmpleado : Form {
         public FormAbmEmpleado() {
@@ -19,7 +18,6 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             ViewHelper.fillComboSucursales(cmbSucursal,true);
             ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado,true);
         }
-       
         private void bBuscar_Click(object sender, EventArgs e) {
             FormListadoEmpleados form = new FormListadoEmpleados();
             form.MessageFromParent = null;
@@ -32,7 +30,6 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 bEliminar.Show();
             }
         }
-
         private void cargarEmpleado(Empleado cargoEmpleado) {
             txtApellido.Text = cargoEmpleado.apellido;
             txtNombre.Text = cargoEmpleado.nombre;
@@ -59,26 +56,24 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             bModificar.Hide();
             bEliminar.Hide();
         }
-
         private void bCrear_Click(object sender, EventArgs e) {
-
+            if (MessageBox.Show("¿Esta seguro que desea crear el Empleado?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                // proceder con el borrado
+            }
         }
         private void bCancelar_Click(object sender, EventArgs e) {
             this.Close();
         }
-
         private void bModificar_Click(object sender, EventArgs e) {
             if (MessageBox.Show("¿Esta seguro que desea modificar al cliente?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con la modificacion
             }
         }
-
         private void bEliminar_Click(object sender, EventArgs e) {
             if (MessageBox.Show("¿Esta seguro que desea eliminar al Empleado?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con el borrado
             }
         }
-
-
     }
 }
