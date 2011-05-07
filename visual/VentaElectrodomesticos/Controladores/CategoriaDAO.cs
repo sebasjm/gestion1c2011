@@ -21,7 +21,7 @@ namespace VentaElectrodomesticos.Controladores {
             QueryBuilder q = new QueryBuilder();
             q.select()
                 .from("la_huerta.Categoria")
-                .filterIf(codigo != 0, "codigo = {0}' ", codigo)
+                .filterIf(codigo != 0, "id = {0}", codigo)
                 .filterIf(nombre.Length != 0, "nombre like '%{1}%' ", nombre);
             return connection.query<Categoria>(q.build(), q.getParams());
         }
