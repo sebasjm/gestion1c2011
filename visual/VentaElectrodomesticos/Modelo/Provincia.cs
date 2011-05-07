@@ -6,21 +6,15 @@ using VentaElectrodomesticos.Controladores;
 
 namespace VentaElectrodomesticos.Modelo {
     class Provincia {
-
         public Provincia(Byte id) {
             this.id = id;
         }
-
         public Byte id {
-            get;
-            private set;
+            get; private set;
         }
-
         public String nombre {
-            get;
-            set;
+            get; set;
         }
-
         public Sucursal sucursal {
             get { return Context.instance.dao.sucursal.findByProvincia(id); }
         }

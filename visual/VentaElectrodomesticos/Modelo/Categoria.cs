@@ -5,15 +5,18 @@ using System.Text;
 
 namespace VentaElectrodomesticos.Modelo {
     class Categoria {
-        public int id {
+        public Categoria(Int16 _id){
+            this.id = _id;
+        }
+        public Int16 id
+        {
+            get; private set;
+        }
+        public Int16 categoria_padre
+        {
             get; set;
         }
-        public int categoria_padre
-        {
-            get;
-            set;
-        }
-        public string nombre {
+        public String nombre {
             get; set;
         }
     }

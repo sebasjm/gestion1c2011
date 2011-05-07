@@ -7,7 +7,6 @@ using System.Data.SqlClient;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using VentaElectrodomesticos.Controladores;
-
 namespace VentaElectrodomesticos.Controladores {
     class MarcaDAO {
         private Connection connection;
@@ -26,12 +25,8 @@ namespace VentaElectrodomesticos.Controladores {
         }
         class MarcaMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
-                //MessageBox.Show("ID : " + sdr.GetValue(0) + "NOMBRE :" + sdr.GetValue(1));
-                // TODO : Ver porque tipo empleado tiene un espacio en la primary
-                String cadena = (string)sdr.GetValue(0).ToString().Trim(' ');
-                return new Marca {
-                    id = (int)Int16.Parse(cadena),
-                    nombre = (string)sdr.GetValue(1)
+                return new Marca (sdr.GetInt16(0)){
+                    nombre = sdr.GetString(1)
                 };
             }
         }
