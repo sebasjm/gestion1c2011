@@ -84,7 +84,7 @@ namespace VentaElectrodomesticos.AbmProducto
             txtNombre.Text = prod.nombre;
             txtPrecio.Text = "" + prod.precio;
             List<Categoria> cate = Context.instance.dao.categoria.search( prod.categoria_id , "");
-            txtCategoria.Text = cate[0].nombre;
+            txtCategoria.Text = cate[0].nombre ;
         }
 
         private void treeCategorias_AfterSelect(object sender, TreeViewEventArgs e)

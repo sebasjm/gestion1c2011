@@ -17,6 +17,13 @@ namespace VentaElectrodomesticos.AbmUsuario
         {
             InitializeComponent();
             fillPermisos();
+            lErrorConfirmPass.Visible = false;
+            lErrorEmpleado.Visible = false;
+            lErrorPassword.Visible = false;
+            lErrorRoles.Visible = false;
+            lErrorUsername.Visible = false;
+            bBorrar.Visible = false;
+            bModificar.Visible = false;
         }
         private void bBuscarEmpleado_Click(object sender, EventArgs e)
         {
@@ -105,6 +112,13 @@ namespace VentaElectrodomesticos.AbmUsuario
         {
             this.Close();
         }
+        private void bModificar_Click(object sender, EventArgs e)
+        {
 
+        }
+        private void bBorrar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

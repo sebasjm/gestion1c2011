@@ -175,7 +175,7 @@
             this.Controls.Add(this.lUsername);
             this.Controls.Add(this.lEmpleado);
             this.Name = "FormListadoUsuarios";
-            this.Text = "FormListadoUsuarios";
+            this.Text = "Listado de Usuarios";
             ((System.ComponentModel.ISupportInitialize)(this.dataUsuarios)).EndInit();
             this.grpListadoRoles.ResumeLayout(false);
             this.ResumeLayout(false);

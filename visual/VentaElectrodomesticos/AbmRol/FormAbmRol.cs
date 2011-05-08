@@ -16,6 +16,9 @@ namespace VentaElectrodomesticos.AbmRol
         {
             InitializeComponent();
             fillPermisos();
+            lErrorNombre.Visible = false;
+            bModificar.Visible = false;
+            bBorrar.Visible = false;
         }
         private void bBuscar_Click(object sender, EventArgs e)
         {
@@ -26,8 +29,10 @@ namespace VentaElectrodomesticos.AbmRol
             {
                 this.cargarRol((Rol)form.MessageFromParent);
                 bCrearOtro.Hide();
-                bLimpiar.Text = "Borrar";
-                bCrear.Text = "Modificar";
+                bLimpiar.Visible = false;
+                bCrear.Visible = false;
+                bModificar.Visible = true;
+                bBorrar.Visible = true;
             }
         }
         private void cargarRol(Rol rol){
@@ -57,6 +62,40 @@ namespace VentaElectrodomesticos.AbmRol
             this.txtNombre.Text = "";
             for (int i = 0; i < chkListadoRoles.Items.Count; ++i)
                 chkListadoRoles.SetItemChecked(i, false); 
+        }
+        private void bCrear_Click(object sender, EventArgs e)
+        {
+            if (txtNombre.Text == "")
+            {
+                MessageBox.Show("No se puede dejar el nombre en Blanco", "Error", MessageBoxButtons.OK);
+                lErrorNombre.Visible = true;
+            }
+            if (MessageBox.Show("¿Esta seguro que desea modificar al Rol?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                // proceder con la modificacion
+            }
+        }
+        private void bModificar_Click(object sender, EventArgs e)
+        {
+            if (txtNombre.Text == "") { 
+                MessageBox.Show("No se puede dejar el nombre en Blanco", "Error", MessageBoxButtons.OK);
+                lErrorNombre.Visible = true;
+            }
+            if (MessageBox.Show("¿Esta seguro que desea modificar el Rol?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+                // proceder con la modificacion
+            }
+        }
+        private void bCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void bBorrar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Esta seguro que desea borrar el Rol?", "Confirmar Borrar", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                // proceder con la modificacion
+            }
         }
     }
 }
