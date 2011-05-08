@@ -39,6 +39,7 @@
             this.lErrorNombre = new System.Windows.Forms.Label();
             this.bBorrar = new System.Windows.Forms.Button();
             this.bModificar = new System.Windows.Forms.Button();
+            this.lErrorRoles = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lNombre
@@ -73,6 +74,7 @@
             this.bCrearOtro.TabIndex = 76;
             this.bCrearOtro.Text = "Crear y Continuar";
             this.bCrearOtro.UseVisualStyleBackColor = true;
+            this.bCrearOtro.Click += new System.EventHandler(this.bCrearOtro_Click);
             // 
             // bLimpiar
             // 
@@ -146,11 +148,24 @@
             this.bModificar.UseVisualStyleBackColor = true;
             this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
             // 
+            // lErrorRoles
+            // 
+            this.lErrorRoles.AutoSize = true;
+            this.lErrorRoles.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorRoles.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lErrorRoles.ForeColor = System.Drawing.Color.Red;
+            this.lErrorRoles.Location = new System.Drawing.Point(343, 125);
+            this.lErrorRoles.Name = "lErrorRoles";
+            this.lErrorRoles.Size = new System.Drawing.Size(22, 29);
+            this.lErrorRoles.TabIndex = 81;
+            this.lErrorRoles.Text = "*";
+            // 
             // FormAbmRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 285);
+            this.ClientSize = new System.Drawing.Size(366, 285);
+            this.Controls.Add(this.lErrorRoles);
             this.Controls.Add(this.bModificar);
             this.Controls.Add(this.bBorrar);
             this.Controls.Add(this.lErrorNombre);
@@ -183,5 +198,6 @@
         private System.Windows.Forms.Label lErrorNombre;
         private System.Windows.Forms.Button bBorrar;
         private System.Windows.Forms.Button bModificar;
+        private System.Windows.Forms.Label lErrorRoles;
     }
 }

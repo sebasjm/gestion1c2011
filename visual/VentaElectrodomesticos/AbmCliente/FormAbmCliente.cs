@@ -9,72 +9,84 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
-
-namespace VentaElectrodomesticos.AbmCliente
-{
-    public partial class FormAbmCliente : Form
-    {
-        public FormAbmCliente()
-        {
+namespace VentaElectrodomesticos.AbmCliente {
+    public partial class FormAbmCliente : Form     {
+        public FormAbmCliente() {
             InitializeComponent();
-            FillProvincias();
+            ViewHelper.fillComboProvincias(cmbProvincia, true);
+            bModificar.Visible = false;
+            bBorrar.Visible = false;
+            lErrorNombre.Visible = false;
+            lErrorApellido.Visible = false;
+            lErrorDNI.Visible = false;
+            lErrorDireccion.Visible = false;
+            lErrorMail.Visible = false;
+            lErrorTelefono.Visible = false;
+            lErrorProvincia.Visible = false;
         }
-        private void bBuscar_Click(object sender, EventArgs e)
-        {
+        private void bBuscar_Click(object sender, EventArgs e) {
             FormListadoClientes form = new FormListadoClientes();
             form.MessageFromParent = null;
             form.ShowDialog(this);
             if (form.MessageFromParent != null) {
                 this.cargarCliente((Cliente)form.MessageFromParent);
-                bCrearOtro.Hide();
-                bLimpiar.Text = "Borrar";
-                bCrear.Text = "Modificar";
+                bCrearOtro.Visible = false;
+                bLimpiar.Visible = false;
+                bModificar.Visible = true;
+                bBorrar.Visible = true;
             }
         }
-        private void cargarCliente(Cliente cargoCliente)
-        {
+        private void cargarCliente(Cliente cargoCliente) {
                 txtApellido.Text = cargoCliente.apellido;
                 txtNombre.Text = cargoCliente.nombre;
                 txtDni.Text = cargoCliente.dni.ToString();
                 txtMail.Text = cargoCliente.mail;
+                // Falta en el modelo agregar los campos que faltan. cmbProvincia.SelectedValue =cargoCliente.pr
         }
-        void FillProvincias()
-        {
-            List<Provincia> provinciasList = Context.instance.dao.provincia.load();
-            try
-            {
-                cmbProvincia.DataSource = provinciasList;
-                cmbProvincia.DisplayMember = "nombre";
-                cmbProvincia.ValueMember = "id";
-                cmbProvincia.SelectedIndex = -1;
-            }
-            catch (NullReferenceException) { }
+        private void bLimpiar_Click(object sender, EventArgs e) {
+            txtApellido.Text = "";
+            txtNombre.Text = "";
+            txtDni.Text = "";
+            txtMail.Text = "";
+            txtDireccion.Text = "";
+            txtTelefono.Text = "";
+            cmbProvincia.SelectedIndex = 0;
         }
-        private void bLimpiar_Click(object sender, EventArgs e)
-        {
-            if (bLimpiar.Text == "Borrar")
-            {
-                if (MessageBox.Show("¿Esta seguro que desea eliminar al cliente?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    // proceder con el borrado
-                }
-            }
-
-        }
-
-        private void bCrear_Click(object sender, EventArgs e)
-        {
-            if (bLimpiar.Text == "Crear")
-            {
-                if (MessageBox.Show("¿Esta seguro que desea crear al cliente?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
+        private void bCrear_Click(object sender, EventArgs e) {
+            this.validadCampos();
+                if (MessageBox.Show("¿Esta seguro que desea crear al cliente?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                     // proceder con la creacion
                 }
-            }else{
-                if (MessageBox.Show("¿Esta seguro que desea modificar al cliente?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    // proceder con la modificacion
-                }
+        }
+        private void validadCampos() {
+            // TODO : Ver como cargar el objeto empleado
+            ValidarHelper.validarCampo(txtNombre, lErrorNombre, "Nombre");
+            ValidarHelper.validarCampo(txtApellido, lErrorApellido, "Apellido");
+            ValidarHelper.validarCampo(txtDni, lErrorDNI, "DNI");
+            ValidarHelper.validarCampo(txtDireccion, lErrorDireccion, "Dirección");
+            ValidarHelper.validarCampo(txtMail, lErrorMail, "Mail");
+            ValidarHelper.validarCampo(txtTelefono, lErrorTelefono, "Teléfono");
+            ValidarHelper.validarCampo(cmbProvincia, lErrorProvincia, "Provincia");
+        }
+        private void bModificar_Click(object sender, EventArgs e)        {
+            this.validadCampos();
+            if (MessageBox.Show("¿Esta seguro que desea modificar al cliente?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)            {
+                // proceder con la modificacion
+            }
+        }
+        private void bBorrar_Click(object sender, EventArgs e)        {
+            if (MessageBox.Show("¿Esta seguro que desea borrar al cliente?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)            {
+                // proceder con la eliminacion
+            }
+        }
+        private void bCancelar_Click(object sender, EventArgs e)        {
+            this.Close();
+        }
+        private void bCrearOtro_Click(object sender, EventArgs e)        {
+            this.validadCampos();
+            if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Cliente?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                // proceder con el Guardado y la Creacion de otro
             }
         }
      }

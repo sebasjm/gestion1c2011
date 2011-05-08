@@ -98,6 +98,7 @@
             resources.ApplyResources(this.bCrearOtro, "bCrearOtro");
             this.bCrearOtro.Name = "bCrearOtro";
             this.bCrearOtro.UseVisualStyleBackColor = true;
+            this.bCrearOtro.Click += new System.EventHandler(this.bCrearOtro_Click);
             // 
             // bLimpiar
             // 

@@ -123,6 +123,7 @@
     <Compile Include="Controladores\Connection.cs" />
     <Compile Include="Controladores\Context.cs" />
     <Compile Include="Controladores\CategoriaDAO.cs" />
+    <Compile Include="Controladores\ValidarHelper.cs" />
     <Compile Include="Controladores\FacturaDAO.cs" />
     <Compile Include="Controladores\StockDAO.cs" />
     <Compile Include="Controladores\ProductoDAO.cs" />
