@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 namespace VentaElectrodomesticos.Modelo {
     class Factura {
-        public int numero {
-            get; set;
+        public Factura(Int32 _numero){
+            this.numero = _numero;
+        }
+        public Int32 numero {
+            get; private set;
         }
         public double descuento {
             get; set;
@@ -16,7 +19,7 @@ namespace VentaElectrodomesticos.Modelo {
         public DateTime fecha {
             get; set;
         }
-        public int cuotas {
+        public Byte cuotas {
             get; set;
         }
         public int cliente_dni {

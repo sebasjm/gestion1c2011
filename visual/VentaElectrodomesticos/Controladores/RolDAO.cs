@@ -24,17 +24,11 @@ namespace VentaElectrodomesticos.Controladores {
         }
         class RolMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
-                //MessageBox.Show("ID : " + sdr.GetValue(0) + "NOMBRE :" + sdr.GetValue(1));
-                // TODO : Ver porque tipo empleado tiene un espacio en la primary
-                String cadena = (string)sdr.GetValue(0).ToString().Trim(' ');
-                return new Rol {
-                    id = (int)Int32.Parse(cadena),
-                    nombre = (string)sdr.GetValue(1),
-                    descripcion = (string)sdr.GetValue(2)
+                return new Rol(sdr.GetByte(0)) {
+                    nombre = sdr.GetString(1),
+                    descripcion = sdr.GetString(2)
                 };
             }
         }
-
     }
-
 }

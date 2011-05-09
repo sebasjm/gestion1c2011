@@ -45,11 +45,13 @@
             this.bBuscar = new System.Windows.Forms.Button();
             this.lConfirmarPassword = new System.Windows.Forms.Label();
             this.lNombreEmpleado = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lErrorEmpleado = new System.Windows.Forms.Label();
+            this.lErrorUsername = new System.Windows.Forms.Label();
+            this.lErrorPassword = new System.Windows.Forms.Label();
+            this.lErrorConfirmPass = new System.Windows.Forms.Label();
+            this.lErrorRoles = new System.Windows.Forms.Label();
+            this.bBorrar = new System.Windows.Forms.Button();
+            this.bModificar = new System.Windows.Forms.Button();
             this.grpListadoRoles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,6 +98,7 @@
             resources.ApplyResources(this.bCrearOtro, "bCrearOtro");
             this.bCrearOtro.Name = "bCrearOtro";
             this.bCrearOtro.UseVisualStyleBackColor = true;
+            this.bCrearOtro.Click += new System.EventHandler(this.bCrearOtro_Click);
             // 
             // bLimpiar
             // 
@@ -148,49 +151,65 @@
             resources.ApplyResources(this.lNombreEmpleado, "lNombreEmpleado");
             this.lNombreEmpleado.Name = "lNombreEmpleado";
             // 
-            // label1
+            // lErrorEmpleado
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.lErrorEmpleado, "lErrorEmpleado");
+            this.lErrorEmpleado.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorEmpleado.ForeColor = System.Drawing.Color.Red;
+            this.lErrorEmpleado.Name = "lErrorEmpleado";
             // 
-            // label2
+            // lErrorUsername
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.lErrorUsername, "lErrorUsername");
+            this.lErrorUsername.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorUsername.ForeColor = System.Drawing.Color.Red;
+            this.lErrorUsername.Name = "lErrorUsername";
             // 
-            // label3
+            // lErrorPassword
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Name = "label3";
+            resources.ApplyResources(this.lErrorPassword, "lErrorPassword");
+            this.lErrorPassword.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorPassword.ForeColor = System.Drawing.Color.Red;
+            this.lErrorPassword.Name = "lErrorPassword";
             // 
-            // label4
+            // lErrorConfirmPass
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Name = "label4";
+            resources.ApplyResources(this.lErrorConfirmPass, "lErrorConfirmPass");
+            this.lErrorConfirmPass.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorConfirmPass.ForeColor = System.Drawing.Color.Red;
+            this.lErrorConfirmPass.Name = "lErrorConfirmPass";
             // 
-            // label5
+            // lErrorRoles
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Name = "label5";
+            resources.ApplyResources(this.lErrorRoles, "lErrorRoles");
+            this.lErrorRoles.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorRoles.ForeColor = System.Drawing.Color.Red;
+            this.lErrorRoles.Name = "lErrorRoles";
+            // 
+            // bBorrar
+            // 
+            resources.ApplyResources(this.bBorrar, "bBorrar");
+            this.bBorrar.Name = "bBorrar";
+            this.bBorrar.UseVisualStyleBackColor = true;
+            this.bBorrar.Click += new System.EventHandler(this.bBorrar_Click);
+            // 
+            // bModificar
+            // 
+            resources.ApplyResources(this.bModificar, "bModificar");
+            this.bModificar.Name = "bModificar";
+            this.bModificar.UseVisualStyleBackColor = true;
+            this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
             // 
             // FormAbmUsuario
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.bModificar);
+            this.Controls.Add(this.bBorrar);
+            this.Controls.Add(this.lErrorConfirmPass);
+            this.Controls.Add(this.lErrorPassword);
+            this.Controls.Add(this.lErrorUsername);
+            this.Controls.Add(this.lErrorEmpleado);
             this.Controls.Add(this.lNombreEmpleado);
             this.Controls.Add(this.lConfirmarPassword);
             this.Controls.Add(this.bBuscar);
@@ -206,7 +225,7 @@
             this.Controls.Add(this.lPassword);
             this.Controls.Add(this.lUsername);
             this.Controls.Add(this.lEmpleado);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lErrorRoles);
             this.Name = "FormAbmUsuario";
             this.grpListadoRoles.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -232,10 +251,12 @@
         private System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.Label lConfirmarPassword;
         private System.Windows.Forms.Label lNombreEmpleado;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lErrorEmpleado;
+        private System.Windows.Forms.Label lErrorUsername;
+        private System.Windows.Forms.Label lErrorPassword;
+        private System.Windows.Forms.Label lErrorConfirmPass;
+        private System.Windows.Forms.Label lErrorRoles;
+        private System.Windows.Forms.Button bBorrar;
+        private System.Windows.Forms.Button bModificar;
     }
 }

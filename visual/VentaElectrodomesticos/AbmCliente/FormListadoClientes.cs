@@ -9,9 +9,6 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using VentaElectrodomesticos.Controladores;
 using VentaElectrodomesticos.Modelo;
-
-
-
 namespace VentaElectrodomesticos.AbmCliente
 {
     public partial class FormListadoClientes : Form
@@ -29,7 +26,7 @@ namespace VentaElectrodomesticos.AbmCliente
         {
             InitializeComponent();
             FillData();
-            FillProvincias();
+            ViewHelper.fillComboProvincias(cmbProvincia, true);
         }
         void FillData()
         {
@@ -37,18 +34,6 @@ namespace VentaElectrodomesticos.AbmCliente
             try
             {
                 dataClientes.DataSource = clientesList;
-            }
-            catch (NullReferenceException) { }
-        }
-        void FillProvincias()
-        {
-            List<Provincia> provinciasList = Context.instance.dao.provincia.load();
-            try
-            {
-                cmbProvincia.DataSource = provinciasList;
-                cmbProvincia.DisplayMember = "nombre";
-                cmbProvincia.ValueMember = "id";
-                cmbProvincia.SelectedIndex = -1;
             }
             catch (NullReferenceException) { }
         }
@@ -86,6 +71,5 @@ namespace VentaElectrodomesticos.AbmCliente
             this.dni = System.Int32.Parse(txtDni.Text);}
             FillData();
         }
-
   }
 }

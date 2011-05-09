@@ -8,7 +8,7 @@ namespace VentaElectrodomesticos.Modelo {
         public Producto(int codigo) {
             this.codigo = codigo;
         }
-        public int codigo {
+        public Int32 codigo {
             get; private set;
         }
         public String nombre {
@@ -17,13 +17,13 @@ namespace VentaElectrodomesticos.Modelo {
         public String descripcion {
             get; set;
         }
-        public float precio {
+        public Double precio {
             get; set;
         }
-        public Int32 marca_id {
+        public Int16 marca_id {
             get; set;
         }
-        public Int32 categoria_id {
+        public Int16 categoria_id {
             get; set;
         }
     }

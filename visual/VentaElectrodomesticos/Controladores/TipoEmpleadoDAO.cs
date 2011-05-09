@@ -5,7 +5,6 @@ using System.Text;
 using VentaElectrodomesticos.Modelo;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-
 namespace VentaElectrodomesticos.Controladores {
     class TipoEmpleadoDAO {
         private Connection connection;
@@ -14,7 +13,6 @@ namespace VentaElectrodomesticos.Controladores {
             Context.instance.dao.addMapper(typeof(TipoEmpleado), new TipoEmpleadoMapper());
         }
         private List<TipoEmpleado> cache = null;
-
         public List<TipoEmpleado> load() {
             if (cache == null) {
                 QueryBuilder q = new QueryBuilder();
@@ -23,26 +21,21 @@ namespace VentaElectrodomesticos.Controladores {
             }
             return cache;
         }
-
         public TipoEmpleado findById(Byte id) {
             if (cache == null)
                 load();
-
             return cache.Find(
                 delegate(TipoEmpleado tipo) {
                     return tipo.id == id;
                 }
             );
         }
-
         class TipoEmpleadoMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
-                return new TipoEmpleado( (Byte) sdr.GetValue(0) )  {
-                    nombre = (String)sdr.GetValue(1)
+                return new TipoEmpleado( sdr.GetByte(0) )  {
+                    nombre = sdr.GetString(1)
                 };
             }
         }
-
     }
-
 }

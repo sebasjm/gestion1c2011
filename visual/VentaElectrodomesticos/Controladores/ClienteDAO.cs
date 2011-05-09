@@ -6,8 +6,6 @@ using VentaElectrodomesticos.Modelo;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using VentaElectrodomesticos.Controladores;
-
-
 namespace VentaElectrodomesticos.Controladores {
     class ClienteDAO {
         private Connection connection;
@@ -25,14 +23,12 @@ namespace VentaElectrodomesticos.Controladores {
 
             return connection.query<Cliente>( q.build(), q.getParams() );
         }
-
-
         class ClienteMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
-                return new Cliente((Int32)sdr.GetValue(0)) {
-                    nombre = (String)sdr.GetValue(1),
-                    apellido = (String)sdr.GetValue(2),
-                    mail = (String)sdr.GetValue(3)
+                return new Cliente(sdr.GetInt32(0)) {
+                    nombre = sdr.GetString(1),
+                    apellido = sdr.GetString(2),
+                    mail = sdr.GetString(3)
                 };
             }
         }

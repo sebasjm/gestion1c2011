@@ -5,13 +5,16 @@ using System.Text;
 
 namespace VentaElectrodomesticos.Modelo {
     class Rol {
-        public int id {
+        public Rol(Int16 id){
+            this.id = id;
+        }
+        public Int16 id {
+            get; private set;
+        }
+        public String nombre {
             get; set;
         }
-        public string nombre {
-            get; set;
-        }
-        public string descripcion {
+        public String descripcion {
             get; set;
         }
     }

@@ -25,19 +25,12 @@ namespace VentaElectrodomesticos.Controladores {
         }
         class FacturaMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
-                    int xnumero = sdr.IsDBNull(0) ? 0: (int)sdr.GetValue(0);
-                    double xdescuento = (sdr.GetValue(1) == null || sdr.IsDBNull(1)) ? (double)0 : (double)sdr.GetValue(1);
-                    double xtotal = (sdr.GetValue(2) == null || sdr.IsDBNull(2)) ? (double)0 : (double)sdr.GetValue(2);
-                    DateTime xfecha = (DateTime)sdr.GetValue(3);
-                    Byte xcuotas = sdr.IsDBNull(4) ? (Byte)0 : (Byte)sdr.GetValue(4);
-                    Int32 xcliente_dni = sdr.IsDBNull(5) ? 0 : (Int32)sdr.GetValue(5);
-                return new Factura() {
-                    numero = xnumero,
-                    descuento = xdescuento,
-                    total = xtotal,
-                    fecha = xfecha,
-                    cuotas = xcuotas,
-                    cliente_dni = xcliente_dni
+                return new Factura(sdr.GetInt32(0)) {
+                    descuento = sdr.GetDouble(1)     ,
+                    total = sdr.GetDouble(2),
+                    fecha = sdr.GetDateTime(3),
+                    cuotas = sdr.GetByte(4),
+                    cliente_dni = sdr.GetInt32(5)
                 };
             }
         }

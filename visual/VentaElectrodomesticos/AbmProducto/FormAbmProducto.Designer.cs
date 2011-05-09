@@ -40,17 +40,18 @@
             this.bBuscar = new System.Windows.Forms.Button();
             this.bCrearOtro = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.bCancelar = new System.Windows.Forms.Button();
             this.bCrear = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lErrorCodigo = new System.Windows.Forms.Label();
+            this.lErrorNombre = new System.Windows.Forms.Label();
+            this.lErrorDescripcion = new System.Windows.Forms.Label();
+            this.lErrorCategoria = new System.Windows.Forms.Label();
+            this.lErrorPrecio = new System.Windows.Forms.Label();
             this.treeCategorias = new System.Windows.Forms.TreeView();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtCategoria = new System.Windows.Forms.Label();
+            this.labelCategoria = new System.Windows.Forms.Label();
+            this.bModificar = new System.Windows.Forms.Button();
+            this.bBorrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtPrecio
@@ -145,6 +146,7 @@
             this.bCrearOtro.TabIndex = 72;
             this.bCrearOtro.Text = "Crear y Continuar";
             this.bCrearOtro.UseVisualStyleBackColor = true;
+            this.bCrearOtro.Click += new System.EventHandler(this.bCrearOtro_Click);
             // 
             // bLimpiar
             // 
@@ -154,15 +156,17 @@
             this.bLimpiar.TabIndex = 71;
             this.bLimpiar.Text = "Limpiar";
             this.bLimpiar.UseVisualStyleBackColor = true;
+            this.bLimpiar.Click += new System.EventHandler(this.bLimpiar_Click);
             // 
-            // button3
+            // bCancelar
             // 
-            this.button3.Location = new System.Drawing.Point(6, 185);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(58, 23);
-            this.button3.TabIndex = 70;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bCancelar.Location = new System.Drawing.Point(6, 185);
+            this.bCancelar.Name = "bCancelar";
+            this.bCancelar.Size = new System.Drawing.Size(58, 23);
+            this.bCancelar.TabIndex = 70;
+            this.bCancelar.Text = "Cancelar";
+            this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // bCrear
             // 
@@ -172,66 +176,67 @@
             this.bCrear.TabIndex = 69;
             this.bCrear.Text = "Crear";
             this.bCrear.UseVisualStyleBackColor = true;
+            this.bCrear.Click += new System.EventHandler(this.bCrear_Click);
             // 
-            // label1
+            // lErrorCodigo
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(311, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(22, 29);
-            this.label1.TabIndex = 73;
-            this.label1.Text = "*";
+            this.lErrorCodigo.AutoSize = true;
+            this.lErrorCodigo.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorCodigo.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lErrorCodigo.ForeColor = System.Drawing.Color.Red;
+            this.lErrorCodigo.Location = new System.Drawing.Point(311, 40);
+            this.lErrorCodigo.Name = "lErrorCodigo";
+            this.lErrorCodigo.Size = new System.Drawing.Size(22, 29);
+            this.lErrorCodigo.TabIndex = 73;
+            this.lErrorCodigo.Text = "*";
             // 
-            // label2
+            // lErrorNombre
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(311, 67);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(22, 29);
-            this.label2.TabIndex = 74;
-            this.label2.Text = "*";
+            this.lErrorNombre.AutoSize = true;
+            this.lErrorNombre.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorNombre.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lErrorNombre.ForeColor = System.Drawing.Color.Red;
+            this.lErrorNombre.Location = new System.Drawing.Point(311, 67);
+            this.lErrorNombre.Name = "lErrorNombre";
+            this.lErrorNombre.Size = new System.Drawing.Size(22, 29);
+            this.lErrorNombre.TabIndex = 74;
+            this.lErrorNombre.Text = "*";
             // 
-            // label3
+            // lErrorDescripcion
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(311, 94);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(22, 29);
-            this.label3.TabIndex = 75;
-            this.label3.Text = "*";
+            this.lErrorDescripcion.AutoSize = true;
+            this.lErrorDescripcion.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorDescripcion.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lErrorDescripcion.ForeColor = System.Drawing.Color.Red;
+            this.lErrorDescripcion.Location = new System.Drawing.Point(311, 94);
+            this.lErrorDescripcion.Name = "lErrorDescripcion";
+            this.lErrorDescripcion.Size = new System.Drawing.Size(22, 29);
+            this.lErrorDescripcion.TabIndex = 75;
+            this.lErrorDescripcion.Text = "*";
             // 
-            // label4
+            // lErrorCategoria
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(311, 122);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(22, 29);
-            this.label4.TabIndex = 76;
-            this.label4.Text = "*";
+            this.lErrorCategoria.AutoSize = true;
+            this.lErrorCategoria.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorCategoria.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lErrorCategoria.ForeColor = System.Drawing.Color.Red;
+            this.lErrorCategoria.Location = new System.Drawing.Point(311, 122);
+            this.lErrorCategoria.Name = "lErrorCategoria";
+            this.lErrorCategoria.Size = new System.Drawing.Size(22, 29);
+            this.lErrorCategoria.TabIndex = 76;
+            this.lErrorCategoria.Text = "*";
             // 
-            // label5
+            // lErrorPrecio
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(311, 149);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(22, 29);
-            this.label5.TabIndex = 77;
-            this.label5.Text = "*";
+            this.lErrorPrecio.AutoSize = true;
+            this.lErrorPrecio.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorPrecio.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lErrorPrecio.ForeColor = System.Drawing.Color.Red;
+            this.lErrorPrecio.Location = new System.Drawing.Point(311, 149);
+            this.lErrorPrecio.Name = "lErrorPrecio";
+            this.lErrorPrecio.Size = new System.Drawing.Size(22, 29);
+            this.lErrorPrecio.TabIndex = 77;
+            this.lErrorPrecio.Text = "*";
             // 
             // treeCategorias
             // 
@@ -244,49 +249,58 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(336, 13);
+            this.label6.Location = new System.Drawing.Point(336, 17);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 13);
+            this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 86;
-            this.label6.Text = "Categoria";
+            this.label6.Text = "Categorias :";
             // 
-            // label7
+            // labelCategoria
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(394, 12);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(22, 29);
-            this.label7.TabIndex = 88;
-            this.label7.Text = "*";
+            this.labelCategoria.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelCategoria.Location = new System.Drawing.Point(131, 122);
+            this.labelCategoria.Name = "labelCategoria";
+            this.labelCategoria.Size = new System.Drawing.Size(172, 22);
+            this.labelCategoria.TabIndex = 89;
             // 
-            // txtCategoria
+            // bModificar
             // 
-            this.txtCategoria.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCategoria.Location = new System.Drawing.Point(131, 122);
-            this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.Size = new System.Drawing.Size(172, 22);
-            this.txtCategoria.TabIndex = 89;
+            this.bModificar.Location = new System.Drawing.Point(339, 190);
+            this.bModificar.Name = "bModificar";
+            this.bModificar.Size = new System.Drawing.Size(116, 23);
+            this.bModificar.TabIndex = 90;
+            this.bModificar.Text = "Modificar";
+            this.bModificar.UseVisualStyleBackColor = true;
+            this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
+            // 
+            // bBorrar
+            // 
+            this.bBorrar.Location = new System.Drawing.Point(70, 185);
+            this.bBorrar.Name = "bBorrar";
+            this.bBorrar.Size = new System.Drawing.Size(58, 23);
+            this.bBorrar.TabIndex = 91;
+            this.bBorrar.Text = "Borrar";
+            this.bBorrar.UseVisualStyleBackColor = true;
+            this.bBorrar.Click += new System.EventHandler(this.bBorrar_Click);
             // 
             // FormAbmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(478, 254);
-            this.Controls.Add(this.txtCategoria);
+            this.Controls.Add(this.bBorrar);
+            this.Controls.Add(this.bModificar);
+            this.Controls.Add(this.labelCategoria);
             this.Controls.Add(this.treeCategorias);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lErrorPrecio);
+            this.Controls.Add(this.lErrorCategoria);
+            this.Controls.Add(this.lErrorDescripcion);
+            this.Controls.Add(this.lErrorNombre);
+            this.Controls.Add(this.lErrorCodigo);
             this.Controls.Add(this.bCrearOtro);
             this.Controls.Add(this.bLimpiar);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bCrear);
             this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.txtPrecio);
@@ -320,16 +334,17 @@
         private System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.Button bCrearOtro;
         private System.Windows.Forms.Button bLimpiar;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bCrear;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lErrorCodigo;
+        private System.Windows.Forms.Label lErrorNombre;
+        private System.Windows.Forms.Label lErrorDescripcion;
+        private System.Windows.Forms.Label lErrorCategoria;
+        private System.Windows.Forms.Label lErrorPrecio;
         private System.Windows.Forms.TreeView treeCategorias;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label txtCategoria;
+        private System.Windows.Forms.Label labelCategoria;
+        private System.Windows.Forms.Button bModificar;
+        private System.Windows.Forms.Button bBorrar;
     }
 }
