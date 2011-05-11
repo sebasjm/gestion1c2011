@@ -53,7 +53,7 @@ CREATE TABLE [la_huerta].[Sucursal](
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Usuario](
-	[id] [int] NOT NULL,
+	[id] [int] IDENTITY(1,1) NOT NULL,
 	[username] [varchar](10) NOT NULL,
 	[password] [varchar](64) NOT NULL,
 	primary key (id),
@@ -543,7 +543,7 @@ order by
 ----------------
 -- Tablas de usuario
 ----------------
-insert into la_huerta.Usuario values (1,'admin','E6B87050BFCB8143FCB8DB0170A4DC9ED00D904DDD3E2A4AD1B1E8DC0FDC9BE7')
+-- insert into la_huerta.Usuario values (1,'admin','E6B87050BFCB8143FCB8DB0170A4DC9ED00D904DDD3E2A4AD1B1E8DC0FDC9BE7')
 
 -------
 
