@@ -24,6 +24,25 @@ namespace VentaElectrodomesticos.Controladores {
                 };
             }
         }
+        public void insertar(Usuario usuario)
+        {
+            List<String> valores = new List<String>();
+            List<String> columnas = new List<String>();
+
+            columnas.Add("username");
+            columnas.Add("password");
+
+            valores.Add(usuario.username);
+            valores.Add(usuario.password);
+
+            QueryBuilder q = new QueryBuilder();
+            q.insert("la_huerta.usuario")
+            
+                .columns(columnas)
+                .values(valores);
+
+            connection.query<Usuario>(q.build(), q.getParams());
+        }
         public List<Usuario> search(string username)
         {
             QueryBuilder q = new QueryBuilder();
@@ -45,3 +64,4 @@ namespace VentaElectrodomesticos.Controladores {
     }
 
 }
+

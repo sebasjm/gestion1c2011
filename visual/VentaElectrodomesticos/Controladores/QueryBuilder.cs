@@ -8,6 +8,10 @@ namespace VentaElectrodomesticos.Controladores {
 
         private string query;
         private List<object> filters;
+        private bool firstFilter = true;
+        //para insert
+        private bool firstColumn = true;
+        private bool firstValue = true;
 
         public QueryBuilder() {
             query = "";
@@ -24,7 +28,7 @@ namespace VentaElectrodomesticos.Controladores {
             return this;
         }
 
-        private bool firstFilter = true;
+        
 
         public QueryBuilder filterIf(bool condition, string filter, object param) {
             if (condition) {
@@ -41,6 +45,34 @@ namespace VentaElectrodomesticos.Controladores {
 
         public object[] getParams() {
             return filters.ToArray();
+        }
+        // PARA INSERT:
+        public QueryBuilder insert(String table)
+        {
+            query += "INSERT INTO " + table;
+            return this;
+        }
+        public QueryBuilder columns(List<String> columnas)
+        {
+            query += " ( ";
+            foreach (String columna in columnas) {
+                query += (firstColumn ? "" : " , ") + columna;
+                firstColumn = false;
+            }
+                       
+            query += " ) ";
+            return this;
+        }
+        public QueryBuilder values(List<String> valores)
+        {
+            query += " VALUES ( ";
+            foreach (String valor in valores)
+            {
+                query += (firstValue ? "" : " , ") + valor;
+                firstValue = false;
+            }
+            query += " ) ";
+            return this;
         }
     }
 }
