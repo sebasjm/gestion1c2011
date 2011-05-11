@@ -91,6 +91,10 @@ namespace VentaElectrodomesticos.AbmUsuario
                 if (MessageBox.Show("¿Esta seguro que desea crear al Usuario?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     // proceder con la creacion
+                    Usuario user = new Usuario(0);
+                    user.password = this.txtPassword.Text;
+                    user.username = this.txtUsername.Text;
+                    Context.instance.dao.user.insertar(user);
                 }
         }
         private void bCancelar_Click(object sender, EventArgs e)
