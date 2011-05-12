@@ -14,6 +14,8 @@ namespace VentaElectrodomesticos.AbmProducto
     public partial class FormAbmProducto : Form
     {
         List<Categoria> items = new List<Categoria>();
+        AutoCompleteStringCollection namesCollection = new AutoCompleteStringCollection();
+        Producto producto;
         public FormAbmProducto()        {
             InitializeComponent();
             buildtree();
@@ -25,6 +27,14 @@ namespace VentaElectrodomesticos.AbmProducto
             lErrorDescripcion.Visible = false;
             lErrorCategoria.Visible = false;
             lErrorPrecio.Visible = false;
+            List<Marca> marcasList = Context.instance.dao.marca.search("");
+            foreach (Marca marca in marcasList)
+            {
+                namesCollection.Add(marca.nombre);
+            };
+            txtNombre.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtNombre.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtNombre.AutoCompleteCustomSource = namesCollection;
         }
         private void validadCampos()        {
             // TODO : Ver como cargar el objeto empleado
@@ -91,6 +101,8 @@ namespace VentaElectrodomesticos.AbmProducto
             }
         }
         private void cargarProducto(Producto prod) {
+            this.limpiar();
+            this.producto = prod;
             txtCodigoProducto.Text = "" + prod.codigo;
             txtDescripcion.Text = prod.descripcion;
             txtNombre.Text = prod.nombre;
@@ -112,12 +124,27 @@ namespace VentaElectrodomesticos.AbmProducto
             if (MessageBox.Show("¿Esta seguro que desea modificar el Producto?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la modificacion
+                TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
+                Categoria cate = null;
+                if (NodoSeleccionado != null)
+                {
+                    cate = (Categoria)NodoSeleccionado.Tag;
+                }
+                Marca marca = Context.instance.dao.marca.findByNombre(txtNombre.Text);
+                this.producto.nombre = txtNombre.Text;
+                this.producto.marca_id = (marca == null ) ? (short)0 : (short)marca.id;
+                this.producto.descripcion = txtDescripcion.Text;
+                this.producto.categoria_id = (cate == null) ? this.producto.categoria_id : cate.id;
+                this.producto.precio = Double.Parse(txtPrecio.Text);
+                Context.instance.dao.producto.modificar(this.producto);
             }
         }
         private void bBorrar_Click(object sender, EventArgs e)        {
             if (MessageBox.Show("¿Esta seguro que desea borrar el Producto?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la eliminacion
+                Context.instance.dao.producto.delete(this.producto);
+                this.limpiar();
             }
         }
         private void bCancelar_Click(object sender, EventArgs e)        {
@@ -128,9 +155,26 @@ namespace VentaElectrodomesticos.AbmProducto
             if (MessageBox.Show("¿Esta seguro que desea crear el Producto?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la creacion
+                Producto productoNew = new Producto(Int32.Parse(txtCodigoProducto.Text));
+                TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
+                Categoria cate = null;
+                if (NodoSeleccionado != null)
+                {
+                    cate = (Categoria)NodoSeleccionado.Tag;
+                }
+                Marca marca = Context.instance.dao.marca.findByNombre(txtNombre.Text);
+                productoNew.nombre = txtNombre.Text;
+                productoNew.descripcion = txtDescripcion.Text;
+                productoNew.categoria_id = cate.id;
+                productoNew.marca_id = (short)marca.id;
+                productoNew.precio = Double.Parse(txtPrecio.Text);
+                Context.instance.dao.producto.insertar(productoNew);
             }
         }
         private void bLimpiar_Click(object sender, EventArgs e)        {
+            this.limpiar();
+        }
+        private void limpiar() {
             txtCodigoProducto.Text = "";
             txtDescripcion.Text = "";
             txtNombre.Text = "";

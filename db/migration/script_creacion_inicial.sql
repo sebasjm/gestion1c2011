@@ -10,6 +10,7 @@ CREATE TABLE [la_huerta].[Cliente](
 	[telefono] [varchar](20) NOT NULL,
 	[direccion] [varchar](60) NOT NULL,
 	[provincia_id] [tinyint] NOT NULL,
+    [activo] [bit] NOT NULL DEFAULT 1,
 	primary key (dni),
 --	unique (mail)
 ) ON [PRIMARY]
@@ -59,6 +60,7 @@ CREATE TABLE [la_huerta].[Usuario](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[username] [varchar](10) NOT NULL,
 	[password] [varchar](64) NOT NULL,
+    [activo] [bit] NOT NULL DEFAULT 1,
 	primary key (id),
 	unique (username)
 ) ON [PRIMARY]
@@ -99,6 +101,7 @@ CREATE TABLE [la_huerta].[Producto](
 	[precio] [float] NOT NULL,
 	[marca_id] [smallint] NOT NULL,
 	[categoria_id] [smallint] NOT NULL,
+    [activo] [bit] NOT NULL DEFAULT 1,
 	primary key (codigo),
     foreign key (marca_id) references [la_huerta].[Marca](id),
     foreign key (categoria_id) references [la_huerta].[Categoria](id),
@@ -149,6 +152,7 @@ CREATE TABLE [la_huerta].[Rol](
 	[id] [tinyint] IDENTITY(1,1) NOT NULL,
 	[nombre] [varchar](10) NOT NULL,
 	[descripcion] [varchar](50) NOT NULL,
+	[activo] [bit] NOT NULL DEFAULT 1,
 	primary key (id),
 	unique (nombre)
 ) ON [PRIMARY]
@@ -286,7 +290,8 @@ SELECT
 	cli_mail as mail ,
     '' as telefono,
     '' as direccion,
-	0 as provincia_id
+	0 as provincia_id,
+	1 as activo
 FROM gd_esquema.Maestra
 WHERE cli_dni is not null
 GROUP BY cli_dni, cli_nombre, cli_apellido, cli_mail
@@ -494,7 +499,8 @@ SELECT
 	producto_desc as descripcion,
 	producto_precio as precio,
 	m.id as marca_id,
-    cat.id as categoria_id
+    cat.id as categoria_id ,
+	1 as activo
 FROM gd_esquema.Maestra 
 JOIN la_huerta.Categoria as cat ON la_huerta.get_categoria_fullname( producto_cate ) = cat.id
 JOIN la_huerta.Marca as m ON m.nombre = producto_marca

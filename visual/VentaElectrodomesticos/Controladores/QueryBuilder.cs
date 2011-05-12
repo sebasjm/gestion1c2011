@@ -94,6 +94,18 @@ namespace VentaElectrodomesticos.Controladores {
             {
                 return "" + valor;
             }
+            if (valor.GetType() == typeof(System.Double))
+            {
+                return Convert.ToString(valor);
+            }
+            if (valor.GetType() == typeof(System.Int16))
+            {
+                return "" + valor;
+            }
+            if (valor.GetType() == typeof(System.Byte))
+            {
+                return "" + valor;
+            }
             return (String)valor;
         }
         // Para Update

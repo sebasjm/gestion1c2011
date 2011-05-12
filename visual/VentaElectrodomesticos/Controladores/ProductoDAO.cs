@@ -53,7 +53,8 @@ namespace VentaElectrodomesticos.Controladores {
             campos.Add(new Campo("codigo", (int)producto.codigo));
             campos.Add(new Campo("nombre", (string)producto.nombre));
             campos.Add(new Campo("descripcion", (string)producto.descripcion));
-            campos.Add(new Campo("categoria", (int)producto.categoria_id));
+            campos.Add(new Campo("categoria_id", (int)producto.categoria_id));
+            campos.Add(new Campo("marca_id", (short)producto.marca_id));
             campos.Add(new Campo("precio", (double)producto.precio));
             QueryBuilder q = new QueryBuilder();
             q.insert("la_huerta.producto")
@@ -66,7 +67,7 @@ namespace VentaElectrodomesticos.Controladores {
             campos.Add(new Campo("codigo", (int)_producto.codigo));
             campos.Add(new Campo("nombre", (string)_producto.nombre));
             campos.Add(new Campo("descripcion", (string)_producto.descripcion));
-            campos.Add(new Campo("categoria", (int)_producto.categoria_id));
+            campos.Add(new Campo("categoria_id", (int)_producto.categoria_id));
             campos.Add(new Campo("precio", (double)_producto.precio));
             QueryBuilder q = new QueryBuilder();
             q.update("la_huerta.producto")

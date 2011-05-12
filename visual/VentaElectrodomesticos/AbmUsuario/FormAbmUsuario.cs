@@ -58,6 +58,7 @@ namespace VentaElectrodomesticos.AbmUsuario
         }
         private void cargarUsuario(Usuario cargoUsuario)
         {
+            this.limpiar();
             this.user = cargoUsuario;
             txtUsername.Text = cargoUsuario.username;
         }
@@ -81,13 +82,16 @@ namespace VentaElectrodomesticos.AbmUsuario
         }
         private void bLimpiar_Click(object sender, EventArgs e)
         {
-                this.txtUsername.Text = "";
-                this.lNombreEmpleado.Text = "";
-                this.txtConfirmarPassword.Text = "";
-                this.txtPassword.Text = "";
-                for (int i = 0; i < chkListadoRoles.Items.Count; ++i)
-                    chkListadoRoles.SetItemChecked(i, false);            
-         }
+            this.limpiar();
+        }
+        private void limpiar() {
+            this.txtUsername.Text = "";
+            this.lNombreEmpleado.Text = "";
+            this.txtConfirmarPassword.Text = "";
+            this.txtPassword.Text = "";
+            for (int i = 0; i < chkListadoRoles.Items.Count; ++i)
+                chkListadoRoles.SetItemChecked(i, false);   
+        }
         private void bCrear_Click(object sender, EventArgs e)
         {
             this.validadCampos();

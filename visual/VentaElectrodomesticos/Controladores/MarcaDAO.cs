@@ -23,6 +23,17 @@ namespace VentaElectrodomesticos.Controladores {
                 .filterIf(nombre.Length != 0, "nombre like '%{0}%' ", nombre);
             return connection.query<Marca>(q.build(), q.getParams());
         }
+        public Marca findByNombre(string nombre)
+        {
+            QueryBuilder q = new QueryBuilder();
+            q.select()
+                .from("la_huerta.marca")
+                .filterIf(nombre.Length != 0, "nombre like '%{0}%' ", nombre);
+          List<Marca> marcas = connection.query<Marca>(q.build(), q.getParams());
+          if (marcas.Count == 0)
+              return null;
+            return marcas[0];
+        }
         class MarcaMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
                 return new Marca (sdr.GetInt16(0)){

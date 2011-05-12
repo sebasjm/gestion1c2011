@@ -18,6 +18,17 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             ViewHelper.fillComboProvincias(cmbProvincia,true);
             ViewHelper.fillComboSucursales(cmbSucursal,true);
             ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado,true);
+            bModificar.Hide();
+            bBorrar.Hide();
+            lErrorApellido.Hide();
+            lErrorDNI.Hide();
+            lErrorMail.Hide();
+            lErrorNombre.Hide();
+            lErrorProvincia.Hide();
+            lErrorSucursal.Hide();
+            lErrorTelefono.Hide();
+            lErrorTipoEmpleado.Hide();
+            lErrorDireccion.Hide();
         }
         private void bBuscar_Click(object sender, EventArgs e) {
             FormListadoEmpleados form = new FormListadoEmpleados();
@@ -32,6 +43,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             }
         }
         private void cargarEmpleado(Empleado cargoEmpleado) {
+            this.limpiar();
             this.empleado = cargoEmpleado;
             txtApellido.Text = cargoEmpleado.apellido;
             txtNombre.Text = cargoEmpleado.nombre;
@@ -44,6 +56,9 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             cmbTipoEmpleado.SelectedValue = cargoEmpleado.tipoEmpleadoId;
         }
         private void bLimpiar_Click(object sender, EventArgs e) {
+            this.limpiar();
+        }
+        private void limpiar() {
             txtApellido.Text = "";
             txtNombre.Text = "";
             txtDni.Text = "";
@@ -61,7 +76,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
         private void bCrear_Click(object sender, EventArgs e) {
             if (MessageBox.Show("¿Esta seguro que desea crear el Empleado?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                // proceder con el borrado
+                // proceder con la creacion
                 Empleado empleadoNew = new Empleado(Int32.Parse(txtDni.Text));
                 empleadoNew.apellido = txtApellido.Text;
                 empleadoNew.nombre = txtNombre.Text;
@@ -89,13 +104,13 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 Context.instance.dao.empleado.modificar(this.empleado);
             }
         }
-
         private void bBorrar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Esta seguro que desea eliminar al Empleado?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el borrado
                 Context.instance.dao.empleado.delete(empleado);
+                this.limpiar();
             }
         }
     }

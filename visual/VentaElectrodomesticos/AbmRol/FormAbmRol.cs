@@ -38,6 +38,7 @@ namespace VentaElectrodomesticos.AbmRol
             }
         }
         private void cargarRol(Rol rol){
+            this.limpiar();
             txtNombre.Text = rol.nombre;
         }
         private void fillPermisos()
@@ -61,6 +62,9 @@ namespace VentaElectrodomesticos.AbmRol
         }
         private void bLimpiar_Click(object sender, EventArgs e)
         {
+            this.limpiar();
+        }
+        private void limpiar() {
             this.txtNombre.Text = "";
             for (int i = 0; i < chkListadoRoles.Items.Count; ++i)
                 chkListadoRoles.SetItemChecked(i, false); 
