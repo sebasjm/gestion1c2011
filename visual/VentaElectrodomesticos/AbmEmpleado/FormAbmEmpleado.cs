@@ -12,6 +12,7 @@ using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
 namespace VentaElectrodomesticos.AbmEmpleado {
     public partial class FormAbmEmpleado : Form {
+        private Empleado empleado;
         public FormAbmEmpleado() {
             InitializeComponent();
             ViewHelper.fillComboProvincias(cmbProvincia,true);
@@ -27,10 +28,11 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 bCrearOtro.Hide();
                 bCrear.Hide();
                 bModificar.Show();
-                bEliminar.Show();
+                bBorrar.Show();
             }
         }
         private void cargarEmpleado(Empleado cargoEmpleado) {
+            this.empleado = cargoEmpleado;
             txtApellido.Text = cargoEmpleado.apellido;
             txtNombre.Text = cargoEmpleado.nombre;
             txtDni.Text = cargoEmpleado.dni.ToString();
@@ -54,12 +56,21 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             bCrearOtro.Show();
             bCrear.Show();
             bModificar.Hide();
-            bEliminar.Hide();
+            bBorrar.Hide();
         }
         private void bCrear_Click(object sender, EventArgs e) {
             if (MessageBox.Show("¿Esta seguro que desea crear el Empleado?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el borrado
+                Empleado empleadoNew = new Empleado(Int32.Parse(txtDni.Text));
+                empleadoNew.apellido = txtApellido.Text;
+                empleadoNew.nombre = txtNombre.Text;
+                empleadoNew.mail = txtMail.Text;
+                empleadoNew.telefono = txtTelefono.Text;
+                empleadoNew.direccion = txtDireccion.Text;
+                empleadoNew.sucursalId = (Byte)cmbSucursal.SelectedValue;
+                empleadoNew.tipoEmpleadoId = (Byte)cmbTipoEmpleado.SelectedValue;
+                Context.instance.dao.empleado.insertar(empleadoNew);
             }
         }
         private void bCancelar_Click(object sender, EventArgs e) {
@@ -68,11 +79,23 @@ namespace VentaElectrodomesticos.AbmEmpleado {
         private void bModificar_Click(object sender, EventArgs e) {
             if (MessageBox.Show("¿Esta seguro que desea modificar al cliente?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con la modificacion
+                this.empleado.apellido = txtApellido.Text;
+                this.empleado.nombre = txtNombre.Text;
+                this.empleado.mail = txtMail.Text;
+                this.empleado.telefono = txtTelefono.Text;
+                this.empleado.direccion = txtDireccion.Text;
+                this.empleado.sucursalId = (Byte)cmbSucursal.SelectedValue  ;
+                this.empleado.tipoEmpleadoId = (Byte)cmbTipoEmpleado.SelectedValue;
+                Context.instance.dao.empleado.modificar(this.empleado);
             }
         }
-        private void bEliminar_Click(object sender, EventArgs e) {
-            if (MessageBox.Show("¿Esta seguro que desea eliminar al Empleado?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+
+        private void bBorrar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Esta seguro que desea eliminar al Empleado?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
                 // proceder con el borrado
+                Context.instance.dao.empleado.delete(empleado);
             }
         }
     }

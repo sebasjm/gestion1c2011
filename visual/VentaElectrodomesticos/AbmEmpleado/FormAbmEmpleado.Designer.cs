@@ -60,8 +60,8 @@
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.lDireccion = new System.Windows.Forms.Label();
             this.bModificar = new System.Windows.Forms.Button();
-            this.bEliminar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
+            this.bBorrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNombre
@@ -217,7 +217,7 @@
             // 
             // bLimpiar
             // 
-            this.bLimpiar.Location = new System.Drawing.Point(137, 187);
+            this.bLimpiar.Location = new System.Drawing.Point(124, 187);
             this.bLimpiar.Name = "bLimpiar";
             this.bLimpiar.Size = new System.Drawing.Size(94, 23);
             this.bLimpiar.TabIndex = 67;
@@ -368,17 +368,6 @@
             this.bModificar.Visible = false;
             this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
             // 
-            // bEliminar
-            // 
-            this.bEliminar.Location = new System.Drawing.Point(338, 216);
-            this.bEliminar.Name = "bEliminar";
-            this.bEliminar.Size = new System.Drawing.Size(105, 23);
-            this.bEliminar.TabIndex = 80;
-            this.bEliminar.Text = "Eliminar";
-            this.bEliminar.UseVisualStyleBackColor = true;
-            this.bEliminar.Visible = false;
-            this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -391,14 +380,24 @@
             this.label9.TabIndex = 81;
             this.label9.Text = "*";
             // 
+            // bBorrar
+            // 
+            this.bBorrar.Location = new System.Drawing.Point(124, 187);
+            this.bBorrar.Name = "bBorrar";
+            this.bBorrar.Size = new System.Drawing.Size(94, 23);
+            this.bBorrar.TabIndex = 82;
+            this.bBorrar.Text = "Borrar";
+            this.bBorrar.UseVisualStyleBackColor = true;
+            this.bBorrar.Click += new System.EventHandler(this.bBorrar_Click);
+            // 
             // FormAbmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(476, 257);
+            this.Controls.Add(this.bBorrar);
             this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.bEliminar);
             this.Controls.Add(this.bModificar);
             this.Controls.Add(this.lDireccion);
             this.Controls.Add(this.label8);
@@ -472,7 +471,7 @@
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label lDireccion;
         private System.Windows.Forms.Button bModificar;
-        private System.Windows.Forms.Button bEliminar;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button bBorrar;
     }
 }

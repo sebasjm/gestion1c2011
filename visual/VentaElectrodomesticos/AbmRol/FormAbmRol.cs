@@ -92,11 +92,13 @@ namespace VentaElectrodomesticos.AbmRol
                 // proceder con la modificacion
             }
         }
-        private void validadCampos()
+        private bool validadCampos()
         {
             // TODO : Ver como cargar el objeto empleado
-            ValidarHelper.validarCampo(txtNombre, lErrorNombre, "Nombre");
-            ValidarHelper.validarCampo(chkListadoRoles, lErrorRoles, "Roles");
+            ValidarHelper validador = new ValidarHelper();
+            validador.validarCampo(txtNombre, lErrorNombre, "Nombre");
+            validador.validarCampo(chkListadoRoles, lErrorRoles, "Roles");
+            return validador.getEstado();
         }
         private void bCrearOtro_Click(object sender, EventArgs e)        {
             this.validadCampos();

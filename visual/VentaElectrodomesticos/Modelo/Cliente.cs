@@ -20,5 +20,17 @@ namespace VentaElectrodomesticos.Modelo {
         public String mail {
             get; set;
         }
+        public String telefono
+        {
+            get;            set;
+        }
+        public String direccion
+        {
+            get;            set;
+        }
+        public Byte provinciaId
+        {
+            get;            set;
+        }
     }
 }

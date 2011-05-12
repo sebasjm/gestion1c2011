@@ -28,11 +28,12 @@ namespace VentaElectrodomesticos.AbmProducto
         }
         private void validadCampos()        {
             // TODO : Ver como cargar el objeto empleado
-            ValidarHelper.validarCampo(txtCodigoProducto, lErrorCodigo, "Código del Producto");
-            ValidarHelper.validarCampo(txtDescripcion, lErrorDescripcion, "Descripción");
-            ValidarHelper.validarCampo(txtNombre, lErrorDescripcion, "Nombre");
-            ValidarHelper.validarCampo(labelCategoria, lErrorCategoria, "Categoría");
-            ValidarHelper.validarCampo(txtPrecio, lErrorPrecio, "Precio");
+            ValidarHelper validador = new ValidarHelper();
+            validador.validarCampo(txtCodigoProducto, lErrorCodigo, "Código del Producto");
+            validador.validarCampo(txtDescripcion, lErrorDescripcion, "Descripción");
+            validador.validarCampo(txtNombre, lErrorDescripcion, "Nombre");
+            validador.validarCampo(labelCategoria, lErrorCategoria, "Categoría");
+            validador.validarCampo(txtPrecio, lErrorPrecio, "Precio");
         }
         private void buildtree()        {
             this.items = Context.instance.dao.categoria.search(0 , "");

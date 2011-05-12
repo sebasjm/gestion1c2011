@@ -60,13 +60,14 @@ namespace VentaElectrodomesticos.AbmCliente {
         }
         private void validadCampos() {
             // TODO : Ver como cargar el objeto empleado
-            ValidarHelper.validarCampo(txtNombre, lErrorNombre, "Nombre");
-            ValidarHelper.validarCampo(txtApellido, lErrorApellido, "Apellido");
-            ValidarHelper.validarCampo(txtDni, lErrorDNI, "DNI");
-            ValidarHelper.validarCampo(txtDireccion, lErrorDireccion, "Dirección");
-            ValidarHelper.validarCampo(txtMail, lErrorMail, "Mail");
-            ValidarHelper.validarCampo(txtTelefono, lErrorTelefono, "Teléfono");
-            ValidarHelper.validarCampo(cmbProvincia, lErrorProvincia, "Provincia");
+            ValidarHelper validador = new ValidarHelper();
+            validador.validarCampo(txtNombre, lErrorNombre, "Nombre");
+            validador.validarCampo(txtApellido, lErrorApellido, "Apellido");
+            validador.validarCampo(txtDni, lErrorDNI, "DNI");
+            validador.validarCampo(txtDireccion, lErrorDireccion, "Dirección");
+            validador.validarCampo(txtMail, lErrorMail, "Mail");
+            validador.validarCampo(txtTelefono, lErrorTelefono, "Teléfono");
+            validador.validarCampo(cmbProvincia, lErrorProvincia, "Provincia");
         }
         private void bModificar_Click(object sender, EventArgs e)        {
             this.validadCampos();

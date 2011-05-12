@@ -92,7 +92,7 @@ namespace VentaElectrodomesticos.Controladores {
             }
             if (valor.GetType() == typeof(int))
             {
-                return (String)valor;
+                return "" + valor;
             }
             return (String)valor;
         }

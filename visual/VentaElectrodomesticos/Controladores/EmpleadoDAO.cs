@@ -17,10 +17,12 @@ namespace VentaElectrodomesticos.Controladores {
                     nombre = sdr.GetString(1),
                     apellido = sdr.GetString(2),
                     mail = sdr.GetString(3),
-                    direccion = sdr.GetString(4),
-                    tipoEmpleadoId = sdr.GetByte(5),
-                    sucursalId = sdr.GetByte(6),
-                    usuarioId = sdr.IsDBNull(8) ? -1 : (Int32)sdr.GetValue(8)
+                    telefono = sdr.GetString(4),
+                    direccion = sdr.GetString(5),
+                    tipoEmpleadoId = sdr.GetByte(6),
+                    sucursalId = sdr.GetByte(7),
+                  
+                    usuarioId = sdr.IsDBNull(9) ? -1 : (Int32)sdr.GetValue(9)
                 };
             }
         }
@@ -32,21 +34,22 @@ namespace VentaElectrodomesticos.Controladores {
                 .filterIf(apellido.Length != 0, "apellido like '%{1}%' ", apellido)
                 .filterIf(dni != 0, "dni = {2} ", dni)
                 .filterIf(suc != null && suc.id != 0, "sucursal_id = {3} ", suc != null ? suc.id : 0)
-                .filterIf(tipoEmp != null && tipoEmp.id != 0, "tipoEmpleado_id = {4} ", tipoEmp != null ? tipoEmp.id : 0);
+                .filterIf(tipoEmp != null && tipoEmp.id != 0, "tipoEmpleado_id = {4} ", tipoEmp != null ? tipoEmp.id : 0)
+                .filterIf(true, "activo = {5} ", 1);
             return connection.query<Empleado>( q.build() , q.getParams() );
         }
         //CRUD
-        public void insertar(Empleado usuario)
+        public void insertar(Empleado empleado)
         {
             List<Campo> campos = new List<Campo>();
-            campos.Add(new Campo("nombre", (string)usuario.nombre));
-            campos.Add(new Campo("apellido", (string)usuario.apellido));
-            campos.Add(new Campo("dni", (int)usuario.dni));
-            campos.Add(new Campo("mail", (string)usuario.mail));
-            campos.Add(new Campo("telefono", (string)usuario.telefono));
-            campos.Add(new Campo("direccion", (string)usuario.direccion));
-            campos.Add(new Campo("sucursal_id", (int)usuario.sucursalId));
-            campos.Add(new Campo("tipoempleado_id", (int)usuario.tipoEmpleadoId));
+            campos.Add(new Campo("nombre", (string)empleado.nombre));
+            campos.Add(new Campo("apellido", (string)empleado.apellido));
+            campos.Add(new Campo("dni", (int)empleado.dni));
+            campos.Add(new Campo("mail", (string)empleado.mail));
+            campos.Add(new Campo("telefono", (string)empleado.telefono));
+            campos.Add(new Campo("direccion", (string)empleado.direccion));
+            campos.Add(new Campo("sucursal_id", (int)empleado.sucursalId));
+            campos.Add(new Campo("tipoempleado_id", (int)empleado.tipoEmpleadoId));
             QueryBuilder q = new QueryBuilder();
             q.insert("la_huerta.empleado")
                 .valores_insert(campos);

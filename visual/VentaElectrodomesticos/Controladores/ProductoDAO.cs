@@ -29,7 +29,7 @@ namespace VentaElectrodomesticos.Controladores {
                 .filterIf(categoria != 0 , " categoria_id = {3}", categoria)
                 .filterIf(precioDesde != 0, " precio >= {4}", precioDesde)
                 .filterIf(precioHasta != 0, " precio <= {5}", precioHasta)
-                ;
+                .filterIf(true, "activo = {6} ", 1);
             return connection.query<Producto>( q.build(), q.getParams() );
         }
         class ProductoMapper : Mapper<Object>
@@ -45,6 +45,44 @@ namespace VentaElectrodomesticos.Controladores {
                     categoria_id = sdr.GetInt16(5)
                 };
             }
+        }
+        //CRUD
+        public void insertar(Producto producto)
+        {
+            List<Campo> campos = new List<Campo>();
+            campos.Add(new Campo("codigo", (int)producto.codigo));
+            campos.Add(new Campo("nombre", (string)producto.nombre));
+            campos.Add(new Campo("descripcion", (string)producto.descripcion));
+            campos.Add(new Campo("categoria", (int)producto.categoria_id));
+            campos.Add(new Campo("precio", (double)producto.precio));
+            QueryBuilder q = new QueryBuilder();
+            q.insert("la_huerta.producto")
+                .valores_insert(campos);
+            connection.query<Usuario>(q.build(), q.getParams());
+        }
+        public void modificar(Producto _producto)
+        {
+            List<Campo> campos = new List<Campo>();
+            campos.Add(new Campo("codigo", (int)_producto.codigo));
+            campos.Add(new Campo("nombre", (string)_producto.nombre));
+            campos.Add(new Campo("descripcion", (string)_producto.descripcion));
+            campos.Add(new Campo("categoria", (int)_producto.categoria_id));
+            campos.Add(new Campo("precio", (double)_producto.precio));
+            QueryBuilder q = new QueryBuilder();
+            q.update("la_huerta.producto")
+                .valores_update(campos)
+                .filterIf(_producto.codigo != 0, "codigo = {0}", _producto.codigo);
+            connection.query<Usuario>(q.build(), q.getParams());
+        }
+        public void delete(Producto _producto)
+        {
+            List<Campo> campos = new List<Campo>();
+            campos.Add(new Campo("activo", (int)0));
+            QueryBuilder q = new QueryBuilder();
+            q.update("la_huerta.producto")
+                .valores_update(campos)
+                .filterIf(_producto.codigo != 0, "codigo = {0}", _producto.codigo);
+            connection.query<Usuario>(q.build(), q.getParams());
         }
     }
 }

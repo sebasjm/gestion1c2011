@@ -7,6 +7,9 @@ CREATE TABLE [la_huerta].[Cliente](
 	[nombre] [varchar](50) NOT NULL,
 	[apellido] [varchar](50) NOT NULL,
 	[mail] [varchar](50) NOT NULL,
+	[telefono] [varchar](20) NOT NULL,
+	[direccion] [varchar](60) NOT NULL,
+	[provincia_id] [tinyint] NOT NULL,
 	primary key (dni),
 --	unique (mail)
 ) ON [PRIMARY]
@@ -65,6 +68,7 @@ CREATE TABLE [la_huerta].[Empleado](
 	[nombre] [varchar](50) NOT NULL,
 	[apellido] [varchar](50) NOT NULL,
 	[mail] [varchar](50) NOT NULL,
+	[telefono] [varchar](20) NOT NULL,
 	[direccion] [varchar](60) NOT NULL,
 	[tipoEmpleado_id] [tinyint] NOT NULL,
 	[sucursal_id] [tinyint] NOT NULL,
@@ -142,7 +146,7 @@ CREATE TABLE [la_huerta].[Pago](
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Rol](
-	[id] [tinyint] NOT NULL,
+	[id] [tinyint] IDENTITY(1,1) NOT NULL,
 	[nombre] [varchar](10) NOT NULL,
 	[descripcion] [varchar](50) NOT NULL,
 	primary key (id),
@@ -279,7 +283,10 @@ SELECT
 	cli_dni as dni, 
 	cli_nombre as nombre,
 	cli_apellido as apellido,
-	cli_mail as mail
+	cli_mail as mail ,
+    '' as telefono,
+    '' as direccion,
+	0 as provincia_id
 FROM gd_esquema.Maestra
 WHERE cli_dni is not null
 GROUP BY cli_dni, cli_nombre, cli_apellido, cli_mail
@@ -363,6 +370,7 @@ SELECT
     empleado_nombre as nombre,
 	empleado_apellido as apellido,
 	empleado_mail as mail,
+    '' as telefono,
 	empleado_dir as direccion,
 	te.id as tipoEmpleado_id,
 	s.id as sucursal_id,

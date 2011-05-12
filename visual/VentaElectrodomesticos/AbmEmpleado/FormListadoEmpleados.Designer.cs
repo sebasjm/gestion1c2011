@@ -46,7 +46,6 @@
             this.bSeleccionar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
-            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataEmpleados)).BeginInit();
             this.grpFiltrosBusqueda.SuspendLayout();
             this.SuspendLayout();
@@ -55,8 +54,6 @@
             // 
             this.dataEmpleados.AllowUserToOrderColumns = true;
             this.dataEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dni});
             this.dataEmpleados.Location = new System.Drawing.Point(14, 167);
             this.dataEmpleados.Name = "dataEmpleados";
             this.dataEmpleados.Size = new System.Drawing.Size(491, 207);
@@ -231,11 +228,6 @@
             this.bLimpiar.UseVisualStyleBackColor = true;
             this.bLimpiar.Click += new System.EventHandler(this.bLimpiar_Click);
             // 
-            // dni
-            // 
-            this.dni.HeaderText = "dni";
-            this.dni.Name = "dni";
-            // 
             // FormListadoEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,6 +268,5 @@
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bLimpiar;
         private System.Windows.Forms.DataGridView dataEmpleados;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dni;
     }
 }

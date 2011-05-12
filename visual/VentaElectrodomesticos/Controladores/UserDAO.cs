@@ -27,7 +27,8 @@ namespace VentaElectrodomesticos.Controladores {
             QueryBuilder q = new QueryBuilder();
             q.select()
                 .from("la_huerta.usuario")
-                .filterIf(username.Length != 0, "username like '%{0}%' ", username);
+                .filterIf(username.Length != 0, "username like '%{0}%' ", username)
+                .filterIf(true, "activo = {1} ", 1); ;
             return connection.query<Usuario>(q.build(), q.getParams());
         }
         public Usuario searchById(int id)

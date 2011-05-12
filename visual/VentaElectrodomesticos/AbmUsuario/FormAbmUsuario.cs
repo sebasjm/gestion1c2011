@@ -122,13 +122,15 @@ namespace VentaElectrodomesticos.AbmUsuario
                     // proceder con la modificacion
                 }
             }
-        private void validadCampos()
+        private bool validadCampos()
         {
             // TODO : Ver como cargar el objeto empleado
-            ValidarHelper.validarCampo(txtUsername, lErrorUsername, "Username");
-            ValidarHelper.validarCampo(txtPassword, lErrorPassword, "Password");
-            ValidarHelper.validarCampo(txtConfirmarPassword, lErrorConfirmPass, "Confirmar Password");
-            ValidarHelper.validarCampo(lNombreEmpleado, lErrorEmpleado, "Empleado");
+            ValidarHelper validador = new ValidarHelper();
+            validador.validarCampo(txtUsername, lErrorUsername, "Username");
+            validador.validarCampo(txtPassword, lErrorPassword, "Password");
+            validador.validarCampo(txtConfirmarPassword, lErrorConfirmPass, "Confirmar Password");
+            validador.validarCampo(lNombreEmpleado, lErrorEmpleado, "Empleado");
+            return validador.getEstado();
          }
         private void bCrearOtro_Click(object sender, EventArgs e)        {
             this.validadCampos();
