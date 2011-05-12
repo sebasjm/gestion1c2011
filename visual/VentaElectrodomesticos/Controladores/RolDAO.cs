@@ -29,6 +29,17 @@ namespace VentaElectrodomesticos.Controladores {
                     descripcion = sdr.GetString(2)
                 };
             }
+
+        }
+        public void delete(Rol _rol)
+        {
+            List<Campo> campos = new List<Campo>();
+            campos.Add(new Campo("activo", (int)0));
+            QueryBuilder q = new QueryBuilder();
+            q.update("la_huerta.rol")
+                .valores_update(campos)
+                .filterIf(_rol.id != 0, "id = {0}", _rol.id);
+            connection.query<Rol>(q.build(), q.getParams());
         }
     }
 }

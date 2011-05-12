@@ -35,5 +35,46 @@ namespace VentaElectrodomesticos.Controladores {
                 .filterIf(tipoEmp != null && tipoEmp.id != 0, "tipoEmpleado_id = {4} ", tipoEmp != null ? tipoEmp.id : 0);
             return connection.query<Empleado>( q.build() , q.getParams() );
         }
+        //CRUD
+        public void insertar(Empleado usuario)
+        {
+            List<Campo> campos = new List<Campo>();
+            campos.Add(new Campo("nombre", (string)usuario.nombre));
+            campos.Add(new Campo("apellido", (string)usuario.apellido));
+            campos.Add(new Campo("dni", (int)usuario.dni));
+            campos.Add(new Campo("mail", (string)usuario.mail));
+            campos.Add(new Campo("telefono", (string)usuario.telefono));
+            campos.Add(new Campo("direccion", (string)usuario.direccion));
+            campos.Add(new Campo("sucursal_id", (int)usuario.sucursalId));
+            campos.Add(new Campo("tipoempleado_id", (int)usuario.tipoEmpleadoId));
+            QueryBuilder q = new QueryBuilder();
+            q.insert("la_huerta.empleado")
+                .valores_insert(campos);
+            connection.query<Usuario>(q.build(), q.getParams());
+        }
+        public void modificar(Empleado _empleado)
+        {
+            List<Campo> campos = new List<Campo>();
+            campos.Add(new Campo("nombre", (string)_empleado.nombre));
+            campos.Add(new Campo("apellido", (string)_empleado.apellido));
+            campos.Add(new Campo("mail", (string)_empleado.mail));
+            campos.Add(new Campo("telefono", (string)_empleado.telefono));
+            campos.Add(new Campo("direccion", (string)_empleado.direccion));
+            QueryBuilder q = new QueryBuilder();
+            q.update("la_huerta.empleado")
+                .valores_update(campos)
+                .filterIf(_empleado.dni != 0, "dni = {0}", _empleado.dni);
+            connection.query<Usuario>(q.build(), q.getParams());
+        }
+        public void delete(Empleado _empleado)
+        {
+            List<Campo> campos = new List<Campo>();
+            campos.Add(new Campo("activo", (int)0));
+            QueryBuilder q = new QueryBuilder();
+            q.update("la_huerta.empleado")
+                .valores_update(campos)
+                .filterIf(_empleado.dni != 0, "dni = {0}", _empleado.dni);
+            connection.query<Usuario>(q.build(), q.getParams());
+        }
     }
 }

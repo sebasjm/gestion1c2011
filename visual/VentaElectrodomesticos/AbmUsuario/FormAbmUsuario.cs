@@ -14,6 +14,8 @@ namespace VentaElectrodomesticos.AbmUsuario
 {
     public partial class FormAbmUsuario : Form
     {
+        private Usuario user;
+
         public FormAbmUsuario()
         {
             InitializeComponent();
@@ -56,6 +58,7 @@ namespace VentaElectrodomesticos.AbmUsuario
         }
         private void cargarUsuario(Usuario cargoUsuario)
         {
+            this.user = cargoUsuario;
             txtUsername.Text = cargoUsuario.username;
         }
         private void fillPermisos() {
@@ -92,8 +95,8 @@ namespace VentaElectrodomesticos.AbmUsuario
                 {
                     // proceder con la creacion
                     Usuario user = new Usuario(0);
-                    user.password = this.txtPassword.Text;
-                    user.username = this.txtUsername.Text;
+                    user.password = (String)this.txtPassword.Text;
+                    user.username = (String)this.txtUsername.Text;
                     Context.instance.dao.user.insertar(user);
                 }
         }
@@ -107,6 +110,9 @@ namespace VentaElectrodomesticos.AbmUsuario
                 if (MessageBox.Show("¿Esta seguro que desea modificar al Usuario?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     // proceder con la modificacion
+                    user.password = (String)this.txtPassword.Text;
+                    user.username = (String)this.txtUsername.Text;
+                    Context.instance.dao.user.modificar(user);
                 }
         }
         private void bBorrar_Click(object sender, EventArgs e)

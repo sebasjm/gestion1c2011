@@ -4,32 +4,47 @@ using System.Linq;
 using System.Text;
 
 namespace VentaElectrodomesticos.Controladores {
+    class Campo
+    {
+        public Campo(String col , object val) {
+            this.columna = col;
+            this.valor = val;
+        }
+        // En caso de que se repite el contenido se anula los campos
+        public Campo(String col, object val, object val2)
+        {
+            if (val != val2)
+            {
+                this.columna = col;
+                this.valor = val;
+            }
+            else {
+                this.columna = null;
+                this.valor = null;
+            }
+        }
+        public string columna { get; set; }
+        public Object valor { get; set; }
+    }
     class QueryBuilder {
-
         private string query;
         private List<object> filters;
         private bool firstFilter = true;
-        //para insert
+        //para insert y update
         private bool firstColumn = true;
         private bool firstValue = true;
-
         public QueryBuilder() {
             query = "";
             filters = new List<object>();
         }
-
         public QueryBuilder select() {
             query += "SELECT * ";
             return this;
         }
-
         public QueryBuilder from(string table) {
             query += "FROM " + table;
             return this;
         }
-
-        
-
         public QueryBuilder filterIf(bool condition, string filter, object param) {
             if (condition) {
                 query += (firstFilter ? " WHERE " : " and ") + filter;
@@ -38,11 +53,9 @@ namespace VentaElectrodomesticos.Controladores {
             filters.Add(param);
             return this;
         }
-
         public string build() {
             return query;
         }
-
         public object[] getParams() {
             return filters.ToArray();
         }
@@ -52,26 +65,58 @@ namespace VentaElectrodomesticos.Controladores {
             query += "INSERT INTO " + table;
             return this;
         }
-        public QueryBuilder columns(List<String> columnas)
+        public QueryBuilder valores_insert(List<Campo> columnas)
         {
             query += " ( ";
-            foreach (String columna in columnas) {
-                query += (firstColumn ? "" : " , ") + columna;
+            foreach (Campo columna in columnas)
+            {
+                if (columna.valor != null) 
+                    query += (firstColumn ? "" : " , ") + columna.columna;
                 firstColumn = false;
             }
-                       
-            query += " ) ";
-            return this;
-        }
-        public QueryBuilder values(List<String> valores)
-        {
-            query += " VALUES ( ";
-            foreach (String valor in valores)
+            query += " ) VALUES ( ";
+            foreach (Campo columna in columnas)
             {
-                query += (firstValue ? "" : " , ") + valor;
+                if(columna.valor != null) 
+                    query += (firstValue ? "" : " , ") + this.addValue(columna.valor);
                 firstValue = false;
             }
             query += " ) ";
+            return this;
+        }
+        public String addValue(Object valor)
+        {
+            if (valor.GetType() == typeof(String))
+            {
+                return  "'" + (String)valor + "'";
+            }
+            if (valor.GetType() == typeof(int))
+            {
+                return (String)valor;
+            }
+            return (String)valor;
+        }
+        // Para Update
+        public QueryBuilder update(String table)
+        {
+            query += "UPDATE " + table;
+            return this;
+        }
+        public QueryBuilder valores_update(List<Campo> columnas)
+        {
+            query += " SET ";
+            foreach (Campo columna in columnas)
+            {
+                if (columna.valor != null) 
+                    query += (firstColumn ? "" : " , ") + columna.columna + "=" + this.addValue(columna.valor);
+                firstColumn = false;
+            }
+           return this;
+        }
+        // Para delete
+        public QueryBuilder delete(String table)
+        {
+            query += "DELETE FROM " + table;
             return this;
         }
     }

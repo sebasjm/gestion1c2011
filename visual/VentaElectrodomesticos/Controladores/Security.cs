@@ -12,6 +12,7 @@ namespace VentaElectrodomesticos.Controladores {
         public Usuario loggedUser {
             get; private set;
         }
+        public Security() { }
 
         public Security(string user, string passwd) {
              loggedUser = Context.instance.dao.user.findUserWithPassword(
@@ -23,14 +24,14 @@ namespace VentaElectrodomesticos.Controladores {
              }
         }
 
-        private static string sha256encrypt(string phrase) {
+        public string sha256encrypt(string phrase) {
             UTF8Encoding encoder = new UTF8Encoding();
             SHA256Managed sha256hasher = new SHA256Managed();
             byte[] hashedDataBytes = sha256hasher.ComputeHash(encoder.GetBytes(phrase));
             return byteArrayToString(hashedDataBytes);
         }
 
-        private static string byteArrayToString(byte[] inputArray) {
+        public string byteArrayToString(byte[] inputArray) {
             StringBuilder output = new StringBuilder("");
             for (int i = 0; i < inputArray.Length; i++) {
                 output.Append(inputArray[i].ToString("X2"));

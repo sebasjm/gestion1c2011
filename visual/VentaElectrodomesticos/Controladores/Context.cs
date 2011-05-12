@@ -13,7 +13,8 @@ namespace VentaElectrodomesticos.Controladores {
         }
 
         public Security security {
-            get; private set;
+            get;
+            private set;
         }
 
         public DAOContext dao {
