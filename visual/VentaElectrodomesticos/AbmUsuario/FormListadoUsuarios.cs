@@ -82,12 +82,10 @@ namespace VentaElectrodomesticos.AbmUsuario
                 chkListadoRoles.Items.Add(permisos[n]);
             }
         }
-
         private void bCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void bLimpiar_Click(object sender, EventArgs e)
         {
             this.txtUsername.Text = "";

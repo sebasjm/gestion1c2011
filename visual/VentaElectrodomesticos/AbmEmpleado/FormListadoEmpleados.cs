@@ -23,9 +23,9 @@ namespace VentaElectrodomesticos.AbmEmpleado
 
         public FormListadoEmpleados(){
             InitializeComponent();
-            ViewHelper.fillComboProvincias(cmbProvincia);
-            ViewHelper.fillComboSucursales(cmbSucursal);
-            ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado);
+            ViewHelper.fillComboProvincias(cmbProvincia , true);
+            ViewHelper.fillComboSucursales(cmbSucursal, true);
+            ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado, true);
         }
 
         private void bCancelar_Click(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace VentaElectrodomesticos.AbmEmpleado
                 (TipoEmpleado)cmbTipoEmpleado.SelectedItem
             );
         }
-        private void bSeleccionar_Click_1(object sender, EventArgs e)
+        private void bSeleccionar_Click(object sender, EventArgs e)
         {
             Empleado empleado = (Empleado)dataEmpleados.Rows[dataEmpleados.CurrentCell.RowIndex].DataBoundItem; 
             if (empleado != null)
@@ -65,6 +65,7 @@ namespace VentaElectrodomesticos.AbmEmpleado
             cmbProvincia.SelectedIndex = 0;
             cmbSucursal.SelectedIndex = 0;
             cmbTipoEmpleado.SelectedIndex = 0;
+            dataEmpleados.DataSource = null;
         }
 
         private void cmbSucursal_SelectedIndexChanged(object sender, EventArgs e) {

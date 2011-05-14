@@ -206,7 +206,7 @@
             this.bSeleccionar.TabIndex = 13;
             this.bSeleccionar.Text = "Seleccionar";
             this.bSeleccionar.UseVisualStyleBackColor = true;
-            this.bSeleccionar.Click += new System.EventHandler(this.bSeleccionar_Click_1);
+            this.bSeleccionar.Click += new System.EventHandler(this.bSeleccionar_Click);
             // 
             // bCancelar
             // 

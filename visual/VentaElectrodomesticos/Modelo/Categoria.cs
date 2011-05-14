@@ -12,7 +12,7 @@ namespace VentaElectrodomesticos.Modelo {
         {
             get; private set;
         }
-        public Int16 categoria_padre
+        public Int16? categoria_padre
         {
             get; set;
         }

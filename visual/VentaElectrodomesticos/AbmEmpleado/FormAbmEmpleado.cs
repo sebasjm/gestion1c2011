@@ -15,9 +15,9 @@ namespace VentaElectrodomesticos.AbmEmpleado {
         private Empleado empleado;
         public FormAbmEmpleado() {
             InitializeComponent();
-            ViewHelper.fillComboProvincias(cmbProvincia,true);
-            ViewHelper.fillComboSucursales(cmbSucursal,true);
-            ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado,true);
+            ViewHelper.fillComboProvincias(cmbProvincia,false);
+            ViewHelper.fillComboSucursales(cmbSucursal,false);
+            ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado,false);
             bModificar.Hide();
             bBorrar.Hide();
             lErrorApellido.Hide();
@@ -29,6 +29,20 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             lErrorTelefono.Hide();
             lErrorTipoEmpleado.Hide();
             lErrorDireccion.Hide();
+        }
+        private void validadCampos()
+        {
+            // TODO : Ver como cargar el objeto empleado
+            ValidarHelper validador = new ValidarHelper();
+            validador.validarCampo(txtNombre, lErrorNombre, "Nombre");
+            validador.validarCampo(txtApellido, lErrorApellido, "Apellido");
+            validador.validarCampo(txtDni, lErrorDNI, "DNI");
+            validador.validarCampo(txtDireccion, lErrorDireccion, "Dirección");
+            validador.validarCampo(txtMail, lErrorMail, "Mail");
+            validador.validarCampo(txtTelefono, lErrorTelefono, "Teléfono");
+            validador.validarCampo(cmbProvincia, lErrorProvincia, "Provincia");
+            validador.validarCampo(cmbSucursal, lErrorSucursal, "Sucursal");
+            validador.validarCampo(cmbTipoEmpleado, lErrorTipoEmpleado, "Tipo Empleado");
         }
         private void bBuscar_Click(object sender, EventArgs e) {
             FormListadoEmpleados form = new FormListadoEmpleados();
@@ -74,6 +88,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             bBorrar.Hide();
         }
         private void bCrear_Click(object sender, EventArgs e) {
+            this.validadCampos();
             if (MessageBox.Show("¿Esta seguro que desea crear el Empleado?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la creacion
@@ -86,12 +101,14 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 empleadoNew.sucursalId = (Byte)cmbSucursal.SelectedValue;
                 empleadoNew.tipoEmpleadoId = (Byte)cmbTipoEmpleado.SelectedValue;
                 Context.instance.dao.empleado.insertar(empleadoNew);
+                this.Close();
             }
         }
         private void bCancelar_Click(object sender, EventArgs e) {
             this.Close();
         }
         private void bModificar_Click(object sender, EventArgs e) {
+            this.validadCampos();
             if (MessageBox.Show("¿Esta seguro que desea modificar al cliente?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con la modificacion
                 this.empleado.apellido = txtApellido.Text;
@@ -102,6 +119,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 this.empleado.sucursalId = (Byte)cmbSucursal.SelectedValue  ;
                 this.empleado.tipoEmpleadoId = (Byte)cmbTipoEmpleado.SelectedValue;
                 Context.instance.dao.empleado.modificar(this.empleado);
+                this.Close();
             }
         }
         private void bBorrar_Click(object sender, EventArgs e)
@@ -110,6 +128,25 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             {
                 // proceder con el borrado
                 Context.instance.dao.empleado.delete(empleado);
+                this.Close();
+            }
+        }
+
+        private void bCrearOtro_Click(object sender, EventArgs e)
+        {
+            this.validadCampos();
+            if (MessageBox.Show("¿Esta seguro que desea crear el Empleado?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                // proceder con la creacion
+                Empleado empleadoNew = new Empleado(Int32.Parse(txtDni.Text));
+                empleadoNew.apellido = txtApellido.Text;
+                empleadoNew.nombre = txtNombre.Text;
+                empleadoNew.mail = txtMail.Text;
+                empleadoNew.telefono = txtTelefono.Text;
+                empleadoNew.direccion = txtDireccion.Text;
+                empleadoNew.sucursalId = (Byte)cmbSucursal.SelectedValue;
+                empleadoNew.tipoEmpleadoId = (Byte)cmbTipoEmpleado.SelectedValue;
+                Context.instance.dao.empleado.insertar(empleadoNew);
                 this.limpiar();
             }
         }
