@@ -145,6 +145,7 @@
     <Compile Include="EfectuarPago\FormEfectuarPago.Designer.cs">
       <DependentUpon>FormEfectuarPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exception\UnkownEnumException.cs" />
     <Compile Include="Exception\WrongUserOrPasswordException.cs" />
     <Compile Include="Facturacion\FormFacturacion.cs">
       <SubType>Form</SubType>
