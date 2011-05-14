@@ -21,8 +21,7 @@ namespace VentaElectrodomesticos.Controladores {
                     direccion = sdr.GetString(5),
                     tipoEmpleadoId = sdr.GetByte(6),
                     sucursalId = sdr.GetByte(7),
-                  
-                    usuarioId = sdr.IsDBNull(9) ? -1 : (Int32)sdr.GetValue(9)
+                    usuarioId = (sdr.IsDBNull(9)) ? (Int32?)null : sdr.GetInt32(9)
                 };
             }
         }

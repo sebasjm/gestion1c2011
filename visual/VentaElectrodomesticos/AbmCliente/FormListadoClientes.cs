@@ -19,18 +19,15 @@ namespace VentaElectrodomesticos.AbmCliente
             get { return messageFromParent; }
             set { messageFromParent = value; }
         }
-        private string nombre;
-        private string apellido;
-        private int dni = -1;
         public FormListadoClientes()
         {
             InitializeComponent();
             FillData();
-            ViewHelper.fillComboProvincias(cmbProvincia, true);
+            ViewHelper.fillComboProvincias(cmbProvincia , true);
         }
         void FillData()
         {
-            List<Cliente> clientesList = Context.instance.dao.cliente.search(this.nombre, this.apellido, this.dni);
+            List<Cliente> clientesList = Context.instance.dao.cliente.search(txtNombre.Text, txtApellido.Text, ((txtDni.Text == "") ? (Int32)0 :  System.Int32.Parse(txtDni.Text)) );
             try
             {
                 dataClientes.DataSource = clientesList;
@@ -43,6 +40,7 @@ namespace VentaElectrodomesticos.AbmCliente
             txtDni.Text = "";
             txtNombre.Text = "";
             cmbProvincia.SelectedIndex = -1;
+            dataClientes.DataSource = null;
         }
         private void bCancelar_Click(object sender, EventArgs e)
         {
@@ -64,11 +62,6 @@ namespace VentaElectrodomesticos.AbmCliente
         }
         private void bBuscar_Click(object sender, EventArgs e)
         {
-            this.nombre = txtNombre.Text;
-            this.apellido = txtApellido.Text;
-            if (txtDni.Text == "") { this.dni = 0; }
-            else {
-            this.dni = System.Int32.Parse(txtDni.Text);}
             FillData();
         }
   }

@@ -14,7 +14,7 @@ namespace VentaElectrodomesticos.AbmCliente {
         Cliente cliente;
         public FormAbmCliente() {
             InitializeComponent();
-            ViewHelper.fillComboProvincias(cmbProvincia, true);
+            ViewHelper.fillComboProvincias(cmbProvincia , false);
             bModificar.Visible = false;
             bBorrar.Visible = false;
             lErrorNombre.Visible = false;
@@ -70,6 +70,7 @@ namespace VentaElectrodomesticos.AbmCliente {
                     clienteNew.direccion = txtDireccion.Text;
                     clienteNew.provinciaId = (Byte)cmbProvincia.SelectedValue;
                     Context.instance.dao.cliente.insertar(clienteNew);
+                    this.Close();
                 }
         }
         private void validadCampos() {
@@ -94,13 +95,14 @@ namespace VentaElectrodomesticos.AbmCliente {
                 this.cliente.direccion = txtDireccion.Text;
                 this.cliente.provinciaId = (Byte)cmbProvincia.SelectedValue;
                 Context.instance.dao.cliente.modificar(this.cliente);
+                this.Close();
             }
         }
         private void bBorrar_Click(object sender, EventArgs e)        {
             if (MessageBox.Show("¿Esta seguro que desea borrar al cliente?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)            {
                 // proceder con la eliminacion
                 Context.instance.dao.cliente.delete(this.cliente);
-                this.limpiar();
+                this.Close();
             }
         }
         private void bCancelar_Click(object sender, EventArgs e)        {
@@ -111,6 +113,15 @@ namespace VentaElectrodomesticos.AbmCliente {
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Cliente?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el Guardado y la Creacion de otro
+                Cliente clienteNew = new Cliente(Int32.Parse(txtDni.Text));
+                clienteNew.apellido = txtApellido.Text;
+                clienteNew.nombre = txtNombre.Text;
+                clienteNew.mail = txtMail.Text;
+                clienteNew.telefono = txtTelefono.Text;
+                clienteNew.direccion = txtDireccion.Text;
+                clienteNew.provinciaId = (Byte)cmbProvincia.SelectedValue;
+                Context.instance.dao.cliente.insertar(clienteNew);
+                this.limpiar();
             }
         }
      }

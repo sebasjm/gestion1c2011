@@ -52,7 +52,7 @@ namespace VentaElectrodomesticos.AbmProducto
         }
         private void LoadBaseNodes()
         {
-            int baseParent = 0;                 // Find the lowest root category parent value
+            int? baseParent = null;                 // Find the lowest root category parent value
             TreeNode node;
             foreach (Categoria cat in items)
             {
@@ -142,6 +142,7 @@ namespace VentaElectrodomesticos.AbmProducto
             txtPrecioDesde.Text = "";
             txtPrecioHasta.Text = "";
             treeCategorias.CollapseAll();
+            dataProductos.DataSource = null;
         }
 
         private void bSeleccionar_Click(object sender, EventArgs e)

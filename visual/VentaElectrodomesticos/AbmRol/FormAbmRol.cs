@@ -75,6 +75,7 @@ namespace VentaElectrodomesticos.AbmRol
             if (MessageBox.Show("¿Esta seguro que desea modificar al Rol?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la modificacion
+                this.Close();
             }
         }
         private void bModificar_Click(object sender, EventArgs e)
@@ -82,6 +83,7 @@ namespace VentaElectrodomesticos.AbmRol
             this.validadCampos();
             if (MessageBox.Show("¿Esta seguro que desea modificar el Rol?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con la modificacion
+                this.Close();
             }
         }
         private void bCancelar_Click(object sender, EventArgs e)

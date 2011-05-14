@@ -41,7 +41,7 @@ namespace VentaElectrodomesticos.AbmProducto
             ValidarHelper validador = new ValidarHelper();
             validador.validarCampo(txtCodigoProducto, lErrorCodigo, "Código del Producto");
             validador.validarCampo(txtDescripcion, lErrorDescripcion, "Descripción");
-            validador.validarCampo(txtNombre, lErrorDescripcion, "Nombre");
+            validador.validarCampo(txtNombre, lErrorNombre, "Nombre");
             validador.validarCampo(labelCategoria, lErrorCategoria, "Categoría");
             validador.validarCampo(txtPrecio, lErrorPrecio, "Precio");
         }
@@ -54,7 +54,7 @@ namespace VentaElectrodomesticos.AbmProducto
             treeCategorias.Refresh();        // refresh the <strong class="highlight">treeview</strong> display
         }
         private void LoadBaseNodes()        {
-            int baseParent = 0;                 // Find the lowest root category parent value
+            int? baseParent = null;                 // Find the lowest root category parent value
             TreeNode node;
             foreach (Categoria cat in items)
             {
@@ -137,6 +137,7 @@ namespace VentaElectrodomesticos.AbmProducto
                 this.producto.categoria_id = (cate == null) ? this.producto.categoria_id : cate.id;
                 this.producto.precio = Double.Parse(txtPrecio.Text);
                 Context.instance.dao.producto.modificar(this.producto);
+                this.Close();
             }
         }
         private void bBorrar_Click(object sender, EventArgs e)        {
@@ -144,7 +145,7 @@ namespace VentaElectrodomesticos.AbmProducto
             {
                 // proceder con la eliminacion
                 Context.instance.dao.producto.delete(this.producto);
-                this.limpiar();
+                this.Close();
             }
         }
         private void bCancelar_Click(object sender, EventArgs e)        {
@@ -169,6 +170,7 @@ namespace VentaElectrodomesticos.AbmProducto
                 productoNew.marca_id = (short)marca.id;
                 productoNew.precio = Double.Parse(txtPrecio.Text);
                 Context.instance.dao.producto.insertar(productoNew);
+                this.Close();
             }
         }
         private void bLimpiar_Click(object sender, EventArgs e)        {
@@ -187,6 +189,21 @@ namespace VentaElectrodomesticos.AbmProducto
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Producto?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el Guardado y la Creacion de otro
+                Producto productoNew = new Producto(Int32.Parse(txtCodigoProducto.Text));
+                TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
+                Categoria cate = null;
+                if (NodoSeleccionado != null)
+                {
+                    cate = (Categoria)NodoSeleccionado.Tag;
+                }
+                Marca marca = Context.instance.dao.marca.findByNombre(txtNombre.Text);
+                productoNew.nombre = txtNombre.Text;
+                productoNew.descripcion = txtDescripcion.Text;
+                productoNew.categoria_id = cate.id;
+                productoNew.marca_id = (short)marca.id;
+                productoNew.precio = Double.Parse(txtPrecio.Text);
+                Context.instance.dao.producto.insertar(productoNew);
+                this.limpiar();
             }
         }
     }

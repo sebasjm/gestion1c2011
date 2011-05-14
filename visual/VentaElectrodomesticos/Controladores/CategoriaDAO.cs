@@ -28,7 +28,7 @@ namespace VentaElectrodomesticos.Controladores {
         class CategoriaMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
                 return new Categoria (sdr.GetInt16(0)) {
-                    categoria_padre = sdr.IsDBNull(1) ?(Int16)0 :  sdr.GetInt16(1),
+                    categoria_padre = (sdr.IsDBNull(1)) ? (Int16?)null : sdr.GetInt16(1),
                     nombre = sdr.GetString(2)
                 };
             }

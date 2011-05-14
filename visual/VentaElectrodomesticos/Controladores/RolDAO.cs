@@ -29,7 +29,6 @@ namespace VentaElectrodomesticos.Controladores {
                     descripcion = sdr.GetString(2)
                 };
             }
-
         }
         public void delete(Rol _rol)
         {

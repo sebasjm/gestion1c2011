@@ -102,6 +102,7 @@ namespace VentaElectrodomesticos.AbmUsuario
                     user.password = (String)this.txtPassword.Text;
                     user.username = (String)this.txtUsername.Text;
                     Context.instance.dao.user.insertar(user);
+                    this.Close();
                 }
         }
         private void bCancelar_Click(object sender, EventArgs e)
@@ -117,6 +118,7 @@ namespace VentaElectrodomesticos.AbmUsuario
                     user.password = (String)this.txtPassword.Text;
                     user.username = (String)this.txtUsername.Text;
                     Context.instance.dao.user.modificar(user);
+                    this.Close();
                 }
         }
         private void bBorrar_Click(object sender, EventArgs e)
@@ -124,6 +126,7 @@ namespace VentaElectrodomesticos.AbmUsuario
                 if (MessageBox.Show("¿Esta seguro que desea eliminar al Usuario?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     // proceder con la modificacion
+                    this.Close();
                 }
             }
         private bool validadCampos()
@@ -141,6 +144,11 @@ namespace VentaElectrodomesticos.AbmUsuario
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Usuario?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el Guardado y la Creacion de otro
+                Usuario user = new Usuario(0);
+                user.password = (String)this.txtPassword.Text;
+                user.username = (String)this.txtUsername.Text;
+                Context.instance.dao.user.insertar(user);
+                this.limpiar();
             }
         }
     }
