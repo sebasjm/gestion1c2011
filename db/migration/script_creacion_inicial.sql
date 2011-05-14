@@ -2,6 +2,13 @@ USE gd1c2011
 GO
 CREATE SCHEMA [la_huerta] AUTHORIZATION [gd]
 GO
+CREATE TABLE [la_huerta].[Provincia](
+	[id] [tinyint] NOT NULL,
+	[nombre] [varchar](60) NOT NULL,
+	primary key (id),
+	unique (nombre)
+) ON [PRIMARY]
+
 CREATE TABLE [la_huerta].[Cliente](
 	[dni] [int] NOT NULL,
 	[nombre] [varchar](50) NOT NULL,
@@ -9,9 +16,10 @@ CREATE TABLE [la_huerta].[Cliente](
 	[mail] [varchar](50) NOT NULL,
 	[telefono] [varchar](20) NOT NULL,
 	[direccion] [varchar](60) NOT NULL,
-	[provincia_id] [tinyint] NOT NULL,
+	[provincia_id] [tinyint] NULL ,
     [activo] [bit] NOT NULL DEFAULT 1,
 	primary key (dni),
+    foreign key (provincia_id) references [la_huerta].[Provincia](id),
 --	unique (mail)
 ) ON [PRIMARY]
 
@@ -25,13 +33,6 @@ CREATE TABLE [la_huerta].[TipoEmpleado](
 CREATE TABLE [la_huerta].[Marca](
 	[id] [smallint] NOT NULL,
 	[nombre] [varchar](20) NOT NULL,
-	primary key (id),
-	unique (nombre)
-) ON [PRIMARY]
-
-CREATE TABLE [la_huerta].[Provincia](
-	[id] [tinyint] NOT NULL,
-	[nombre] [varchar](60) NOT NULL,
 	primary key (id),
 	unique (nombre)
 ) ON [PRIMARY]
@@ -290,7 +291,7 @@ SELECT
 	cli_mail as mail ,
     '' as telefono,
     '' as direccion,
-	0 as provincia_id,
+	null as provincia_id,
 	1 as activo
 FROM gd_esquema.Maestra
 WHERE cli_dni is not null

@@ -22,10 +22,10 @@ DROP TABLE [la_huerta].[Empleado]
 DROP TABLE [la_huerta].[Usuario]
 DROP TABLE [la_huerta].[Sucursal]
 DROP TABLE [la_huerta].[TipoSucursal]
-DROP TABLE [la_huerta].[Provincia]
 DROP TABLE [la_huerta].[Marca]
 DROP TABLE [la_huerta].[TipoEmpleado]
 DROP TABLE [la_huerta].[Cliente]
+DROP TABLE [la_huerta].[Provincia]
 
 GO
 DROP SCHEMA [la_huerta]
