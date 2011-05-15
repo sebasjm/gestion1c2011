@@ -11,6 +11,7 @@ using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
 using VentaElectrodomesticos.Exception;
 using System.Text.RegularExpressions;
+using VentaElectrodomesticos.Vista;
 namespace VentaElectrodomesticos.AbmCliente {
     public partial class FormAbmCliente : Form {
         Cliente cliente;
@@ -21,13 +22,13 @@ namespace VentaElectrodomesticos.AbmCliente {
             ViewHelper.fillComboProvincias(cmbProvincia, true);
 
             validator = new Validator()
-                .add(txtNombre,    lErrorNombre,    Validator.vacio, Validator.nombre)
-                .add(txtApellido,  lErrorApellido,  Validator.vacio, Validator.nombre)
-                .add(txtDni,       lErrorDNI,       Validator.vacio, Validator.numerico)
-                .add(txtMail,      lErrorMail,      Validator.vacio, Validator.mail)
-                .add(txtDireccion, lErrorDireccion, Validator.vacio)
-                .add(txtTelefono,  lErrorTelefono,  Validator.vacio, Validator.telefono)
-                .add(cmbProvincia, lErrorProvincia, Validator.nulo);
+                .add(txtNombre,    lErrorNombre,    Validator.Text.obligatorio, Validator.Text.nombre)
+                .add(txtApellido,  lErrorApellido,  Validator.Text.obligatorio, Validator.Text.nombre)
+                .add(txtDni,       lErrorDNI,       Validator.Text.obligatorio, Validator.Text.numerico)
+                .add(txtMail,      lErrorMail,      Validator.Text.obligatorio, Validator.Text.mail)
+                .add(txtDireccion, lErrorDireccion, Validator.Text.obligatorio)
+                .add(txtTelefono,  lErrorTelefono,  Validator.Text.obligatorio, Validator.Text.telefono)
+                .add(cmbProvincia, lErrorProvincia, Validator.Combo.obligatorio);
 
         }
 
@@ -77,95 +78,6 @@ namespace VentaElectrodomesticos.AbmCliente {
                 clienteNew.direccion = txtDireccion.Text;
                 clienteNew.provinciaId = (Byte)cmbProvincia.SelectedValue;
                 Context.instance.dao.cliente.insertar(clienteNew);
-            }
-        }
-        class ValidatorError {
-
-            public Object campo {
-                get; private set;
-            }
-
-            public ValidatorError(Object o) {
-                this.campo = o;
-            }
-
-        }
-
-        class Validator {
-            abstract class ValidationEntry {
-                abstract public bool validate();
-            }
-            class TextBoxValidationEntry : ValidationEntry {
-                public TextBox campo;
-                public Func<TextBox, bool> isValid;
-                public Label label;
-
-                public override bool validate() {
-                    if (isValid(campo)) {
-                        label.Visible = false;
-                        return true;
-                    }
-                    label.Visible = true;
-                    return false;
-                }
-            }
-            class ComboValidationEntry : ValidationEntry {
-                public ComboBox campo;
-                public Func<ComboBox, bool> isValid;
-                public Label label;
-
-                public override bool validate() {
-                    if (isValid(campo)) {
-                        label.Visible = false;
-                        return true;
-                    }
-                    label.Visible = true;
-                    return false;
-                }
-            }
-
-            List<ValidationEntry> checks = new List<ValidationEntry>();
-
-            public readonly static Func<TextBox, bool> nombre = (TextBox campo) => {
-                return campo.Text.Length == 0 || Regex.Match(campo.Text.Trim(), "^[A-Z][ a-zA-Z]*$").Success;
-            };
-            public readonly static Func<TextBox, bool> mail = (TextBox campo) => {
-                return campo.Text.Length == 0 || Regex.Match(campo.Text.Trim(), "^[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,3}$").Success;
-            };
-            public readonly static Func<TextBox, bool> numerico = (TextBox campo) => {
-                return campo.Text.Length == 0 || Regex.Match(campo.Text.Trim(), "^[0-9]+$").Success;
-            };
-            public readonly static Func<TextBox, bool> telefono = (TextBox campo) => {
-                return campo.Text.Length == 0 || Regex.Match(campo.Text.Trim(), "^\\+?[0-9][ 0-9]*$").Success;
-            };
-            public readonly static Func<TextBox, bool> vacio = (TextBox campo) => {
-                return campo.Text.Length != 0;
-            };
-
-            public readonly static Func<ComboBox, bool> nulo = (ComboBox campo) => {
-                return campo.SelectedIndex != 0;
-            };
-
-            public Validator add(TextBox c, Label l, params Func<TextBox, bool>[] criteriaList) {
-                foreach (Func<TextBox, bool> criteria in criteriaList) {
-                    checks.Add(new TextBoxValidationEntry() { campo = c, isValid = criteria, label = l });
-                }
-                return this;
-            }
-
-            public Validator add(ComboBox c, Label l, params Func<ComboBox, bool>[] criteriaList) {
-                foreach (Func<ComboBox, bool> criteria in criteriaList) {
-                    checks.Add(new ComboValidationEntry() { campo = c, isValid = criteria, label = l });
-                }
-                return this;
-            }
-
-            public bool check() {
-                bool result = true;
-                foreach (ValidationEntry ve in checks) {
-                    result = ve.validate() && result;
-                }
-                return result;
             }
         }
 

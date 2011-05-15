@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
+using VentaElectrodomesticos.Vista;
 namespace VentaElectrodomesticos.AbmProducto
 {
     public partial class FormAbmProducto : Form
@@ -16,17 +17,10 @@ namespace VentaElectrodomesticos.AbmProducto
         List<Categoria> items = new List<Categoria>();
         AutoCompleteStringCollection namesCollection = new AutoCompleteStringCollection();
         Producto producto;
+        Validator validator;
         public FormAbmProducto()        {
             InitializeComponent();
             buildtree();
-            bBorrar.Visible = false;
-            bModificar.Visible = false;
-            lErrorCodigo.Visible = false;
-            lErrorNombre.Visible = false;
-            lErrorDescripcion.Visible = false;
-            lErrorDescripcion.Visible = false;
-            lErrorCategoria.Visible = false;
-            lErrorPrecio.Visible = false;
             List<Marca> marcasList = Context.instance.dao.marca.search("");
             foreach (Marca marca in marcasList)
             {
@@ -35,15 +29,13 @@ namespace VentaElectrodomesticos.AbmProducto
             txtNombre.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtNombre.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txtNombre.AutoCompleteCustomSource = namesCollection;
-        }
-        private void validadCampos()        {
-            // TODO : Ver como cargar el objeto empleado
-            ValidarHelper validador = new ValidarHelper();
-            validador.validarCampo(txtCodigoProducto, lErrorCodigo, "Código del Producto");
-            validador.validarCampo(txtDescripcion, lErrorDescripcion, "Descripción");
-            validador.validarCampo(txtNombre, lErrorNombre, "Nombre");
-            validador.validarCampo(labelCategoria, lErrorCategoria, "Categoría");
-            validador.validarCampo(txtPrecio, lErrorPrecio, "Precio");
+            validator = new Validator()
+                .add(txtCodigoProducto, lErrorCodigo, Validator.Text.obligatorio, Validator.Text.numerico)
+                .add(txtDescripcion, lErrorDescripcion, Validator.Text.obligatorio)
+                .add(txtNombre, lErrorNombre, Validator.Text.obligatorio, Validator.Text.nombre)
+                //.add(labelCategoria, lErrorCodigo, Validator.Text.obligatorio, Validator.Text.numerico)
+                .add(txtPrecio, lErrorPrecio, Validator.Text.obligatorio, Validator.Text.moneda)
+                ;
         }
         private void buildtree()        {
             this.items = Context.instance.dao.categoria.search(0 , "");
@@ -120,7 +112,8 @@ namespace VentaElectrodomesticos.AbmProducto
         }
         private void bModificar_Click(object sender, EventArgs e)
         {
-            this.validadCampos();
+            if (!validator.check()) return;
+
             if (MessageBox.Show("¿Esta seguro que desea modificar el Producto?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la modificacion
@@ -152,7 +145,7 @@ namespace VentaElectrodomesticos.AbmProducto
             this.Close();
         }
         private void bCrear_Click(object sender, EventArgs e)        {
-            this.validadCampos();
+            if (!validator.check()) return;
             if (MessageBox.Show("¿Esta seguro que desea crear el Producto?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la creacion
@@ -185,7 +178,7 @@ namespace VentaElectrodomesticos.AbmProducto
             treeCategorias.CollapseAll();
         }
         private void bCrearOtro_Click(object sender, EventArgs e)        {
-            this.validadCampos();
+            if (!validator.check()) return;
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Producto?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el Guardado y la Creacion de otro

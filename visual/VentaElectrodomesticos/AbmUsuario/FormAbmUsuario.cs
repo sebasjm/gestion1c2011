@@ -94,7 +94,7 @@ namespace VentaElectrodomesticos.AbmUsuario
         }
         private void bCrear_Click(object sender, EventArgs e)
         {
-            this.validadCampos();
+//            this.validadCampos();
                 if (MessageBox.Show("¿Esta seguro que desea crear al Usuario?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     // proceder con la creacion
@@ -111,7 +111,7 @@ namespace VentaElectrodomesticos.AbmUsuario
         }
         private void bModificar_Click(object sender, EventArgs e)
         {
-            this.validadCampos();
+//            this.validadCampos();
                 if (MessageBox.Show("¿Esta seguro que desea modificar al Usuario?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     // proceder con la modificacion
@@ -129,6 +129,7 @@ namespace VentaElectrodomesticos.AbmUsuario
                     this.Close();
                 }
             }
+        /*
         private bool validadCampos()
         {
             // TODO : Ver como cargar el objeto empleado
@@ -139,8 +140,9 @@ namespace VentaElectrodomesticos.AbmUsuario
             validador.validarCampo(lNombreEmpleado, lErrorEmpleado, "Empleado");
             return validador.getEstado();
          }
+         * */
         private void bCrearOtro_Click(object sender, EventArgs e)        {
-            this.validadCampos();
+//            this.validadCampos();
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Usuario?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el Guardado y la Creacion de otro

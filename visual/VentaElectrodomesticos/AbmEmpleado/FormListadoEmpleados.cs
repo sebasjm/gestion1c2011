@@ -69,13 +69,15 @@ namespace VentaElectrodomesticos.AbmEmpleado
         }
 
         private void cmbSucursal_SelectedIndexChanged(object sender, EventArgs e) {
-            cmbProvincia.SelectedItem = ((Sucursal)cmbSucursal.SelectedItem).provincia;
-            cmbProvincia.Refresh();
+            Sucursal item = (Sucursal)cmbSucursal.SelectedItem;
+            cmbProvincia.SelectedItem = item != null ? item.provincia : null;
+//            cmbProvincia.Refresh();
         }
 
         private void cmbProvincia_SelectedIndexChanged(object sender, EventArgs e) {
-            cmbSucursal.SelectedItem = ((Provincia)cmbProvincia.SelectedItem).sucursal;
-            cmbSucursal.Refresh();
+            Provincia item = (Provincia)cmbProvincia.SelectedItem;
+            cmbSucursal.SelectedItem = item != null ? item.sucursal : null;
+  //          cmbSucursal.Refresh();
         }
 
     }

@@ -71,7 +71,6 @@ namespace VentaElectrodomesticos.AbmRol
         }
         private void bCrear_Click(object sender, EventArgs e)
         {
-            this.validadCampos();
             if (MessageBox.Show("¿Esta seguro que desea modificar al Rol?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la modificacion
@@ -80,7 +79,6 @@ namespace VentaElectrodomesticos.AbmRol
         }
         private void bModificar_Click(object sender, EventArgs e)
         {
-            this.validadCampos();
             if (MessageBox.Show("¿Esta seguro que desea modificar el Rol?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con la modificacion
                 this.Close();
@@ -98,16 +96,17 @@ namespace VentaElectrodomesticos.AbmRol
                 // proceder con la modificacion
             }
         }
+        /*
         private bool validadCampos()
         {
             // TODO : Ver como cargar el objeto empleado
+
             ValidarHelper validador = new ValidarHelper();
             validador.validarCampo(txtNombre, lErrorNombre, "Nombre");
             validador.validarCampo(chkListadoRoles, lErrorRoles, "Roles");
             return validador.getEstado();
-        }
+        }*/
         private void bCrearOtro_Click(object sender, EventArgs e)        {
-            this.validadCampos();
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Rol?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el Guardado y la Creacion de otro

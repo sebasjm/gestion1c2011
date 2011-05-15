@@ -29,7 +29,7 @@ namespace VentaElectrodomesticos.Controladores {
                 q.select().from("la_huerta.Sucursal");
                 cache = connection.query<Sucursal>(q.build(), q.getParams());
             }
-            return cache;
+            return new List<Sucursal>( cache );
         }
         public Sucursal findById(byte id) {
             if (cache == null)

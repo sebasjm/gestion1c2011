@@ -214,6 +214,7 @@
             this.bCrearOtro.TabIndex = 68;
             this.bCrearOtro.Text = "Crear y Continuar";
             this.bCrearOtro.UseVisualStyleBackColor = true;
+            this.bCrearOtro.Visible = false;
             this.bCrearOtro.Click += new System.EventHandler(this.bCrearOtro_Click);
             // 
             // bLimpiar
@@ -257,6 +258,7 @@
             this.lErrorNombre.Size = new System.Drawing.Size(22, 29);
             this.lErrorNombre.TabIndex = 69;
             this.lErrorNombre.Text = "*";
+            this.lErrorNombre.Visible = false;
             // 
             // lErrorApellido
             // 
@@ -269,6 +271,7 @@
             this.lErrorApellido.Size = new System.Drawing.Size(22, 29);
             this.lErrorApellido.TabIndex = 70;
             this.lErrorApellido.Text = "*";
+            this.lErrorApellido.Visible = false;
             // 
             // lErrorDNI
             // 
@@ -281,6 +284,7 @@
             this.lErrorDNI.Size = new System.Drawing.Size(22, 29);
             this.lErrorDNI.TabIndex = 71;
             this.lErrorDNI.Text = "*";
+            this.lErrorDNI.Visible = false;
             // 
             // lErrorMail
             // 
@@ -293,6 +297,7 @@
             this.lErrorMail.Size = new System.Drawing.Size(22, 29);
             this.lErrorMail.TabIndex = 72;
             this.lErrorMail.Text = "*";
+            this.lErrorMail.Visible = false;
             // 
             // lErrorTelefono
             // 
@@ -305,6 +310,7 @@
             this.lErrorTelefono.Size = new System.Drawing.Size(22, 29);
             this.lErrorTelefono.TabIndex = 73;
             this.lErrorTelefono.Text = "*";
+            this.lErrorTelefono.Visible = false;
             // 
             // lErrorProvincia
             // 
@@ -317,6 +323,7 @@
             this.lErrorProvincia.Size = new System.Drawing.Size(22, 29);
             this.lErrorProvincia.TabIndex = 74;
             this.lErrorProvincia.Text = "*";
+            this.lErrorProvincia.Visible = false;
             // 
             // lErrorSucursal
             // 
@@ -329,6 +336,7 @@
             this.lErrorSucursal.Size = new System.Drawing.Size(22, 29);
             this.lErrorSucursal.TabIndex = 75;
             this.lErrorSucursal.Text = "*";
+            this.lErrorSucursal.Visible = false;
             // 
             // lErrorTipoEmpleado
             // 
@@ -341,6 +349,7 @@
             this.lErrorTipoEmpleado.Size = new System.Drawing.Size(22, 29);
             this.lErrorTipoEmpleado.TabIndex = 76;
             this.lErrorTipoEmpleado.Text = "*";
+            this.lErrorTipoEmpleado.Visible = false;
             // 
             // txtDireccion
             // 
@@ -380,6 +389,7 @@
             this.lErrorDireccion.Size = new System.Drawing.Size(22, 29);
             this.lErrorDireccion.TabIndex = 81;
             this.lErrorDireccion.Text = "*";
+            this.lErrorDireccion.Visible = false;
             // 
             // bBorrar
             // 
