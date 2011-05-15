@@ -19,7 +19,7 @@ namespace VentaElectrodomesticos.AbmCliente {
 
         public FormAbmCliente() {
             InitializeComponent();
-            ViewHelper.fillComboProvincias(cmbProvincia, true);
+            ViewHelper.fillComboProvincias(cmbProvincia);
 
             validator = new Validator()
                 .add(txtNombre,    lErrorNombre,    Validator.Text.obligatorio, Validator.Text.nombre)
@@ -49,6 +49,8 @@ namespace VentaElectrodomesticos.AbmCliente {
             this.cliente = cargoCliente;
             txtApellido.Text = cargoCliente.apellido;
             txtNombre.Text = cargoCliente.nombre;
+            txtTelefono.Text = cargoCliente.telefono;
+            txtDireccion.Text = cargoCliente.direccion;
             txtDni.Text = cargoCliente.dni.ToString();
             txtMail.Text = cargoCliente.mail;
             cmbProvincia.SelectedValue = cargoCliente.provinciaId;

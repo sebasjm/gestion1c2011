@@ -13,13 +13,14 @@ using VentaElectrodomesticos.Controladores;
 using VentaElectrodomesticos.Vista;
 namespace VentaElectrodomesticos.AbmEmpleado {
     public partial class FormAbmEmpleado : Form {
-        private Empleado empleado;
         private Validator validator;
+        private int empleadoId = 0;
+
         public FormAbmEmpleado() {
             InitializeComponent();
-            ViewHelper.fillComboProvincias(cmbProvincia, false);
-            ViewHelper.fillComboSucursales(cmbSucursal, false);
-            ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado, false);
+            ViewHelper.fillComboProvincias(cmbProvincia);
+            ViewHelper.fillComboSucursales(cmbSucursal);
+            ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado);
 
             validator = new Validator()
                 .add(txtNombre, lErrorNombre, Validator.Text.obligatorio, Validator.Text.nombre)
@@ -47,7 +48,6 @@ namespace VentaElectrodomesticos.AbmEmpleado {
         }
         private void cargarEmpleado(Empleado cargoEmpleado) {
             this.limpiar();
-            this.empleado = cargoEmpleado;
             txtApellido.Text = cargoEmpleado.apellido;
             txtNombre.Text = cargoEmpleado.nombre;
             txtDni.Text = cargoEmpleado.dni.ToString();
@@ -97,23 +97,24 @@ namespace VentaElectrodomesticos.AbmEmpleado {
         }
         private void bModificar_Click(object sender, EventArgs e) {
             if (!validator.check()) return;
+
             if (MessageBox.Show("¿Esta seguro que desea modificar al cliente?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                // proceder con la modificacion
-                this.empleado.apellido = txtApellido.Text;
-                this.empleado.nombre = txtNombre.Text;
-                this.empleado.mail = txtMail.Text;
-                this.empleado.telefono = txtTelefono.Text;
-                this.empleado.direccion = txtDireccion.Text;
-                this.empleado.sucursalId = (Byte)cmbSucursal.SelectedValue;
-                this.empleado.tipoEmpleadoId = (Byte)cmbTipoEmpleado.SelectedValue;
-                Context.instance.dao.empleado.modificar(this.empleado);
+                Empleado empleado = new Empleado(empleadoId);
+                empleado.apellido = txtApellido.Text;
+                empleado.nombre = txtNombre.Text;
+                empleado.mail = txtMail.Text;
+                empleado.telefono = txtTelefono.Text;
+                empleado.direccion = txtDireccion.Text;
+                empleado.sucursalId = (Byte)cmbSucursal.SelectedValue;
+                empleado.tipoEmpleadoId = (Byte)cmbTipoEmpleado.SelectedValue;
+                Context.instance.dao.empleado.modificar(empleado);
                 this.Close();
             }
         }
         private void bBorrar_Click(object sender, EventArgs e) {
             if (MessageBox.Show("¿Esta seguro que desea eliminar al Empleado?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con el borrado
-                Context.instance.dao.empleado.delete(empleado);
+                Context.instance.dao.empleado.delete(empleadoId);
                 this.Close();
             }
         }

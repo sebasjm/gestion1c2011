@@ -214,12 +214,11 @@
             this.bCrearOtro.TabIndex = 68;
             this.bCrearOtro.Text = "Crear y Continuar";
             this.bCrearOtro.UseVisualStyleBackColor = true;
-            this.bCrearOtro.Visible = false;
             this.bCrearOtro.Click += new System.EventHandler(this.bCrearOtro_Click);
             // 
             // bLimpiar
             // 
-            this.bLimpiar.Location = new System.Drawing.Point(124, 187);
+            this.bLimpiar.Location = new System.Drawing.Point(120, 187);
             this.bLimpiar.Name = "bLimpiar";
             this.bLimpiar.Size = new System.Drawing.Size(94, 23);
             this.bLimpiar.TabIndex = 67;
@@ -229,7 +228,7 @@
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(24, 187);
+            this.bCancelar.Location = new System.Drawing.Point(20, 187);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(94, 23);
             this.bCancelar.TabIndex = 66;
@@ -393,12 +392,13 @@
             // 
             // bBorrar
             // 
-            this.bBorrar.Location = new System.Drawing.Point(124, 187);
+            this.bBorrar.Location = new System.Drawing.Point(120, 187);
             this.bBorrar.Name = "bBorrar";
             this.bBorrar.Size = new System.Drawing.Size(94, 23);
             this.bBorrar.TabIndex = 82;
             this.bBorrar.Text = "Borrar";
             this.bBorrar.UseVisualStyleBackColor = true;
+            this.bBorrar.Visible = false;
             this.bBorrar.Click += new System.EventHandler(this.bBorrar_Click);
             // 
             // FormAbmEmpleado

@@ -23,7 +23,7 @@ namespace VentaElectrodomesticos.AbmCliente
         {
             InitializeComponent();
             FillData();
-            ViewHelper.fillComboProvincias(cmbProvincia , true);
+            ViewHelper.fillComboProvincias(cmbProvincia);
         }
         void FillData()
         {
