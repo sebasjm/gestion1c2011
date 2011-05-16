@@ -125,7 +125,6 @@
     <Compile Include="Controladores\CategoriaDAO.cs" />
     <Compile Include="Controladores\RolFuncionalidadDAO.cs" />
     <Compile Include="Controladores\FuncionalidadDAO.cs" />
-    <Compile Include="Controladores\ValidatorHelper.cs" />
     <Compile Include="Controladores\FacturaDAO.cs" />
     <Compile Include="Controladores\StockDAO.cs" />
     <Compile Include="Controladores\ProductoDAO.cs" />
@@ -140,7 +139,6 @@
     <Compile Include="Controladores\DAOContext.cs" />
     <Compile Include="Controladores\Security.cs" />
     <Compile Include="Controladores\UserDAO.cs" />
-    <Compile Include="Controladores\ViewHelper.cs" />
     <Compile Include="EfectuarPago\FormEfectuarPago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,8 +186,8 @@
     <Compile Include="Modelo\Provincia.cs" />
     <Compile Include="Modelo\Sucursal.cs" />
     <Compile Include="Modelo\TipoEmpleado.cs" />
+    <Compile Include="Modelo\TipoSucursal.cs" />
     <Compile Include="Modelo\Usuario.cs" />
-    <Compile Include="Modelo\View\EmpleadoSearch.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AbmCliente\FormAbmCliente.resx">
@@ -283,6 +281,11 @@
     <Compile Include="TableroControl\FormTableroControl.Designer.cs">
       <DependentUpon>FormTableroControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Validator.cs" />
+    <Compile Include="Vista\ViewHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modelo\View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

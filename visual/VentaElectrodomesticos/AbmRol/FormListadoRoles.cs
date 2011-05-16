@@ -6,8 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using VentaElectrodomesticos.Vista;
 using VentaElectrodomesticos.Controladores;
 using VentaElectrodomesticos.Modelo;
+
 
 namespace VentaElectrodomesticos.AbmRol
 {

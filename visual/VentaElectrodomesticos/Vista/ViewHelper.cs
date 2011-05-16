@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using VentaElectrodomesticos.Modelo;
-
-
 namespace VentaElectrodomesticos.Controladores {
     class ViewHelper {
         public static void fillComboProvincias(ComboBox cmbProvincia){
@@ -20,9 +18,7 @@ namespace VentaElectrodomesticos.Controladores {
             cmbProvincia.ValueMember = "id";
             cmbProvincia.SelectedIndex = 0;
         }
-        public static void fillComboSucursales(ComboBox cmbSucursal) {
-            fillComboSucursales(cmbSucursal,false);
-        }
+
         public static void fillFuncionalidades(CheckedListBox chkRoles)
         {
            /*
@@ -47,9 +43,7 @@ namespace VentaElectrodomesticos.Controladores {
             
             cmbSucursal.SelectedIndex = 0;
         }
-        public static void fillComboTipoEmpleado(ComboBox cmbTipoEmpleado) {
-            fillComboTipoEmpleado(cmbTipoEmpleado, false);
-        }
+
         public static void fillComboTipoEmpleado(ComboBox cmbTipoEmpleado, bool withNull) {
             List<TipoEmpleado> tipoEmpleadoList = Context.instance.dao.tipoEmpleado.load();
             if ( withNull ) 
@@ -60,6 +54,5 @@ namespace VentaElectrodomesticos.Controladores {
             cmbTipoEmpleado.ValueMember = "id";
             cmbTipoEmpleado.SelectedIndex = 0;
         }
-
     }
 }

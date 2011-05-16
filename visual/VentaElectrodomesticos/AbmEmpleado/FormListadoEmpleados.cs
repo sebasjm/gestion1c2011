@@ -20,9 +20,9 @@ namespace VentaElectrodomesticos.AbmEmpleado {
 
         public FormListadoEmpleados() {
             InitializeComponent();
-            ViewHelper.fillComboProvincias(cmbProvincia);
-            ViewHelper.fillComboSucursales(cmbSucursal);
-            ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado);
+            ViewHelper.fillComboProvincias(cmbProvincia,true);
+            ViewHelper.fillComboSucursales(cmbSucursal,true);
+            ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado,true);
         }
 
         private void bCancelar_Click(object sender, EventArgs e) {
@@ -40,8 +40,8 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 (Sucursal)cmbSucursal.SelectedItem,
                 (TipoEmpleado)cmbTipoEmpleado.SelectedItem
             );
-
-            ViewHelper.fullDataGridEmpleados(dataEmpleados, result);
+            // NO SE QUE ES ESTO
+            // ViewHelper.fullDataGridEmpleados(dataEmpleados, result);
         }
         private void bSeleccionar_Click(object sender, EventArgs e) {
             Empleado empleado = (Empleado)dataEmpleados.SelectedRows[0].Cells[0].Value;

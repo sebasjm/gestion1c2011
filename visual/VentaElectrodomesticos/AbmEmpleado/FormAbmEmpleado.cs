@@ -10,10 +10,11 @@ using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
+using VentaElectrodomesticos.Vista;
 namespace VentaElectrodomesticos.AbmEmpleado {
     public partial class FormAbmEmpleado : Form {
         private Empleado empleado;
-        ValidatorHelper validator;
+        Validator validator;
         public FormAbmEmpleado() {
             InitializeComponent();
             ViewHelper.fillComboProvincias(cmbProvincia,false);
@@ -21,16 +22,16 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado,false);
             bModificar.Hide();
             bBorrar.Hide();
-            validator = new ValidatorHelper()
-                .add(txtNombre, lErrorNombre, ValidatorHelper.vacio, ValidatorHelper.nombre)
-                .add(txtApellido, lErrorApellido, ValidatorHelper.vacio, ValidatorHelper.nombre)
-                .add(txtDni, lErrorDNI, ValidatorHelper.vacio, ValidatorHelper.numerico)
-                .add(txtMail, lErrorMail, ValidatorHelper.vacio, ValidatorHelper.mail)
-                .add(txtDireccion, lErrorDireccion, ValidatorHelper.vacio, ValidatorHelper.direccion)
-                .add(txtTelefono, lErrorTelefono, ValidatorHelper.vacio, ValidatorHelper.telefono)
-                .add(cmbProvincia, lErrorProvincia, ValidatorHelper.nulo)
-                .add(cmbSucursal, lErrorSucursal, ValidatorHelper.nulo)
-                .add(cmbTipoEmpleado, lErrorTipoEmpleado, ValidatorHelper.nulo);
+            validator = new Validator()
+                .add(txtNombre, lErrorNombre, Validator.vacio, Validator.nombre)
+                .add(txtApellido, lErrorApellido, Validator.vacio, Validator.nombre)
+                .add(txtDni, lErrorDNI, Validator.vacio, Validator.numerico)
+                .add(txtMail, lErrorMail, Validator.vacio, Validator.mail)
+                .add(txtDireccion, lErrorDireccion, Validator.vacio, Validator.direccion)
+                .add(txtTelefono, lErrorTelefono, Validator.vacio, Validator.telefono)
+                .add(cmbProvincia, lErrorProvincia, Validator.nulo)
+                .add(cmbSucursal, lErrorSucursal, Validator.nulo)
+                .add(cmbTipoEmpleado, lErrorTipoEmpleado, Validator.nulo);
         }
 
         private void bBuscar_Click(object sender, EventArgs e) {

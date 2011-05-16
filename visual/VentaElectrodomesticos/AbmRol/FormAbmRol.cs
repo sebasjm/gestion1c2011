@@ -8,12 +8,13 @@ using System.Text;
 using System.Windows.Forms;
 using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
+using VentaElectrodomesticos.Vista;
 
 namespace VentaElectrodomesticos.AbmRol
 {
     public partial class FormAbmRol : Form
     {
-        ValidatorHelper validator;
+        Validator validator;
         Rol rol = null;
         public FormAbmRol()
         {
@@ -23,9 +24,9 @@ namespace VentaElectrodomesticos.AbmRol
             bBorrar.Visible = false;
             lErrorNombre.Visible = false;
             lErrorRoles.Visible = false;
-            validator = new ValidatorHelper()
-                .add(txtNombre, lErrorNombre, ValidatorHelper.vacio, ValidatorHelper.nombre)
-                .add(chkListadoRoles, lErrorRoles, ValidatorHelper.sin_elementos )
+            validator = new Validator()
+                .add(txtNombre, lErrorNombre, Validator.vacio, Validator.nombre)
+                .add(chkListadoRoles, lErrorRoles, Validator.sin_elementos )
                 ;
         }
         private void bBuscar_Click(object sender, EventArgs e)

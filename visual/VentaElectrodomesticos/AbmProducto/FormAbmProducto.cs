@@ -9,12 +9,13 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
+using VentaElectrodomesticos.Vista;
 namespace VentaElectrodomesticos.AbmProducto
 {
     public partial class FormAbmProducto : Form
     {
         List<Categoria> items = new List<Categoria>();
-        ValidatorHelper validator;
+        Validator validator;
         Categoria categoria = null;
         AutoCompleteStringCollection namesCollection = new AutoCompleteStringCollection();
         Producto producto;
@@ -23,12 +24,12 @@ namespace VentaElectrodomesticos.AbmProducto
             buildtree();
             bBorrar.Visible = false;
             bModificar.Visible = false;
-            validator = new ValidatorHelper()
-                .add(txtCodigoProducto, lErrorCodigo, ValidatorHelper.vacio, ValidatorHelper.numerico)
-                .add(txtDescripcion, lErrorDescripcion, ValidatorHelper.vacio, ValidatorHelper.nombre)
-                .add(txtNombre, lErrorNombre, ValidatorHelper.vacio, ValidatorHelper.nombre)
-                .add(this.categoria, lErrorCategoria, ValidatorHelper.categoria)
-                .add(txtPrecio, lErrorPrecio, ValidatorHelper.vacio, ValidatorHelper.numerico);
+            validator = new Validator()
+                .add(txtCodigoProducto, lErrorCodigo, Validator.vacio, Validator.numerico)
+                .add(txtDescripcion, lErrorDescripcion, Validator.vacio, Validator.nombre)
+                .add(txtNombre, lErrorNombre, Validator.vacio, Validator.nombre)
+                .add(this.categoria, lErrorCategoria, Validator.categoria)
+                .add(txtPrecio, lErrorPrecio, Validator.vacio, Validator.numerico);
             List<Marca> marcasList = Context.instance.dao.marca.search("");
             foreach (Marca marca in marcasList)
             {

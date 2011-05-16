@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using VentaElectrodomesticos.AbmEmpleado;
 using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
+using VentaElectrodomesticos.Vista;
 
 namespace VentaElectrodomesticos.AbmUsuario
 {
@@ -16,18 +17,18 @@ namespace VentaElectrodomesticos.AbmUsuario
     {
         private Usuario user = null;
         private Empleado empleado = null;
-        ValidatorHelper validator;
+        Validator validator;
         public FormAbmUsuario()
         {
             InitializeComponent();
             ViewHelper.fillFuncionalidades(chkListadoRoles);
-            validator = new ValidatorHelper()
-                .add(txtUsername, lErrorUsername, ValidatorHelper.vacio, ValidatorHelper.nombre)
-                .add(this.empleado, lErrorEmpleado, ValidatorHelper.empleado)
-                .add(txtPassword, lErrorPassword, ValidatorHelper.vacio, ValidatorHelper.password)
-                .add(txtConfirmarPassword, lErrorConfirmPass, ValidatorHelper.vacio, ValidatorHelper.password)
-                .add(chkListadoRoles, lErrorRoles,  ValidatorHelper.sin_elementos)
-                .add(txtPassword, txtConfirmarPassword, lErrorPassword , lErrorConfirmPass, ValidatorHelper.passwordIgual);
+            validator = new Validator()
+                .add(txtUsername, lErrorUsername, Validator.vacio, Validator.nombre)
+                .add(this.empleado, lErrorEmpleado, Validator.empleado)
+                .add(txtPassword, lErrorPassword, Validator.vacio, Validator.password)
+                .add(txtConfirmarPassword, lErrorConfirmPass, Validator.vacio, Validator.password)
+                .add(chkListadoRoles, lErrorRoles,  Validator.sin_elementos)
+                .add(txtPassword, txtConfirmarPassword, lErrorPassword , lErrorConfirmPass, Validator.passwordIgual);
 
         
         }
