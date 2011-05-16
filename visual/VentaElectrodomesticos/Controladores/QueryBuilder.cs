@@ -41,6 +41,11 @@ namespace VentaElectrodomesticos.Controladores {
             query += "SELECT * ";
             return this;
         }
+        public QueryBuilder select_distinc(string campo)
+        {
+            query += "SELECT DISTINCT " + campo;
+            return this;
+        }
         public QueryBuilder from(string table) {
             query += "FROM " + table;
             return this;
@@ -129,6 +134,22 @@ namespace VentaElectrodomesticos.Controladores {
         public QueryBuilder delete(String table)
         {
             query += "DELETE FROM " + table;
+            return this;
+        }
+        // Para los JOINS
+        public QueryBuilder left_join(String tablaJoin , String macheo)
+        {
+            query += " LEFT JOIN " + tablaJoin + " ON " + macheo ;
+           return this;
+        }
+        public QueryBuilder inner_join(String tablaJoin, String macheo)
+        {
+            query += " INNER JOIN " + tablaJoin + " ON " + macheo;
+            return this;
+        }
+        public QueryBuilder outer_join(String tablaJoin, String macheo)
+        {
+            query += " OUTER JOIN " + tablaJoin + " ON " + macheo;
             return this;
         }
     }

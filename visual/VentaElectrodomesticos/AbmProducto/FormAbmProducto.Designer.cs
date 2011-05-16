@@ -189,6 +189,7 @@
             this.lErrorCodigo.Size = new System.Drawing.Size(22, 29);
             this.lErrorCodigo.TabIndex = 73;
             this.lErrorCodigo.Text = "*";
+            this.lErrorCodigo.Visible = false;
             // 
             // lErrorNombre
             // 
@@ -201,6 +202,7 @@
             this.lErrorNombre.Size = new System.Drawing.Size(22, 29);
             this.lErrorNombre.TabIndex = 74;
             this.lErrorNombre.Text = "*";
+            this.lErrorNombre.Visible = false;
             // 
             // lErrorDescripcion
             // 
@@ -213,6 +215,7 @@
             this.lErrorDescripcion.Size = new System.Drawing.Size(22, 29);
             this.lErrorDescripcion.TabIndex = 75;
             this.lErrorDescripcion.Text = "*";
+            this.lErrorDescripcion.Visible = false;
             // 
             // lErrorCategoria
             // 
@@ -225,6 +228,7 @@
             this.lErrorCategoria.Size = new System.Drawing.Size(22, 29);
             this.lErrorCategoria.TabIndex = 76;
             this.lErrorCategoria.Text = "*";
+            this.lErrorCategoria.Visible = false;
             // 
             // lErrorPrecio
             // 
@@ -237,6 +241,7 @@
             this.lErrorPrecio.Size = new System.Drawing.Size(22, 29);
             this.lErrorPrecio.TabIndex = 77;
             this.lErrorPrecio.Text = "*";
+            this.lErrorPrecio.Visible = false;
             // 
             // treeCategorias
             // 

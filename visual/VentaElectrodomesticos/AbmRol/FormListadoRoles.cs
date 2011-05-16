@@ -19,33 +19,25 @@ namespace VentaElectrodomesticos.AbmRol
             get { return messageFromParent; }
             set { messageFromParent = value; }
         }
-        private string nombre = "";
         public FormListadoRoles()
         {
             InitializeComponent();
-            FillData();
-        }
-        void FillData()
-        {
-            List<Rol> rolesList = Context.instance.dao.rol.getRoles( -1 , this.nombre );
-            try
-            {
-                lRoles.DataSource = rolesList;
-                lRoles.DisplayMember = "nombre";
-                lRoles.ValueMember = "id";
-                lRoles.SelectedIndex = -1;
-            }
-            catch (NullReferenceException) { }
+            ViewHelper.fillFuncionalidades(chkListadoRoles);
         }
         private void bBuscar_Click(object sender, EventArgs e)
         {
-            this.nombre = txtNombre.Text;
-            FillData();
+            if (txtNombre.Text.Length == 0)
+                txtNombre.Text = "";
+            listRoles.DataSource = Context.instance.dao.rol.search(
+                txtNombre.Text,
+                chkListadoRoles
+            );
+            listRoles.DisplayMember = "nombre";
+            listRoles.ValueMember = "id";
         }
         private void bSeleccionar_Click(object sender, EventArgs e)
         {
-            Rol rol = (Rol)lRoles.Items[0];
-            // Rows[lRoles.CurrentCell.RowIndex].DataBoundItem;
+            Rol rol = (Rol)listRoles.Items[listRoles.SelectedIndex];
             if (rol != null)
             {
                 this.messageFromParent = rol;
@@ -63,7 +55,7 @@ namespace VentaElectrodomesticos.AbmRol
         private void bLimpiar_Click(object sender, EventArgs e)
         {
             this.txtNombre.Text = "";
-            lRoles.DataSource = null;
+            listRoles.DataSource = null;
         }
     }
 }

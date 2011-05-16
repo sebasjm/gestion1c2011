@@ -14,19 +14,22 @@ namespace VentaElectrodomesticos.AbmUsuario
 {
     public partial class FormAbmUsuario : Form
     {
-        private Usuario user;
-
+        private Usuario user = null;
+        private Empleado empleado = null;
+        ValidatorHelper validator;
         public FormAbmUsuario()
         {
             InitializeComponent();
-            fillPermisos();
-            lErrorConfirmPass.Visible = false;
-            lErrorEmpleado.Visible = false;
-            lErrorPassword.Visible = false;
-            lErrorRoles.Visible = false;
-            lErrorUsername.Visible = false;
-            bBorrar.Visible = false;
-            bModificar.Visible = false;
+            ViewHelper.fillFuncionalidades(chkListadoRoles);
+            validator = new ValidatorHelper()
+                .add(txtUsername, lErrorUsername, ValidatorHelper.vacio, ValidatorHelper.nombre)
+                .add(this.empleado, lErrorEmpleado, ValidatorHelper.empleado)
+                .add(txtPassword, lErrorPassword, ValidatorHelper.vacio, ValidatorHelper.password)
+                .add(txtConfirmarPassword, lErrorConfirmPass, ValidatorHelper.vacio, ValidatorHelper.password)
+                .add(chkListadoRoles, lErrorRoles,  ValidatorHelper.sin_elementos)
+                .add(txtPassword, txtConfirmarPassword, lErrorPassword , lErrorConfirmPass, ValidatorHelper.passwordIgual);
+
+        
         }
         private void bBuscarEmpleado_Click(object sender, EventArgs e)
         {
@@ -39,6 +42,7 @@ namespace VentaElectrodomesticos.AbmUsuario
             }
         }
         private void cargarEmpleado(Empleado cargoEmpleado){
+            this.empleado = cargoEmpleado;
             lNombreEmpleado.Text = cargoEmpleado.apellido + " ," + cargoEmpleado.nombre;
         }
         private void bBuscar_Click(object sender, EventArgs e)
@@ -62,24 +66,6 @@ namespace VentaElectrodomesticos.AbmUsuario
             this.user = cargoUsuario;
             txtUsername.Text = cargoUsuario.username;
         }
-        private void fillPermisos() {
-            List<string> permisos = new List<string>();
-            permisos.Add("ABM de Empleado");
-            permisos.Add("ABM de Rol");
-            permisos.Add("ABM de Usuario");
-            permisos.Add("ABM de Cliente");
-            permisos.Add("ABM de Producto");
-            permisos.Add("Asignación de stock");
-            permisos.Add("Facturación");
-            permisos.Add("Efectuar Pago");
-            permisos.Add("Tablero de Control");
-            permisos.Add("Clientes Premium");
-            permisos.Add("Mejores Categorías");
-            for (int n = 0; n < permisos.Count; n++)
-            {
-                chkListadoRoles.Items.Add(permisos[n]);
-            }
-        }
         private void bLimpiar_Click(object sender, EventArgs e)
         {
             this.limpiar();
@@ -94,7 +80,7 @@ namespace VentaElectrodomesticos.AbmUsuario
         }
         private void bCrear_Click(object sender, EventArgs e)
         {
-            this.validadCampos();
+            if (!validator.check()) return;
                 if (MessageBox.Show("¿Esta seguro que desea crear al Usuario?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     // proceder con la creacion
@@ -102,6 +88,10 @@ namespace VentaElectrodomesticos.AbmUsuario
                     user.password = (String)this.txtPassword.Text;
                     user.username = (String)this.txtUsername.Text;
                     Context.instance.dao.user.insertar(user);
+                    // Cargo el usuario recientemente creado.
+                    List<Usuario> usuarioNuevo = Context.instance.dao.user.search((String)this.txtUsername.Text);
+                    this.empleado.usuarioId = usuarioNuevo[0].id ;
+                    Context.instance.dao.empleado.modificar(this.empleado);
                     this.Close();
                 }
         }
@@ -111,13 +101,17 @@ namespace VentaElectrodomesticos.AbmUsuario
         }
         private void bModificar_Click(object sender, EventArgs e)
         {
-            this.validadCampos();
+            if (!validator.check()) return;
                 if (MessageBox.Show("¿Esta seguro que desea modificar al Usuario?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     // proceder con la modificacion
                     user.password = (String)this.txtPassword.Text;
                     user.username = (String)this.txtUsername.Text;
                     Context.instance.dao.user.modificar(user);
+                    // Cargo el usuario recientemente creado.
+                    List<Usuario> usuarioNuevo = Context.instance.dao.user.search((String)this.txtUsername.Text);
+                    this.empleado.usuarioId = usuarioNuevo[0].id;
+                    Context.instance.dao.empleado.modificar(this.empleado);
                     this.Close();
                 }
         }
@@ -129,18 +123,8 @@ namespace VentaElectrodomesticos.AbmUsuario
                     this.Close();
                 }
             }
-        private bool validadCampos()
-        {
-            // TODO : Ver como cargar el objeto empleado
-            ValidarHelper validador = new ValidarHelper();
-            validador.validarCampo(txtUsername, lErrorUsername, "Username");
-            validador.validarCampo(txtPassword, lErrorPassword, "Password");
-            validador.validarCampo(txtConfirmarPassword, lErrorConfirmPass, "Confirmar Password");
-            validador.validarCampo(lNombreEmpleado, lErrorEmpleado, "Empleado");
-            return validador.getEstado();
-         }
         private void bCrearOtro_Click(object sender, EventArgs e)        {
-            this.validadCampos();
+            if (!validator.check()) return;
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Usuario?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el Guardado y la Creacion de otro
@@ -148,6 +132,10 @@ namespace VentaElectrodomesticos.AbmUsuario
                 user.password = (String)this.txtPassword.Text;
                 user.username = (String)this.txtUsername.Text;
                 Context.instance.dao.user.insertar(user);
+                // Cargo el usuario recientemente creado.
+                List<Usuario> usuarioNuevo = Context.instance.dao.user.search((String)this.txtUsername.Text);
+                this.empleado.usuarioId = usuarioNuevo[0].id;
+                Context.instance.dao.empleado.modificar(this.empleado);
                 this.limpiar();
             }
         }

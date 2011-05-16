@@ -8,7 +8,6 @@ using VentaElectrodomesticos.Modelo;
 
 namespace VentaElectrodomesticos.Controladores {
     class ViewHelper {
-
         public static void fillComboProvincias(ComboBox cmbProvincia){
             fillComboProvincias(cmbProvincia,false);
         }
@@ -21,9 +20,22 @@ namespace VentaElectrodomesticos.Controladores {
             cmbProvincia.ValueMember = "id";
             cmbProvincia.SelectedIndex = 0;
         }
-
         public static void fillComboSucursales(ComboBox cmbSucursal) {
             fillComboSucursales(cmbSucursal,false);
+        }
+        public static void fillFuncionalidades(CheckedListBox chkRoles)
+        {
+           /*
+            for (int n = 0; n < permisos.Count; n++)
+            {
+                chkRoles.Items.Add(permisos[n]);
+            }
+            */
+            List<Funcionalidad> funcionalidadList = Context.instance.dao.funcionalidad.load();
+            chkRoles.DataSource = funcionalidadList;
+            chkRoles.DisplayMember = "nombre";
+            chkRoles.ValueMember = "id";
+            chkRoles.SelectedIndex = 0;
         }
         public static void fillComboSucursales(ComboBox cmbSucursal, bool withNull) {
             List<Sucursal> sucursalList = Context.instance.dao.sucursal.load();
@@ -32,9 +44,9 @@ namespace VentaElectrodomesticos.Controladores {
             cmbSucursal.DataSource = sucursalList;
             cmbSucursal.DisplayMember = "direccion";
             cmbSucursal.ValueMember = "id";
+            
             cmbSucursal.SelectedIndex = 0;
         }
-
         public static void fillComboTipoEmpleado(ComboBox cmbTipoEmpleado) {
             fillComboTipoEmpleado(cmbTipoEmpleado, false);
         }
@@ -42,6 +54,7 @@ namespace VentaElectrodomesticos.Controladores {
             List<TipoEmpleado> tipoEmpleadoList = Context.instance.dao.tipoEmpleado.load();
             if ( withNull ) 
                 tipoEmpleadoList.Insert(0, new TipoEmpleado(0) { nombre = "---" });
+
             cmbTipoEmpleado.DataSource = tipoEmpleadoList;
             cmbTipoEmpleado.DisplayMember = "nombre";
             cmbTipoEmpleado.ValueMember = "id";

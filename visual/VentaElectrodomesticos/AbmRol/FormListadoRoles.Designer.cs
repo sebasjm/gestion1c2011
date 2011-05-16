@@ -32,14 +32,16 @@
             this.bCancelar = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
             this.bBuscar = new System.Windows.Forms.Button();
-            this.lRoles = new System.Windows.Forms.ListBox();
+            this.listRoles = new System.Windows.Forms.ListBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lNombre = new System.Windows.Forms.Label();
+            this.chkListadoRoles = new System.Windows.Forms.CheckedListBox();
+            this.labelRoles = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bSeleccionar
             // 
-            this.bSeleccionar.Location = new System.Drawing.Point(265, 243);
+            this.bSeleccionar.Location = new System.Drawing.Point(265, 328);
             this.bSeleccionar.Name = "bSeleccionar";
             this.bSeleccionar.Size = new System.Drawing.Size(75, 23);
             this.bSeleccionar.TabIndex = 84;
@@ -49,7 +51,7 @@
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(11, 243);
+            this.bCancelar.Location = new System.Drawing.Point(11, 328);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
             this.bCancelar.TabIndex = 83;
@@ -59,7 +61,7 @@
             // 
             // bLimpiar
             // 
-            this.bLimpiar.Location = new System.Drawing.Point(95, 243);
+            this.bLimpiar.Location = new System.Drawing.Point(95, 328);
             this.bLimpiar.Name = "bLimpiar";
             this.bLimpiar.Size = new System.Drawing.Size(75, 23);
             this.bLimpiar.TabIndex = 82;
@@ -69,7 +71,7 @@
             // 
             // bBuscar
             // 
-            this.bBuscar.Location = new System.Drawing.Point(265, 42);
+            this.bBuscar.Location = new System.Drawing.Point(265, 190);
             this.bBuscar.Name = "bBuscar";
             this.bBuscar.Size = new System.Drawing.Size(75, 23);
             this.bBuscar.TabIndex = 80;
@@ -77,13 +79,13 @@
             this.bBuscar.UseVisualStyleBackColor = true;
             this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
             // 
-            // lRoles
+            // listRoles
             // 
-            this.lRoles.FormattingEnabled = true;
-            this.lRoles.Location = new System.Drawing.Point(12, 82);
-            this.lRoles.Name = "lRoles";
-            this.lRoles.Size = new System.Drawing.Size(328, 147);
-            this.lRoles.TabIndex = 85;
+            this.listRoles.FormattingEnabled = true;
+            this.listRoles.Location = new System.Drawing.Point(12, 219);
+            this.listRoles.Name = "listRoles";
+            this.listRoles.Size = new System.Drawing.Size(328, 95);
+            this.listRoles.TabIndex = 85;
             // 
             // txtNombre
             // 
@@ -101,14 +103,33 @@
             this.lNombre.TabIndex = 86;
             this.lNombre.Text = "Nombre";
             // 
+            // chkListadoRoles
+            // 
+            this.chkListadoRoles.FormattingEnabled = true;
+            this.chkListadoRoles.Location = new System.Drawing.Point(18, 60);
+            this.chkListadoRoles.Name = "chkListadoRoles";
+            this.chkListadoRoles.Size = new System.Drawing.Size(322, 124);
+            this.chkListadoRoles.TabIndex = 88;
+            // 
+            // labelRoles
+            // 
+            this.labelRoles.AutoSize = true;
+            this.labelRoles.Location = new System.Drawing.Point(156, 44);
+            this.labelRoles.Name = "labelRoles";
+            this.labelRoles.Size = new System.Drawing.Size(34, 13);
+            this.labelRoles.TabIndex = 89;
+            this.labelRoles.Text = "Roles";
+            // 
             // FormListadoRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 282);
+            this.ClientSize = new System.Drawing.Size(353, 370);
+            this.Controls.Add(this.labelRoles);
+            this.Controls.Add(this.chkListadoRoles);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lNombre);
-            this.Controls.Add(this.lRoles);
+            this.Controls.Add(this.listRoles);
             this.Controls.Add(this.bSeleccionar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bLimpiar);
@@ -126,8 +147,10 @@
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bLimpiar;
         private System.Windows.Forms.Button bBuscar;
-        private System.Windows.Forms.ListBox lRoles;
+        private System.Windows.Forms.ListBox listRoles;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lNombre;
+        private System.Windows.Forms.CheckedListBox chkListadoRoles;
+        private System.Windows.Forms.Label labelRoles;
     }
 }

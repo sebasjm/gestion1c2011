@@ -13,6 +13,7 @@ using VentaElectrodomesticos.Controladores;
 namespace VentaElectrodomesticos.AbmEmpleado {
     public partial class FormAbmEmpleado : Form {
         private Empleado empleado;
+        ValidatorHelper validator;
         public FormAbmEmpleado() {
             InitializeComponent();
             ViewHelper.fillComboProvincias(cmbProvincia,false);
@@ -20,30 +21,18 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado,false);
             bModificar.Hide();
             bBorrar.Hide();
-            lErrorApellido.Hide();
-            lErrorDNI.Hide();
-            lErrorMail.Hide();
-            lErrorNombre.Hide();
-            lErrorProvincia.Hide();
-            lErrorSucursal.Hide();
-            lErrorTelefono.Hide();
-            lErrorTipoEmpleado.Hide();
-            lErrorDireccion.Hide();
+            validator = new ValidatorHelper()
+                .add(txtNombre, lErrorNombre, ValidatorHelper.vacio, ValidatorHelper.nombre)
+                .add(txtApellido, lErrorApellido, ValidatorHelper.vacio, ValidatorHelper.nombre)
+                .add(txtDni, lErrorDNI, ValidatorHelper.vacio, ValidatorHelper.numerico)
+                .add(txtMail, lErrorMail, ValidatorHelper.vacio, ValidatorHelper.mail)
+                .add(txtDireccion, lErrorDireccion, ValidatorHelper.vacio, ValidatorHelper.direccion)
+                .add(txtTelefono, lErrorTelefono, ValidatorHelper.vacio, ValidatorHelper.telefono)
+                .add(cmbProvincia, lErrorProvincia, ValidatorHelper.nulo)
+                .add(cmbSucursal, lErrorSucursal, ValidatorHelper.nulo)
+                .add(cmbTipoEmpleado, lErrorTipoEmpleado, ValidatorHelper.nulo);
         }
-        private void validadCampos()
-        {
-            // TODO : Ver como cargar el objeto empleado
-            ValidarHelper validador = new ValidarHelper();
-            validador.validarCampo(txtNombre, lErrorNombre, "Nombre");
-            validador.validarCampo(txtApellido, lErrorApellido, "Apellido");
-            validador.validarCampo(txtDni, lErrorDNI, "DNI");
-            validador.validarCampo(txtDireccion, lErrorDireccion, "Dirección");
-            validador.validarCampo(txtMail, lErrorMail, "Mail");
-            validador.validarCampo(txtTelefono, lErrorTelefono, "Teléfono");
-            validador.validarCampo(cmbProvincia, lErrorProvincia, "Provincia");
-            validador.validarCampo(cmbSucursal, lErrorSucursal, "Sucursal");
-            validador.validarCampo(cmbTipoEmpleado, lErrorTipoEmpleado, "Tipo Empleado");
-        }
+
         private void bBuscar_Click(object sender, EventArgs e) {
             FormListadoEmpleados form = new FormListadoEmpleados();
             form.MessageFromParent = null;
@@ -65,9 +54,9 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             txtMail.Text = cargoEmpleado.mail;
             txtTelefono.Text = cargoEmpleado.telefono;
             txtDireccion.Text = cargoEmpleado.direccion;
-            cmbProvincia.SelectedValue = cargoEmpleado.sucursal.provinciaId;
-            cmbSucursal.SelectedValue = cargoEmpleado.sucursalId;
-            cmbTipoEmpleado.SelectedValue = cargoEmpleado.tipoEmpleadoId;
+            cmbProvincia.SelectedValue = cargoEmpleado.sucursal.provinciaId ;
+            cmbSucursal.SelectedValue = cargoEmpleado.sucursalId ;
+            cmbTipoEmpleado.SelectedValue = cargoEmpleado.tipoEmpleadoId ;
         }
         private void bLimpiar_Click(object sender, EventArgs e) {
             this.limpiar();
@@ -88,7 +77,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             bBorrar.Hide();
         }
         private void bCrear_Click(object sender, EventArgs e) {
-            this.validadCampos();
+            if (!validator.check()) return;
             if (MessageBox.Show("¿Esta seguro que desea crear el Empleado?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la creacion
@@ -108,7 +97,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             this.Close();
         }
         private void bModificar_Click(object sender, EventArgs e) {
-            this.validadCampos();
+            if (!validator.check()) return;
             if (MessageBox.Show("¿Esta seguro que desea modificar al cliente?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con la modificacion
                 this.empleado.apellido = txtApellido.Text;
@@ -134,7 +123,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
 
         private void bCrearOtro_Click(object sender, EventArgs e)
         {
-            this.validadCampos();
+            if (!validator.check()) return;
             if (MessageBox.Show("¿Esta seguro que desea crear el Empleado?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la creacion

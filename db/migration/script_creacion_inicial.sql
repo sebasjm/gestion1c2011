@@ -160,7 +160,7 @@ CREATE TABLE [la_huerta].[Rol](
 
 CREATE TABLE [la_huerta].[Funcionalidad](
 	[id] [tinyint] NOT NULL,
-	[nombre] [varchar](10) NOT NULL,
+	[nombre] [varchar](20) NOT NULL,
 	[descripcion] [varchar](50) NOT NULL,
 	primary key (id),
 	unique (nombre)
@@ -562,3 +562,19 @@ insert into la_huerta.Usuario ( username , password ) values ('admin','E6B87050B
 
 -------
 
+----------------
+----------------
+-- Se inserta las funcionalidades del sistema.
+----------------
+insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (1,'ABM de Empleado','ABM de Empleado')
+insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (2,'ABM de Rol','ABM de Rol')
+insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (3,'ABM de Usuario','ABM de Usuario')
+insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (4,'ABM de Cliente','ABM de Cliente')
+insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (5,'ABM de Producto','ABM de Producto')
+insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (6,'Asignación de stock','Asignación de stock')
+insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (7,'Facturación','Facturación')
+insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (8,'Efectuar Pago','Efectuar Pago')
+insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (9,'Tablero de Control','Tablero de Control')
+insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (10,'Mejores Categorías','Mejores Categorías')
+-------
+----------------

@@ -531,6 +531,9 @@
   <data name="lErrorEmpleado.Text" xml:space="preserve">
     <value>*</value>
   </data>
+  <data name="lErrorEmpleado.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;lErrorEmpleado.Name" xml:space="preserve">
     <value>lErrorEmpleado</value>
   </data>
@@ -560,6 +563,9 @@
   </data>
   <data name="lErrorUsername.Text" xml:space="preserve">
     <value>*</value>
+  </data>
+  <data name="lErrorUsername.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;lErrorUsername.Name" xml:space="preserve">
     <value>lErrorUsername</value>
@@ -591,6 +597,9 @@
   <data name="lErrorPassword.Text" xml:space="preserve">
     <value>*</value>
   </data>
+  <data name="lErrorPassword.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;lErrorPassword.Name" xml:space="preserve">
     <value>lErrorPassword</value>
   </data>
@@ -620,6 +629,9 @@
   </data>
   <data name="lErrorConfirmPass.Text" xml:space="preserve">
     <value>*</value>
+  </data>
+  <data name="lErrorConfirmPass.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;lErrorConfirmPass.Name" xml:space="preserve">
     <value>lErrorConfirmPass</value>
@@ -651,6 +663,9 @@
   <data name="lErrorRoles.Text" xml:space="preserve">
     <value>*</value>
   </data>
+  <data name="lErrorRoles.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;lErrorRoles.Name" xml:space="preserve">
     <value>lErrorRoles</value>
   </data>
@@ -678,6 +693,9 @@
   <data name="bBorrar.Text" xml:space="preserve">
     <value>Borrar</value>
   </data>
+  <data name="bBorrar.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;bBorrar.Name" xml:space="preserve">
     <value>bBorrar</value>
   </data>
@@ -704,6 +722,9 @@
   </data>
   <data name="bModificar.Text" xml:space="preserve">
     <value>Modificar</value>
+  </data>
+  <data name="bModificar.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;bModificar.Name" xml:space="preserve">
     <value>bModificar</value>

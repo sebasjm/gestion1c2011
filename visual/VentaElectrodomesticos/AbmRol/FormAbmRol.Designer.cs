@@ -127,6 +127,7 @@
             this.lErrorNombre.Size = new System.Drawing.Size(22, 29);
             this.lErrorNombre.TabIndex = 78;
             this.lErrorNombre.Text = "*";
+            this.lErrorNombre.Visible = false;
             // 
             // bBorrar
             // 
@@ -159,6 +160,7 @@
             this.lErrorRoles.Size = new System.Drawing.Size(22, 29);
             this.lErrorRoles.TabIndex = 81;
             this.lErrorRoles.Text = "*";
+            this.lErrorRoles.Visible = false;
             // 
             // FormAbmRol
             // 

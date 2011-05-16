@@ -89,6 +89,18 @@ namespace VentaElectrodomesticos.Controladores {
             get { if (_factura == null) _factura = new FacturaDAO(connection); return _factura; }
             private set { _factura = value; }
         }
+        private FuncionalidadDAO _funcionalidad;
+        public FuncionalidadDAO funcionalidad
+        {
+            get { if (_funcionalidad == null) _funcionalidad = new FuncionalidadDAO(connection); return _funcionalidad; }
+            private set { _funcionalidad = value; }
+        }
+        private RolFuncionalidadDAO _rol_funcionalidad;
+        public RolFuncionalidadDAO rol_funcionalidad
+        {
+            get { if (_rol_funcionalidad == null) _rol_funcionalidad = new RolFuncionalidadDAO(connection); return _rol_funcionalidad; }
+            private set { _rol_funcionalidad = value; }
+        }
         private static string buildConnectionURL(string user, string passwd, string server, string db) {
             return "user id=" + user 
                 + ";password=" + passwd + ";server=" + server + ";" + "database=" + db + "; ";

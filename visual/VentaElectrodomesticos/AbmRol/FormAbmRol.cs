@@ -13,14 +13,20 @@ namespace VentaElectrodomesticos.AbmRol
 {
     public partial class FormAbmRol : Form
     {
+        ValidatorHelper validator;
+        Rol rol = null;
         public FormAbmRol()
         {
             InitializeComponent();
-            fillPermisos();
+            ViewHelper.fillFuncionalidades(chkListadoRoles);
             bModificar.Visible = false;
             bBorrar.Visible = false;
             lErrorNombre.Visible = false;
             lErrorRoles.Visible = false;
+            validator = new ValidatorHelper()
+                .add(txtNombre, lErrorNombre, ValidatorHelper.vacio, ValidatorHelper.nombre)
+                .add(chkListadoRoles, lErrorRoles, ValidatorHelper.sin_elementos )
+                ;
         }
         private void bBuscar_Click(object sender, EventArgs e)
         {
@@ -40,24 +46,20 @@ namespace VentaElectrodomesticos.AbmRol
         private void cargarRol(Rol rol){
             this.limpiar();
             txtNombre.Text = rol.nombre;
-        }
-        private void fillPermisos()
-        {
-            List<string> permisos = new List<string>();
-            permisos.Add("ABM de Empleado");
-            permisos.Add("ABM de Rol");
-            permisos.Add("ABM de Usuario");
-            permisos.Add("ABM de Cliente");
-            permisos.Add("ABM de Producto");
-            permisos.Add("Asignación de stock");
-            permisos.Add("Facturación");
-            permisos.Add("Efectuar Pago");
-            permisos.Add("Tablero de Control");
-            permisos.Add("Clientes Premium");
-            permisos.Add("Mejores Categorías");
-            for (int n = 0; n < permisos.Count; n++)
+            this.rol = rol;
+            List < Funcionalidad >  func = this.rol.funcionalidades;
+
+            for (int i = 0; i < chkListadoRoles.Items.Count; ++i)
             {
-                chkListadoRoles.Items.Add(permisos[n]);
+                Funcionalidad funca = (Funcionalidad)chkListadoRoles.Items[i];
+                List<Funcionalidad> results = func.FindAll(
+                    delegate(Funcionalidad p) { return p.id == funca.id; }
+
+                    );
+                if (results.Count > 0)
+                {
+                    chkListadoRoles.SetItemChecked(i, true);
+                }
             }
         }
         private void bLimpiar_Click(object sender, EventArgs e)
@@ -71,18 +73,41 @@ namespace VentaElectrodomesticos.AbmRol
         }
         private void bCrear_Click(object sender, EventArgs e)
         {
-            this.validadCampos();
-            if (MessageBox.Show("¿Esta seguro que desea modificar al Rol?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (!validator.check()) return;
+            if (MessageBox.Show("¿Esta seguro que desea crear al Rol?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                // proceder con la modificacion
+                // proceder con la creación del rol
+                this.rol = new Rol(null);
+                this.rol.nombre = txtNombre.Text;
+                this.rol.descripcion = txtNombre.Text;
+                Context.instance.dao.rol.insertar(this.rol);
+                // cargo el nuevo rol en el objeto Form
+                this.rol = Context.instance.dao.rol.findByNombre(this.rol.nombre);
+                for (int i = 0; i < chkListadoRoles.Items.Count; ++i)
+                    if (chkListadoRoles.GetItemChecked(i))
+                    {
+                        Context.instance.dao.rol_funcionalidad.insertar(this.rol , (Funcionalidad)chkListadoRoles.Items[i]);
+                    }
+                    else {
+                        Context.instance.dao.rol_funcionalidad.delete(this.rol, (Funcionalidad)chkListadoRoles.Items[i]);
+                    }
                 this.Close();
             }
         }
         private void bModificar_Click(object sender, EventArgs e)
         {
-            this.validadCampos();
+            if (!validator.check()) return;
             if (MessageBox.Show("¿Esta seguro que desea modificar el Rol?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con la modificacion
+                this.rol.nombre = txtNombre.Text;
+                this.rol.descripcion = txtNombre.Text;
+                Context.instance.dao.rol.modificar(this.rol);
+                Context.instance.dao.rol.limpiarFuncionalidades(this.rol);
+                for (int i = 0; i < chkListadoRoles.Items.Count; ++i)
+                    if (chkListadoRoles.GetItemChecked(i))
+                    {
+                        Context.instance.dao.rol_funcionalidad.insertar(this.rol, (Funcionalidad)chkListadoRoles.Items[i]);
+                    }
                 this.Close();
             }
         }
@@ -98,16 +123,8 @@ namespace VentaElectrodomesticos.AbmRol
                 // proceder con la modificacion
             }
         }
-        private bool validadCampos()
-        {
-            // TODO : Ver como cargar el objeto empleado
-            ValidarHelper validador = new ValidarHelper();
-            validador.validarCampo(txtNombre, lErrorNombre, "Nombre");
-            validador.validarCampo(chkListadoRoles, lErrorRoles, "Roles");
-            return validador.getEstado();
-        }
         private void bCrearOtro_Click(object sender, EventArgs e)        {
-            this.validadCampos();
+            if (!validator.check()) return;
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Rol?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el Guardado y la Creacion de otro

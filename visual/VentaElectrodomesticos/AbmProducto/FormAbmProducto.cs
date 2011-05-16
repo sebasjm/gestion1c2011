@@ -14,6 +14,8 @@ namespace VentaElectrodomesticos.AbmProducto
     public partial class FormAbmProducto : Form
     {
         List<Categoria> items = new List<Categoria>();
+        ValidatorHelper validator;
+        Categoria categoria = null;
         AutoCompleteStringCollection namesCollection = new AutoCompleteStringCollection();
         Producto producto;
         public FormAbmProducto()        {
@@ -21,12 +23,12 @@ namespace VentaElectrodomesticos.AbmProducto
             buildtree();
             bBorrar.Visible = false;
             bModificar.Visible = false;
-            lErrorCodigo.Visible = false;
-            lErrorNombre.Visible = false;
-            lErrorDescripcion.Visible = false;
-            lErrorDescripcion.Visible = false;
-            lErrorCategoria.Visible = false;
-            lErrorPrecio.Visible = false;
+            validator = new ValidatorHelper()
+                .add(txtCodigoProducto, lErrorCodigo, ValidatorHelper.vacio, ValidatorHelper.numerico)
+                .add(txtDescripcion, lErrorDescripcion, ValidatorHelper.vacio, ValidatorHelper.nombre)
+                .add(txtNombre, lErrorNombre, ValidatorHelper.vacio, ValidatorHelper.nombre)
+                .add(this.categoria, lErrorCategoria, ValidatorHelper.categoria)
+                .add(txtPrecio, lErrorPrecio, ValidatorHelper.vacio, ValidatorHelper.numerico);
             List<Marca> marcasList = Context.instance.dao.marca.search("");
             foreach (Marca marca in marcasList)
             {
@@ -35,15 +37,6 @@ namespace VentaElectrodomesticos.AbmProducto
             txtNombre.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtNombre.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txtNombre.AutoCompleteCustomSource = namesCollection;
-        }
-        private void validadCampos()        {
-            // TODO : Ver como cargar el objeto empleado
-            ValidarHelper validador = new ValidarHelper();
-            validador.validarCampo(txtCodigoProducto, lErrorCodigo, "Código del Producto");
-            validador.validarCampo(txtDescripcion, lErrorDescripcion, "Descripción");
-            validador.validarCampo(txtNombre, lErrorNombre, "Nombre");
-            validador.validarCampo(labelCategoria, lErrorCategoria, "Categoría");
-            validador.validarCampo(txtPrecio, lErrorPrecio, "Precio");
         }
         private void buildtree()        {
             this.items = Context.instance.dao.categoria.search(0 , "");
@@ -114,13 +107,13 @@ namespace VentaElectrodomesticos.AbmProducto
             TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
             if (NodoSeleccionado != null)
             {
-                Categoria cate = (Categoria)NodoSeleccionado.Tag;
-                labelCategoria.Text = cate.nombre;
+                this.categoria = (Categoria)NodoSeleccionado.Tag;
+                labelCategoria.Text = categoria.nombre;
             }
         }
         private void bModificar_Click(object sender, EventArgs e)
         {
-            this.validadCampos();
+            if (!validator.check()) return;
             if (MessageBox.Show("¿Esta seguro que desea modificar el Producto?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la modificacion
@@ -152,7 +145,7 @@ namespace VentaElectrodomesticos.AbmProducto
             this.Close();
         }
         private void bCrear_Click(object sender, EventArgs e)        {
-            this.validadCampos();
+            if (!validator.check()) return;
             if (MessageBox.Show("¿Esta seguro que desea crear el Producto?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la creacion
@@ -185,7 +178,7 @@ namespace VentaElectrodomesticos.AbmProducto
             treeCategorias.CollapseAll();
         }
         private void bCrearOtro_Click(object sender, EventArgs e)        {
-            this.validadCampos();
+            if (!validator.check()) return;
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Producto?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el Guardado y la Creacion de otro
