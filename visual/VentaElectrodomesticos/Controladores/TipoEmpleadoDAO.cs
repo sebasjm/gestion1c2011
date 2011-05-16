@@ -19,7 +19,7 @@ namespace VentaElectrodomesticos.Controladores {
                 q.select().from("la_huerta.TipoEmpleado");
                 cache = connection.query<TipoEmpleado>(q.build(), q.getParams());
             }
-            return cache;
+            return new List<TipoEmpleado>( cache );
         }
         public TipoEmpleado findById(Byte id) {
             if (cache == null)

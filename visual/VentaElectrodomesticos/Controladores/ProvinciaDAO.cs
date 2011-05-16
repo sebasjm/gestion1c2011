@@ -25,7 +25,7 @@ namespace VentaElectrodomesticos.Controladores {
                 q.select().from("la_huerta.Provincia");
                 cache = connection.query<Provincia>(q.build(), q.getParams());
             }
-            return cache;
+            return new List<Provincia>( cache );
         }
         public Provincia findById(Byte id) {
             if (cache == null)

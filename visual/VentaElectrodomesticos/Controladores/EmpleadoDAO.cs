@@ -34,7 +34,7 @@ namespace VentaElectrodomesticos.Controladores {
                 .filterIf(dni != 0, "dni = {2} ", dni)
                 .filterIf(suc != null && suc.id != 0, "sucursal_id = {3} ", suc != null ? suc.id : 0)
                 .filterIf(tipoEmp != null && tipoEmp.id != 0, "tipoEmpleado_id = {4} ", tipoEmp != null ? tipoEmp.id : 0)
-                .filterIf(true, "activo = {5} ", 1);
+                .filter("activo = 1 ");
             return connection.query<Empleado>( q.build() , q.getParams() );
         }
         //CRUD

@@ -52,11 +52,18 @@
             // 
             // dataEmpleados
             // 
+            this.dataEmpleados.AllowUserToAddRows = false;
+            this.dataEmpleados.AllowUserToDeleteRows = false;
             this.dataEmpleados.AllowUserToOrderColumns = true;
+            this.dataEmpleados.AllowUserToResizeRows = false;
             this.dataEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataEmpleados.Location = new System.Drawing.Point(14, 167);
+            this.dataEmpleados.MultiSelect = false;
             this.dataEmpleados.Name = "dataEmpleados";
-            this.dataEmpleados.Size = new System.Drawing.Size(491, 207);
+            this.dataEmpleados.ReadOnly = true;
+            this.dataEmpleados.RowHeadersVisible = false;
+            this.dataEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataEmpleados.Size = new System.Drawing.Size(847, 207);
             this.dataEmpleados.TabIndex = 4;
             // 
             // grpFiltrosBusqueda
@@ -200,7 +207,7 @@
             // 
             // bSeleccionar
             // 
-            this.bSeleccionar.Location = new System.Drawing.Point(432, 380);
+            this.bSeleccionar.Location = new System.Drawing.Point(787, 380);
             this.bSeleccionar.Name = "bSeleccionar";
             this.bSeleccionar.Size = new System.Drawing.Size(75, 23);
             this.bSeleccionar.TabIndex = 13;
@@ -232,7 +239,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 417);
+            this.ClientSize = new System.Drawing.Size(874, 417);
             this.Controls.Add(this.bSeleccionar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bLimpiar);

@@ -194,6 +194,7 @@
             this.bCrearOtro.TabIndex = 62;
             this.bCrearOtro.Text = "Crear y Continuar";
             this.bCrearOtro.UseVisualStyleBackColor = true;
+            this.bCrearOtro.Visible = false;
             this.bCrearOtro.Click += new System.EventHandler(this.bCrearOtro_Click);
             // 
             // bBuscar
@@ -331,6 +332,7 @@
             this.bModificar.TabIndex = 75;
             this.bModificar.Text = "Modificar";
             this.bModificar.UseVisualStyleBackColor = true;
+            this.bModificar.Visible = false;
             this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
             // 
             // FormAbmCliente
