@@ -62,6 +62,10 @@ namespace VentaElectrodomesticos.AbmEmpleado {
         }
         private void bLimpiar_Click(object sender, EventArgs e) {
             this.limpiar();
+            bCrear.Visible = true;
+            bCrearOtro.Visible = true;
+            bModificar.Visible = false;
+            bBorrar.Visible = false;
         }
         private void limpiar() {
             txtApellido.Text = "";

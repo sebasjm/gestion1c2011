@@ -178,7 +178,7 @@
             // 
             // bLimpiar
             // 
-            this.bLimpiar.Location = new System.Drawing.Point(131, 175);
+            this.bLimpiar.Location = new System.Drawing.Point(18, 204);
             this.bLimpiar.Name = "bLimpiar";
             this.bLimpiar.Size = new System.Drawing.Size(94, 23);
             this.bLimpiar.TabIndex = 61;
@@ -316,7 +316,7 @@
             // 
             // bBorrar
             // 
-            this.bBorrar.Location = new System.Drawing.Point(131, 175);
+            this.bBorrar.Location = new System.Drawing.Point(121, 175);
             this.bBorrar.Name = "bBorrar";
             this.bBorrar.Size = new System.Drawing.Size(94, 23);
             this.bBorrar.TabIndex = 74;

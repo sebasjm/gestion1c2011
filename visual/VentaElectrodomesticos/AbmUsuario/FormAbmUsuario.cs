@@ -56,7 +56,6 @@ namespace VentaElectrodomesticos.AbmUsuario
             {
                 this.cargarUsuario((Usuario)form.MessageFromParent);
                 bCrearOtro.Hide();
-                bLimpiar.Visible = false;
                 bCrear.Visible = false;
                 bModificar.Visible = true;
                 bBorrar.Visible = true;
@@ -71,6 +70,10 @@ namespace VentaElectrodomesticos.AbmUsuario
         private void bLimpiar_Click(object sender, EventArgs e)
         {
             this.limpiar();
+            bCrear.Visible = true;
+            bCrearOtro.Visible = true;
+            bModificar.Visible = false;
+            bBorrar.Visible = false;
         }
         private void limpiar() {
             this.txtUsername.Text = "";

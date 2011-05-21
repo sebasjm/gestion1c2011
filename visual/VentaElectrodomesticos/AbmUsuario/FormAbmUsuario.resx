@@ -200,15 +200,6 @@
   <data name="&gt;&gt;lPassword.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
-  <data name="chkListadoRoles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 20</value>
-  </data>
-  <data name="chkListadoRoles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 94</value>
-  </data>
-  <data name="chkListadoRoles.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;chkListadoRoles.Name" xml:space="preserve">
     <value>chkListadoRoles</value>
   </data>
@@ -244,6 +235,27 @@
   </data>
   <data name="&gt;&gt;grpListadoRoles.ZOrder" xml:space="preserve">
     <value>17</value>
+  </data>
+  <data name="chkListadoRoles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 20</value>
+  </data>
+  <data name="chkListadoRoles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>305, 94</value>
+  </data>
+  <data name="chkListadoRoles.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;chkListadoRoles.Name" xml:space="preserve">
+    <value>chkListadoRoles</value>
+  </data>
+  <data name="&gt;&gt;chkListadoRoles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkListadoRoles.Parent" xml:space="preserve">
+    <value>grpListadoRoles</value>
+  </data>
+  <data name="&gt;&gt;chkListadoRoles.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="txtUsername.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 76</value>
@@ -315,7 +327,7 @@
     <value>11</value>
   </data>
   <data name="bLimpiar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 308</value>
+    <value>18, 337</value>
   </data>
   <data name="bLimpiar.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 23</value>
@@ -682,7 +694,7 @@
     <value>NoControl</value>
   </data>
   <data name="bBorrar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 308</value>
+    <value>82, 308</value>
   </data>
   <data name="bBorrar.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 23</value>

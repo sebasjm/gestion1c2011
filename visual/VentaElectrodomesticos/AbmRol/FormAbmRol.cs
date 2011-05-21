@@ -38,7 +38,6 @@ namespace VentaElectrodomesticos.AbmRol
             {
                 this.cargarRol((Rol)form.MessageFromParent);
                 bCrearOtro.Hide();
-                bLimpiar.Visible = false;
                 bCrear.Visible = false;
                 bModificar.Visible = true;
                 bBorrar.Visible = true;
@@ -66,6 +65,10 @@ namespace VentaElectrodomesticos.AbmRol
         private void bLimpiar_Click(object sender, EventArgs e)
         {
             this.limpiar();
+            bCrear.Visible = true;
+            bCrearOtro.Visible = true;
+            bModificar.Visible = false;
+            bBorrar.Visible = false;
         }
         private void limpiar() {
             this.txtNombre.Text = "";
