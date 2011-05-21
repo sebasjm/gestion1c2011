@@ -11,6 +11,7 @@ using VentaElectrodomesticos.AbmEmpleado;
 using System.Data.SqlClient;
 using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
+using VentaElectrodomesticos.Vista;
 
 namespace VentaElectrodomesticos.AsignacionStock {
     public partial class FormAsignacionStock : Form {
@@ -64,8 +65,28 @@ namespace VentaElectrodomesticos.AsignacionStock {
             fillStock();
         }
 
+        private bool validate() {
+            if (empleado == null) {
+                //lErrorAuditor.Visible = true;
+                return false;
+            } else {
+
+            }
+            if ((sucursal == null || sucursal.id == 0) && (producto == null || producto.codigo == 0)) {
+                //lErrorSucursal.Visible = true;
+                //lErrorPRoducto.Visible = true;
+                return false;
+            } else {
+
+            }
+            return true;
+        }
+
         private void bAceptar_Click(object sender, EventArgs e) {
+            if (!validate()) return;
             MessageBox.Show("¿Esta seguro que desea asignar Stock?", "Asignar Stock");
+
+//            Context.instance.dao.stock.add();
         }
 
         private void bCancelar_Click(object sender, EventArgs e) {

@@ -102,10 +102,15 @@
             // 
             // dataStock
             // 
+            this.dataStock.AllowUserToAddRows = false;
+            this.dataStock.AllowUserToDeleteRows = false;
             this.dataStock.AllowUserToOrderColumns = true;
             this.dataStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataStock.Location = new System.Drawing.Point(19, 120);
+            this.dataStock.MultiSelect = false;
             this.dataStock.Name = "dataStock";
+            this.dataStock.RowHeadersVisible = false;
+            this.dataStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataStock.Size = new System.Drawing.Size(493, 259);
             this.dataStock.TabIndex = 8;
             // 

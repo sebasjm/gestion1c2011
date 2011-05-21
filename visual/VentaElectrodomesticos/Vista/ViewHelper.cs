@@ -106,8 +106,11 @@ namespace VentaElectrodomesticos.Controladores {
             dataStock.Columns[0].Visible = false;
             dataStock.Columns[1].Name = "Adicionar stock";
             dataStock.Columns[2].Name = "Stock actual";
+            dataStock.Columns[2].ReadOnly = true;
             dataStock.Columns[3].Name = "Producto";
+            dataStock.Columns[3].ReadOnly = true;
             dataStock.Columns[4].Name = "Sucursal";
+            dataStock.Columns[4].ReadOnly = true;
             dataStock.Columns[4].Width = 200;
 
             dataStock.Rows.Clear();
