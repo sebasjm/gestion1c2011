@@ -134,10 +134,12 @@ CREATE TABLE [la_huerta].[Stock](
 CREATE TABLE [la_huerta].[IngresoStock](
 	[sucursal_id] [tinyint] NOT NULL,
 	[producto_codigo] [int] NOT NULL,
+	[empleado_dni] [int] NOT NULL,
 	[fecha] [datetime] NOT NULL,
 	[stock] [int] NOT NULL,
 	primary key (sucursal_id,producto_codigo,fecha),
     foreign key (sucursal_id) references [la_huerta].[Sucursal](id),
+    foreign key (empleado_dni) references [la_huerta].[Empleado](dni),
     foreign key (producto_codigo) references [la_huerta].[Producto](codigo)
 ) ON [PRIMARY]
 
@@ -541,6 +543,7 @@ insert into la_huerta.IngresoStock
 select 
 	s.id as sucursal_id, 
 	p.codigo as producto_codigo, 
+	empleado_dni as empleado_dni,
 	llegada_stock_fecha as fecha, 
 	llegada_stock_cant as stock
 from gd_esquema.Maestra
@@ -550,10 +553,12 @@ where llegada_stock_fecha is not null
 group by
 	s.id, 
 	p.codigo, 
+	empleado_dni,
 	llegada_stock_fecha, 
 	llegada_stock_cant
 order by 
 	s.id, 
+	empleado_dni,
 	llegada_stock_fecha, 
 	p.codigo, 
 	llegada_stock_cant
