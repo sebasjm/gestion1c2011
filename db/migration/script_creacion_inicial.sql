@@ -116,8 +116,10 @@ CREATE TABLE [la_huerta].[Factura](
 	[fecha] [datetime] NOT NULL,
 	[cuotas] [tinyint] NOT NULL,
 	[cliente_dni] [int] NOT NULL,
+	[empleado_dni] [int] NOT NULL,
 	primary key (numero),
     foreign key (cliente_dni) references [la_huerta].[Cliente](dni),
+    foreign key (empleado_dni) references [la_huerta].[Empleado](dni)
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Stock](
@@ -298,25 +300,6 @@ WHERE cli_dni is not null
 GROUP BY cli_dni, cli_nombre, cli_apellido, cli_mail
 ORDER BY cli_dni
 
--- 26855
-INSERT INTO [la_huerta].[Factura] 
-SELECT 
-	factura_nro as numero,
-	factura_descuento as descuento,
-	factura_total as total,
-	factura_fecha as fecha,
-	factura_cant_coutas as cuotas,
-	cli_dni as cliente_dni
-FROM gd_esquema.Maestra 
-WHERE cli_dni is not null
-GROUP BY 
-	factura_nro,
-	factura_descuento,
-	factura_total,
-	factura_fecha,
-	factura_cant_coutas,
-	cli_dni
-
 -- 11
 INSERT INTO [la_huerta].[Marca] 
 SELECT 
@@ -397,13 +380,34 @@ GROUP BY
 	s.id
 ORDER BY empleado_dni
 
+-- 26855
+INSERT INTO [la_huerta].[Factura]
+SELECT 
+	factura_nro as numero,
+	factura_descuento as descuento,
+	factura_total as total,
+	factura_fecha as fecha,
+	factura_cant_coutas as cuotas,
+	cli_dni as cliente_dni,
+    m.empleado_dni as empleado_dni
+FROM gd_esquema.Maestra as m
+WHERE cli_dni is not null
+GROUP BY 
+	factura_nro,
+	factura_descuento,
+	factura_total,
+	factura_fecha,
+	factura_cant_coutas,
+	cli_dni,
+    empleado_dni
+
 -- 118338
 INSERT INTO [la_huerta].[Pago] 
 SELECT 
 	factura_nro as factura,
 	pago_fecha as fecha,
 	f.cuotas * pago_monto / (f.total * (1-f.descuento)) as cuotas,
-	empleado_dni as empleado
+	f.empleado_dni as empleado
 FROM gd_esquema.Maestra 
 JOIN la_huerta.Factura as f ON factura_nro = f.numero
 WHERE pago_fecha is not null
@@ -412,7 +416,7 @@ GROUP BY
     pago_monto,
 	f.total,
 	f.descuento,
-	empleado_dni,
+	f.empleado_dni,
 	f.cuotas,
 	factura_nro
 ORDER BY pago_fecha
@@ -555,16 +559,27 @@ order by
 	llegada_stock_cant
 
 
+-- 2376
+insert into la_huerta.Stock 
+select s.sucursal_id, s.producto_codigo, sum(stock)  - isnull((
+	select sum(cantidad) as vendido
+	from (la_huerta.ItemFactura as i
+	join la_huerta.Factura as f on i.factura_numero = f.numero)
+	join la_huerta.Empleado as e on f.empleado_dni = e.dni
+	where e.sucursal_id = s.sucursal_id and i.producto_codigo = s.producto_codigo 
+), 0) as stock
+from la_huerta.IngresoStock as s
+group by sucursal_id, producto_codigo
+order by sucursal_id, producto_codigo
+
 ----------------
 -- Tablas de usuario
 ----------------
 insert into la_huerta.Usuario ( username , password ) values ('admin','E6B87050BFCB8143FCB8DB0170A4DC9ED00D904DDD3E2A4AD1B1E8DC0FDC9BE7')
-
--------
+----------------
 
 ----------------
-----------------
--- Se inserta las funcionalidades del sistema.
+-- Funcionalidades del sistema.
 ----------------
 insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (1,'ABM de Empleado','ABM de Empleado')
 insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (2,'ABM de Rol','ABM de Rol')
@@ -576,5 +591,4 @@ insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (7,'Fac
 insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (8,'Efectuar Pago','Efectuar Pago')
 insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (9,'Tablero de Control','Tablero de Control')
 insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (10,'Mejores Categorías','Mejores Categorías')
--------
 ----------------
