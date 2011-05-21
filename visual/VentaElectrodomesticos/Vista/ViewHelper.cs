@@ -6,13 +6,9 @@ using System.Windows.Forms;
 using VentaElectrodomesticos.Modelo;
 namespace VentaElectrodomesticos.Controladores {
     class ViewHelper {
-        public static void fillComboProvincias(ComboBox cmbProvincia){
-            fillComboProvincias(cmbProvincia,false);
-        }
-        public static void fillComboProvincias(ComboBox cmbProvincia, bool withNull) {
+        public static void fillComboProvincias(ComboBox cmbProvincia) {
             List<Provincia> provinciasList = Context.instance.dao.provincia.load();
-            if (withNull)
-                provinciasList.Insert(0, new Provincia(0) { nombre = "---" });
+            provinciasList.Insert(0, new Provincia(0) { nombre = "---" });
             cmbProvincia.DataSource = provinciasList;
             cmbProvincia.DisplayMember = "nombre";
             cmbProvincia.ValueMember = "id";
@@ -21,22 +17,15 @@ namespace VentaElectrodomesticos.Controladores {
 
         public static void fillFuncionalidades(CheckedListBox chkRoles)
         {
-           /*
-            for (int n = 0; n < permisos.Count; n++)
-            {
-                chkRoles.Items.Add(permisos[n]);
-            }
-            */
             List<Funcionalidad> funcionalidadList = Context.instance.dao.funcionalidad.load();
             chkRoles.DataSource = funcionalidadList;
             chkRoles.DisplayMember = "nombre";
             chkRoles.ValueMember = "id";
             chkRoles.SelectedIndex = 0;
         }
-        public static void fillComboSucursales(ComboBox cmbSucursal, bool withNull) {
+        public static void fillComboSucursales(ComboBox cmbSucursal) {
             List<Sucursal> sucursalList = Context.instance.dao.sucursal.load();
-            if (withNull)
-                sucursalList.Insert(0, new Sucursal(0) { direccion = "---" });
+            sucursalList.Insert(0, new Sucursal(0) { direccion = "---" });
             cmbSucursal.DataSource = sucursalList;
             cmbSucursal.DisplayMember = "direccion";
             cmbSucursal.ValueMember = "id";
@@ -44,11 +33,9 @@ namespace VentaElectrodomesticos.Controladores {
             cmbSucursal.SelectedIndex = 0;
         }
 
-        public static void fillComboTipoEmpleado(ComboBox cmbTipoEmpleado, bool withNull) {
+        public static void fillComboTipoEmpleado(ComboBox cmbTipoEmpleado) {
             List<TipoEmpleado> tipoEmpleadoList = Context.instance.dao.tipoEmpleado.load();
-            if ( withNull ) 
-                tipoEmpleadoList.Insert(0, new TipoEmpleado(0) { nombre = "---" });
-
+            tipoEmpleadoList.Insert(0, new TipoEmpleado(0) { nombre = "---" });
             cmbTipoEmpleado.DataSource = tipoEmpleadoList;
             cmbTipoEmpleado.DisplayMember = "nombre";
             cmbTipoEmpleado.ValueMember = "id";

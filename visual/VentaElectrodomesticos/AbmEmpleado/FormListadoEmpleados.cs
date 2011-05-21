@@ -20,9 +20,9 @@ namespace VentaElectrodomesticos.AbmEmpleado {
 
         public FormListadoEmpleados() {
             InitializeComponent();
-            ViewHelper.fillComboProvincias(cmbProvincia,true);
-            ViewHelper.fillComboSucursales(cmbSucursal,true);
-            ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado,true);
+            ViewHelper.fillComboProvincias(cmbProvincia);
+            ViewHelper.fillComboSucursales(cmbSucursal);
+            ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado);
         }
 
         private void bCancelar_Click(object sender, EventArgs e) {

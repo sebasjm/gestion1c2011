@@ -17,9 +17,9 @@ namespace VentaElectrodomesticos.AbmEmpleado {
         Validator validator;
         public FormAbmEmpleado() {
             InitializeComponent();
-            ViewHelper.fillComboProvincias(cmbProvincia,false);
-            ViewHelper.fillComboSucursales(cmbSucursal,false);
-            ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado,false);
+            ViewHelper.fillComboProvincias(cmbProvincia);
+            ViewHelper.fillComboSucursales(cmbSucursal);
+            ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado);
             bModificar.Hide();
             bBorrar.Hide();
 

@@ -19,7 +19,7 @@ namespace VentaElectrodomesticos.AbmCliente {
         Validator validator;
         public FormAbmCliente() {
             InitializeComponent();
-            ViewHelper.fillComboProvincias(cmbProvincia, true);
+            ViewHelper.fillComboProvincias(cmbProvincia);
             validator = new Validator()
                 .add(txtNombre, lErrorNombre, Validator.Text.obligatorio, Validator.Text.nombre)
                 .add(txtApellido, lErrorApellido, Validator.Text.obligatorio, Validator.Text.nombre)
