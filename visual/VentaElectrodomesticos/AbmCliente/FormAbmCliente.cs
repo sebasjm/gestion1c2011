@@ -48,8 +48,11 @@ namespace VentaElectrodomesticos.AbmCliente {
             txtNombre.Text = cargoCliente.nombre;
             txtDni.Text = cargoCliente.dni.ToString();
             txtMail.Text = cargoCliente.mail;
+            txtDireccion.Text = cargoCliente.direccion;
+            txtTelefono.Text = cargoCliente.telefono;
             cmbProvincia.SelectedValue = cargoCliente.provinciaId;
         }
+
         private void bLimpiar_Click(object sender, EventArgs e) {
             this.limpiar();
         }
@@ -92,8 +95,7 @@ namespace VentaElectrodomesticos.AbmCliente {
         }
         private void bBorrar_Click(object sender, EventArgs e) {
             if (MessageBox.Show("¿Esta seguro que desea borrar al cliente?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                // proceder con la eliminacion
-                Context.instance.dao.cliente.delete(this.cliente);
+                Context.instance.dao.cliente.eliminar(cliente.dni);
                 this.Close();
             }
         }

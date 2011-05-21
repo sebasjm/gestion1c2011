@@ -118,7 +118,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             if (MessageBox.Show("¿Esta seguro que desea eliminar al Empleado?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el borrado
-                Context.instance.dao.empleado.delete(empleado);
+                Context.instance.dao.empleado.eliminar(empleado.dni);
                 this.Close();
             }
         }

@@ -13,16 +13,17 @@ namespace VentaElectrodomesticos.Controladores {
             this.connection = connection;
             Context.instance.dao.addMapper(typeof(Cliente), new ClienteMapper());
         }
-        public List<Cliente> search(string nombre, string apellido, int dni) {
+        public List<Cliente> search(string nombre, string apellido, int dni, Provincia provincia) {
             QueryBuilder q = new QueryBuilder();
             q.select()
                 .from("la_huerta.Cliente")
                 .filterIf(nombre != null && nombre.Length != 0, " nombre like '%{0}%'", nombre)
                 .filterIf(apellido != null && apellido.Length != 0, " apellido like '%{1}%'", apellido)
-                .filterIf(dni != 0, " dni = {2}", dni)
-                .filterIf(true, "activo = {3} ", 1);
+                .filterIf(dni != 0, " dni = {2} ", dni)
+                .filterIf(provincia != null && provincia.id != 0, " provincia_id = {3}", provincia != null ? provincia.id : 0)
+                .filter(" activo = 1 ");
 
-            return connection.query<Cliente>( q.build(), q.getParams() );
+            return connection.query<Cliente>(q.build(), q.getParams());
         }
         class ClienteMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
@@ -32,50 +33,45 @@ namespace VentaElectrodomesticos.Controladores {
                     mail = sdr.GetString(3),
                     telefono = sdr.GetString(4),
                     direccion = sdr.GetString(5),
-                    provinciaId = sdr.GetByte(6)
+                    provinciaId = sdr.IsDBNull(6)? (Byte)0 : sdr.GetByte(6)
                 };
             }
         }
-        //CRUD
-        public void insertar(Cliente cliente)
-        {
-            List<Campo> campos = new List<Campo>();
-            campos.Add(new Campo("nombre", (string)cliente.nombre));
-            campos.Add(new Campo("apellido", (string)cliente.apellido));
-            campos.Add(new Campo("dni", (int)cliente.dni));
-            campos.Add(new Campo("mail", (string)cliente.mail));
-            campos.Add(new Campo("telefono", (string)cliente.telefono));
-            campos.Add(new Campo("direccion", (string)cliente.direccion));
-            campos.Add(new Campo("provincia_id", (Byte)cliente.provinciaId));
-            QueryBuilder q = new QueryBuilder();
-            q.insert("la_huerta.cliente")
-                .valores_insert(campos);
-            connection.query<Usuario>(q.build(), q.getParams());
+
+        private static readonly String INSERT = "INSERT INTO la_huerta.Cliente VALUES({0},{1},{2},{3},{4},{5},{6},1)";
+        private static readonly String UPDATE = "UPDATE la_huerta.Cliente SET nombre='{1}',apellido='{2}',mail='{3}',telefono='{4}',direccion='{5}',provincia_id={6} WHERE dni={0}";
+        private static readonly String DELETE = "UPDATE la_huerta.Cliente SET activo=0 WHERE dni={0}";
+
+        public void insertar(Cliente cliente) {
+            connection.update( 
+                INSERT,
+                cliente.dni,
+                cliente.nombre,
+                cliente.apellido,
+                cliente.mail,
+                cliente.telefono,
+                cliente.direccion,
+                cliente.provinciaId
+            );
         }
-        public void modificar(Cliente _cliente)
-        {
-            List<Campo> campos = new List<Campo>();
-            campos.Add(new Campo("nombre", (string)_cliente.nombre));
-            campos.Add(new Campo("apellido", (string)_cliente.apellido));
-            campos.Add(new Campo("mail", (string)_cliente.mail));
-            campos.Add(new Campo("telefono", (string)_cliente.telefono));
-            campos.Add(new Campo("direccion", (string)_cliente.direccion));
-            campos.Add(new Campo("provincia_id", (Byte)_cliente.provinciaId));
-            QueryBuilder q = new QueryBuilder();
-            q.update("la_huerta.cliente")
-                .valores_update(campos)
-                .filterIf(_cliente.dni != 0, "dni = {0}", _cliente.dni);
-            connection.query<Usuario>(q.build(), q.getParams());
+        public void modificar(Cliente cliente) {
+            connection.update(
+                UPDATE,
+                cliente.dni,
+                cliente.nombre,
+                cliente.apellido,
+                cliente.mail,
+                cliente.telefono,
+                cliente.direccion,
+                cliente.provinciaId
+            );
         }
-        public void delete(Cliente _cliente)
-        {
-            List<Campo> campos = new List<Campo>();
-            campos.Add(new Campo("activo", (int)0));
-            QueryBuilder q = new QueryBuilder();
-            q.update("la_huerta.cliente")
-                .valores_update(campos)
-                .filterIf(_cliente.dni != 0, "dni = {0}", _cliente.dni);
-            connection.query<Usuario>(q.build(), q.getParams());
+
+        public void eliminar(int dni) {
+            connection.update(
+                DELETE,
+                dni
+            );
         }
     }
 }

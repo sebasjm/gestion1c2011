@@ -25,23 +25,12 @@ namespace VentaElectrodomesticos.Controladores {
         // Parte de Crud
         public void insertar(Rol rol , Funcionalidad fun)
         {
-            List<Campo> campos = new List<Campo>();
-            campos.Add(new Campo("rol_id", (Byte)rol.id));
-            campos.Add(new Campo("funcionalidad_id", (Byte)fun.id));
             QueryBuilder q = new QueryBuilder();
-            q.insert("la_huerta.RolFuncionalidad")
-                .valores_insert(campos);
             connection.query<Usuario>(q.build(), q.getParams());
         }
         public void delete(Rol rol, Funcionalidad fun)
         {
-            List<Campo> campos = new List<Campo>();
-            campos.Add(new Campo("rol_id", (Byte)rol.id));
-            campos.Add(new Campo("funcionalidad_id", (Byte)fun.id));
             QueryBuilder q = new QueryBuilder();
-            q.delete("la_huerta.RolFuncionalidad")
-                .filterIf(rol.id != 0, "rol_id = {0}", rol.id)
-                .filterIf(fun.id != 0, "funcionalidad_id = {1}", fun.id);
             connection.query<RolFuncionalidad>(q.build(), q.getParams());
         }
     }

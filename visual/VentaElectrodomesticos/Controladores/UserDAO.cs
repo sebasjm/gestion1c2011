@@ -51,32 +51,17 @@ namespace VentaElectrodomesticos.Controladores {
         //CRUD
         public void insertar(Usuario usuario)
         {
-            List<Campo> campos = new List<Campo>();
-            campos.Add(new Campo("username", (string)usuario.username));
-            campos.Add(new Campo("password", sec.sha256encrypt((string)usuario.password)));
             QueryBuilder q = new QueryBuilder();
-            q.insert("la_huerta.usuario")
-                .valores_insert(campos);
             connection.query<Usuario>(q.build(), q.getParams());
         }
         public void modificar(Usuario usuario)
         {
-            List<Campo> campos = new List<Campo>();
-
-            campos.Add(new Campo("username", (String)usuario.username));
-            if (usuario.password.Length < 30)
-            campos.Add(new Campo("password", sec.sha256encrypt((string)usuario.password)));
             QueryBuilder q = new QueryBuilder();
-            q.update("la_huerta.usuario")
-                .valores_update(campos)
-                .filterIf(usuario.id != 0, "id = {0}", usuario.id);
             connection.query<Usuario>(q.build(), q.getParams());
         }
         public void delete(Usuario usuario)
         {
             QueryBuilder q = new QueryBuilder();
-            q.delete("la_huerta.usuario")
-                .filterIf(usuario.id != 0, "id = {0}", usuario.id);
             connection.query<Usuario>(q.build(), q.getParams());
         }
     }

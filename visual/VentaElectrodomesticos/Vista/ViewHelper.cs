@@ -71,5 +71,33 @@ namespace VentaElectrodomesticos.Controladores {
                 );
             }
         }
+
+        internal static void fillDataGridClientes(DataGridView dataClientes, List<Cliente> result) {
+            dataClientes.ColumnCount = 8;
+
+            dataClientes.Columns[0].Visible = false;
+            dataClientes.Columns[1].Name = "DNI";
+            dataClientes.Columns[2].Name = "Nombre";
+            dataClientes.Columns[3].Name = "Apellido";
+            dataClientes.Columns[4].Name = "eMail";
+            dataClientes.Columns[5].Name = "Dirección";
+            dataClientes.Columns[6].Name = "Telefono";
+            dataClientes.Columns[7].Name = "Provincia";
+
+            dataClientes.Rows.Clear();
+
+            foreach (Cliente c in result) {
+                dataClientes.Rows.Add(
+                    c,
+                    c.dni,
+                    c.nombre,
+                    c.apellido,
+                    c.mail,
+                    c.direccion,
+                    c.telefono,
+                    c.provincia != null ? c.provincia.nombre : "---"
+                );
+            }
+        }
     }
 }

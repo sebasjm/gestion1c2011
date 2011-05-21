@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using VentaElectrodomesticos.Controladores;
 
 namespace VentaElectrodomesticos.Modelo {
     class Cliente {
@@ -9,28 +10,35 @@ namespace VentaElectrodomesticos.Modelo {
             this.dni = dni;
         }
         public Int32 dni {
-            get; private set;
+            get;
+            private set;
         }
         public String nombre {
-            get; set;
+            get;
+            set;
         }
         public String apellido {
-            get; set;
+            get;
+            set;
         }
         public String mail {
-            get; set;
+            get;
+            set;
         }
-        public String telefono
-        {
-            get;            set;
+        public String telefono {
+            get;
+            set;
         }
-        public String direccion
-        {
-            get;            set;
+        public String direccion {
+            get;
+            set;
         }
-        public Byte provinciaId
-        {
-            get;            set;
+        public Byte provinciaId {
+            get;
+            set;
+        }
+        public Provincia provincia {
+            get { return Context.instance.dao.provincia.findById(provinciaId); }
         }
     }
 }

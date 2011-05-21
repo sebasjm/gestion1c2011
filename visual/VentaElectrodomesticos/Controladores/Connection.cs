@@ -28,9 +28,7 @@ namespace VentaElectrodomesticos.Controladores {
         }
 
         public List<T> query<T>(string sql, params Object[] args) {
-            string s = String.Format(sql, args);
-            SqlCommand cmd = new SqlCommand( String.Format(sql,args), connection);
-            SqlDataReader sdr = cmd.ExecuteReader();
+            SqlDataReader sdr = new SqlCommand(String.Format(sql, args), connection).ExecuteReader();
             List<T> result = new List<T>();
             while (sdr.Read()) {
                 result.Add( (T) Context.instance.dao.mappers[ typeof(T) ].getInstance(sdr) );
@@ -39,8 +37,8 @@ namespace VentaElectrodomesticos.Controladores {
             return result;
         }
 
-        public int update(string sql) {
-            return 0;
+        public int update(string sql, params Object[] args) {
+            return new SqlCommand(String.Format(sql, args), connection).ExecuteNonQuery();
         }
 
     }

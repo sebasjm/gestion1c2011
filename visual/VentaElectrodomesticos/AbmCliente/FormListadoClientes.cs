@@ -9,60 +9,49 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using VentaElectrodomesticos.Controladores;
 using VentaElectrodomesticos.Modelo;
-namespace VentaElectrodomesticos.AbmCliente
-{
-    public partial class FormListadoClientes : Form
-    {
+namespace VentaElectrodomesticos.AbmCliente {
+    public partial class FormListadoClientes : Form {
         private Object messageFromParent = null;
-        public Object MessageFromParent
-        {
+        public Object MessageFromParent {
             get { return messageFromParent; }
             set { messageFromParent = value; }
         }
-        public FormListadoClientes()
-        {
+        public FormListadoClientes() {
             InitializeComponent();
-            FillData();
             ViewHelper.fillComboProvincias(cmbProvincia);
         }
-        void FillData()
-        {
-            List<Cliente> clientesList = Context.instance.dao.cliente.search(txtNombre.Text, txtApellido.Text, ((txtDni.Text == "") ? (Int32)0 :  System.Int32.Parse(txtDni.Text)) );
-            try
-            {
-                dataClientes.DataSource = clientesList;
-            }
-            catch (NullReferenceException) { }
-        }
-        private void bLimpiar_Click(object sender, EventArgs e)
-        {
+        private void bLimpiar_Click(object sender, EventArgs e) {
             txtApellido.Text = "";
             txtDni.Text = "";
             txtNombre.Text = "";
-            cmbProvincia.SelectedIndex = -1;
+            cmbProvincia.SelectedIndex = 0;
             dataClientes.DataSource = null;
         }
-        private void bCancelar_Click(object sender, EventArgs e)
-        {
-            this.messageFromParent = 0;
+        private void bCancelar_Click(object sender, EventArgs e) {
+            this.messageFromParent = null;
             this.Close();
         }
-        private void bSeleccionar_Click(object sender, EventArgs e)
-        {
-            Cliente cliente = (Cliente)dataClientes.Rows[dataClientes.CurrentCell.RowIndex].DataBoundItem;
-            if (cliente != null)
-            {
+        private void bSeleccionar_Click(object sender, EventArgs e) {
+            Cliente cliente = (Cliente)dataClientes.SelectedRows[0].Cells[0].Value;
+            if (cliente != null) {
                 this.messageFromParent = cliente;
                 this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un Empleado");
+            } else {
+                MessageBox.Show("Debe seleccionar un cliente");
             }
         }
-        private void bBuscar_Click(object sender, EventArgs e)
-        {
-            FillData();
+        private void bBuscar_Click(object sender, EventArgs e) {
+            if (txtDni.Text.Length == 0)
+                txtDni.Text = "0";
+
+            List<Cliente> result = Context.instance.dao.cliente.search(
+                txtNombre.Text, 
+                txtApellido.Text, 
+                Convert.ToInt32(txtDni.Text),
+                (Provincia)cmbProvincia.SelectedItem
+            );
+            ViewHelper.fillDataGridClientes(dataClientes, result);
         }
-  }
+
+    }
 }

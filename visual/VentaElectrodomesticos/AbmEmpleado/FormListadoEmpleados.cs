@@ -48,7 +48,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 this.messageFromParent = empleado;
                 this.Close();
             } else {
-                MessageBox.Show("Debe seleccionar un Empleado");
+                MessageBox.Show("Debe seleccionar un empleado");
             }
         }
         private void bLimpiar_Click(object sender, EventArgs e) {
