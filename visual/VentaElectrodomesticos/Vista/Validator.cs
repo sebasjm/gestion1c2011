@@ -45,6 +45,21 @@ namespace VentaElectrodomesticos.Vista {
                 return false;
             }
         }
+        class TreeValidationEntry : ValidationEntry {
+            public TreeView campo;
+            public Func<TreeView, bool> isValid;
+            public Label label;
+
+            public override bool validate() {
+                if (isValid(campo)) {
+                    label.Visible = false;
+                    return true;
+                }
+                label.Visible = true;
+                group.done = true;
+                return false;
+            }
+        }
 
         List<ValidationEntry> checks = new List<ValidationEntry>();
 
@@ -75,6 +90,12 @@ namespace VentaElectrodomesticos.Vista {
             };
         }
 
+        public class Tree {
+            public readonly static Func<TreeView, bool> obligatorio = (TreeView campo) => {
+                return campo.SelectedNode != null;
+            };
+        }
+
         public Validator add(TextBox c, Label l, params Func<TextBox, bool>[] criteriaList) {
             ValidationEntry.Group g = new ValidationEntry.Group();
             foreach (Func<TextBox, bool> criteria in criteriaList) {
@@ -87,6 +108,14 @@ namespace VentaElectrodomesticos.Vista {
             ValidationEntry.Group g = new ValidationEntry.Group();
             foreach (Func<ComboBox, bool> criteria in criteriaList) {
                 checks.Add(new ComboValidationEntry() { group = g, campo = c, isValid = criteria, label = l });
+            }
+            return this;
+        }
+
+        public Validator add(TreeView c, Label l, params Func<TreeView, bool>[] criteriaList) {
+            ValidationEntry.Group g = new ValidationEntry.Group();
+            foreach (Func<TreeView, bool> criteria in criteriaList) {
+                checks.Add(new TreeValidationEntry() { group = g, campo = c, isValid = criteria, label = l });
             }
             return this;
         }
