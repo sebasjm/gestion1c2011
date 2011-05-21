@@ -25,8 +25,8 @@ namespace VentaElectrodomesticos.AbmRol
             lErrorNombre.Visible = false;
             lErrorRoles.Visible = false;
             validator = new Validator()
-                .add(txtNombre, lErrorNombre, Validator.vacio, Validator.nombre)
-                .add(chkListadoRoles, lErrorRoles, Validator.sin_elementos )
+                .add(txtNombre, lErrorNombre, Validator.Text.obligatorio, Validator.Text.nombre)
+//                .add(chkListadoRoles, lErrorRoles, Validator.sin_elementos )
                 ;
         }
         private void bBuscar_Click(object sender, EventArgs e)

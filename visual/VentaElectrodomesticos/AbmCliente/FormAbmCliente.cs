@@ -12,6 +12,7 @@ using VentaElectrodomesticos.Controladores;
 using VentaElectrodomesticos.Exception;
 using System.Text.RegularExpressions;
 using VentaElectrodomesticos.Vista;
+
 namespace VentaElectrodomesticos.AbmCliente {
     public partial class FormAbmCliente : Form {
         Cliente cliente;
@@ -20,13 +21,13 @@ namespace VentaElectrodomesticos.AbmCliente {
             InitializeComponent();
             ViewHelper.fillComboProvincias(cmbProvincia, true);
             validator = new Validator()
-                .add(txtNombre, lErrorNombre, Validator.vacio, Validator.nombre)
-                .add(txtApellido, lErrorApellido, Validator.vacio, Validator.nombre)
-                .add(txtDni, lErrorDNI, Validator.vacio, Validator.numerico)
-                .add(txtMail, lErrorMail, Validator.vacio, Validator.mail)
-                .add(txtDireccion, lErrorDireccion, Validator.vacio)
-                .add(txtTelefono, lErrorTelefono, Validator.vacio, Validator.telefono)
-                .add(cmbProvincia, lErrorProvincia, Validator.nulo);
+                .add(txtNombre, lErrorNombre, Validator.Text.obligatorio, Validator.Text.nombre)
+                .add(txtApellido, lErrorApellido, Validator.Text.obligatorio, Validator.Text.nombre)
+                .add(txtDni, lErrorDNI, Validator.Text.obligatorio, Validator.Text.numerico)
+                .add(txtMail, lErrorMail, Validator.Text.obligatorio, Validator.Text.mail)
+                .add(txtDireccion, lErrorDireccion, Validator.Text.obligatorio)
+                .add(txtTelefono, lErrorTelefono, Validator.Text.obligatorio, Validator.Text.telefono)
+                .add(cmbProvincia, lErrorProvincia, Validator.Combo.obligatorio);
         }
         private void bBuscar_Click(object sender, EventArgs e) {
             FormListadoClientes form = new FormListadoClientes();

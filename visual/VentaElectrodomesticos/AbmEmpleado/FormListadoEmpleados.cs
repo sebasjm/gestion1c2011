@@ -40,8 +40,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 (Sucursal)cmbSucursal.SelectedItem,
                 (TipoEmpleado)cmbTipoEmpleado.SelectedItem
             );
-            // NO SE QUE ES ESTO
-            // ViewHelper.fullDataGridEmpleados(dataEmpleados, result);
+            ViewHelper.fillDataGridEmpleados(dataEmpleados, result);
         }
         private void bSeleccionar_Click(object sender, EventArgs e) {
             Empleado empleado = (Empleado)dataEmpleados.SelectedRows[0].Cells[0].Value;

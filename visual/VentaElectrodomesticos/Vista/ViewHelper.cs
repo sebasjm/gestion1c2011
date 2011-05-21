@@ -54,5 +54,35 @@ namespace VentaElectrodomesticos.Controladores {
             cmbTipoEmpleado.ValueMember = "id";
             cmbTipoEmpleado.SelectedIndex = 0;
         }
+
+        public static void fillDataGridEmpleados(DataGridView dataEmpleados, List<Empleado> result) {
+            dataEmpleados.ColumnCount = 9;
+
+            dataEmpleados.Columns[0].Visible = false;
+            dataEmpleados.Columns[1].Name = "DNI";
+            dataEmpleados.Columns[2].Name = "Nombre";
+            dataEmpleados.Columns[3].Name = "Apellido";
+            dataEmpleados.Columns[4].Name = "eMail";
+            dataEmpleados.Columns[5].Name = "Dirección";
+            dataEmpleados.Columns[6].Name = "Telefono";
+            dataEmpleados.Columns[7].Name = "Tipo";
+            dataEmpleados.Columns[8].Name = "Sucursal";
+
+            dataEmpleados.Rows.Clear();
+
+            foreach (Empleado e in result) {
+                dataEmpleados.Rows.Add(
+                    e,
+                    e.dni,
+                    e.nombre,
+                    e.apellido,
+                    e.mail,
+                    e.direccion,
+                    e.telefono,
+                    e.tipoEmpleado.nombre,
+                    e.sucursal.direccion
+                );
+            }
+        }
     }
 }

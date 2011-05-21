@@ -25,11 +25,11 @@ namespace VentaElectrodomesticos.AbmProducto
             bBorrar.Visible = false;
             bModificar.Visible = false;
             validator = new Validator()
-                .add(txtCodigoProducto, lErrorCodigo, Validator.vacio, Validator.numerico)
-                .add(txtDescripcion, lErrorDescripcion, Validator.vacio, Validator.nombre)
-                .add(txtNombre, lErrorNombre, Validator.vacio, Validator.nombre)
-                .add(this.categoria, lErrorCategoria, Validator.categoria)
-                .add(txtPrecio, lErrorPrecio, Validator.vacio, Validator.numerico);
+                .add(txtCodigoProducto, lErrorCodigo, Validator.Text.obligatorio, Validator.Text.numerico)
+                .add(txtDescripcion, lErrorDescripcion, Validator.Text.obligatorio, Validator.Text.nombre)
+                .add(txtNombre, lErrorNombre, Validator.Text.obligatorio, Validator.Text.nombre)
+//                .add(this.categoria, lErrorCategoria, Validator.categoria)
+                .add(txtPrecio, lErrorPrecio, Validator.Text.obligatorio, Validator.Text.numerico);
             List<Marca> marcasList = Context.instance.dao.marca.search("");
             foreach (Marca marca in marcasList)
             {

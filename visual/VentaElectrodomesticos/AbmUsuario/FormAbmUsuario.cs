@@ -23,12 +23,13 @@ namespace VentaElectrodomesticos.AbmUsuario
             InitializeComponent();
             ViewHelper.fillFuncionalidades(chkListadoRoles);
             validator = new Validator()
-                .add(txtUsername, lErrorUsername, Validator.vacio, Validator.nombre)
-                .add(this.empleado, lErrorEmpleado, Validator.empleado)
-                .add(txtPassword, lErrorPassword, Validator.vacio, Validator.password)
-                .add(txtConfirmarPassword, lErrorConfirmPass, Validator.vacio, Validator.password)
-                .add(chkListadoRoles, lErrorRoles,  Validator.sin_elementos)
-                .add(txtPassword, txtConfirmarPassword, lErrorPassword , lErrorConfirmPass, Validator.passwordIgual);
+                .add(txtUsername, lErrorUsername, Validator.Text.obligatorio, Validator.Text.nombre)
+                //                .add(this.empleado, lErrorEmpleado, Validator.empleado)
+                .add(txtPassword, lErrorPassword, Validator.Text.obligatorio)
+                .add(txtConfirmarPassword, lErrorConfirmPass, Validator.Text.obligatorio)
+//                .add(chkListadoRoles, lErrorRoles, Validator.Text.obligatorio)
+                ;
+//                .add(txtPassword, txtConfirmarPassword, lErrorPassword , lErrorConfirmPass, Validator.passwordIgual);
 
         
         }

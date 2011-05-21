@@ -22,16 +22,17 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado,false);
             bModificar.Hide();
             bBorrar.Hide();
+
             validator = new Validator()
-                .add(txtNombre, lErrorNombre, Validator.vacio, Validator.nombre)
-                .add(txtApellido, lErrorApellido, Validator.vacio, Validator.nombre)
-                .add(txtDni, lErrorDNI, Validator.vacio, Validator.numerico)
-                .add(txtMail, lErrorMail, Validator.vacio, Validator.mail)
-                .add(txtDireccion, lErrorDireccion, Validator.vacio, Validator.direccion)
-                .add(txtTelefono, lErrorTelefono, Validator.vacio, Validator.telefono)
-                .add(cmbProvincia, lErrorProvincia, Validator.nulo)
-                .add(cmbSucursal, lErrorSucursal, Validator.nulo)
-                .add(cmbTipoEmpleado, lErrorTipoEmpleado, Validator.nulo);
+                .add(txtNombre, lErrorNombre, Validator.Text.obligatorio, Validator.Text.nombre)
+                .add(txtApellido, lErrorApellido, Validator.Text.obligatorio, Validator.Text.nombre)
+                .add(txtDni, lErrorDNI, Validator.Text.obligatorio, Validator.Text.numerico)
+                .add(txtMail, lErrorMail, Validator.Text.obligatorio, Validator.Text.mail)
+                .add(txtDireccion, lErrorDireccion, Validator.Text.obligatorio)
+                .add(txtTelefono, lErrorTelefono, Validator.Text.obligatorio, Validator.Text.telefono)
+                .add(cmbProvincia, lErrorProvincia, Validator.Combo.obligatorio)
+                .add(cmbSucursal, lErrorSucursal, Validator.Combo.obligatorio)
+                .add(cmbTipoEmpleado, lErrorTipoEmpleado, Validator.Combo.obligatorio);
         }
 
         private void bBuscar_Click(object sender, EventArgs e) {
