@@ -106,12 +106,12 @@
             this.dataStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataStock.Location = new System.Drawing.Point(19, 120);
             this.dataStock.Name = "dataStock";
-            this.dataStock.Size = new System.Drawing.Size(362, 150);
+            this.dataStock.Size = new System.Drawing.Size(493, 259);
             this.dataStock.TabIndex = 8;
             // 
             // bAsignarOtro
             // 
-            this.bAsignarOtro.Location = new System.Drawing.Point(206, 276);
+            this.bAsignarOtro.Location = new System.Drawing.Point(205, 385);
             this.bAsignarOtro.Name = "bAsignarOtro";
             this.bAsignarOtro.Size = new System.Drawing.Size(75, 23);
             this.bAsignarOtro.TabIndex = 66;
@@ -121,7 +121,7 @@
             // 
             // bLimpiar
             // 
-            this.bLimpiar.Location = new System.Drawing.Point(110, 276);
+            this.bLimpiar.Location = new System.Drawing.Point(109, 385);
             this.bLimpiar.Name = "bLimpiar";
             this.bLimpiar.Size = new System.Drawing.Size(75, 23);
             this.bLimpiar.TabIndex = 65;
@@ -131,7 +131,7 @@
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(16, 276);
+            this.bCancelar.Location = new System.Drawing.Point(15, 385);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
             this.bCancelar.TabIndex = 64;
@@ -141,7 +141,7 @@
             // 
             // bAceptar
             // 
-            this.bAceptar.Location = new System.Drawing.Point(306, 276);
+            this.bAceptar.Location = new System.Drawing.Point(305, 385);
             this.bAceptar.Name = "bAceptar";
             this.bAceptar.Size = new System.Drawing.Size(75, 23);
             this.bAceptar.TabIndex = 63;
@@ -169,7 +169,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 312);
+            this.ClientSize = new System.Drawing.Size(524, 420);
             this.Controls.Add(this.txtAuditor);
             this.Controls.Add(this.txtProducto);
             this.Controls.Add(this.bAsignarOtro);
