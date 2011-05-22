@@ -70,6 +70,7 @@ namespace VentaElectrodomesticos.AbmUsuario
         private void bLimpiar_Click(object sender, EventArgs e)
         {
             this.limpiar();
+            bCrear.Visible = true;
             bCrearOtro.Visible = true;
             bModificar.Visible = false;
             bBorrar.Visible = false;
