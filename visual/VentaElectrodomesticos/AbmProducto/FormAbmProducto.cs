@@ -28,7 +28,7 @@ namespace VentaElectrodomesticos.AbmProducto
                 .add(txtCodigoProducto, lErrorCodigo, Validator.Text.obligatorio, Validator.Text.numerico)
                 .add(txtDescripcion, lErrorDescripcion, Validator.Text.obligatorio, Validator.Text.nombre)
                 .add(txtNombre, lErrorNombre, Validator.Text.obligatorio, Validator.Text.nombre)
-//                .add(this.categoria, lErrorCategoria, Validator.categoria)
+                .add(treeCategorias, lErrorCategoria, Validator.Tree.obligatorio)
                 .add(txtPrecio, lErrorPrecio, Validator.Text.obligatorio, Validator.Text.numerico);
             List<Marca> marcasList = Context.instance.dao.marca.search("");
             foreach (Marca marca in marcasList)
