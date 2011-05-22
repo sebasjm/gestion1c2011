@@ -114,10 +114,10 @@ namespace VentaElectrodomesticos.Controladores {
                     c,
                     c.codigo,
                     c.nombre,
-                    c.getMarca.nombre,
+                    c.marca.nombre,
                     c.descripcion,
                     c.precio,
-                    c.getCategoria.nombre
+                    c.categoria.nombre
                 );
             }
         }

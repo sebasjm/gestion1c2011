@@ -10,29 +10,33 @@ namespace VentaElectrodomesticos.Modelo {
             this.codigo = codigo;
         }
         public Int32 codigo {
-            get; private set;
+            get;
+            private set;
         }
         public String nombre {
-            get; set;
+            get;
+            set;
         }
         public String descripcion {
-            get; set;
+            get;
+            set;
         }
         public Double precio {
-            get; set;
+            get;
+            set;
         }
         public Int16 marca_id {
-            get; set;
+            get;
+            set;
         }
         public Int16 categoria_id {
-            get; set;
+            get;
+            set;
         }
-        public Marca getMarca
-        {
+        public Marca marca {
             get { return Context.instance.dao.marca.findById(marca_id); }
         }
-        public Categoria getCategoria
-        {
+        public Categoria categoria {
             get { return Context.instance.dao.categoria.findById(categoria_id); }
         }
     }
