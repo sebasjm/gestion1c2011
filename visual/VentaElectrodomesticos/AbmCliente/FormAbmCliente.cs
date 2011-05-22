@@ -36,7 +36,6 @@ namespace VentaElectrodomesticos.AbmCliente {
             if (form.MessageFromParent != null) {
                 this.cargarCliente((Cliente)form.MessageFromParent);
                 bCrearOtro.Visible = false;
-                bLimpiar.Visible = false;
                 bModificar.Visible = true;
                 bBorrar.Visible = true;
             }
@@ -55,6 +54,9 @@ namespace VentaElectrodomesticos.AbmCliente {
 
         private void bLimpiar_Click(object sender, EventArgs e) {
             this.limpiar();
+            bCrearOtro.Visible = true;
+            bModificar.Visible = false;
+            bBorrar.Visible = false;
         }
         private void limpiar() {
             txtApellido.Text = "";

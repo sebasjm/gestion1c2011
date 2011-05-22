@@ -43,7 +43,6 @@ namespace VentaElectrodomesticos.AbmCliente {
         private void bBuscar_Click(object sender, EventArgs e) {
             if (txtDni.Text.Length == 0)
                 txtDni.Text = "0";
-
             List<Cliente> result = Context.instance.dao.cliente.search(
                 txtNombre.Text, 
                 txtApellido.Text, 

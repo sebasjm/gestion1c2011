@@ -32,11 +32,12 @@
             this.bCancelar = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
             this.bBuscar = new System.Windows.Forms.Button();
-            this.listRoles = new System.Windows.Forms.ListBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lNombre = new System.Windows.Forms.Label();
             this.chkListadoRoles = new System.Windows.Forms.CheckedListBox();
             this.labelRoles = new System.Windows.Forms.Label();
+            this.dataRoles = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataRoles)).BeginInit();
             this.SuspendLayout();
             // 
             // bSeleccionar
@@ -79,14 +80,6 @@
             this.bBuscar.UseVisualStyleBackColor = true;
             this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
             // 
-            // listRoles
-            // 
-            this.listRoles.FormattingEnabled = true;
-            this.listRoles.Location = new System.Drawing.Point(12, 219);
-            this.listRoles.Name = "listRoles";
-            this.listRoles.Size = new System.Drawing.Size(328, 95);
-            this.listRoles.TabIndex = 85;
-            // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(65, 16);
@@ -120,22 +113,38 @@
             this.labelRoles.TabIndex = 89;
             this.labelRoles.Text = "Roles";
             // 
+            // dataRoles
+            // 
+            this.dataRoles.AllowUserToAddRows = false;
+            this.dataRoles.AllowUserToDeleteRows = false;
+            this.dataRoles.AllowUserToResizeRows = false;
+            this.dataRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataRoles.Location = new System.Drawing.Point(18, 217);
+            this.dataRoles.MultiSelect = false;
+            this.dataRoles.Name = "dataRoles";
+            this.dataRoles.ReadOnly = true;
+            this.dataRoles.RowHeadersVisible = false;
+            this.dataRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataRoles.Size = new System.Drawing.Size(321, 102);
+            this.dataRoles.TabIndex = 90;
+            // 
             // FormListadoRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 370);
+            this.Controls.Add(this.dataRoles);
             this.Controls.Add(this.labelRoles);
             this.Controls.Add(this.chkListadoRoles);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lNombre);
-            this.Controls.Add(this.listRoles);
             this.Controls.Add(this.bSeleccionar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.bBuscar);
             this.Name = "FormListadoRoles";
             this.Text = "Listado de Selección de Roles";
+            ((System.ComponentModel.ISupportInitialize)(this.dataRoles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,10 +156,10 @@
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bLimpiar;
         private System.Windows.Forms.Button bBuscar;
-        private System.Windows.Forms.ListBox listRoles;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lNombre;
         private System.Windows.Forms.CheckedListBox chkListadoRoles;
         private System.Windows.Forms.Label labelRoles;
+        private System.Windows.Forms.DataGridView dataRoles;
     }
 }

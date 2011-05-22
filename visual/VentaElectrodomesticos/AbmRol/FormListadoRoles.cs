@@ -30,16 +30,14 @@ namespace VentaElectrodomesticos.AbmRol
         {
             if (txtNombre.Text.Length == 0)
                 txtNombre.Text = "";
-            listRoles.DataSource = Context.instance.dao.rol.search(
+            dataRoles.DataSource = Context.instance.dao.rol.search(
                 txtNombre.Text,
                 chkListadoRoles
             );
-            listRoles.DisplayMember = "nombre";
-            listRoles.ValueMember = "id";
         }
         private void bSeleccionar_Click(object sender, EventArgs e)
         {
-            Rol rol = (Rol)listRoles.Items[listRoles.SelectedIndex];
+            Rol rol = (Rol)dataRoles.SelectedRows[0].Cells[0].Value;
             if (rol != null)
             {
                 this.messageFromParent = rol;
@@ -57,7 +55,7 @@ namespace VentaElectrodomesticos.AbmRol
         private void bLimpiar_Click(object sender, EventArgs e)
         {
             this.txtNombre.Text = "";
-            listRoles.DataSource = null;
+            dataRoles.DataSource = null;
         }
     }
 }

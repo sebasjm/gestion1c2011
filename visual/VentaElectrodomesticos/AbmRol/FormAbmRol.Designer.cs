@@ -78,7 +78,7 @@
             // 
             // bLimpiar
             // 
-            this.bLimpiar.Location = new System.Drawing.Point(76, 214);
+            this.bLimpiar.Location = new System.Drawing.Point(12, 243);
             this.bLimpiar.Name = "bLimpiar";
             this.bLimpiar.Size = new System.Drawing.Size(58, 23);
             this.bLimpiar.TabIndex = 75;
