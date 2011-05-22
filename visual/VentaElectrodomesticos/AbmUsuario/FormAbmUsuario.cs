@@ -56,7 +56,6 @@ namespace VentaElectrodomesticos.AbmUsuario
             {
                 this.cargarUsuario((Usuario)form.MessageFromParent);
                 bCrearOtro.Hide();
-                bLimpiar.Visible = false;
                 bCrear.Visible = false;
                 bModificar.Visible = true;
                 bBorrar.Visible = true;

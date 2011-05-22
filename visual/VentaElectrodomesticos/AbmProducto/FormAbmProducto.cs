@@ -91,7 +91,6 @@ namespace VentaElectrodomesticos.AbmProducto
                 bBorrar.Visible = true;
                 bModificar.Visible = true;
                 bCrear.Visible = false;
-                bLimpiar.Visible = false;
             }
         }
         private void cargarProducto(Producto prod) {

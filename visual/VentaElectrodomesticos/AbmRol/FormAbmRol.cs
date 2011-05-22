@@ -38,7 +38,6 @@ namespace VentaElectrodomesticos.AbmRol
             {
                 this.cargarRol((Rol)form.MessageFromParent);
                 bCrearOtro.Hide();
-                bLimpiar.Visible = false;
                 bCrear.Visible = false;
                 bModificar.Visible = true;
                 bBorrar.Visible = true;
