@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using VentaElectrodomesticos.Modelo;
+using VentaElectrodomesticos.Controladores;
 using System.Data.SqlClient;
 namespace VentaElectrodomesticos.Controladores {
     class UserDAO {
         private Connection connection;
         // Clase para manejar passwords
         Security sec = new Security();
-
         public UserDAO(Connection connection) {
             this.connection = connection;
             Context.instance.dao.addMapper(typeof(Usuario), new UserMapper());
@@ -48,21 +48,32 @@ namespace VentaElectrodomesticos.Controladores {
             );
             return found.Count == 1 ? found.First() : null;
         }
-        //CRUD
+        private static readonly String INSERT = "INSERT INTO la_huerta.Usuario VALUES( {0} , '{1}' , 1 )";
+        private static readonly String UPDATE = "UPDATE la_huerta.Usuario SET username={0},password='{1}',activo=1";
+        private static readonly String DELETE = "UPDATE la_huerta.Usuario SET activo=0 WHERE id={0}";
+
         public void insertar(Usuario usuario)
         {
-            QueryBuilder q = new QueryBuilder();
-            connection.query<Usuario>(q.build(), q.getParams());
+            connection.update(
+                INSERT,
+                    usuario.username,
+                    sec.sha256encrypt(usuario.password)
+                    );
         }
         public void modificar(Usuario usuario)
         {
-            QueryBuilder q = new QueryBuilder();
-            connection.query<Usuario>(q.build(), q.getParams());
+            connection.update(
+                UPDATE,
+                    usuario.username,
+                    sec.sha256encrypt(usuario.password)
+            );
         }
-        public void delete(Usuario usuario)
+        public void eliminar(int id)
         {
-            QueryBuilder q = new QueryBuilder();
-            connection.query<Usuario>(q.build(), q.getParams());
+            connection.update(
+                DELETE,
+                id
+            );
         }
     }
 }

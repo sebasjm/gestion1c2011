@@ -15,23 +15,17 @@ namespace VentaElectrodomesticos.AbmUsuario
 {
     public partial class FormAbmUsuario : Form
     {
-        private Usuario user = null;
-        private Empleado empleado = null;
         Validator validator;
+        Empleado empleado = null;
+        Usuario user = null;
         public FormAbmUsuario()
         {
             InitializeComponent();
             ViewHelper.fillFuncionalidades(chkListadoRoles);
             validator = new Validator()
                 .add(txtUsername, lErrorUsername, Validator.Text.obligatorio, Validator.Text.nombre)
-                //                .add(this.empleado, lErrorEmpleado, Validator.empleado)
                 .add(txtPassword, lErrorPassword, Validator.Text.obligatorio)
-                .add(txtConfirmarPassword, lErrorConfirmPass, Validator.Text.obligatorio)
-//                .add(chkListadoRoles, lErrorRoles, Validator.Text.obligatorio)
-                ;
-//                .add(txtPassword, txtConfirmarPassword, lErrorPassword , lErrorConfirmPass, Validator.passwordIgual);
-
-        
+                .add(txtConfirmarPassword, lErrorConfirmPass, Validator.Text.obligatorio);
         }
         private void bBuscarEmpleado_Click(object sender, EventArgs e)
         {

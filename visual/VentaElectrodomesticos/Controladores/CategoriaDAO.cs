@@ -33,5 +33,14 @@ namespace VentaElectrodomesticos.Controladores {
                 };
             }
         }
+        public Categoria findById(int id)
+        {
+            QueryBuilder q = new QueryBuilder();
+            q.select()
+                .from("la_huerta.categoria")
+                .filterIf(id != 0, "id = {0}", id);
+            List<Categoria> lista = connection.query<Categoria>(q.build(), q.getParams());
+            return lista[0];
+        }
     }
 }

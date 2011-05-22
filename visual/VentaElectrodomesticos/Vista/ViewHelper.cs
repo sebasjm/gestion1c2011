@@ -29,10 +29,16 @@ namespace VentaElectrodomesticos.Controladores {
             cmbSucursal.DataSource = sucursalList;
             cmbSucursal.DisplayMember = "direccion";
             cmbSucursal.ValueMember = "id";
-            
             cmbSucursal.SelectedIndex = 0;
         }
-
+        public static void fillComboMarcas(ComboBox cmbMarca) {
+            List<Marca> marcaList = Context.instance.dao.marca.load();
+            marcaList.Insert(0, new Marca(0) { nombre = "---" });
+            cmbMarca.DataSource = marcaList;
+            cmbMarca.DisplayMember = "nombre";
+            cmbMarca.ValueMember = "id";
+            cmbMarca.SelectedIndex = 0;
+        }
         public static void fillComboTipoEmpleado(ComboBox cmbTipoEmpleado) {
             List<TipoEmpleado> tipoEmpleadoList = Context.instance.dao.tipoEmpleado.load();
             tipoEmpleadoList.Insert(0, new TipoEmpleado(0) { nombre = "---" });
@@ -41,10 +47,8 @@ namespace VentaElectrodomesticos.Controladores {
             cmbTipoEmpleado.ValueMember = "id";
             cmbTipoEmpleado.SelectedIndex = 0;
         }
-
         public static void fillDataGridEmpleados(DataGridView dataEmpleados, List<Empleado> result) {
             dataEmpleados.ColumnCount = 9;
-
             dataEmpleados.Columns[0].Visible = false;
             dataEmpleados.Columns[1].Name = "DNI";
             dataEmpleados.Columns[2].Name = "Nombre";
@@ -54,9 +58,7 @@ namespace VentaElectrodomesticos.Controladores {
             dataEmpleados.Columns[6].Name = "Telefono";
             dataEmpleados.Columns[7].Name = "Tipo";
             dataEmpleados.Columns[8].Name = "Sucursal";
-
             dataEmpleados.Rows.Clear();
-
             foreach (Empleado e in result) {
                 dataEmpleados.Rows.Add(
                     e,
@@ -71,10 +73,8 @@ namespace VentaElectrodomesticos.Controladores {
                 );
             }
         }
-
         public static void fillDataGridClientes(DataGridView dataClientes, List<Cliente> result) {
             dataClientes.ColumnCount = 8;
-
             dataClientes.Columns[0].Visible = false;
             dataClientes.Columns[1].Name = "DNI";
             dataClientes.Columns[2].Name = "Nombre";
@@ -83,9 +83,7 @@ namespace VentaElectrodomesticos.Controladores {
             dataClientes.Columns[5].Name = "Dirección";
             dataClientes.Columns[6].Name = "Telefono";
             dataClientes.Columns[7].Name = "Provincia";
-
             dataClientes.Rows.Clear();
-
             foreach (Cliente c in result) {
                 dataClientes.Rows.Add(
                     c,
@@ -99,10 +97,32 @@ namespace VentaElectrodomesticos.Controladores {
                 );
             }
         }
-
+        public static void fillDataGridProductos(DataGridView dataProductos, List<Producto> result)
+        {
+            dataProductos.ColumnCount = 7;
+            dataProductos.Columns[0].Visible = false;
+            dataProductos.Columns[1].Name = "Código";
+            dataProductos.Columns[2].Name = "Nombre";
+            dataProductos.Columns[5].Name = "Marca";
+            dataProductos.Columns[3].Name = "Descripción";
+            dataProductos.Columns[4].Name = "Precio";
+            dataProductos.Columns[6].Name = "Categoría";
+            dataProductos.Rows.Clear();
+            foreach (Producto c in result)
+            {
+                dataProductos.Rows.Add(
+                    c,
+                    c.codigo,
+                    c.nombre,
+                    c.getMarca.nombre,
+                    c.descripcion,
+                    c.precio,
+                    c.getCategoria.nombre
+                );
+            }
+        }
         public static void fillDataGridIngresoStock(DataGridView dataStock, List<Stock> result) {
             dataStock.ColumnCount = 5;
-
             dataStock.Columns[0].Visible = false;
             dataStock.Columns[1].Name = "Adicionar stock";
             dataStock.Columns[2].Name = "Stock actual";
@@ -112,9 +132,7 @@ namespace VentaElectrodomesticos.Controladores {
             dataStock.Columns[4].Name = "Sucursal";
             dataStock.Columns[4].ReadOnly = true;
             dataStock.Columns[4].Width = 200;
-
             dataStock.Rows.Clear();
-
             foreach (Stock s in result) {
                 dataStock.Rows.Add(
                     s,

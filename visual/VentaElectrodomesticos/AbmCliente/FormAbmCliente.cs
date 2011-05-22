@@ -51,7 +51,6 @@ namespace VentaElectrodomesticos.AbmCliente {
             txtTelefono.Text = cargoCliente.telefono;
             cmbProvincia.SelectedValue = cargoCliente.provinciaId;
         }
-
         private void bLimpiar_Click(object sender, EventArgs e) {
             this.limpiar();
             bCrear.Visible = true;

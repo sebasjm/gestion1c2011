@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using VentaElectrodomesticos.Controladores;
 
 namespace VentaElectrodomesticos.Modelo {
     class Producto {
@@ -25,6 +26,14 @@ namespace VentaElectrodomesticos.Modelo {
         }
         public Int16 categoria_id {
             get; set;
+        }
+        public Marca getMarca
+        {
+            get { return Context.instance.dao.marca.findById(marca_id); }
+        }
+        public Categoria getCategoria
+        {
+            get { return Context.instance.dao.categoria.findById(categoria_id); }
         }
     }
 }

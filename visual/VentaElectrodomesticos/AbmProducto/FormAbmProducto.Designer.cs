@@ -35,7 +35,6 @@
             this.lDescripcion = new System.Windows.Forms.Label();
             this.lNombreMarca = new System.Windows.Forms.Label();
             this.lCodProd = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtCodigoProducto = new System.Windows.Forms.TextBox();
             this.bBuscar = new System.Windows.Forms.Button();
             this.bCrearOtro = new System.Windows.Forms.Button();
@@ -52,11 +51,16 @@
             this.labelCategoria = new System.Windows.Forms.Label();
             this.bModificar = new System.Windows.Forms.Button();
             this.bBorrar = new System.Windows.Forms.Button();
+            this.lMarca = new System.Windows.Forms.Label();
+            this.cmbMarcas = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.bMarcas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(131, 149);
+            this.txtPrecio.Location = new System.Drawing.Point(131, 178);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(172, 20);
             this.txtPrecio.TabIndex = 55;
@@ -64,7 +68,7 @@
             // lCategoria
             // 
             this.lCategoria.AutoSize = true;
-            this.lCategoria.Location = new System.Drawing.Point(12, 125);
+            this.lCategoria.Location = new System.Drawing.Point(12, 154);
             this.lCategoria.Name = "lCategoria";
             this.lCategoria.Size = new System.Drawing.Size(52, 13);
             this.lCategoria.TabIndex = 53;
@@ -73,7 +77,7 @@
             // lPrecio
             // 
             this.lPrecio.AutoSize = true;
-            this.lPrecio.Location = new System.Drawing.Point(12, 152);
+            this.lPrecio.Location = new System.Drawing.Point(12, 181);
             this.lPrecio.Name = "lPrecio";
             this.lPrecio.Size = new System.Drawing.Size(84, 13);
             this.lPrecio.TabIndex = 51;
@@ -81,8 +85,8 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(131, 94);
-            this.txtDescripcion.MaxLength = 8;
+            this.txtDescripcion.Location = new System.Drawing.Point(131, 123);
+            this.txtDescripcion.MaxLength = 200;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(172, 20);
             this.txtDescripcion.TabIndex = 50;
@@ -90,7 +94,7 @@
             // lDescripcion
             // 
             this.lDescripcion.AutoSize = true;
-            this.lDescripcion.Location = new System.Drawing.Point(12, 97);
+            this.lDescripcion.Location = new System.Drawing.Point(12, 126);
             this.lDescripcion.Name = "lDescripcion";
             this.lDescripcion.Size = new System.Drawing.Size(63, 13);
             this.lDescripcion.TabIndex = 49;
@@ -101,9 +105,9 @@
             this.lNombreMarca.AutoSize = true;
             this.lNombreMarca.Location = new System.Drawing.Point(12, 70);
             this.lNombreMarca.Name = "lNombreMarca";
-            this.lNombreMarca.Size = new System.Drawing.Size(86, 13);
+            this.lNombreMarca.Size = new System.Drawing.Size(44, 13);
             this.lNombreMarca.TabIndex = 48;
-            this.lNombreMarca.Text = "Nombre o Marca";
+            this.lNombreMarca.Text = "Nombre";
             // 
             // lCodProd
             // 
@@ -113,13 +117,6 @@
             this.lCodProd.Size = new System.Drawing.Size(100, 13);
             this.lCodProd.TabIndex = 47;
             this.lCodProd.Text = "Código de producto";
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(131, 67);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(172, 20);
-            this.txtNombre.TabIndex = 46;
             // 
             // txtCodigoProducto
             // 
@@ -140,7 +137,7 @@
             // 
             // bCrearOtro
             // 
-            this.bCrearOtro.Location = new System.Drawing.Point(339, 219);
+            this.bCrearOtro.Location = new System.Drawing.Point(339, 243);
             this.bCrearOtro.Name = "bCrearOtro";
             this.bCrearOtro.Size = new System.Drawing.Size(116, 23);
             this.bCrearOtro.TabIndex = 72;
@@ -150,7 +147,7 @@
             // 
             // bLimpiar
             // 
-            this.bLimpiar.Location = new System.Drawing.Point(6, 214);
+            this.bLimpiar.Location = new System.Drawing.Point(6, 243);
             this.bLimpiar.Name = "bLimpiar";
             this.bLimpiar.Size = new System.Drawing.Size(58, 23);
             this.bLimpiar.TabIndex = 71;
@@ -160,7 +157,7 @@
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(6, 185);
+            this.bCancelar.Location = new System.Drawing.Point(6, 214);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(58, 23);
             this.bCancelar.TabIndex = 70;
@@ -170,7 +167,7 @@
             // 
             // bCrear
             // 
-            this.bCrear.Location = new System.Drawing.Point(339, 190);
+            this.bCrear.Location = new System.Drawing.Point(339, 214);
             this.bCrear.Name = "bCrear";
             this.bCrear.Size = new System.Drawing.Size(116, 23);
             this.bCrear.TabIndex = 69;
@@ -210,7 +207,7 @@
             this.lErrorDescripcion.BackColor = System.Drawing.Color.Transparent;
             this.lErrorDescripcion.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lErrorDescripcion.ForeColor = System.Drawing.Color.Red;
-            this.lErrorDescripcion.Location = new System.Drawing.Point(311, 94);
+            this.lErrorDescripcion.Location = new System.Drawing.Point(311, 123);
             this.lErrorDescripcion.Name = "lErrorDescripcion";
             this.lErrorDescripcion.Size = new System.Drawing.Size(22, 29);
             this.lErrorDescripcion.TabIndex = 75;
@@ -223,7 +220,7 @@
             this.lErrorCategoria.BackColor = System.Drawing.Color.Transparent;
             this.lErrorCategoria.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lErrorCategoria.ForeColor = System.Drawing.Color.Red;
-            this.lErrorCategoria.Location = new System.Drawing.Point(311, 122);
+            this.lErrorCategoria.Location = new System.Drawing.Point(311, 151);
             this.lErrorCategoria.Name = "lErrorCategoria";
             this.lErrorCategoria.Size = new System.Drawing.Size(22, 29);
             this.lErrorCategoria.TabIndex = 76;
@@ -236,7 +233,7 @@
             this.lErrorPrecio.BackColor = System.Drawing.Color.Transparent;
             this.lErrorPrecio.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lErrorPrecio.ForeColor = System.Drawing.Color.Red;
-            this.lErrorPrecio.Location = new System.Drawing.Point(311, 149);
+            this.lErrorPrecio.Location = new System.Drawing.Point(311, 178);
             this.lErrorPrecio.Name = "lErrorPrecio";
             this.lErrorPrecio.Size = new System.Drawing.Size(22, 29);
             this.lErrorPrecio.TabIndex = 77;
@@ -247,7 +244,7 @@
             // 
             this.treeCategorias.Location = new System.Drawing.Point(339, 40);
             this.treeCategorias.Name = "treeCategorias";
-            this.treeCategorias.Size = new System.Drawing.Size(120, 127);
+            this.treeCategorias.Size = new System.Drawing.Size(120, 158);
             this.treeCategorias.TabIndex = 87;
             this.treeCategorias.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeCategorias_AfterSelect);
             // 
@@ -263,14 +260,14 @@
             // labelCategoria
             // 
             this.labelCategoria.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelCategoria.Location = new System.Drawing.Point(131, 122);
+            this.labelCategoria.Location = new System.Drawing.Point(131, 151);
             this.labelCategoria.Name = "labelCategoria";
             this.labelCategoria.Size = new System.Drawing.Size(172, 22);
             this.labelCategoria.TabIndex = 89;
             // 
             // bModificar
             // 
-            this.bModificar.Location = new System.Drawing.Point(339, 190);
+            this.bModificar.Location = new System.Drawing.Point(339, 214);
             this.bModificar.Name = "bModificar";
             this.bModificar.Size = new System.Drawing.Size(116, 23);
             this.bModificar.TabIndex = 90;
@@ -280,7 +277,7 @@
             // 
             // bBorrar
             // 
-            this.bBorrar.Location = new System.Drawing.Point(70, 185);
+            this.bBorrar.Location = new System.Drawing.Point(70, 214);
             this.bBorrar.Name = "bBorrar";
             this.bBorrar.Size = new System.Drawing.Size(58, 23);
             this.bBorrar.TabIndex = 91;
@@ -288,11 +285,63 @@
             this.bBorrar.UseVisualStyleBackColor = true;
             this.bBorrar.Click += new System.EventHandler(this.bBorrar_Click);
             // 
+            // lMarca
+            // 
+            this.lMarca.AutoSize = true;
+            this.lMarca.Location = new System.Drawing.Point(12, 98);
+            this.lMarca.Name = "lMarca";
+            this.lMarca.Size = new System.Drawing.Size(37, 13);
+            this.lMarca.TabIndex = 92;
+            this.lMarca.Text = "Marca";
+            // 
+            // cmbMarcas
+            // 
+            this.cmbMarcas.FormattingEnabled = true;
+            this.cmbMarcas.Location = new System.Drawing.Point(131, 95);
+            this.cmbMarcas.Name = "cmbMarcas";
+            this.cmbMarcas.Size = new System.Drawing.Size(172, 21);
+            this.cmbMarcas.TabIndex = 93;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(311, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(22, 29);
+            this.label1.TabIndex = 94;
+            this.label1.Text = "*";
+            this.label1.Visible = false;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(131, 66);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(170, 20);
+            this.txtNombre.TabIndex = 95;
+            // 
+            // bMarcas
+            // 
+            this.bMarcas.Location = new System.Drawing.Point(177, 214);
+            this.bMarcas.Name = "bMarcas";
+            this.bMarcas.Size = new System.Drawing.Size(93, 23);
+            this.bMarcas.TabIndex = 96;
+            this.bMarcas.Text = "Alta de Marca";
+            this.bMarcas.UseVisualStyleBackColor = true;
+            this.bMarcas.Click += new System.EventHandler(this.bMarcas_Click);
+            // 
             // FormAbmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 254);
+            this.ClientSize = new System.Drawing.Size(478, 275);
+            this.Controls.Add(this.bMarcas);
+            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmbMarcas);
+            this.Controls.Add(this.lMarca);
             this.Controls.Add(this.bBorrar);
             this.Controls.Add(this.bModificar);
             this.Controls.Add(this.labelCategoria);
@@ -315,7 +364,6 @@
             this.Controls.Add(this.lDescripcion);
             this.Controls.Add(this.lNombreMarca);
             this.Controls.Add(this.lCodProd);
-            this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtCodigoProducto);
             this.Name = "FormAbmProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -334,7 +382,6 @@
         private System.Windows.Forms.Label lDescripcion;
         private System.Windows.Forms.Label lNombreMarca;
         private System.Windows.Forms.Label lCodProd;
-        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtCodigoProducto;
         private System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.Button bCrearOtro;
@@ -351,5 +398,10 @@
         private System.Windows.Forms.Label labelCategoria;
         private System.Windows.Forms.Button bModificar;
         private System.Windows.Forms.Button bBorrar;
+        private System.Windows.Forms.Label lMarca;
+        private System.Windows.Forms.ComboBox cmbMarcas;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.Button bMarcas;
     }
 }

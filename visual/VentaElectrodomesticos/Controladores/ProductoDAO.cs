@@ -46,21 +46,40 @@ namespace VentaElectrodomesticos.Controladores {
                 };
             }
         }
-        //CRUD
+        private static readonly String INSERT = "INSERT INTO la_huerta.producto VALUES( {0} , '{1}' , '{2}' , {3} , {4} ,  {5} , 1 )";
+        private static readonly String UPDATE = "UPDATE [la_huerta].[Producto] SET codigo={0},nombre='{1}',descripcion='{2}',precio={3},marca_id={4},categoria_id={5},activo=1 WHERE codigo={0}";
+        private static readonly String DELETE = "UPDATE la_huerta.producto SET activo=0 WHERE dni={0}";
+
         public void insertar(Producto producto)
         {
-            QueryBuilder q = new QueryBuilder();
-            connection.query<Usuario>(q.build(), q.getParams());
+            connection.update(
+                INSERT,
+                    producto.codigo,
+                    producto.nombre,
+                    producto.descripcion,
+                    producto.precio,
+                    producto.marca_id,
+                    producto.categoria_id
+            );
         }
-        public void modificar(Producto _producto)
+        public void modificar(Producto producto)
         {
-            QueryBuilder q = new QueryBuilder();
-            connection.query<Usuario>(q.build(), q.getParams());
+            connection.update(
+                UPDATE,
+                    producto.codigo,
+                    producto.nombre,
+                    producto.descripcion,
+                    producto.precio,
+                    producto.marca_id,
+                    producto.categoria_id
+            );
         }
-        public void delete(Producto _producto)
+        public void eliminar(int codigo)
         {
-            QueryBuilder q = new QueryBuilder();
-            connection.query<Usuario>(q.build(), q.getParams());
+            connection.update(
+                DELETE,
+                codigo
+            );
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
 using VentaElectrodomesticos.Vista;
+using VentaElectrodomesticos.AbmMarca;
 namespace VentaElectrodomesticos.AbmProducto
 {
     public partial class FormAbmProducto : Form
@@ -17,7 +18,6 @@ namespace VentaElectrodomesticos.AbmProducto
         List<Categoria> items = new List<Categoria>();
         Validator validator;
         Categoria categoria = null;
-        AutoCompleteStringCollection namesCollection = new AutoCompleteStringCollection();
         Producto producto;
         public FormAbmProducto()        {
             InitializeComponent();
@@ -30,14 +30,7 @@ namespace VentaElectrodomesticos.AbmProducto
                 .add(txtNombre, lErrorNombre, Validator.Text.obligatorio, Validator.Text.nombre)
                 .add(treeCategorias, lErrorCategoria, Validator.Tree.obligatorio)
                 .add(txtPrecio, lErrorPrecio, Validator.Text.obligatorio, Validator.Text.numerico);
-            List<Marca> marcasList = Context.instance.dao.marca.search("");
-            foreach (Marca marca in marcasList)
-            {
-                namesCollection.Add(marca.nombre);
-            };
-            txtNombre.AutoCompleteMode = AutoCompleteMode.Suggest;
-            txtNombre.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            txtNombre.AutoCompleteCustomSource = namesCollection;
+            ViewHelper.fillComboMarcas(cmbMarcas);
         }
         private void buildtree()        {
             this.items = Context.instance.dao.categoria.search(0 , "");
@@ -100,8 +93,49 @@ namespace VentaElectrodomesticos.AbmProducto
             txtDescripcion.Text = prod.descripcion;
             txtNombre.Text = prod.nombre;
             txtPrecio.Text = "" + prod.precio;
-            List<Categoria> cate = Context.instance.dao.categoria.search( prod.categoria_id , "");
-            labelCategoria.Text = cate[0].nombre ;
+           /* Categoria cate = null;
+            foreach (TreeNode node in treeCategorias.Nodes)
+            {
+                cate = (Categoria)node.Tag;
+                if (cate.id == prod.categoria_id)
+                {
+                    treeCategorias.SelectedNode = node;
+                }
+            }*/
+            TreeNode nodo = llamadaRecursivaSeleccionarCategoria(prod.categoria_id);
+            treeCategorias.Select();
+            labelCategoria.Text = ((Categoria)nodo.Tag).nombre;
+        }
+        private TreeNode buscarCategoria(TreeNode treeNode, int id_seleccionado)
+        {
+            Categoria cate = (Categoria)treeNode.Tag;
+            if (cate.id == id_seleccionado)
+            {
+                treeCategorias.SelectedNode = treeNode;
+                return treeNode;
+            }
+            else { 
+            foreach (TreeNode tn in treeNode.Nodes)
+            {
+                TreeNode nodo = buscarCategoria(tn, id_seleccionado);
+                if (nodo != null)
+                {
+                    return nodo;
+                }
+            }
+            return null;
+            }
+        }
+        private TreeNode llamadaRecursivaSeleccionarCategoria(int categoria)
+        {
+            foreach (TreeNode n in treeCategorias.Nodes)
+            {
+               TreeNode nodo = buscarCategoria(n ,categoria);
+               if (nodo != null) {
+                   return nodo;
+               }
+            }
+            return null;
         }
         private void treeCategorias_AfterSelect(object sender, TreeViewEventArgs e)        {
             TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
@@ -134,10 +168,11 @@ namespace VentaElectrodomesticos.AbmProducto
             }
         }
         private void bBorrar_Click(object sender, EventArgs e)        {
+            if (!validator.check()) return;
             if (MessageBox.Show("¿Esta seguro que desea borrar el Producto?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la eliminacion
-                Context.instance.dao.producto.delete(this.producto);
+                Context.instance.dao.producto.eliminar(Int32.Parse(txtCodigoProducto.Text));
                 this.Close();
             }
         }
@@ -202,6 +237,12 @@ namespace VentaElectrodomesticos.AbmProducto
                 Context.instance.dao.producto.insertar(productoNew);
                 this.limpiar();
             }
+        }
+        private void bMarcas_Click(object sender, EventArgs e)
+        {
+            FormAbmMarca form = new FormAbmMarca();
+            form.ShowDialog(this);
+            ViewHelper.fillComboMarcas(cmbMarcas);
         }
     }
 }

@@ -32,7 +32,6 @@ namespace VentaElectrodomesticos.AbmEmpleado {
         private void bBuscar_Click(object sender, EventArgs e) {
             if (txtDni.Text.Length == 0)
                 txtDni.Text = "0";
-
             List<Empleado> result = Context.instance.dao.empleado.search(
                 txtNombre.Text,
                 txtApellido.Text,

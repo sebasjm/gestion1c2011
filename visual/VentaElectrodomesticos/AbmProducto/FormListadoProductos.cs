@@ -109,7 +109,7 @@ namespace VentaElectrodomesticos.AbmProducto
             else {
                 nombre = "";
                 if (valor.Count > 1) { MessageBox.Show("Debe Elegir una marca ", "Selección de Marca"); }
-                marca = valor[0].id;
+                marca = (valor[0].id != null) ? 0 : (int)valor[0].id;
             }
             
             List<Producto> productosList = Context.instance.dao.producto.search(
@@ -119,22 +119,17 @@ namespace VentaElectrodomesticos.AbmProducto
                 indice,
                 precioDesde,
                 precioHasta);
-            try
-            {
-                dataProductos.DataSource = productosList;
-            }
-            catch (NullReferenceException) { }
+
+            ViewHelper.fillDataGridProductos(dataProductos, productosList);
         }
         private void bBuscar_Click(object sender, EventArgs e)
         {
             FillData();
         }
-
         private void bCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void bLimpiar_Click(object sender, EventArgs e)
         {
             txtCodigoProducto.Text = "";
@@ -144,7 +139,6 @@ namespace VentaElectrodomesticos.AbmProducto
             treeCategorias.CollapseAll();
             dataProductos.DataSource = null;
         }
-
         private void bSeleccionar_Click(object sender, EventArgs e)
         {
             Producto prod = (Producto)dataProductos.Rows[dataProductos.CurrentCell.RowIndex].DataBoundItem;

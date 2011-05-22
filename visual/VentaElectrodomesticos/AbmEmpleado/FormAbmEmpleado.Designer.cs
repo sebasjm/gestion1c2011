@@ -354,7 +354,7 @@
             // 
             this.txtDireccion.Location = new System.Drawing.Point(88, 155);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(232, 20);
+            this.txtDireccion.Size = new System.Drawing.Size(355, 20);
             this.txtDireccion.TabIndex = 78;
             // 
             // lDireccion
@@ -383,7 +383,7 @@
             this.lErrorDireccion.BackColor = System.Drawing.Color.Transparent;
             this.lErrorDireccion.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lErrorDireccion.ForeColor = System.Drawing.Color.Red;
-            this.lErrorDireccion.Location = new System.Drawing.Point(321, 155);
+            this.lErrorDireccion.Location = new System.Drawing.Point(449, 155);
             this.lErrorDireccion.Name = "lErrorDireccion";
             this.lErrorDireccion.Size = new System.Drawing.Size(22, 29);
             this.lErrorDireccion.TabIndex = 81;

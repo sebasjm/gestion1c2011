@@ -31,8 +31,9 @@ CREATE TABLE [la_huerta].[TipoEmpleado](
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Marca](
-	[id] [smallint] NOT NULL,
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
 	[nombre] [varchar](20) NOT NULL,
+    [activo] [bit] NOT NULL DEFAULT 1,
 	primary key (id),
 	unique (nombre)
 ) ON [PRIMARY]
@@ -305,8 +306,8 @@ ORDER BY cli_dni
 -- 11
 INSERT INTO [la_huerta].[Marca] 
 SELECT 
-	row_number() OVER (ORDER BY producto_marca) AS id, 
-	producto_marca as marca
+	producto_marca as marca,
+	1 as activo
 FROM gd_esquema.Maestra 
 WHERE producto_marca is not null
 GROUP BY 
