@@ -88,6 +88,7 @@ namespace VentaElectrodomesticos.AbmMarca
     DataGridViewCellEventArgs e)
         {
 
+            Marca Article = (Marca)this.dataMarcas.se;
 
 
             //this.marca = (Marca)dataMarcas.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;

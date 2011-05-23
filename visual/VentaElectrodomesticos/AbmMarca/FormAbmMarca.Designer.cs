@@ -82,7 +82,7 @@
             // 
             // bModificar
             // 
-            this.bModificar.Location = new System.Drawing.Point(131, 199);
+            this.bModificar.Location = new System.Drawing.Point(177, 183);
             this.bModificar.Name = "bModificar";
             this.bModificar.Size = new System.Drawing.Size(116, 23);
             this.bModificar.TabIndex = 85;
