@@ -37,8 +37,8 @@
             this.bCrearOtro = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataMarcas = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataMarcas)).BeginInit();
             this.SuspendLayout();
             // 
             // bCrear
@@ -82,12 +82,13 @@
             // 
             // bModificar
             // 
-            this.bModificar.Location = new System.Drawing.Point(177, 183);
+            this.bModificar.Location = new System.Drawing.Point(131, 199);
             this.bModificar.Name = "bModificar";
             this.bModificar.Size = new System.Drawing.Size(116, 23);
             this.bModificar.TabIndex = 85;
             this.bModificar.Text = "Modificar";
             this.bModificar.UseVisualStyleBackColor = true;
+            this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
             // 
             // bBorrar
             // 
@@ -97,6 +98,7 @@
             this.bBorrar.TabIndex = 84;
             this.bBorrar.Text = "Borrar";
             this.bBorrar.UseVisualStyleBackColor = true;
+            this.bBorrar.Click += new System.EventHandler(this.bBorrar_Click);
             // 
             // bCrearOtro
             // 
@@ -106,6 +108,7 @@
             this.bCrearOtro.TabIndex = 83;
             this.bCrearOtro.Text = "Crear y Continuar";
             this.bCrearOtro.UseVisualStyleBackColor = true;
+            this.bCrearOtro.Click += new System.EventHandler(this.bCrearOtro_Click);
             // 
             // bLimpiar
             // 
@@ -115,6 +118,7 @@
             this.bLimpiar.TabIndex = 82;
             this.bLimpiar.Text = "Limpiar";
             this.bLimpiar.UseVisualStyleBackColor = true;
+            this.bLimpiar.Click += new System.EventHandler(this.bLimpiar_Click);
             // 
             // bCancelar
             // 
@@ -124,21 +128,23 @@
             this.bCancelar.TabIndex = 81;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
-            // dataGridView1
+            // dataMarcas
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(5, 49);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(288, 121);
-            this.dataGridView1.TabIndex = 86;
+            this.dataMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataMarcas.Location = new System.Drawing.Point(5, 49);
+            this.dataMarcas.Name = "dataMarcas";
+            this.dataMarcas.Size = new System.Drawing.Size(288, 121);
+            this.dataMarcas.TabIndex = 86;
+            this.dataMarcas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMarcas_CellClick);
             // 
             // FormAbmMarca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(307, 246);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataMarcas);
             this.Controls.Add(this.bModificar);
             this.Controls.Add(this.bBorrar);
             this.Controls.Add(this.bCrearOtro);
@@ -150,7 +156,7 @@
             this.Controls.Add(this.bCrear);
             this.Name = "FormAbmMarca";
             this.Text = "Alta de Marcas";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataMarcas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,6 +173,6 @@
         private System.Windows.Forms.Button bCrearOtro;
         private System.Windows.Forms.Button bLimpiar;
         private System.Windows.Forms.Button bCancelar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataMarcas;
     }
 }

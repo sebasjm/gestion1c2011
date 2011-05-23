@@ -141,7 +141,7 @@ namespace VentaElectrodomesticos.AbmProducto
         }
         private void bSeleccionar_Click(object sender, EventArgs e)
         {
-            Producto prod = (Producto)dataProductos.Rows[dataProductos.CurrentCell.RowIndex].DataBoundItem;
+            Producto prod = (Producto)dataProductos.SelectedRows[0].Cells[0].Value;
             if (prod != null)
             {
                 this.messageFromParent = prod;

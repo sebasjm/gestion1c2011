@@ -110,14 +110,29 @@ namespace VentaElectrodomesticos.Controladores {
             dataProductos.Rows.Clear();
             foreach (Producto c in result)
             {
+                
                 dataProductos.Rows.Add(
                     c,
                     c.codigo,
                     c.nombre,
-                    c.marca.nombre,
+                    c.marca ,
                     c.descripcion,
                     c.precio,
                     c.categoria.nombre
+                );
+            }
+        }
+        public static void fillDataGridMarcas(DataGridView dataMarcas, List<Marca> result)
+        {
+            dataMarcas.ColumnCount = 2;
+            dataMarcas.Columns[0].Visible = false;
+            dataMarcas.Columns[1].Name = "Nombre";
+            dataMarcas.Rows.Clear();
+            foreach (Marca c in result)
+            {
+                dataMarcas.Rows.Add(
+                    c,
+                    c.nombre
                 );
             }
         }
