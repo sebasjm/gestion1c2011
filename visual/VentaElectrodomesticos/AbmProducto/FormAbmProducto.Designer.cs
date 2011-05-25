@@ -328,7 +328,7 @@
             this.bMarcas.Name = "bMarcas";
             this.bMarcas.Size = new System.Drawing.Size(93, 23);
             this.bMarcas.TabIndex = 96;
-            this.bMarcas.Text = "Alta de Marca";
+            this.bMarcas.Text = "ABM de Marca";
             this.bMarcas.UseVisualStyleBackColor = true;
             this.bMarcas.Click += new System.EventHandler(this.bMarcas_Click);
             // 

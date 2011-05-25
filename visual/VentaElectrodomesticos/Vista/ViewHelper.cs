@@ -118,6 +118,20 @@ namespace VentaElectrodomesticos.Controladores {
                 );
             }
         }
+        public static void fillDataGridMarcas(DataGridView dataMarcas, List<Marca> result)
+        {
+            dataMarcas.ColumnCount = 2;
+            dataMarcas.Columns[0].Visible = false;
+            dataMarcas.Columns[1].Name = "Nombre";
+            dataMarcas.Rows.Clear();
+            foreach (Marca c in result)
+            {
+                dataMarcas.Rows.Add(
+                    c,
+                    c.nombre
+                );
+            }
+        }
         public static void fillDataGridIngresoStock(DataGridView dataStock, List<Stock> result) {
             dataStock.ColumnCount = 5;
             dataStock.Columns[0].Visible = false;
