@@ -15,8 +15,7 @@ namespace VentaElectrodomesticos.Controladores {
             cmbProvincia.SelectedIndex = 0;
         }
 
-        public static void fillFuncionalidades(CheckedListBox chkRoles)
-        {
+        public static void fillFuncionalidades(CheckedListBox chkRoles) {
             List<Funcionalidad> funcionalidadList = Context.instance.dao.funcionalidad.load();
             chkRoles.DataSource = funcionalidadList;
             chkRoles.DisplayMember = "nombre";
@@ -97,26 +96,24 @@ namespace VentaElectrodomesticos.Controladores {
                 );
             }
         }
-        public static void fillDataGridProductos(DataGridView dataProductos, List<Producto> result)
-        {
+        public static void fillDataGridProductos(DataGridView dataProductos, List<Producto> result) {
             dataProductos.ColumnCount = 7;
             dataProductos.Columns[0].Visible = false;
             dataProductos.Columns[1].Name = "Código";
             dataProductos.Columns[2].Name = "Nombre";
-            dataProductos.Columns[5].Name = "Marca";
             dataProductos.Columns[3].Name = "Descripción";
             dataProductos.Columns[4].Name = "Precio";
+            dataProductos.Columns[5].Name = "Marca";
             dataProductos.Columns[6].Name = "Categoría";
             dataProductos.Rows.Clear();
-            foreach (Producto c in result)
-            {
+            foreach (Producto c in result) {
                 dataProductos.Rows.Add(
                     c,
                     c.codigo,
                     c.nombre,
-                    c.marca.nombre,
                     c.descripcion,
                     c.precio,
+                    c.marca.nombre,
                     c.categoria.nombre
                 );
             }
@@ -142,6 +139,25 @@ namespace VentaElectrodomesticos.Controladores {
                     s.sucursal.direccion
                 );
             }
+        }
+        public static void fillTreeViewCategorias(TreeView dataCategorias, List<Categoria> result) {
+            dataCategorias.Nodes.Clear();    // Clear any existing items
+            dataCategorias.BeginUpdate();    // prevent overhead and flicker
+
+            TreeNode root = dataCategorias.Nodes.Add( "---" );
+            root.Tag = new Categoria(0);
+            root.Expand();
+            Dictionary<short, TreeNode> nodes = new Dictionary<short, TreeNode>();
+
+            //asume fathers first
+            foreach (Categoria cat in result) {
+                TreeNode node = (cat.categoria_padre == null ? root: nodes[(short)cat.categoria_padre]).Nodes.Add(cat.nombre);
+                node.Tag = cat;
+                nodes.Add(cat.id, node);
+            }
+
+            dataCategorias.EndUpdate();
+            dataCategorias.Refresh(); 
         }
     }
 }

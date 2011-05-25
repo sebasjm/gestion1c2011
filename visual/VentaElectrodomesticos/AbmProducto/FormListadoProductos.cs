@@ -10,52 +10,43 @@ using System.Data.SqlClient;
 using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
 
-namespace VentaElectrodomesticos.AbmProducto
-{
+namespace VentaElectrodomesticos.AbmProducto {
 
-    public partial class FormListadoProductos : Form
-    {
+    public partial class FormListadoProductos : Form {
         private Object messageFromParent = null;
-        public Object MessageFromParent
-        {
+        public Object MessageFromParent {
             get { return messageFromParent; }
             set { messageFromParent = value; }
         }
 
         List<Categoria> items = new List<Categoria>();
         AutoCompleteStringCollection namesCollection = new AutoCompleteStringCollection();
-        public FormListadoProductos()
-        {
+        public FormListadoProductos() {
             InitializeComponent();
             buildtree();
             FillData();
         }
-        private void FormListadoProductos_Load(object sender, EventArgs e)
-        {
+        private void FormListadoProductos_Load(object sender, EventArgs e) {
             List<Marca> marcasList = Context.instance.dao.marca.search("");
-            foreach (Marca marca in marcasList)
-            {
+            foreach (Marca marca in marcasList) {
                 namesCollection.Add(marca.nombre);
             };
             txtNombre.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtNombre.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txtNombre.AutoCompleteCustomSource = namesCollection;
         }
-        private void buildtree()
-        {
-            this.items = Context.instance.dao.categoria.search( 0 , "");
+        private void buildtree() {
+            this.items = Context.instance.dao.categoria.search(0, "");
             treeCategorias.Nodes.Clear();    // Clear any existing items
             treeCategorias.BeginUpdate();    // prevent overhead and flicker
             LoadBaseNodes();            // load all the lowest tree nodes
             treeCategorias.EndUpdate();      // re-enable the tree
             treeCategorias.Refresh();        // refresh the <strong class="highlight">treeview</strong> display
         }
-        private void LoadBaseNodes()
-        {
+        private void LoadBaseNodes() {
             int? baseParent = null;                 // Find the lowest root category parent value
             TreeNode node;
-            foreach (Categoria cat in items)
-            {
+            foreach (Categoria cat in items) {
                 if (cat.categoria_padre < baseParent)
                     baseParent = cat.categoria_padre;
             }
@@ -72,8 +63,7 @@ namespace VentaElectrodomesticos.AbmProducto
 
         // recursive tree loader. Passes back in a node to retireve its childre
         // until there are no more children for this node.
-        private void getChildren(TreeNode node)
-        {
+        private void getChildren(TreeNode node) {
             TreeNode Node = null;
             Categoria nodeCat = (Categoria)node.Tag;  // get the category for this node
             foreach (Categoria cat in items)         // locate all children of this category
@@ -86,32 +76,29 @@ namespace VentaElectrodomesticos.AbmProducto
                 }
             }
         }
-        void FillData()
-        {
-            float precioDesde = (txtPrecioDesde.Text == "")? 0 : float.Parse(txtPrecioDesde.Text);
-            float precioHasta = (txtPrecioHasta.Text == "")? 0 : float.Parse(txtPrecioHasta.Text);
+        void FillData() {
+            float precioDesde = (txtPrecioDesde.Text == "") ? 0 : float.Parse(txtPrecioDesde.Text);
+            float precioHasta = (txtPrecioHasta.Text == "") ? 0 : float.Parse(txtPrecioHasta.Text);
             TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
             int indice = 0;
-            if(NodoSeleccionado == null){
+            if (NodoSeleccionado == null) {
                 indice = 0;
-            }
-            else { 
+            } else {
                 Categoria cate = (Categoria)NodoSeleccionado.Tag;
-                indice = cate.id;}
+                indice = cate.id;
+            }
             List<Marca> valor = (txtNombre.Text != "") ? Context.instance.dao.marca.search(txtNombre.Text) : null;
             String nombre = "";
             int marca = 0;
-            if (valor == null)
-            {
+            if (valor == null) {
                 nombre = txtNombre.Text;
                 marca = 0;
-            }
-            else {
+            } else {
                 nombre = "";
                 if (valor.Count > 1) { MessageBox.Show("Debe Elegir una marca ", "Selección de Marca"); }
                 marca = (valor[0].id != null) ? 0 : (int)valor[0].id;
             }
-            
+
             List<Producto> productosList = Context.instance.dao.producto.search(
                 txtCodigoProducto.Text,
                 nombre,
@@ -122,16 +109,13 @@ namespace VentaElectrodomesticos.AbmProducto
 
             ViewHelper.fillDataGridProductos(dataProductos, productosList);
         }
-        private void bBuscar_Click(object sender, EventArgs e)
-        {
+        private void bBuscar_Click(object sender, EventArgs e) {
             FillData();
         }
-        private void bCancelar_Click(object sender, EventArgs e)
-        {
+        private void bCancelar_Click(object sender, EventArgs e) {
             this.Close();
         }
-        private void bLimpiar_Click(object sender, EventArgs e)
-        {
+        private void bLimpiar_Click(object sender, EventArgs e) {
             txtCodigoProducto.Text = "";
             txtNombre.Text = "";
             txtPrecioDesde.Text = "";
@@ -139,16 +123,12 @@ namespace VentaElectrodomesticos.AbmProducto
             treeCategorias.CollapseAll();
             dataProductos.DataSource = null;
         }
-        private void bSeleccionar_Click(object sender, EventArgs e)
-        {
+        private void bSeleccionar_Click(object sender, EventArgs e) {
             Producto prod = (Producto)dataProductos.Rows[dataProductos.CurrentCell.RowIndex].DataBoundItem;
-            if (prod != null)
-            {
+            if (prod != null) {
                 this.messageFromParent = prod;
                 this.Close();
-            }
-            else
-            {
+            } else {
                 MessageBox.Show("Debe seleccionar un Producto");
             }
         }
