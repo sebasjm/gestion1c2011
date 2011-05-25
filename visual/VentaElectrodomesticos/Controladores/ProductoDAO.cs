@@ -26,10 +26,10 @@ namespace VentaElectrodomesticos.Controladores {
                 .filterIf(codigo_producto != null && codigo_producto.Length != 0, " codigo like '%{0}%'", codigo_producto)
                 .filterIf(nombre != null && nombre.Length != 0, " nombre like '%{1}%'", nombre)
                 .filterIf(marca != 0 , " marca_id ={2}", marca)
-                .filterIf(categoria != 0 , " categoria_id = {3}", categoria)
+                .filterIf(categoria != 0, " {3} in (select * from dbo.categoria_id_collection(categoria_id))", categoria)
                 .filterIf(precioDesde != 0, " precio >= {4}", precioDesde)
                 .filterIf(precioHasta != 0, " precio <= {5}", precioHasta)
-                .filterIf(true, "activo = {6} ", 1);
+                .filter(" activo = 1 ");
             return connection.query<Producto>( q.build(), q.getParams() );
         }
         class ProductoMapper : Mapper<Object>

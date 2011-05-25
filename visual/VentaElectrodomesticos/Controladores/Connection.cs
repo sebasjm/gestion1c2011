@@ -29,7 +29,11 @@ namespace VentaElectrodomesticos.Controladores {
 
         public T find<T>(string sql, params Object[] args) {
             SqlDataReader sdr = new SqlCommand(String.Format(sql, args), connection).ExecuteReader();
-            return (T) (sdr.Read() ? Context.instance.dao.mappers[typeof(T)].getInstance(sdr) : null);
+            try {
+                return (T)(sdr.Read() ? Context.instance.dao.mappers[typeof(T)].getInstance(sdr) : null);
+            } finally {
+                sdr.Close();
+            }
         }
 
         public List<T> query<T>(string sql, params Object[] args) {

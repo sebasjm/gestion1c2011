@@ -4,6 +4,7 @@ GO
 DROP FUNCTION la_huerta.get_categoria_fullname
 drop function la_huerta.split;
 drop function la_huerta.back_split;
+drop function dbo.categoria_id_collection;
 
 GO
 

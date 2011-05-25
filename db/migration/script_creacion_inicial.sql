@@ -203,6 +203,18 @@ GO
 -- Funciones
 -----------------------------------------
 
+create function dbo.categoria_id_collection(  @id as int ) 
+returns @cats_id table ( id int ) as
+begin
+	if ( @id is null ) return;
+	insert @cats_id values( @id );
+	insert @cats_id 
+		select * from dbo.categoria_id_collection( 
+			(select categoria_padre from la_huerta.categoria where id = @id )
+		);
+	return;
+end
+go
 create function la_huerta.split(  @str as varchar(200), @delimiter as char, @index as int ) 
 returns varchar(200)
 begin
