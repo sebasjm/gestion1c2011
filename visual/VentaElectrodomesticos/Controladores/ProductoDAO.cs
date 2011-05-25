@@ -18,26 +18,23 @@ namespace VentaElectrodomesticos.Controladores {
             string nombre,
             int marca,
             int categoria,
-            float precioDesde ,
+            float precioDesde,
             float precioHasta) {
             QueryBuilder q = new QueryBuilder();
             q.select()
                 .from("la_huerta.Producto")
                 .filterIf(codigo_producto != null && codigo_producto.Length != 0, " codigo like '%{0}%'", codigo_producto)
                 .filterIf(nombre != null && nombre.Length != 0, " nombre like '%{1}%'", nombre)
-                .filterIf(marca != 0 , " marca_id ={2}", marca)
+                .filterIf(marca != 0, " marca_id ={2}", marca)
                 .filterIf(categoria != 0, " {3} in (select * from dbo.categoria_id_collection(categoria_id))", categoria)
                 .filterIf(precioDesde != 0, " precio >= {4}", precioDesde)
                 .filterIf(precioHasta != 0, " precio <= {5}", precioHasta)
                 .filter(" activo = 1 ");
-            return connection.query<Producto>( q.build(), q.getParams() );
+            return connection.query<Producto>(q.build(), q.getParams());
         }
-        class ProductoMapper : Mapper<Object>
-        {
-            public Object getInstance(SqlDataReader sdr)
-            {
-                return new Producto(sdr.GetInt32(0))
-                {
+        class ProductoMapper : Mapper<Object> {
+            public Object getInstance(SqlDataReader sdr) {
+                return new Producto(sdr.GetInt32(0)) {
                     nombre = sdr.GetString(1),
                     descripcion = sdr.GetString(2),
                     precio = sdr.GetDouble(3),
@@ -50,8 +47,7 @@ namespace VentaElectrodomesticos.Controladores {
         private static readonly String UPDATE = "UPDATE [la_huerta].[Producto] SET codigo={0},nombre='{1}',descripcion='{2}',precio={3},marca_id={4},categoria_id={5},activo=1 WHERE codigo={0}";
         private static readonly String DELETE = "UPDATE la_huerta.producto SET activo=0 WHERE dni={0}";
 
-        public void insertar(Producto producto)
-        {
+        public void insertar(Producto producto) {
             connection.update(
                 INSERT,
                     producto.codigo,
@@ -62,8 +58,7 @@ namespace VentaElectrodomesticos.Controladores {
                     producto.categoria_id
             );
         }
-        public void modificar(Producto producto)
-        {
+        public void modificar(Producto producto) {
             connection.update(
                 UPDATE,
                     producto.codigo,
@@ -74,8 +69,7 @@ namespace VentaElectrodomesticos.Controladores {
                     producto.categoria_id
             );
         }
-        public void eliminar(int codigo)
-        {
+        public void eliminar(int codigo) {
             connection.update(
                 DELETE,
                 codigo

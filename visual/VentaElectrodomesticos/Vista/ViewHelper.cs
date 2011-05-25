@@ -136,6 +136,7 @@ namespace VentaElectrodomesticos.Controladores {
             dataStock.ColumnCount = 5;
             dataStock.Columns[0].Visible = false;
             dataStock.Columns[1].Name = "Adicionar stock";
+            dataStock.Columns[1].CellTemplate.Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
             dataStock.Columns[2].Name = "Stock actual";
             dataStock.Columns[2].ReadOnly = true;
             dataStock.Columns[3].Name = "Producto";
