@@ -22,11 +22,10 @@ namespace VentaElectrodomesticos.Controladores {
                 };
             }
         }
-        // Parte de Crud
+        public static readonly String INSERT_ROL_FUNCIONALIDAD = "INSERT INTO la_huerta.RolFuncionalidad VALUES ({0},{1})";
         public void insertar(Rol rol , Funcionalidad fun)
-        {
-            QueryBuilder q = new QueryBuilder();
-            connection.query<Usuario>(q.build(), q.getParams());
+        {      
+            connection.update(INSERT_ROL_FUNCIONALIDAD, rol.id, fun.id);
         }
         public void delete(Rol rol, Funcionalidad fun)
         {

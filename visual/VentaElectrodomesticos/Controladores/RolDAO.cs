@@ -23,12 +23,10 @@ namespace VentaElectrodomesticos.Controladores {
                 };
             }
         }
+        public static readonly String DELETE_FUNCIONALIDADES_DEL_ROL = "DELETE FROM la_huerta.RolFuncionalidad WHERE rol_id= {0}";
         public void limpiarFuncionalidades(Rol rol)
         {
-            QueryBuilder q = new QueryBuilder();
-            //q.delete("la_huerta.rolFuncionalidad")
-            //    .filterIf(rol.id != 0, " rol_id = {0} ", rol.id);
-            connection.query<Funcionalidad>(q.build(), q.getParams());
+            connection.update(DELETE_FUNCIONALIDADES_DEL_ROL, rol.id);
         }
         public List<Rol> search(string nombre, CheckedListBox lista)
         {
@@ -38,14 +36,23 @@ namespace VentaElectrodomesticos.Controladores {
             }
             String cadenaFuncionalidades = String.Join(",", valores.ToArray());
             QueryBuilder q = new QueryBuilder();
+            q.select().from("[la_huerta].rol as r")
+                        .filterIf(nombre.Length != 0, "nombre like '%{0}%'", nombre);
+                        foreach(Funcionalidad funcionalidad in lista.CheckedItems) {
+                            QueryBuilder q2 = new QueryBuilder();
+                            q2.select().from("[la_huerta].RolFuncionalidad");
+                            q2.filter("rol_id = r.id");
+                            q2.filter("funcionalidad_id= " +funcionalidad.id);
+                            q.filter("exists (" + q2.build() + ")");
+                        }
             return connection.query<Rol>(q.build(), q.getParams());
         }
         public List<Funcionalidad> getFuncionalidades(Byte? id)
         {
             QueryBuilder q = new QueryBuilder();
             q.select()
-                .from("[la_huerta].[Funcionalidad] as func")
-                .filterIf(id != 0, "rolfun.rol_id = {0} ", id);
+                .from("[la_huerta].[Funcionalidad] as f JOIN [la_huerta].[RolFuncionalidad] as rf ON rf.funcionalidad_id = f.id")
+                .filterIf(id != 0, "rf.rol_id = {0} ", id);
             return connection.query<Funcionalidad>(q.build(), q.getParams());
         }
         public List<Rol> search(string nombre)
@@ -65,15 +72,16 @@ namespace VentaElectrodomesticos.Controladores {
            List<Rol> roles = connection.query<Rol>(q.build(), q.getParams());
            return roles[0];
         }
+        private static readonly String INSERT_ROL = "INSERT INTO la_huerta.rol (nombre, descripcion) values ('{0}','{1}')";
         public void insertar(Rol rol)
         {
-            QueryBuilder q = new QueryBuilder();
-            connection.query<Usuario>(q.build(), q.getParams());
+            connection.update(INSERT_ROL, rol.nombre, rol.descripcion);
         }
+        private static readonly String UPDATE_ROL = "UPDATE la_huerta.rol set nombre= '{0}', descripcion= '{1}' WHERE id = {2}";
         public void modificar(Rol _rol)
         {
-            QueryBuilder q = new QueryBuilder();
-            connection.query<Usuario>(q.build(), q.getParams());
+            
+            connection.update(UPDATE_ROL, _rol.nombre, _rol.descripcion, _rol.id);
         }
         public void delete(Rol _rol)
         {

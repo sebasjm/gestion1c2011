@@ -40,6 +40,8 @@
             this.bBorrar = new System.Windows.Forms.Button();
             this.bModificar = new System.Windows.Forms.Button();
             this.lErrorRoles = new System.Windows.Forms.Label();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.lDescripcion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lNombre
@@ -53,22 +55,22 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(62, 45);
+            this.txtNombre.Location = new System.Drawing.Point(76, 45);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(244, 20);
+            this.txtNombre.Size = new System.Drawing.Size(230, 20);
             this.txtNombre.TabIndex = 1;
             // 
             // chkListadoRoles
             // 
             this.chkListadoRoles.FormattingEnabled = true;
-            this.chkListadoRoles.Location = new System.Drawing.Point(15, 84);
+            this.chkListadoRoles.Location = new System.Drawing.Point(15, 110);
             this.chkListadoRoles.Name = "chkListadoRoles";
             this.chkListadoRoles.Size = new System.Drawing.Size(322, 124);
             this.chkListadoRoles.TabIndex = 2;
             // 
             // bCrearOtro
             // 
-            this.bCrearOtro.Location = new System.Drawing.Point(222, 243);
+            this.bCrearOtro.Location = new System.Drawing.Point(222, 269);
             this.bCrearOtro.Name = "bCrearOtro";
             this.bCrearOtro.Size = new System.Drawing.Size(116, 23);
             this.bCrearOtro.TabIndex = 76;
@@ -78,7 +80,7 @@
             // 
             // bLimpiar
             // 
-            this.bLimpiar.Location = new System.Drawing.Point(12, 243);
+            this.bLimpiar.Location = new System.Drawing.Point(12, 269);
             this.bLimpiar.Name = "bLimpiar";
             this.bLimpiar.Size = new System.Drawing.Size(58, 23);
             this.bLimpiar.TabIndex = 75;
@@ -88,7 +90,7 @@
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(12, 214);
+            this.bCancelar.Location = new System.Drawing.Point(12, 240);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(58, 23);
             this.bCancelar.TabIndex = 74;
@@ -98,7 +100,7 @@
             // 
             // bCrear
             // 
-            this.bCrear.Location = new System.Drawing.Point(222, 214);
+            this.bCrear.Location = new System.Drawing.Point(222, 240);
             this.bCrear.Name = "bCrear";
             this.bCrear.Size = new System.Drawing.Size(116, 23);
             this.bCrear.TabIndex = 73;
@@ -131,7 +133,7 @@
             // 
             // bBorrar
             // 
-            this.bBorrar.Location = new System.Drawing.Point(76, 214);
+            this.bBorrar.Location = new System.Drawing.Point(76, 240);
             this.bBorrar.Name = "bBorrar";
             this.bBorrar.Size = new System.Drawing.Size(58, 23);
             this.bBorrar.TabIndex = 79;
@@ -141,7 +143,7 @@
             // 
             // bModificar
             // 
-            this.bModificar.Location = new System.Drawing.Point(222, 214);
+            this.bModificar.Location = new System.Drawing.Point(221, 240);
             this.bModificar.Name = "bModificar";
             this.bModificar.Size = new System.Drawing.Size(116, 23);
             this.bModificar.TabIndex = 80;
@@ -155,18 +157,36 @@
             this.lErrorRoles.BackColor = System.Drawing.Color.Transparent;
             this.lErrorRoles.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lErrorRoles.ForeColor = System.Drawing.Color.Red;
-            this.lErrorRoles.Location = new System.Drawing.Point(343, 125);
+            this.lErrorRoles.Location = new System.Drawing.Point(343, 151);
             this.lErrorRoles.Name = "lErrorRoles";
             this.lErrorRoles.Size = new System.Drawing.Size(22, 29);
             this.lErrorRoles.TabIndex = 81;
             this.lErrorRoles.Text = "*";
             this.lErrorRoles.Visible = false;
             // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Location = new System.Drawing.Point(76, 71);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(230, 20);
+            this.txtDescripcion.TabIndex = 83;
+            // 
+            // lDescripcion
+            // 
+            this.lDescripcion.AutoSize = true;
+            this.lDescripcion.Location = new System.Drawing.Point(12, 74);
+            this.lDescripcion.Name = "lDescripcion";
+            this.lDescripcion.Size = new System.Drawing.Size(63, 13);
+            this.lDescripcion.TabIndex = 82;
+            this.lDescripcion.Text = "Descripcion";
+            // 
             // FormAbmRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 285);
+            this.ClientSize = new System.Drawing.Size(366, 313);
+            this.Controls.Add(this.txtDescripcion);
+            this.Controls.Add(this.lDescripcion);
             this.Controls.Add(this.lErrorRoles);
             this.Controls.Add(this.bModificar);
             this.Controls.Add(this.bBorrar);
@@ -201,5 +221,7 @@
         private System.Windows.Forms.Button bBorrar;
         private System.Windows.Forms.Button bModificar;
         private System.Windows.Forms.Label lErrorRoles;
+        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.Label lDescripcion;
     }
 }

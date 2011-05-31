@@ -46,6 +46,7 @@ namespace VentaElectrodomesticos.AbmRol
         private void cargarRol(Rol rol){
             this.limpiar();
             txtNombre.Text = rol.nombre;
+            txtDescripcion.Text = rol.descripcion;
             this.rol = rol;
             List < Funcionalidad >  func = this.rol.funcionalidades;
 
@@ -65,36 +66,46 @@ namespace VentaElectrodomesticos.AbmRol
         private void bLimpiar_Click(object sender, EventArgs e)
         {
             this.limpiar();
+        }
+        private void limpiar() {
             bCrear.Visible = true;
             bCrearOtro.Visible = true;
             bModificar.Visible = false;
             bBorrar.Visible = false;
-        }
-        private void limpiar() {
             this.txtNombre.Text = "";
+            this.txtDescripcion.Text = "";
             for (int i = 0; i < chkListadoRoles.Items.Count; ++i)
                 chkListadoRoles.SetItemChecked(i, false); 
+        }
+        private void bCrearOtro_Click(object sender, EventArgs e) {
+            if (!validator.check()) return;
+            if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Rol?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+                // proceder con el Guardado y la Creacion de otro
+                create_from_form();
+                limpiar();
+            }
+        }
+        private void create_from_form(){
+            // proceder con la creación del rol
+                this.rol = new Rol(null);
+                this.rol.nombre = txtNombre.Text;
+                this.rol.descripcion = txtDescripcion.Text;
+                Context.instance.dao.rol.insertar(this.rol);
+                // cargo el nuevo rol en el objeto Form
+                this.rol = Context.instance.dao.rol.findByNombre(this.rol.nombre);
+                for (int i = 0; i < chkListadoRoles.Items.Count; ++i){
+                    if (chkListadoRoles.GetItemChecked(i)) {
+                        Context.instance.dao.rol_funcionalidad.insertar(this.rol, (Funcionalidad)chkListadoRoles.Items[i]);
+                    }
+                }
         }
         private void bCrear_Click(object sender, EventArgs e)
         {
             if (!validator.check()) return;
             if (MessageBox.Show("¿Esta seguro que desea crear al Rol?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                // proceder con la creación del rol
-                this.rol = new Rol(null);
-                this.rol.nombre = txtNombre.Text;
-                this.rol.descripcion = txtNombre.Text;
-                Context.instance.dao.rol.insertar(this.rol);
-                // cargo el nuevo rol en el objeto Form
-                this.rol = Context.instance.dao.rol.findByNombre(this.rol.nombre);
-                for (int i = 0; i < chkListadoRoles.Items.Count; ++i)
-                    if (chkListadoRoles.GetItemChecked(i))
-                    {
-                        Context.instance.dao.rol_funcionalidad.insertar(this.rol , (Funcionalidad)chkListadoRoles.Items[i]);
-                    }
-                    else {
-                        Context.instance.dao.rol_funcionalidad.delete(this.rol, (Funcionalidad)chkListadoRoles.Items[i]);
-                    }
+                create_from_form();
+                limpiar();
                 this.Close();
             }
         }
@@ -104,7 +115,7 @@ namespace VentaElectrodomesticos.AbmRol
             if (MessageBox.Show("¿Esta seguro que desea modificar el Rol?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con la modificacion
                 this.rol.nombre = txtNombre.Text;
-                this.rol.descripcion = txtNombre.Text;
+                this.rol.descripcion = txtDescripcion.Text;
                 Context.instance.dao.rol.modificar(this.rol);
                 Context.instance.dao.rol.limpiarFuncionalidades(this.rol);
                 for (int i = 0; i < chkListadoRoles.Items.Count; ++i)
@@ -125,13 +136,6 @@ namespace VentaElectrodomesticos.AbmRol
             if (MessageBox.Show("¿Esta seguro que desea borrar el Rol?", "Confirmar Borrar", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la modificacion
-            }
-        }
-        private void bCrearOtro_Click(object sender, EventArgs e)        {
-            if (!validator.check()) return;
-            if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Rol?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                // proceder con el Guardado y la Creacion de otro
             }
         }
     }

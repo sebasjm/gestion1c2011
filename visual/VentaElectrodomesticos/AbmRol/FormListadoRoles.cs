@@ -37,7 +37,7 @@ namespace VentaElectrodomesticos.AbmRol
         }
         private void bSeleccionar_Click(object sender, EventArgs e)
         {
-            Rol rol = (Rol)dataRoles.SelectedRows[0].Cells[0].Value;
+            Rol rol = (Rol)dataRoles.Rows[dataRoles.CurrentCell.RowIndex].DataBoundItem;
             if (rol != null)
             {
                 this.messageFromParent = rol;
