@@ -194,7 +194,6 @@
             this.bCrearOtro.TabIndex = 62;
             this.bCrearOtro.Text = "Crear y Continuar";
             this.bCrearOtro.UseVisualStyleBackColor = true;
-            this.bCrearOtro.Visible = false;
             this.bCrearOtro.Click += new System.EventHandler(this.bCrearOtro_Click);
             // 
             // bBuscar
