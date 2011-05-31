@@ -121,7 +121,7 @@ namespace VentaElectrodomesticos.AbmProducto {
             txtPrecioDesde.Text = "";
             txtPrecioHasta.Text = "";
             treeCategorias.CollapseAll();
-            dataProductos.DataSource = null;
+            dataProductos.Rows.Clear();
         }
 
         private void bSeleccionar_Click(object sender, EventArgs e) {
