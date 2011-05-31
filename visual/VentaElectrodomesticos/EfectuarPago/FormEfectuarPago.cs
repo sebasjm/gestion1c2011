@@ -12,87 +12,71 @@ using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
 
 
-namespace VentaElectrodomesticos.EfectuarPago
-{
-    public partial class FormEfectuarPago : Form
-    {
-        public FormEfectuarPago()
-        {
+namespace VentaElectrodomesticos.EfectuarPago {
+    public partial class FormEfectuarPago : Form {
+
+        private Sucursal sucursal = null;
+        private Cliente cliente = null;
+
+        public FormEfectuarPago() {
             InitializeComponent();
-            FillProvincias();
-            FillSucursal();
-            
+            ViewHelper.fillComboProvincias(cmbProvincia);
+            ViewHelper.fillComboSucursales(cmbSucursal);
         }
-        private void bBuscarCliente_Click(object sender, EventArgs e)
-        {
+
+        private void bBuscarCliente_Click(object sender, EventArgs e) {
             FormListadoClientes form = new FormListadoClientes();
             form.MessageFromParent = null;
             form.ShowDialog(this);
-            if (form.MessageFromParent != null)
-            {
+            if (form.MessageFromParent != null) {
                 this.cargarCliente((Cliente)form.MessageFromParent);
-                FillFacturas((Cliente)form.MessageFromParent);
+                cliente = (Cliente)form.MessageFromParent;
+                FillFacturas();
             }
         }
-        private void cargarCliente(Cliente cargoCliente)
-        {
+
+        private void cargarCliente(Cliente cargoCliente) {
             txtCliente.Text = cargoCliente.apellido + " , " + cargoCliente.apellido;
         }
-        void FillProvincias()
-        {
-            List<Provincia> provinciasList = Context.instance.dao.provincia.load();
-            try
-            {
-                cmbProvincia.DataSource = provinciasList;
-                cmbProvincia.DisplayMember = "nombre";
-                cmbProvincia.ValueMember = "id";
-                cmbProvincia.SelectedIndex = -1;
-            }
-            catch (NullReferenceException) { }
-        }
-        void FillSucursal()
-        {
-            List<Sucursal> sucursalList = Context.instance.dao.sucursal.load();
-            try
-            {
-                cmbSucursal.DataSource = sucursalList;
-                cmbSucursal.DisplayMember = "direccion";
-                cmbSucursal.ValueMember = "id";
-                cmbSucursal.SelectedIndex = -1;
-            }
-            catch (NullReferenceException) { }
-        }
-        void FillFacturas(Cliente cli)
-        {
-            List<Factura> facturaslList = Context.instance.dao.factura.search(cli.dni);
-            try
-            {
-                cmbFactura.DataSource = facturaslList;
-                cmbFactura.DisplayMember = "numero";
-                cmbFactura.ValueMember = "numero";
-                //cmbFactura.SelectedIndex = -1;
-            }
-            catch (NullReferenceException) { }
-        }
-        private void cmbFactura_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbFactura.SelectedItem != null)
-            {
-                Factura fact = ((Factura)cmbFactura.SelectedItem);
-                double cuotas = (txtCuotas.Text == "") ? 1 : double.Parse(txtCuotas.Text);
-                double total = ((fact.total - fact.total * fact.descuento) / fact.cuotas) * cuotas;
-                lMontoPago.Text = "Monto a Pagar : " + total.ToString() + " Pesos";
+
+        void FillFacturas() {
+            if (cliente != null && sucursal != null) {
+                List<Factura> facturaslList = Context.instance.dao.factura.search(cliente, sucursal);
+                ViewHelper.fillDataGridFacturas(dataFacturas, facturaslList);
             }
         }
-        private void txtCuotas_TextChanged(object sender, EventArgs e)
-        {
-            if (cmbFactura.SelectedItem != null)
-            {
-                Factura fact = ((Factura)cmbFactura.SelectedItem);
-                double cuotas = (txtCuotas.Text == "") ? 1 : double.Parse(txtCuotas.Text);
-                double total = ((fact.total - fact.total * fact.descuento) / fact.cuotas) * cuotas;
-                lMontoPago.Text = "Monto a Pagar : " + total.ToString() + " Pesos";
+
+        private void bAceptar_Click(object sender, EventArgs e) {
+            Factura factura = cliente != null && sucursal != null ? (Factura)dataFacturas.SelectedRows[0].Cells[0].Value : null;
+            if (factura == null) return;
+            int cuotas = 0;
+            try {
+                cuotas = Int32.Parse(txtCuotas.Text);
+            } catch (FormatException fe) {
+                return;
             }
+            if (cuotas > factura.cuotasPorPagar) {
+                MessageBox.Show("No puede pagar mas cuotas que las que faltan pagar", "Error", MessageBoxButtons.OK);
+                return;
+            }
+            Context.instance.dao.factura.pagar(factura, cuotas);
+            FillFacturas();
         }
+
+        private void cmbSucursal_SelectedIndexChanged(object sender, EventArgs e) {
+            sucursal = (Sucursal)cmbSucursal.SelectedItem;
+            cmbProvincia.SelectedItem = sucursal != null ? sucursal.provincia : null;
+            FillFacturas();
+        }
+
+        private void cmbProvincia_SelectedIndexChanged(object sender, EventArgs e) {
+            Provincia item = (Provincia)cmbProvincia.SelectedItem;
+            cmbSucursal.SelectedItem = item != null ? item.sucursal : null;
+        }
+
+        private void bCancelar_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
     }
 }

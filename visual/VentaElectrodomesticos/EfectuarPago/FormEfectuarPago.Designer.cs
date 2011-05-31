@@ -30,7 +30,6 @@
         {
             this.txtCuotas = new System.Windows.Forms.TextBox();
             this.lCuotas = new System.Windows.Forms.Label();
-            this.lMontoPago = new System.Windows.Forms.Label();
             this.bAceptar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.bBuscarCliente = new System.Windows.Forms.Button();
@@ -40,56 +39,50 @@
             this.lSucursal = new System.Windows.Forms.Label();
             this.lProvincia = new System.Windows.Forms.Label();
             this.lFactura = new System.Windows.Forms.Label();
-            this.cmbFactura = new System.Windows.Forms.ComboBox();
             this.txtCliente = new System.Windows.Forms.Label();
+            this.dataFacturas = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataFacturas)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCuotas
             // 
-            this.txtCuotas.Location = new System.Drawing.Point(123, 146);
+            this.txtCuotas.Location = new System.Drawing.Point(96, 288);
             this.txtCuotas.Name = "txtCuotas";
-            this.txtCuotas.Size = new System.Drawing.Size(301, 20);
+            this.txtCuotas.Size = new System.Drawing.Size(90, 20);
             this.txtCuotas.TabIndex = 37;
-            this.txtCuotas.TextChanged += new System.EventHandler(this.txtCuotas_TextChanged);
             // 
             // lCuotas
             // 
             this.lCuotas.AutoSize = true;
-            this.lCuotas.Location = new System.Drawing.Point(8, 149);
+            this.lCuotas.Location = new System.Drawing.Point(8, 295);
             this.lCuotas.Name = "lCuotas";
-            this.lCuotas.Size = new System.Drawing.Size(43, 13);
+            this.lCuotas.Size = new System.Drawing.Size(82, 13);
             this.lCuotas.TabIndex = 36;
-            this.lCuotas.Text = "Cuotas:";
-            // 
-            // lMontoPago
-            // 
-            this.lMontoPago.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lMontoPago.Location = new System.Drawing.Point(118, 186);
-            this.lMontoPago.Name = "lMontoPago";
-            this.lMontoPago.Size = new System.Drawing.Size(330, 23);
-            this.lMontoPago.TabIndex = 35;
+            this.lCuotas.Text = "Cuotas a pagar:";
             // 
             // bAceptar
             // 
-            this.bAceptar.Location = new System.Drawing.Point(481, 191);
+            this.bAceptar.Location = new System.Drawing.Point(505, 331);
             this.bAceptar.Name = "bAceptar";
             this.bAceptar.Size = new System.Drawing.Size(75, 23);
             this.bAceptar.TabIndex = 34;
             this.bAceptar.Text = "Aceptar";
             this.bAceptar.UseVisualStyleBackColor = true;
+            this.bAceptar.Click += new System.EventHandler(this.bAceptar_Click);
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(13, 186);
+            this.bCancelar.Location = new System.Drawing.Point(11, 331);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
             this.bCancelar.TabIndex = 33;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // bBuscarCliente
             // 
-            this.bBuscarCliente.Location = new System.Drawing.Point(437, 34);
+            this.bBuscarCliente.Location = new System.Drawing.Point(327, 33);
             this.bBuscarCliente.Name = "bBuscarCliente";
             this.bBuscarCliente.Size = new System.Drawing.Size(119, 23);
             this.bBuscarCliente.TabIndex = 26;
@@ -100,18 +93,20 @@
             // cmbSucursal
             // 
             this.cmbSucursal.FormattingEnabled = true;
-            this.cmbSucursal.Location = new System.Drawing.Point(123, 73);
+            this.cmbSucursal.Location = new System.Drawing.Point(96, 68);
             this.cmbSucursal.Name = "cmbSucursal";
             this.cmbSucursal.Size = new System.Drawing.Size(301, 21);
             this.cmbSucursal.TabIndex = 24;
+            this.cmbSucursal.SelectedIndexChanged += new System.EventHandler(this.cmbSucursal_SelectedIndexChanged);
             // 
             // cmbProvincia
             // 
             this.cmbProvincia.FormattingEnabled = true;
-            this.cmbProvincia.Location = new System.Drawing.Point(122, 6);
+            this.cmbProvincia.Location = new System.Drawing.Point(96, 6);
             this.cmbProvincia.Name = "cmbProvincia";
             this.cmbProvincia.Size = new System.Drawing.Size(301, 21);
             this.cmbProvincia.TabIndex = 23;
+            this.cmbProvincia.SelectedIndexChanged += new System.EventHandler(this.cmbProvincia_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -143,40 +138,43 @@
             // lFactura
             // 
             this.lFactura.AutoSize = true;
-            this.lFactura.Location = new System.Drawing.Point(9, 113);
+            this.lFactura.Location = new System.Drawing.Point(10, 105);
             this.lFactura.Name = "lFactura";
             this.lFactura.Size = new System.Drawing.Size(46, 13);
             this.lFactura.TabIndex = 39;
             this.lFactura.Text = "Factura:";
             // 
-            // cmbFactura
-            // 
-            this.cmbFactura.FormattingEnabled = true;
-            this.cmbFactura.Location = new System.Drawing.Point(123, 110);
-            this.cmbFactura.Name = "cmbFactura";
-            this.cmbFactura.Size = new System.Drawing.Size(301, 21);
-            this.cmbFactura.TabIndex = 40;
-            this.cmbFactura.SelectedIndexChanged += new System.EventHandler(this.cmbFactura_SelectedIndexChanged);
-            // 
             // txtCliente
             // 
             this.txtCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCliente.Location = new System.Drawing.Point(123, 36);
+            this.txtCliente.Location = new System.Drawing.Point(96, 33);
             this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(301, 21);
+            this.txtCliente.Size = new System.Drawing.Size(226, 21);
             this.txtCliente.TabIndex = 41;
+            // 
+            // dataFacturas
+            // 
+            this.dataFacturas.AllowUserToAddRows = false;
+            this.dataFacturas.AllowUserToDeleteRows = false;
+            this.dataFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataFacturas.Location = new System.Drawing.Point(13, 122);
+            this.dataFacturas.Name = "dataFacturas";
+            this.dataFacturas.ReadOnly = true;
+            this.dataFacturas.RowHeadersVisible = false;
+            this.dataFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataFacturas.Size = new System.Drawing.Size(557, 150);
+            this.dataFacturas.TabIndex = 42;
             // 
             // FormEfectuarPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 236);
+            this.ClientSize = new System.Drawing.Size(592, 371);
+            this.Controls.Add(this.dataFacturas);
             this.Controls.Add(this.txtCliente);
-            this.Controls.Add(this.cmbFactura);
             this.Controls.Add(this.lFactura);
             this.Controls.Add(this.txtCuotas);
             this.Controls.Add(this.lCuotas);
-            this.Controls.Add(this.lMontoPago);
             this.Controls.Add(this.bAceptar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bBuscarCliente);
@@ -188,6 +186,7 @@
             this.Name = "FormEfectuarPago";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Efectuar Pago";
+            ((System.ComponentModel.ISupportInitialize)(this.dataFacturas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,7 +196,6 @@
 
         private System.Windows.Forms.TextBox txtCuotas;
         private System.Windows.Forms.Label lCuotas;
-        private System.Windows.Forms.Label lMontoPago;
         private System.Windows.Forms.Button bAceptar;
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bBuscarCliente;
@@ -207,7 +205,7 @@
         private System.Windows.Forms.Label lSucursal;
         private System.Windows.Forms.Label lProvincia;
         private System.Windows.Forms.Label lFactura;
-        private System.Windows.Forms.ComboBox cmbFactura;
         private System.Windows.Forms.Label txtCliente;
+        private System.Windows.Forms.DataGridView dataFacturas;
     }
 }

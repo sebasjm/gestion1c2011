@@ -118,6 +118,7 @@ CREATE TABLE [la_huerta].[Factura](
 	[cuotas] [tinyint] NOT NULL,
 	[cliente_dni] [int] NOT NULL,
 	[empleado_dni] [int] NOT NULL,
+	[cuotas_pagas] [tinyint] NOT NULL,
 	primary key (numero),
     foreign key (cliente_dni) references [la_huerta].[Cliente](dni),
     foreign key (empleado_dni) references [la_huerta].[Empleado](dni)
@@ -403,7 +404,8 @@ SELECT
 	factura_fecha as fecha,
 	factura_cant_coutas as cuotas,
 	cli_dni as cliente_dni,
-    m.empleado_dni as empleado_dni
+    m.empleado_dni as empleado_dni,
+	0 as cuotas_pagas
 FROM gd_esquema.Maestra as m
 WHERE cli_dni is not null
 GROUP BY 
@@ -588,6 +590,16 @@ select s.sucursal_id, s.producto_codigo, sum(stock)  - isnull((
 from la_huerta.IngresoStock as s
 group by sucursal_id, producto_codigo
 order by sucursal_id, producto_codigo
+
+
+----------------
+-- Tablas de Facturas
+-- coutas pagadas de cada factura
+----------------
+-- 26855
+update la_huerta.Factura 
+set cuotas_pagas = 
+	(select sum(p.cuotas) from la_huerta.Pago as p where numero = p.factura_numero)
 
 ----------------
 -- Tablas de usuario
