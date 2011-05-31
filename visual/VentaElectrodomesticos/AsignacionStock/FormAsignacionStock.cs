@@ -15,9 +15,10 @@ using VentaElectrodomesticos.Vista;
 
 namespace VentaElectrodomesticos.AsignacionStock {
     public partial class FormAsignacionStock : Form {
-        Empleado empleado;
+        Empleado auditor;
         Sucursal sucursal;
         Producto producto;
+        Dictionary<Stock, Int32> stocks = new Dictionary<Stock, int>();
 
         public FormAsignacionStock() {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace VentaElectrodomesticos.AsignacionStock {
 
         private void cargarEmpleado(Empleado emp) {
             txtAuditor.Text = emp.apellido + " , " + emp.nombre;
-            this.empleado = emp;
+            this.auditor = emp;
         }
 
         private void cargarProducto(Producto prod) {
@@ -66,27 +67,42 @@ namespace VentaElectrodomesticos.AsignacionStock {
         }
 
         private bool validate() {
-            if (empleado == null) {
-                //lErrorAuditor.Visible = true;
-                return false;
-            } else {
+            lErrorAuditor.Visible = auditor == null;
+            //lErrorSucursal.Visible = sucursal == null || sucursal.id == 0;
+            //lErrorPRoducto.Visible = producto == null || producto.codigo == 0;
 
-            }
-            if ((sucursal == null || sucursal.id == 0) && (producto == null || producto.codigo == 0)) {
-                //lErrorSucursal.Visible = true;
-                //lErrorPRoducto.Visible = true;
-                return false;
-            } else {
+            bool stocksError = false;
 
+            stocks = new Dictionary<Stock, int>();
+            foreach (DataGridViewRow row in dataStock.Rows) {
+                try {
+                    int cant = Int32.Parse((String)row.Cells[1].Value);
+                    if (cant > 0) {
+                        stocks.Add((Stock)row.Cells[0].Value, cant);
+                    } else {
+                        stocksError = true;
+                    }
+                } catch (FormatException e) {
+                    stocksError = true;
+                } catch (ArgumentNullException e) {
+                    stocksError = true;
+                }
             }
-            return true;
+
+            if (stocksError) {
+                stocks = new Dictionary<Stock, int>();
+            }
+
+            return !stocksError && !lErrorAuditor.Visible; // && !lErrorSucursal.Visible && !lErrorProducto.Visible;
         }
 
         private void bAceptar_Click(object sender, EventArgs e) {
             if (!validate()) return;
             MessageBox.Show("¿Esta seguro que desea asignar Stock?", "Asignar Stock");
 
-//            Context.instance.dao.stock.add();
+            foreach (Stock s in stocks.Keys) {
+                Context.instance.dao.stock.add(s,auditor,stocks[s]);
+            }
         }
 
         private void bCancelar_Click(object sender, EventArgs e) {
