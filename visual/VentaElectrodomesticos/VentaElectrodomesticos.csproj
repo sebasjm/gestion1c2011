@@ -144,7 +144,7 @@
     <Compile Include="Controladores\SucursalDAO.cs" />
     <Compile Include="Controladores\DAOContext.cs" />
     <Compile Include="Controladores\Security.cs" />
-    <Compile Include="Controladores\UserDAO.cs" />
+    <Compile Include="Controladores\UsuarioDAO.cs" />
     <Compile Include="EfectuarPago\FormEfectuarPago.cs">
       <SubType>Form</SubType>
     </Compile>

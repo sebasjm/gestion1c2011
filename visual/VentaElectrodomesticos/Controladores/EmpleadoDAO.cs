@@ -20,8 +20,7 @@ namespace VentaElectrodomesticos.Controladores {
                     telefono = sdr.GetString(4),
                     direccion = sdr.GetString(5),
                     tipoEmpleadoId = sdr.GetByte(6),
-                    sucursalId = sdr.GetByte(7),
-                    usuarioId = (sdr.IsDBNull(9)) ? (Int32?)null : sdr.GetInt32(9)
+                    sucursalId = sdr.GetByte(7),                 
                 };
             }
         }
@@ -73,6 +72,12 @@ namespace VentaElectrodomesticos.Controladores {
                 DELETE,
                 dni
             );
+        }
+        public Empleado findByDni(int dni){
+            QueryBuilder q = new QueryBuilder();
+            q.select().from("la_huerta.Empleado")
+                .filter("dni = {0}", dni);
+            return connection.find<Empleado>(q.build(), q.getParams());
         }
     }
 }

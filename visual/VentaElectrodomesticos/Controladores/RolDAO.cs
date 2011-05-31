@@ -23,26 +23,30 @@ namespace VentaElectrodomesticos.Controladores {
                 };
             }
         }
+        private List<Rol> cache = null;
+        public List<Rol> load() {
+            if (cache == null) {
+                QueryBuilder q = new QueryBuilder();
+                q.select().from("la_huerta.Rol");
+                cache = connection.query<Rol>(q.build(), q.getParams());
+            }
+            return cache;
+        }
         public static readonly String DELETE_FUNCIONALIDADES_DEL_ROL = "DELETE FROM la_huerta.RolFuncionalidad WHERE rol_id= {0}";
         public void limpiarFuncionalidades(Rol rol)
         {
             connection.update(DELETE_FUNCIONALIDADES_DEL_ROL, rol.id);
         }
-        public List<Rol> search(string nombre, CheckedListBox lista)
+        public List<Rol> search(string nombre, List<string> lista)
         {
-            List<string> valores = new List<string>(); // Create new list of strings
-            foreach(Funcionalidad funcionalidad in lista.CheckedItems) {
-                valores.Add(""+funcionalidad.id);
-            }
-            String cadenaFuncionalidades = String.Join(",", valores.ToArray());
             QueryBuilder q = new QueryBuilder();
             q.select().from("[la_huerta].rol as r")
                         .filterIf(nombre.Length != 0, "nombre like '%{0}%'", nombre);
-                        foreach(Funcionalidad funcionalidad in lista.CheckedItems) {
+                        foreach(string funcionalidad in lista) {
                             QueryBuilder q2 = new QueryBuilder();
                             q2.select().from("[la_huerta].RolFuncionalidad");
                             q2.filter("rol_id = r.id");
-                            q2.filter("funcionalidad_id= " +funcionalidad.id);
+                            q2.filter("funcionalidad_id= " + funcionalidad);
                             q.filter("exists (" + q2.build() + ")");
                         }
             return connection.query<Rol>(q.build(), q.getParams());
@@ -87,6 +91,13 @@ namespace VentaElectrodomesticos.Controladores {
         {
             QueryBuilder q = new QueryBuilder();
             connection.query<Rol>(q.build(), q.getParams());
+        }
+        public List<Rol> findBy(Usuario usuario) {
+            QueryBuilder q = new QueryBuilder();
+            q.select().from("la_huerta.Rol as r JOIN la_huerta.UsuarioRol as ur on r.id = ur.rol_id")
+                .filter("usuario_id = {0}", usuario.id);
+            return connection.query<Rol>(q.build(), q.getParams());
+            
         }
     }
 }
