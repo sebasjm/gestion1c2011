@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lProducto = new System.Windows.Forms.Label();
             this.lSucursal = new System.Windows.Forms.Label();
             this.lAuditor = new System.Windows.Forms.Label();
@@ -43,6 +43,7 @@
             this.bAceptar = new System.Windows.Forms.Button();
             this.txtProducto = new System.Windows.Forms.Label();
             this.txtAuditor = new System.Windows.Forms.Label();
+            this.lErrorAuditor = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataStock)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,23 +108,23 @@
             this.dataStock.AllowUserToAddRows = false;
             this.dataStock.AllowUserToDeleteRows = false;
             this.dataStock.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataStock.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataStock.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataStock.Location = new System.Drawing.Point(19, 120);
             this.dataStock.MultiSelect = false;
             this.dataStock.Name = "dataStock";
@@ -188,11 +189,22 @@
             this.txtAuditor.Size = new System.Drawing.Size(117, 19);
             this.txtAuditor.TabIndex = 68;
             // 
+            // lErrorAuditor
+            // 
+            this.lErrorAuditor.AutoSize = true;
+            this.lErrorAuditor.Location = new System.Drawing.Point(297, 82);
+            this.lErrorAuditor.Name = "lErrorAuditor";
+            this.lErrorAuditor.Size = new System.Drawing.Size(11, 13);
+            this.lErrorAuditor.TabIndex = 69;
+            this.lErrorAuditor.Text = "*";
+            this.lErrorAuditor.Visible = false;
+            // 
             // FormAsignacionStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 420);
+            this.Controls.Add(this.lErrorAuditor);
             this.Controls.Add(this.txtAuditor);
             this.Controls.Add(this.txtProducto);
             this.Controls.Add(this.bAsignarOtro);
@@ -230,5 +242,6 @@
         private System.Windows.Forms.Button bAceptar;
         private System.Windows.Forms.Label txtProducto;
         private System.Windows.Forms.Label txtAuditor;
+        private System.Windows.Forms.Label lErrorAuditor;
     }
 }
