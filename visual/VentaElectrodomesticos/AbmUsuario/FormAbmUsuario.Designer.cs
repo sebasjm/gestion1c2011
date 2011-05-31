@@ -44,7 +44,6 @@
             this.txtConfirmarPassword = new System.Windows.Forms.TextBox();
             this.bBuscar = new System.Windows.Forms.Button();
             this.lConfirmarPassword = new System.Windows.Forms.Label();
-            this.lNombreEmpleado = new System.Windows.Forms.Label();
             this.lErrorEmpleado = new System.Windows.Forms.Label();
             this.lErrorUsername = new System.Windows.Forms.Label();
             this.lErrorPassword = new System.Windows.Forms.Label();
@@ -52,6 +51,7 @@
             this.lErrorRoles = new System.Windows.Forms.Label();
             this.bBorrar = new System.Windows.Forms.Button();
             this.bModificar = new System.Windows.Forms.Button();
+            this.txtEmpleado = new System.Windows.Forms.TextBox();
             this.grpListadoRoles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,12 +145,6 @@
             resources.ApplyResources(this.lConfirmarPassword, "lConfirmarPassword");
             this.lConfirmarPassword.Name = "lConfirmarPassword";
             // 
-            // lNombreEmpleado
-            // 
-            this.lNombreEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.lNombreEmpleado, "lNombreEmpleado");
-            this.lNombreEmpleado.Name = "lNombreEmpleado";
-            // 
             // lErrorEmpleado
             // 
             resources.ApplyResources(this.lErrorEmpleado, "lErrorEmpleado");
@@ -200,17 +194,23 @@
             this.bModificar.UseVisualStyleBackColor = true;
             this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
             // 
+            // txtEmpleado
+            // 
+            resources.ApplyResources(this.txtEmpleado, "txtEmpleado");
+            this.txtEmpleado.Name = "txtEmpleado";
+            this.txtEmpleado.ReadOnly = true;
+            // 
             // FormAbmUsuario
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtEmpleado);
             this.Controls.Add(this.bModificar);
             this.Controls.Add(this.bBorrar);
             this.Controls.Add(this.lErrorConfirmPass);
             this.Controls.Add(this.lErrorPassword);
             this.Controls.Add(this.lErrorUsername);
             this.Controls.Add(this.lErrorEmpleado);
-            this.Controls.Add(this.lNombreEmpleado);
             this.Controls.Add(this.lConfirmarPassword);
             this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.txtConfirmarPassword);
@@ -250,7 +250,6 @@
         private System.Windows.Forms.TextBox txtConfirmarPassword;
         private System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.Label lConfirmarPassword;
-        private System.Windows.Forms.Label lNombreEmpleado;
         private System.Windows.Forms.Label lErrorEmpleado;
         private System.Windows.Forms.Label lErrorUsername;
         private System.Windows.Forms.Label lErrorPassword;
@@ -258,5 +257,6 @@
         private System.Windows.Forms.Label lErrorRoles;
         private System.Windows.Forms.Button bBorrar;
         private System.Windows.Forms.Button bModificar;
+        private System.Windows.Forms.TextBox txtEmpleado;
     }
 }

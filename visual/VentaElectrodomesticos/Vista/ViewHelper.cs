@@ -22,6 +22,14 @@ namespace VentaElectrodomesticos.Controladores {
             chkRoles.ValueMember = "id";
             chkRoles.SelectedIndex = 0;
         }
+        public static void fillRoles(CheckedListBox chkRoles) {
+            List<Rol> RolList = Context.instance.dao.rol.load();
+            chkRoles.DataSource = RolList;
+            chkRoles.DisplayMember = "nombre";
+            chkRoles.ValueMember = "id";
+            chkRoles.SelectedIndex = -1;
+        }
+
         public static void fillComboSucursales(ComboBox cmbSucursal) {
             List<Sucursal> sucursalList = Context.instance.dao.sucursal.load();
             sucursalList.Insert(0, new Sucursal(0) { direccion = "---" });

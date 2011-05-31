@@ -28,11 +28,17 @@ namespace VentaElectrodomesticos.AbmRol
         }
         private void bBuscar_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text.Length == 0)
+            if (txtNombre.Text.Length == 0) {
                 txtNombre.Text = "";
+            }
+            List<string> valores = new List<string>();
+            foreach (Funcionalidad funcionalidad in chkListadoRoles.CheckedItems) {
+                valores.Add("" + funcionalidad.id);
+            }
+            
             dataRoles.DataSource = Context.instance.dao.rol.search(
                 txtNombre.Text,
-                chkListadoRoles
+                valores
             );
         }
         private void bSeleccionar_Click(object sender, EventArgs e)

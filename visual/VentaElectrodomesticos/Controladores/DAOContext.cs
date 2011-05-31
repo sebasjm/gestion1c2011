@@ -20,9 +20,9 @@ namespace VentaElectrodomesticos.Controladores {
         public void addMapper(Type type, Mapper<Object> mapper) {
             mappers.Add(type, mapper);
         }
-        private UserDAO _user;
-        public UserDAO user {
-            get { if (_user == null) _user = new UserDAO(connection); return _user; }
+        private UsuarioDAO _user;
+        public UsuarioDAO user {
+            get { if (_user == null) _user = new UsuarioDAO(connection); return _user; }
             private set { _user = value; }
         }
         private SucursalDAO _sucursal;

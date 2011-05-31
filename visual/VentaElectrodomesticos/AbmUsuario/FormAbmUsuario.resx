@@ -200,6 +200,15 @@
   <data name="&gt;&gt;lPassword.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
+  <data name="chkListadoRoles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 20</value>
+  </data>
+  <data name="chkListadoRoles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>305, 94</value>
+  </data>
+  <data name="chkListadoRoles.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;chkListadoRoles.Name" xml:space="preserve">
     <value>chkListadoRoles</value>
   </data>
@@ -235,27 +244,6 @@
   </data>
   <data name="&gt;&gt;grpListadoRoles.ZOrder" xml:space="preserve">
     <value>17</value>
-  </data>
-  <data name="chkListadoRoles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 20</value>
-  </data>
-  <data name="chkListadoRoles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 94</value>
-  </data>
-  <data name="chkListadoRoles.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;chkListadoRoles.Name" xml:space="preserve">
-    <value>chkListadoRoles</value>
-  </data>
-  <data name="&gt;&gt;chkListadoRoles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkListadoRoles.Parent" xml:space="preserve">
-    <value>grpListadoRoles</value>
-  </data>
-  <data name="&gt;&gt;chkListadoRoles.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="txtUsername.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 76</value>
@@ -501,30 +489,6 @@
   <data name="&gt;&gt;lConfirmarPassword.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="lNombreEmpleado.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lNombreEmpleado.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 41</value>
-  </data>
-  <data name="lNombreEmpleado.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
-  </data>
-  <data name="lNombreEmpleado.TabIndex" type="System.Int32, mscorlib">
-    <value>81</value>
-  </data>
-  <data name="&gt;&gt;lNombreEmpleado.Name" xml:space="preserve">
-    <value>lNombreEmpleado</value>
-  </data>
-  <data name="&gt;&gt;lNombreEmpleado.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lNombreEmpleado.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lNombreEmpleado.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="lErrorEmpleado.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -556,7 +520,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lErrorEmpleado.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="lErrorUsername.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -589,7 +553,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lErrorUsername.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="lErrorPassword.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -622,7 +586,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lErrorPassword.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="lErrorConfirmPass.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -655,7 +619,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lErrorConfirmPass.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lErrorRoles.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -718,7 +682,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bBorrar.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="bModificar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -748,6 +712,30 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bModificar.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtEmpleado.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtEmpleado.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 43</value>
+  </data>
+  <data name="txtEmpleado.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 20</value>
+  </data>
+  <data name="txtEmpleado.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="&gt;&gt;txtEmpleado.Name" xml:space="preserve">
+    <value>txtEmpleado</value>
+  </data>
+  <data name="&gt;&gt;txtEmpleado.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtEmpleado.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtEmpleado.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

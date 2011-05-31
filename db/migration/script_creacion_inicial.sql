@@ -57,16 +57,6 @@ CREATE TABLE [la_huerta].[Sucursal](
 	unique (direccion),
 	unique (telefono)
 ) ON [PRIMARY]
-
-CREATE TABLE [la_huerta].[Usuario](
-	[id] [int] IDENTITY(1,1) NOT NULL,
-	[username] [varchar](10) NOT NULL,
-	[password] [varchar](64) NOT NULL,
-    [activo] [bit] NOT NULL DEFAULT 1,
-	primary key (id),
-	unique (username)
-) ON [PRIMARY]
-
 CREATE TABLE [la_huerta].[Empleado](
 	[dni] [int] NOT NULL,
 	[nombre] [varchar](50) NOT NULL,
@@ -77,14 +67,24 @@ CREATE TABLE [la_huerta].[Empleado](
 	[tipoEmpleado_id] [tinyint] NOT NULL,
 	[sucursal_id] [tinyint] NOT NULL,
     [activo] [bit] NOT NULL DEFAULT 1,
-    [usuario_id] [int] NULL DEFAULT NULL,
 	primary key (dni),
     foreign key (tipoEmpleado_id) references [la_huerta].[TipoEmpleado](id),
     foreign key (sucursal_id) references [la_huerta].[Sucursal](id),
-    foreign key (usuario_id) references [la_huerta].[Usuario](id)
 --	unique (mail),
 --	unique (usuario_id)
 ) ON [PRIMARY]
+
+CREATE TABLE [la_huerta].[Usuario](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[username] [varchar](10) NOT NULL,
+	[password] [varchar](64) NOT NULL,
+    [activo] [bit] NOT NULL DEFAULT 1,
+	[empleado_dni] [int] NOT NULL DEFAULT NULL,
+	foreign key (empleado_dni) references [la_huerta].[Empleado](dni),
+	primary key (id),
+	unique (username)
+) ON [PRIMARY]
+
 
 CREATE TABLE [la_huerta].[Categoria](
 	[id] [smallint] NOT NULL,
@@ -204,13 +204,13 @@ GO
 -- Funciones
 -----------------------------------------
 
-create function dbo.categoria_id_collection(  @id as int ) 
+create function la_huerta.categoria_id_collection(  @id as int ) 
 returns @cats_id table ( id int ) as
 begin
 	if ( @id is null ) return;
 	insert @cats_id values( @id );
 	insert @cats_id 
-		select * from dbo.categoria_id_collection( 
+		select * from la_huerta.categoria_id_collection( 
 			(select categoria_padre from la_huerta.categoria where id = @id )
 		);
 	return;
@@ -379,8 +379,7 @@ SELECT
 	empleado_dir as direccion,
 	te.id as tipoEmpleado_id,
 	s.id as sucursal_id,
-	1 as activo,
-	NULL as usuario_id
+	1 as activo
 FROM gd_esquema.Maestra 
 JOIN la_huerta.TipoEmpleado as te ON empleado_tipo = te.nombre
 JOIN la_huerta.Provincia as p ON empleado_provincia = p.nombre
@@ -605,7 +604,7 @@ set cuotas_pagas =
 ----------------
 -- Tablas de usuario
 ----------------
-insert into la_huerta.Usuario ( username , password ) values ('admin','E6B87050BFCB8143FCB8DB0170A4DC9ED00D904DDD3E2A4AD1B1E8DC0FDC9BE7')
+insert into la_huerta.Usuario ( username , password, empleado_dni ) values ('admin','E6B87050BFCB8143FCB8DB0170A4DC9ED00D904DDD3E2A4AD1B1E8DC0FDC9BE7',352287)
 ----------------
 
 ----------------

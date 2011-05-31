@@ -22,7 +22,7 @@ namespace VentaElectrodomesticos.AbmUsuario
         public FormListadoUsuarios()
         {
             InitializeComponent();
-            fillPermisos();
+            ViewHelper.fillRoles(chkListadoRoles);
         }
         private void bBuscarEmpleado_Click(object sender, EventArgs e)
         {
@@ -42,8 +42,13 @@ namespace VentaElectrodomesticos.AbmUsuario
         {
             try
             {
+                List<string> valores = new List<string>();
+                foreach (Rol rol in chkListadoRoles.CheckedItems) {
+                    valores.Add("" + rol.id);
+                }
+            
                 dataUsuarios.DataSource = Context.instance.dao.user.search(
-                    txtUsername.Text);
+                    txtUsername.Text, valores);
             }
             catch (FormatException ex)
             {
@@ -63,25 +68,7 @@ namespace VentaElectrodomesticos.AbmUsuario
                 MessageBox.Show("Debe seleccionar un Empleado");
             }
         }
-        private void fillPermisos()
-        {
-            List<string> permisos = new List<string>();
-            permisos.Add("ABM de Empleado");
-            permisos.Add("ABM de Rol");
-            permisos.Add("ABM de Usuario");
-            permisos.Add("ABM de Cliente");
-            permisos.Add("ABM de Producto");
-            permisos.Add("Asignación de stock");
-            permisos.Add("Facturación");
-            permisos.Add("Efectuar Pago");
-            permisos.Add("Tablero de Control");
-            permisos.Add("Clientes Premium");
-            permisos.Add("Mejores Categorías");
-            for (int n = 0; n < permisos.Count; n++)
-            {
-                chkListadoRoles.Items.Add(permisos[n]);
-            }
-        }
+
         private void bCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
