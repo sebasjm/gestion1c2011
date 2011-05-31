@@ -173,6 +173,7 @@
             this.cmbSucursal.Name = "cmbSucursal";
             this.cmbSucursal.Size = new System.Drawing.Size(121, 21);
             this.cmbSucursal.TabIndex = 16;
+            this.cmbSucursal.SelectedIndexChanged += new System.EventHandler(this.cmbSucursal_SelectedIndexChanged);
             // 
             // cmbTipoEmpleado
             // 

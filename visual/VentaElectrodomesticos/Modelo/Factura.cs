@@ -16,6 +16,21 @@ namespace VentaElectrodomesticos.Modelo {
         public double total {
             get; set;
         }
+        public Byte cuotasPagas {
+            get; set;
+        }
+        public Int32 empleado_dni {
+            get; set;
+        }
+        public Byte cuotasPorPagar {
+            get { return (Byte) (cuotas - cuotasPagas); }
+        }
+        public double totalConDesctuento {
+            get { return total * (1-descuento); }
+        }
+        public double valorCuota {
+            get { return totalConDesctuento / cuotas; }
+        }
         public DateTime fecha {
             get; set;
         }

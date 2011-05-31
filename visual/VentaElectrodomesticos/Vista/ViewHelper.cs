@@ -174,5 +174,29 @@ namespace VentaElectrodomesticos.Controladores {
             dataCategorias.EndUpdate();
             dataCategorias.Refresh(); 
         }
+
+        public static void fillDataGridFacturas(DataGridView dataFacturas, List<Factura> result) {
+            dataFacturas.ColumnCount = 6;
+            dataFacturas.Columns[0].Visible = false;
+            dataFacturas.Columns[1].Name = "Número";
+            dataFacturas.Columns[2].Name = "Total";
+            dataFacturas.Columns[2].DefaultCellStyle.Format = "#,##0.00";
+            dataFacturas.Columns[3].Name = "Cuotas";
+            dataFacturas.Columns[3].DefaultCellStyle.Format = "#,##0.00";
+            dataFacturas.Columns[4].Name = "Cuotas por pagar";
+            dataFacturas.Columns[5].Name = "Fecha";
+            dataFacturas.Columns[5].Width = 160;
+            dataFacturas.Rows.Clear();
+            foreach (Factura f in result) {
+                dataFacturas.Rows.Add(
+                    f,
+                    f.numero,
+                    f.totalConDesctuento,
+                    f.valorCuota,
+                    f.cuotasPorPagar,
+                    f.fecha
+                );
+            }
+        }
     }
 }
