@@ -103,6 +103,7 @@ namespace VentaElectrodomesticos.AsignacionStock {
             foreach (Stock s in stocks.Keys) {
                 Context.instance.dao.stock.add(s,auditor,stocks[s]);
             }
+            this.Close();
         }
 
         private void bCancelar_Click(object sender, EventArgs e) {
@@ -110,6 +111,9 @@ namespace VentaElectrodomesticos.AsignacionStock {
         }
 
         private void bLimpiar_Click(object sender, EventArgs e) {
+            auditor = null;
+            sucursal = null;
+            producto = null;
             this.cmbSucursal.SelectedIndex = -1;
             this.txtAuditor.Text = "";
             this.txtProducto.Text = "";
@@ -117,8 +121,12 @@ namespace VentaElectrodomesticos.AsignacionStock {
         }
 
         private void bAsignarOtro_Click(object sender, EventArgs e) {
+            if (!validate()) return;
             MessageBox.Show("¿Esta seguro que desea asignar Stock y volver a cargar otro?", "Asignar Stock");
-            bLimpiar_Click(sender, e);
+            foreach (Stock s in stocks.Keys) {
+                Context.instance.dao.stock.add(s, auditor, stocks[s]);
+            }
+            fillStock();
         }
 
     }
