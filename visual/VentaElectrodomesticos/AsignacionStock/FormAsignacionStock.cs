@@ -80,7 +80,7 @@ namespace VentaElectrodomesticos.AsignacionStock {
                     if (cant > 0) {
                         stocks.Add((Stock)row.Cells[0].Value, cant);
                     } else {
-                        stocksError = true;
+                        stocksError = cant != 0;
                     }
                 } catch (FormatException e) {
                     stocksError = true;

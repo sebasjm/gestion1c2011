@@ -148,7 +148,7 @@ namespace VentaElectrodomesticos.Controladores {
             foreach (Stock s in result) {
                 dataStock.Rows.Add(
                     s,
-                    0,
+                    "0",
                     s.stock,
                     s.producto_codigo,
                     s.sucursal.direccion
