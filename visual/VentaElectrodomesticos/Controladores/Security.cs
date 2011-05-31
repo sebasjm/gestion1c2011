@@ -7,10 +7,16 @@ using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Exception;
 
 namespace VentaElectrodomesticos.Controladores {
+    class SecurityMock : Security {
+        public SecurityMock() : base() {
+            //admin user
+            loggedUser = Context.instance.dao.user.searchById(1);
+        }
+    }
     class Security {
 
         public Usuario loggedUser {
-            get; private set;
+            get; protected set;
         }
         public Security() { }
 

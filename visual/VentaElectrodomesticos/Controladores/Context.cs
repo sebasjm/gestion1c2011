@@ -28,6 +28,7 @@ namespace VentaElectrodomesticos.Controladores {
         
         public Context() {
             dao = new DAOContext(database_user, database_passwd, database_server, database_db);
+            security = new SecurityMock();
         }
 
         public void authenticate(string user, string passwd) {

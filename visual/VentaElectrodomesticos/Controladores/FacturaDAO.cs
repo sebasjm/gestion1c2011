@@ -46,5 +46,12 @@ namespace VentaElectrodomesticos.Controladores {
             connection.update(INSERT_PAGO, factura.numero, cuotas);
             connection.update(UPDATE_FACTURA_COUTAS, cuotas, factura.numero);
         }
+        private static readonly String INSERT_FACTURA = "";
+        private static readonly String ULTIMA_FACTURA_CREADA_DEL_CLIENTE = "SELECT TOP 1 * FROM la_huerta.Factura WHERE cliente_dni = {0} AND empleado_dni = {1} ORDER BY fecha desc";
+
+        public void nuevo(double descuento, double total, byte cuotas, Cliente cliente, List<ItemFacturaMock> list) {
+            connection.update(INSERT_FACTURA, "");
+            connection.find<Factura>(ULTIMA_FACTURA_CREADA_DEL_CLIENTE,cliente.dni);
+        }
     }
 }

@@ -198,5 +198,24 @@ namespace VentaElectrodomesticos.Controladores {
                 );
             }
         }
+
+        public static void fillDataGridItemFactura(DataGridView dataItems, List<ItemFacturaMock> result) {
+            dataItems.ColumnCount = 4;
+            dataItems.Columns[0].Name = "Codigo";
+            dataItems.Columns[1].Name = "Nombre";
+            dataItems.Columns[2].Name = "Precio";
+            dataItems.Columns[2].DefaultCellStyle.Format = "#,##0.00";
+            dataItems.Columns[3].Name = "Cantidad";
+
+            dataItems.Rows.Clear();
+            foreach (ItemFacturaMock item in result) {
+                dataItems.Rows.Add(
+                    item.producto_codigo,
+                    item.producto.nombre,
+                    item.precio,
+                    item.cantidad
+                );
+            }
+        }
     }
 }

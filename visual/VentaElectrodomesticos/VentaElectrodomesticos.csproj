@@ -179,6 +179,7 @@
     </Compile>
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Categoria.cs" />
+    <Compile Include="Modelo\ItemFactura.cs" />
     <Compile Include="Modelo\RolFuncionalidad.cs" />
     <Compile Include="Modelo\Funcionalidad.cs" />
     <Compile Include="Modelo\Factura.cs" />
