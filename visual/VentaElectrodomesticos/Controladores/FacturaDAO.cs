@@ -39,19 +39,44 @@ namespace VentaElectrodomesticos.Controladores {
             return connection.query<Factura>(q.build(), q.getParams());
         }
 
-        private static readonly String INSERT_PAGO = "INSERT INTO la_huerta.Pago VALUES ({0},getdate(),{1},2014908)";
+        private static readonly String INSERT_PAGO = "INSERT INTO la_huerta.Pago VALUES ({0},getdate(),{1},{2})";
         private static readonly String UPDATE_FACTURA_COUTAS = "UPDATE la_huerta.Factura SET cuotas_pagas = cuotas_pagas + {0} where numero = {1}";
 
         public void pagar(Factura factura, int cuotas) {
-            connection.update(INSERT_PAGO, factura.numero, cuotas);
+            Empleado empleado = Context.instance.security.loggedUser.empleado;
+            connection.update(INSERT_PAGO, factura.numero, cuotas, empleado.dni);
             connection.update(UPDATE_FACTURA_COUTAS, cuotas, factura.numero);
         }
-        private static readonly String INSERT_FACTURA = "";
-        private static readonly String ULTIMA_FACTURA_CREADA_DEL_CLIENTE = "SELECT TOP 1 * FROM la_huerta.Factura WHERE cliente_dni = {0} AND empleado_dni = {1} ORDER BY fecha desc";
 
-        public void nuevo(double descuento, double total, byte cuotas, Cliente cliente, List<ItemFacturaMock> list) {
-            connection.update(INSERT_FACTURA, "");
-            connection.find<Factura>(ULTIMA_FACTURA_CREADA_DEL_CLIENTE,cliente.dni);
+        private static readonly String INSERT_FACTURA = "INSERT INTO la_huerta.Factura (descuento, total, fecha, cuotas, cliente_dni, empleado_dni, cuotas_pagas) VALUES({0},{1},getdate(),{2},{3},{4},0)";
+        private static readonly String ULTIMA_FACTURA_CREADA_DEL_CLIENTE = "SELECT MAX(numero) FROM la_huerta.Factura WHERE cliente_dni = {0} AND empleado_dni = {1}";
+        private static readonly String INSERT_PAGO_CONTADO = "INSERT INTO la_huerta.Pago VALUES ( {0},getdate(),0,{1})";
+        private static readonly String INSERT_ITEM_FACTURA = "INSERT INTO la_huerta.ItemFactura VALUES ( {0},{1},{2},{3})";
+
+        public void nueva(double descuento, double total, byte cuotas, Cliente cliente, List<ItemFacturaMock> list) {
+            Empleado empleado = Context.instance.security.loggedUser.empleado;
+            connection.update(INSERT_FACTURA, 
+                descuento,
+                total,
+                cuotas,
+                cliente.dni,
+                empleado.dni
+            );
+            int nro_factura = connection.find<int>(ULTIMA_FACTURA_CREADA_DEL_CLIENTE,cliente.dni,empleado.dni);
+            if (cuotas == 0) {
+                connection.update(INSERT_PAGO_CONTADO, 
+                    nro_factura, 
+                    empleado.dni
+                );
+            }
+            foreach (ItemFactura itf in list) {
+                connection.update(INSERT_ITEM_FACTURA, 
+                    nro_factura,
+                    itf.producto_codigo, 
+                    itf.precio, 
+                    itf.cantidad
+                );
+            }
         }
     }
 }

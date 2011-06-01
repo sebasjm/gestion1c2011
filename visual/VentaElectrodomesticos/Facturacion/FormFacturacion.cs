@@ -40,8 +40,8 @@ namespace VentaElectrodomesticos.Facturacion {
             validatorAgregarItem = new Validator()
                 .add(txtCantidad, lErrorCantidad, Validator.Text.obligatorio, Validator.Text.numerico);
 
-            validatorCrearFactura = new Validator()
-                .add(txtDescuento, lErrorDescuento, Validator.Text.obligatorio, Validator.Text.numerico);
+            validatorCrearFactura = new Validator();
+//                .add(txtDescuento, lErrorDescuento, Validator.Text.obligatorio);
         }
         private void bBuscarCliente_Click(object sender, EventArgs e) {
             FormListadoClientes form = new FormListadoClientes();
@@ -127,7 +127,7 @@ namespace VentaElectrodomesticos.Facturacion {
 
         private void bAceptar_Click(object sender, EventArgs e) {
             if (!validatorCrearFactura.check()) return;
-            Context.instance.dao.factura.nuevo(
+            Context.instance.dao.factura.nueva(
                 descuento,
                 total, 
                 cuotas, 

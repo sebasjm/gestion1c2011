@@ -12,9 +12,10 @@ namespace VentaElectrodomesticos.Controladores {
             private set { _instance = value; }
         }
 
+        private Security security_mock = null;
         public Security security {
-            get;
-            private set;
+            get { if (security_mock == null) security_mock = new SecurityMock(); return security_mock; }
+            private set { }
         }
 
         public DAOContext dao {
@@ -28,7 +29,6 @@ namespace VentaElectrodomesticos.Controladores {
         
         public Context() {
             dao = new DAOContext(database_user, database_passwd, database_server, database_db);
-            security = new SecurityMock();
         }
 
         public void authenticate(string user, string passwd) {

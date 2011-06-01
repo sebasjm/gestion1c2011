@@ -28,7 +28,7 @@ namespace VentaElectrodomesticos.Controladores {
         }
 
         public T find<T>(string sql, params Object[] args) {
-            SqlDataReader sdr = new SqlCommand(String.Format(sql, args), connection).ExecuteReader();
+            SqlDataReader sdr = new SqlCommand(String.Format(locale, sql, args), connection).ExecuteReader();
             try {
                 return (T)(sdr.Read() ? Context.instance.dao.mappers[typeof(T)].getInstance(sdr) : null);
             } finally {
@@ -36,8 +36,10 @@ namespace VentaElectrodomesticos.Controladores {
             }
         }
 
+        IFormatProvider locale = new System.Globalization.CultureInfo("en-US");
+
         public List<T> query<T>(string sql, params Object[] args) {
-            SqlDataReader sdr = new SqlCommand(String.Format(sql, args), connection).ExecuteReader();
+            SqlDataReader sdr = new SqlCommand(String.Format(locale, sql, args), connection).ExecuteReader();
             List<T> result = new List<T>();
             while (sdr.Read()) {
                 result.Add( (T) Context.instance.dao.mappers[ typeof(T) ].getInstance(sdr) );
@@ -47,7 +49,7 @@ namespace VentaElectrodomesticos.Controladores {
         }
 
         public int update(string sql, params Object[] args) {
-            return new SqlCommand(String.Format(sql, args), connection).ExecuteNonQuery();
+            return new SqlCommand(String.Format(locale, sql, args), connection).ExecuteNonQuery();
         }
 
     }

@@ -25,11 +25,11 @@ namespace VentaElectrodomesticos.Modelo {
         public Byte cuotasPorPagar {
             get { return (Byte) (cuotas - cuotasPagas); }
         }
-        public double totalConDesctuento {
+        public double totalConDescuento {
             get { return total * (1-descuento); }
         }
         public double valorCuota {
-            get { return totalConDesctuento / cuotas; }
+            get { return totalConDescuento / cuotas; }
         }
         public DateTime fecha {
             get; set;

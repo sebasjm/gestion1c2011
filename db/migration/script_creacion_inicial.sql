@@ -111,7 +111,7 @@ CREATE TABLE [la_huerta].[Producto](
 ) ON [PRIMARY]
 
 CREATE TABLE [la_huerta].[Factura](
-	[numero] [int] NOT NULL,
+	[numero] [int] IDENTITY(1,1) NOT NULL,
 	[descuento] [float] NOT NULL,
 	[total] [float] NOT NULL,
 	[fecha] [datetime] NOT NULL,
@@ -398,7 +398,7 @@ ORDER BY empleado_dni
 -- 26855
 INSERT INTO [la_huerta].[Factura]
 SELECT 
-	factura_nro as numero,
+--	factura_nro as numero,
 	factura_descuento as descuento,
 	factura_total as total,
 	factura_fecha as fecha,
@@ -416,6 +416,8 @@ GROUP BY
 	factura_cant_coutas,
 	cli_dni,
     empleado_dni
+ORDER BY
+	factura_nro
 
 -- 118338
 INSERT INTO [la_huerta].[Pago] 

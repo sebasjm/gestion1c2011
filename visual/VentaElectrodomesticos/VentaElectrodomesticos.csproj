@@ -139,6 +139,7 @@
     <Compile Include="Controladores\RolDAO.cs" />
     <Compile Include="Controladores\EmpleadoDAO.cs" />
     <Compile Include="Controladores\ClienteDAO.cs" />
+    <Compile Include="Controladores\TableroControlDAO.cs" />
     <Compile Include="Controladores\TipoEmpleadoDAO.cs" />
     <Compile Include="Controladores\ProvinciaDAO.cs" />
     <Compile Include="Controladores\SucursalDAO.cs" />
@@ -192,6 +193,10 @@
     <Compile Include="Modelo\Mapper.cs" />
     <Compile Include="Modelo\Provincia.cs" />
     <Compile Include="Modelo\Sucursal.cs" />
+    <Compile Include="Modelo\Tablero\MayorDeudor.cs" />
+    <Compile Include="Modelo\Tablero\MejorProducto.cs" />
+    <Compile Include="Modelo\Tablero\ProporcionFormasDePago.cs" />
+    <Compile Include="Modelo\Tablero\MejorVendedor.cs" />
     <Compile Include="Modelo\TipoEmpleado.cs" />
     <Compile Include="Modelo\TipoSucursal.cs" />
     <Compile Include="Modelo\Usuario.cs" />

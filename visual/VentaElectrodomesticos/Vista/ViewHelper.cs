@@ -199,7 +199,7 @@ namespace VentaElectrodomesticos.Controladores {
                 dataFacturas.Rows.Add(
                     f,
                     f.numero,
-                    f.totalConDesctuento,
+                    f.totalConDescuento,
                     f.valorCuota,
                     f.cuotasPorPagar,
                     f.fecha

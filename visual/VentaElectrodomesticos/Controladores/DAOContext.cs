@@ -16,7 +16,15 @@ namespace VentaElectrodomesticos.Controladores {
                 new SqlConnection( buildConnectionURL(user, passwd, server, db) )
             );
             mappers = new Dictionary<Type, Mapper<object>>();
+            addMapper(typeof(int), new IntMapper() );
         }
+
+        class IntMapper : Mapper<Object> {
+            public Object getInstance(SqlDataReader sdr) {
+                return sdr.GetInt32(0);
+            }
+        }
+
         public void addMapper(Type type, Mapper<Object> mapper) {
             mappers.Add(type, mapper);
         }
