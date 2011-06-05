@@ -20,8 +20,9 @@ namespace VentaElectrodomesticos.AbmEmpleado {
 
         public FormListadoEmpleados() {
             InitializeComponent();
-            ViewHelper.fillComboProvincias(cmbProvincia);
             ViewHelper.fillComboSucursales(cmbSucursal);
+            ViewHelper.fillComboProvincias(cmbProvincia);
+            
             ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado);
         }
 
@@ -76,12 +77,10 @@ namespace VentaElectrodomesticos.AbmEmpleado {
 
         private void cmbSucursal_SelectedIndexChanged(object sender, EventArgs e) {
             Sucursal item = (Sucursal)cmbSucursal.SelectedItem;
-            cmbProvincia.SelectedItem = item != null ? item.provincia : null;
         }
 
         private void cmbProvincia_SelectedIndexChanged(object sender, EventArgs e) {
             Provincia item = (Provincia)cmbProvincia.SelectedItem;
-            cmbSucursal.SelectedItem = item != null ? item.sucursal : null;
         }
 
     }
