@@ -34,7 +34,7 @@ namespace VentaElectrodomesticos.AsignacionStock {
             fillStock();
         }
         private void bAuditor_Click(object sender, EventArgs e) {
-            FormListadoEmpleados form = new FormListadoEmpleados();
+            FormListadoEmpleados form = new FormListadoEmpleados("Analista");
             form.MessageFromParent = null;
             form.ShowDialog(this);
             if (form.MessageFromParent != null) {

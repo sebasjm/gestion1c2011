@@ -25,6 +25,20 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado);
         }
 
+        public FormListadoEmpleados(String modo)
+        {
+            if (modo == "Analista") {
+                InitializeComponent();
+                ViewHelper.fillComboProvincias(cmbProvincia);
+                ViewHelper.fillComboSucursales(cmbSucursal);
+                ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado);
+                cmbTipoEmpleado.SelectedIndex = 1;
+                cmbTipoEmpleado.Enabled = false;
+            } else { 
+            
+            }
+        }
+
         private void bCancelar_Click(object sender, EventArgs e) {
             this.messageFromParent = null;
             this.Close();
