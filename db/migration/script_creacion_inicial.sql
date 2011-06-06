@@ -251,8 +251,33 @@ begin
 end
 go
 
-create function la_huerta.get_categoria_fullname(  @categoria as varchar(200) ) 
+create function la_huerta.get_categoria_fullname(  @categoria as smallint ) 
 returns varchar(200)
+begin
+	declare @fullname as varchar(200)
+	declare @parent as smallint
+
+	select 
+		@fullname = nombre,
+		@parent = categoria_padre 
+	from la_huerta.Categoria 
+	where id = @categoria;
+
+	while @parent is not null
+	begin
+		select 
+			@fullname = nombre + '¦' + @fullname,
+			@parent = categoria_padre 
+		from la_huerta.Categoria 
+		where id = @parent
+	end
+	
+	return @fullname;
+end
+go
+
+create function la_huerta.get_categoria_id(  @categoria as varchar(200) ) 
+returns smallint
 begin
 	declare @fullname as varchar(200)
 	declare @parent as smallint
@@ -287,6 +312,90 @@ begin
 end
 go
 
+CREATE FUNCTION la_huerta.stock_a_la_fecha(@sucursal as int, @producto as int, @fecha as datetime)
+RETURNS int
+BEGIN
+	DECLARE @stock int;
+
+	SELECT @stock = sum(ins.stock)
+	FROM la_huerta.IngresoStock as ins
+	WHERE sucursal_id  = @sucursal and ins.producto_codigo = @producto and
+		fecha < @fecha;
+
+	SELECT @stock = @stock - sum(itf.cantidad)
+	FROM la_huerta.ItemFactura as itf
+	JOIN la_huerta.Factura as f ON itf.factura_numero = f.numero
+	JOIN la_huerta.Empleado as e ON e.dni = f.empleado_dni
+	WHERE sucursal_id = @sucursal and itf.producto_codigo = @producto and
+		fecha < @fecha;
+
+	return @stock;
+END
+go
+-----------------------------------------
+-- Stored procedures
+-----------------------------------------
+CREATE PROCEDURE la_huerta.dias_sin_stock(@suc as int, @anio as varchar(10), @out_prod as int output, @out_dias as int output)
+AS
+BEGIN
+	DECLARE @inicio as datetime;
+	DECLARE @fin as datetime;
+
+	SELECT @inicio = CAST(@anio+'-01-01 00:00:00.0' AS datetime);
+	SELECT @fin = CAST(@anio+'-12-31 23:59:59.9' AS datetime);
+
+	DECLARE movimiento CURSOR FOR 
+			SELECT f.fecha as fecha, itf.producto_codigo as prod, -1*itf.cantidad as cant
+				FROM la_huerta.ItemFactura as itf
+				JOIN la_huerta.Factura as f ON itf.factura_numero = f.numero
+				JOIN la_huerta.Empleado as e ON e.dni = f.empleado_dni
+				WHERE sucursal_id = @suc and f.fecha > @inicio AND f.fecha < @fin
+			UNION
+			SELECT ins.fecha as fecha, ins.producto_codigo as prod, ins.stock
+				FROM la_huerta.IngresoStock as ins
+				WHERE sucursal_id = @suc and ins.fecha > @inicio AND ins.fecha < @fin
+			ORDER BY prod,fecha;
+
+
+	DECLARE @fecha as datetime, @producto as int, @cant as int;
+	DECLARE @ant_fecha as datetime, @ant_prod as int;
+	DECLARE @dias int;
+	DECLARE @stock int;
+
+	OPEN movimiento;
+	FETCH NEXT FROM movimiento INTO @fecha, @producto, @cant;
+
+	SELECT @out_prod = 0;
+	SELECT @out_dias = 0;
+	WHILE(@@FETCH_STATUS = 0)
+	BEGIN
+		SELECT @dias = 0;
+		SELECT @stock = la_huerta.stock_a_la_fecha(@suc, @producto, @inicio);
+
+		SELECT @ant_prod = @producto;
+		WHILE (@@FETCH_STATUS = 0 AND @producto = @ant_prod)
+		BEGIN
+			IF (@stock < 1) BEGIN
+				SELECT @dias = @dias + datediff(d,@ant_fecha,@fecha);
+				IF(@out_dias < @dias) BEGIN
+					SELECT @out_dias = @dias;
+					SELECT @out_prod = @producto;
+				END	
+			END ELSE BEGIN
+				SELECT @ant_fecha = @fecha;
+			END
+
+			SELECT @stock = @stock + @cant;
+
+			FETCH NEXT FROM movimiento INTO @fecha, @producto, @cant;
+		END
+
+	END
+
+	CLOSE movimiento;
+	DEALLOCATE movimiento;
+END;
+go
 -----------------------------------------
 -- Carga de datos
 -----------------------------------------
@@ -525,7 +634,7 @@ SELECT
     cat.id as categoria_id ,
 	1 as activo
 FROM gd_esquema.Maestra 
-JOIN la_huerta.Categoria as cat ON la_huerta.get_categoria_fullname( producto_cate ) = cat.id
+JOIN la_huerta.Categoria as cat ON la_huerta.get_categoria_id( producto_cate ) = cat.id
 JOIN la_huerta.Marca as m ON m.nombre = producto_marca
 WHERE producto_nombre is not null and producto_precio <> 0
 GROUP BY 

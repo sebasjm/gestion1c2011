@@ -33,15 +33,8 @@
             this.cmbSucursal = new System.Windows.Forms.ComboBox();
             this.lSucursal = new System.Windows.Forms.Label();
             this.bCancelar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.NombreCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApellidoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DniCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MontoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalProductos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaUltimaCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DniVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataClientes = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbAnioAnalizar
@@ -51,6 +44,7 @@
             this.cmbAnioAnalizar.Name = "cmbAnioAnalizar";
             this.cmbAnioAnalizar.Size = new System.Drawing.Size(121, 21);
             this.cmbAnioAnalizar.TabIndex = 32;
+            this.cmbAnioAnalizar.SelectedIndexChanged += new System.EventHandler(this.cmbAnioAnalizar_SelectedIndexChanged);
             // 
             // lAnioAnalizar
             // 
@@ -68,6 +62,7 @@
             this.cmbSucursal.Name = "cmbSucursal";
             this.cmbSucursal.Size = new System.Drawing.Size(121, 21);
             this.cmbSucursal.TabIndex = 30;
+            this.cmbSucursal.SelectedIndexChanged += new System.EventHandler(this.cmbSucursal_SelectedIndexChanged);
             // 
             // lSucursal
             // 
@@ -88,64 +83,25 @@
             this.bCancelar.UseVisualStyleBackColor = true;
             this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
-            // dataGridView1
+            // dataClientes
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NombreCliente,
-            this.ApellidoCliente,
-            this.DniCliente,
-            this.MontoTotal,
-            this.TotalProductos,
-            this.FechaUltimaCompra,
-            this.DniVendedor});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 75);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(753, 150);
-            this.dataGridView1.TabIndex = 39;
-            // 
-            // NombreCliente
-            // 
-            this.NombreCliente.HeaderText = "Nombre del Cliente";
-            this.NombreCliente.Name = "NombreCliente";
-            // 
-            // ApellidoCliente
-            // 
-            this.ApellidoCliente.HeaderText = "Apellido del Cliente";
-            this.ApellidoCliente.Name = "ApellidoCliente";
-            // 
-            // DniCliente
-            // 
-            this.DniCliente.HeaderText = "DNI del Cliente";
-            this.DniCliente.Name = "DniCliente";
-            // 
-            // MontoTotal
-            // 
-            this.MontoTotal.HeaderText = "Monto Total";
-            this.MontoTotal.Name = "MontoTotal";
-            // 
-            // TotalProductos
-            // 
-            this.TotalProductos.HeaderText = "Total de Productos";
-            this.TotalProductos.Name = "TotalProductos";
-            // 
-            // FechaUltimaCompra
-            // 
-            this.FechaUltimaCompra.HeaderText = "Fecha de la Última Compra";
-            this.FechaUltimaCompra.Name = "FechaUltimaCompra";
-            // 
-            // DniVendedor
-            // 
-            this.DniVendedor.HeaderText = "DNI del Vendedor";
-            this.DniVendedor.Name = "DniVendedor";
+            this.dataClientes.AllowUserToAddRows = false;
+            this.dataClientes.AllowUserToDeleteRows = false;
+            this.dataClientes.AllowUserToOrderColumns = true;
+            this.dataClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataClientes.Location = new System.Drawing.Point(18, 75);
+            this.dataClientes.Name = "dataClientes";
+            this.dataClientes.RowHeadersVisible = false;
+            this.dataClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataClientes.Size = new System.Drawing.Size(753, 150);
+            this.dataClientes.TabIndex = 39;
             // 
             // FormClientesPremium
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 266);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataClientes);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.cmbAnioAnalizar);
             this.Controls.Add(this.lAnioAnalizar);
@@ -154,7 +110,7 @@
             this.Name = "FormClientesPremium";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes Premium";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,13 +123,6 @@
         private System.Windows.Forms.ComboBox cmbSucursal;
         private System.Windows.Forms.Label lSucursal;
         private System.Windows.Forms.Button bCancelar;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DniCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MontoTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalProductos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaUltimaCompra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DniVendedor;
+        private System.Windows.Forms.DataGridView dataClientes;
     }
 }

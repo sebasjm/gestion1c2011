@@ -61,6 +61,7 @@
             this.cmbAnioAnalizar.Name = "cmbAnioAnalizar";
             this.cmbAnioAnalizar.Size = new System.Drawing.Size(121, 21);
             this.cmbAnioAnalizar.TabIndex = 42;
+            this.cmbAnioAnalizar.SelectedIndexChanged += new System.EventHandler(this.cmbAnioAnalizar_SelectedIndexChanged);
             // 
             // lAnioAnalizar
             // 
@@ -78,6 +79,7 @@
             this.cmbSucursal.Name = "cmbSucursal";
             this.cmbSucursal.Size = new System.Drawing.Size(121, 21);
             this.cmbSucursal.TabIndex = 40;
+            this.cmbSucursal.SelectedIndexChanged += new System.EventHandler(this.cmbSucursal_SelectedIndexChanged);
             // 
             // lSucursal
             // 

@@ -28,6 +28,15 @@ namespace VentaElectrodomesticos.Controladores {
             return connection.query<Stock>(q.build(), q.getParams());
         }
 
+        public Stock find(Sucursal suc, Producto prod) {
+            QueryBuilder q = new QueryBuilder().select()
+                .from("la_huerta.Stock")
+                .filter("sucursal_id = {0} ", suc.id)
+                .filter("producto_codigo = {1} ",prod.codigo);
+
+            return connection.find<Stock>(q.build(), q.getParams());
+        }
+
         private static readonly String INSERT_INGRESO_STOCK = "INSERT INTO la_huerta.IngresoStock VALUES({0},{1},{2}, getdate() ,{3})";
         private static readonly String UPDATE_ADD_STOCK = "UPDATE la_huerta.Stock SET stock = stock + {0} WHERE sucursal_id = {1} and producto_codigo = {2}";
 

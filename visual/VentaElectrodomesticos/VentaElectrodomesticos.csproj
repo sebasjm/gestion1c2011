@@ -187,6 +187,8 @@
     <Compile Include="Modelo\Mapper.cs" />
     <Compile Include="Modelo\Provincia.cs" />
     <Compile Include="Modelo\Sucursal.cs" />
+    <Compile Include="Modelo\Tablero\ClientePremium.cs" />
+    <Compile Include="Modelo\Tablero\FaltanteStock.cs" />
     <Compile Include="Modelo\Tablero\MayorDeudor.cs" />
     <Compile Include="Modelo\Tablero\MejorProducto.cs" />
     <Compile Include="Modelo\Tablero\ProporcionFormasDePago.cs" />

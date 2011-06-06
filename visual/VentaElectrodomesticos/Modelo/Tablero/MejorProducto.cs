@@ -23,5 +23,9 @@ namespace VentaElectrodomesticos.Modelo.Tablero {
             get;
             private set;
         }
+
+        public override string ToString() {
+            return "[" + codigo + "] " + nombre + " - " + categoria;
+        }
     }
 }

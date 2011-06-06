@@ -17,5 +17,10 @@ namespace VentaElectrodomesticos.Modelo.Tablero {
         public Double cuotas {
             get { return 1 - contado; }
         }
+
+        public override string ToString() {
+            return "" + contado + " - " + cuotas;
+        }
+
     }
 }
