@@ -37,7 +37,7 @@ namespace VentaElectrodomesticos.Controladores {
             return connection.query<Empleado>(q.build(), q.getParams());
         }
 
-        private static readonly String INSERT = "INSERT INTO la_huerta.Empleado VALUES({0},'{1}','{2}','{3}','{4}','{5}',{6},{7},1,NULL)";
+        private static readonly String INSERT = "INSERT INTO la_huerta.Empleado VALUES({0},'{1}','{2}','{3}','{4}','{5}',{6},{7},1)";
         private static readonly String UPDATE = "UPDATE la_huerta.Empleado SET nombre='{1}',apellido='{2}',mail='{3}',telefono='{4}',direccion='{5}',tipoEmpleado_id={6},sucursal_id={7} WHERE dni={0}";
         private static readonly String DELETE = "UPDATE la_huerta.Empleado SET activo=0 WHERE dni={0}";
 
