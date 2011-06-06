@@ -53,9 +53,9 @@
             this.bBorrar = new System.Windows.Forms.Button();
             this.lMarca = new System.Windows.Forms.Label();
             this.cmbMarcas = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lErrorMarca = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.bMarcas = new System.Windows.Forms.Button();
+            this.txtMarca = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtPrecio
@@ -299,21 +299,21 @@
             this.cmbMarcas.FormattingEnabled = true;
             this.cmbMarcas.Location = new System.Drawing.Point(131, 95);
             this.cmbMarcas.Name = "cmbMarcas";
-            this.cmbMarcas.Size = new System.Drawing.Size(172, 21);
+            this.cmbMarcas.Size = new System.Drawing.Size(102, 21);
             this.cmbMarcas.TabIndex = 93;
             // 
-            // label1
+            // lErrorMarca
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(311, 95);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(22, 29);
-            this.label1.TabIndex = 94;
-            this.label1.Text = "*";
-            this.label1.Visible = false;
+            this.lErrorMarca.AutoSize = true;
+            this.lErrorMarca.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorMarca.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lErrorMarca.ForeColor = System.Drawing.Color.Red;
+            this.lErrorMarca.Location = new System.Drawing.Point(311, 95);
+            this.lErrorMarca.Name = "lErrorMarca";
+            this.lErrorMarca.Size = new System.Drawing.Size(22, 29);
+            this.lErrorMarca.TabIndex = 94;
+            this.lErrorMarca.Text = "*";
+            this.lErrorMarca.Visible = false;
             // 
             // txtNombre
             // 
@@ -322,24 +322,21 @@
             this.txtNombre.Size = new System.Drawing.Size(170, 20);
             this.txtNombre.TabIndex = 95;
             // 
-            // bMarcas
+            // txtMarca
             // 
-            this.bMarcas.Location = new System.Drawing.Point(177, 214);
-            this.bMarcas.Name = "bMarcas";
-            this.bMarcas.Size = new System.Drawing.Size(93, 23);
-            this.bMarcas.TabIndex = 96;
-            this.bMarcas.Text = "ABM de Marca";
-            this.bMarcas.UseVisualStyleBackColor = true;
-            this.bMarcas.Click += new System.EventHandler(this.bMarcas_Click);
+            this.txtMarca.Location = new System.Drawing.Point(239, 96);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(62, 20);
+            this.txtMarca.TabIndex = 97;
             // 
             // FormAbmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(478, 275);
-            this.Controls.Add(this.bMarcas);
+            this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lErrorMarca);
             this.Controls.Add(this.cmbMarcas);
             this.Controls.Add(this.lMarca);
             this.Controls.Add(this.bBorrar);
@@ -400,8 +397,8 @@
         private System.Windows.Forms.Button bBorrar;
         private System.Windows.Forms.Label lMarca;
         private System.Windows.Forms.ComboBox cmbMarcas;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lErrorMarca;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Button bMarcas;
+        private System.Windows.Forms.TextBox txtMarca;
     }
 }

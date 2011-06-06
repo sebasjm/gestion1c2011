@@ -82,9 +82,9 @@ namespace VentaElectrodomesticos.AsignacionStock {
                     } else {
                         stocksError = cant != 0;
                     }
-                } catch (FormatException e) {
+                } catch (FormatException ) {
                     stocksError = true;
-                } catch (ArgumentNullException e) {
+                } catch (ArgumentNullException ) {
                     stocksError = true;
                 }
             }

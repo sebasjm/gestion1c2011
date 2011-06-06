@@ -141,7 +141,7 @@ namespace VentaElectrodomesticos.Facturacion {
             Boolean error = false;
             try {
                 descuento = Double.Parse(txtDescuento.Text);
-            } catch (FormatException fe) {
+            } catch (FormatException ) {
                 error = true;
             }
             if (error || descuento < 0 || descuento > 0.3) {

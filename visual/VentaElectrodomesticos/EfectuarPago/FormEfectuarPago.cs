@@ -52,7 +52,7 @@ namespace VentaElectrodomesticos.EfectuarPago {
             int cuotas = 0;
             try {
                 cuotas = Int32.Parse(txtCuotas.Text);
-            } catch (FormatException fe) {
+            } catch (FormatException ) {
                 return;
             }
             if (cuotas > factura.cuotasPorPagar) {

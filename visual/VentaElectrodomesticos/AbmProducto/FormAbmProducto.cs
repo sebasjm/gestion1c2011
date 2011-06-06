@@ -10,7 +10,6 @@ using System.Data.SqlClient;
 using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
 using VentaElectrodomesticos.Vista;
-using VentaElectrodomesticos.AbmMarca;
 namespace VentaElectrodomesticos.AbmProducto
 {
     public partial class FormAbmProducto : Form
@@ -112,7 +111,7 @@ namespace VentaElectrodomesticos.AbmProducto
         }
         private void bModificar_Click(object sender, EventArgs e)
         {
-            if (!validator.check()) return;
+            if (!this.validar()) return;
             if (MessageBox.Show("¿Esta seguro que desea modificar el Producto?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la modificacion
@@ -122,9 +121,10 @@ namespace VentaElectrodomesticos.AbmProducto
                 {
                     cate = (Categoria)NodoSeleccionado.Tag;
                 }
-                Marca marca = Context.instance.dao.marca.findByNombre(txtNombre.Text);
+                short marca_id = this.gestorMarcas();
+                if (marca_id == 0) return;
                 this.producto.nombre = txtNombre.Text;
-                this.producto.marca_id = (marca == null ) ? (short)0 : (short)marca.id;
+                this.producto.marca_id = marca_id;
                 this.producto.descripcion = txtDescripcion.Text;
                 this.producto.categoria_id = (cate == null) ? this.producto.categoria_id : cate.id;
                 this.producto.precio = Double.Parse(txtPrecio.Text);
@@ -133,10 +133,10 @@ namespace VentaElectrodomesticos.AbmProducto
             }
         }
         private void bBorrar_Click(object sender, EventArgs e)        {
-            if (!validator.check()) return;
+            if (!this.validar()) return;
             if (MessageBox.Show("¿Esta seguro que desea borrar el Producto?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                // proceder con la eliminacion
+                // proceder con la eliminacion del producto
                 Context.instance.dao.producto.eliminar(Int32.Parse(txtCodigoProducto.Text));
                 this.Close();
             }
@@ -144,11 +144,61 @@ namespace VentaElectrodomesticos.AbmProducto
         private void bCancelar_Click(object sender, EventArgs e)        {
             this.Close();
         }
+        private bool validar() {
+            if (((cmbMarcas.SelectedIndex != 0) && (txtMarca.Text == "")) ||
+                ((cmbMarcas.SelectedIndex == 0) && (txtMarca.Text != "")) ||
+                ((cmbMarcas.SelectedIndex == null) && (txtMarca.Text != ""))
+                )
+            {
+                lErrorMarca.Hide();
+            }
+            else {
+                lErrorMarca.Show();
+            }
+            return (validator.check())&&(
+                ((cmbMarcas.SelectedIndex != 0) && (txtMarca.Text == "")) ||
+                ((cmbMarcas.SelectedIndex == 0) && (txtMarca.Text != "")) ||
+                ((cmbMarcas.SelectedIndex == null) && (txtMarca.Text != ""))
+                );
+        }
+        private short gestorMarcas() {
+            short marca_id = 0;
+            if (((cmbMarcas.SelectedIndex == 0) && (txtMarca.Text != "")) ||
+                ((cmbMarcas.SelectedIndex == null) && (txtMarca.Text != "")))
+            {
+                Marca marca = Context.instance.dao.marca.findByNombre(txtMarca.Text);
+                if (marca == null)
+                {
+                    if (MessageBox.Show("¿Esta seguro que desea crear la Marca?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        // proceder con la creación de la marca
+                        Marca marcaCrear = new Marca(null);
+                        marcaCrear.nombre = txtMarca.Text;
+                        Context.instance.dao.marca.insertar(marcaCrear);
+                    }
+                    else
+                    {
+                       return 0;
+                    }
+                }
+            }
+            if (((cmbMarcas.SelectedIndex == 0) && (txtMarca.Text != "")) ||
+                ((cmbMarcas.SelectedIndex == null) && (txtMarca.Text != "")))
+            {
+                Marca marca = Context.instance.dao.marca.findByNombre(txtMarca.Text);
+                marca_id = (short)marca.id;
+            }
+            if ((cmbMarcas.SelectedIndex != 0) && (txtMarca.Text == ""))
+            {
+                marca_id = (short)cmbMarcas.SelectedIndex;
+            }
+            return marca_id;
+        }
         private void bCrear_Click(object sender, EventArgs e)        {
-            if (!validator.check()) return;
+            if (!this.validar()) return;
             if (MessageBox.Show("¿Esta seguro que desea crear el Producto?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                // proceder con la creacion
+                // proceder con la creacion del producto
                 Producto productoNew = new Producto(Int32.Parse(txtCodigoProducto.Text));
                 TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
                 Categoria cate = null;
@@ -156,11 +206,12 @@ namespace VentaElectrodomesticos.AbmProducto
                 {
                     cate = (Categoria)NodoSeleccionado.Tag;
                 }
-                Marca marca = Context.instance.dao.marca.findOrCreate(cmbMarcas.Text);
+                short marca_id  = this.gestorMarcas() ;
+                if(marca_id == 0) return;
                 productoNew.nombre = txtNombre.Text;
                 productoNew.descripcion = txtDescripcion.Text;
                 productoNew.categoria_id = cate.id;
-                productoNew.marca_id = (short)marca.id;
+                productoNew.marca_id = marca_id;
                 productoNew.precio = Double.Parse(txtPrecio.Text);
                 Context.instance.dao.producto.insertar(productoNew);
                 this.Close();
@@ -182,7 +233,7 @@ namespace VentaElectrodomesticos.AbmProducto
             treeCategorias.CollapseAll();
         }
         private void bCrearOtro_Click(object sender, EventArgs e)        {
-            if (!validator.check()) return;
+            if (!this.validar()) return;
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Producto?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el Guardado y la Creacion de otro
@@ -193,21 +244,16 @@ namespace VentaElectrodomesticos.AbmProducto
                 {
                     cate = (Categoria)NodoSeleccionado.Tag;
                 }
-                Marca marca = Context.instance.dao.marca.findOrCreate(cmbMarcas.Text);
+                short marca_id = this.gestorMarcas();
+                if (marca_id == 0) return;
                 productoNew.nombre = txtNombre.Text;
                 productoNew.descripcion = txtDescripcion.Text;
                 productoNew.categoria_id = cate.id;
-                productoNew.marca_id = (short)marca.id;
+                productoNew.marca_id = marca_id;
                 productoNew.precio = Double.Parse(txtPrecio.Text);
                 Context.instance.dao.producto.insertar(productoNew);
                 this.limpiar();
             }
-        }
-        private void bMarcas_Click(object sender, EventArgs e)
-        {
-            FormAbmMarca form = new FormAbmMarca();
-            form.ShowDialog(this);
-            ViewHelper.fillComboMarcas(cmbMarcas);
         }
     }
 }

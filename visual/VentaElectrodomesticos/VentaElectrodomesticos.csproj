@@ -72,12 +72,6 @@
     <Compile Include="AbmEmpleado\FormListadoEmpleados.Designer.cs">
       <DependentUpon>FormListadoEmpleados.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmMarca\FormAbmMarca.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmMarca\FormAbmMarca.Designer.cs">
-      <DependentUpon>FormAbmMarca.cs</DependentUpon>
-    </Compile>
     <Compile Include="AbmProducto\FormAbmProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,9 +209,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmEmpleado\FormListadoEmpleados.resx">
       <DependentUpon>FormListadoEmpleados.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AbmMarca\FormAbmMarca.resx">
-      <DependentUpon>FormAbmMarca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmProducto\FormAbmProducto.resx">
       <DependentUpon>FormAbmProducto.cs</DependentUpon>
