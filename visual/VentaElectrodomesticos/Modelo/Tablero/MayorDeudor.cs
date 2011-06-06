@@ -24,5 +24,8 @@ namespace VentaElectrodomesticos.Modelo.Tablero {
             private set;
         }
 
+        public override string ToString() {
+            return apellido + ", " + nombre + " (" + dni + ")";
+        }
     }
 }

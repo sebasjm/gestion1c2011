@@ -56,8 +56,9 @@
             this.cmbSucursal.FormattingEnabled = true;
             this.cmbSucursal.Location = new System.Drawing.Point(125, 12);
             this.cmbSucursal.Name = "cmbSucursal";
-            this.cmbSucursal.Size = new System.Drawing.Size(121, 21);
+            this.cmbSucursal.Size = new System.Drawing.Size(179, 21);
             this.cmbSucursal.TabIndex = 26;
+            this.cmbSucursal.SelectedIndexChanged += new System.EventHandler(this.cmbSucursal_SelectedIndexChanged);
             // 
             // lSucursal
             // 
@@ -73,8 +74,9 @@
             this.cmbAnioAnalizar.FormattingEnabled = true;
             this.cmbAnioAnalizar.Location = new System.Drawing.Point(125, 39);
             this.cmbAnioAnalizar.Name = "cmbAnioAnalizar";
-            this.cmbAnioAnalizar.Size = new System.Drawing.Size(121, 21);
+            this.cmbAnioAnalizar.Size = new System.Drawing.Size(179, 21);
             this.cmbAnioAnalizar.TabIndex = 28;
+            this.cmbAnioAnalizar.SelectedIndexChanged += new System.EventHandler(this.cmbAnioAnalizar_SelectedIndexChanged);
             // 
             // lAnioAnalizar
             // 
@@ -88,7 +90,7 @@
             // lTotalVentas
             // 
             this.lTotalVentas.AutoSize = true;
-            this.lTotalVentas.Location = new System.Drawing.Point(122, 82);
+            this.lTotalVentas.Location = new System.Drawing.Point(334, 82);
             this.lTotalVentas.Name = "lTotalVentas";
             this.lTotalVentas.Size = new System.Drawing.Size(82, 13);
             this.lTotalVentas.TabIndex = 29;
@@ -97,7 +99,7 @@
             // lTotalFacturacion
             // 
             this.lTotalFacturacion.AutoSize = true;
-            this.lTotalFacturacion.Location = new System.Drawing.Point(122, 110);
+            this.lTotalFacturacion.Location = new System.Drawing.Point(334, 110);
             this.lTotalFacturacion.Name = "lTotalFacturacion";
             this.lTotalFacturacion.Size = new System.Drawing.Size(105, 13);
             this.lTotalFacturacion.TabIndex = 30;
@@ -106,7 +108,7 @@
             // lProporcionFormaPago
             // 
             this.lProporcionFormaPago.AutoSize = true;
-            this.lProporcionFormaPago.Location = new System.Drawing.Point(122, 136);
+            this.lProporcionFormaPago.Location = new System.Drawing.Point(334, 136);
             this.lProporcionFormaPago.Name = "lProporcionFormaPago";
             this.lProporcionFormaPago.Size = new System.Drawing.Size(133, 13);
             this.lProporcionFormaPago.TabIndex = 31;
@@ -115,7 +117,7 @@
             // lMayorFactura
             // 
             this.lMayorFactura.AutoSize = true;
-            this.lMayorFactura.Location = new System.Drawing.Point(122, 163);
+            this.lMayorFactura.Location = new System.Drawing.Point(334, 163);
             this.lMayorFactura.Name = "lMayorFactura";
             this.lMayorFactura.Size = new System.Drawing.Size(75, 13);
             this.lMayorFactura.TabIndex = 32;
@@ -124,7 +126,7 @@
             // lMayorDeudor
             // 
             this.lMayorDeudor.AutoSize = true;
-            this.lMayorDeudor.Location = new System.Drawing.Point(122, 194);
+            this.lMayorDeudor.Location = new System.Drawing.Point(334, 194);
             this.lMayorDeudor.Name = "lMayorDeudor";
             this.lMayorDeudor.Size = new System.Drawing.Size(74, 13);
             this.lMayorDeudor.TabIndex = 33;
@@ -133,7 +135,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(122, 226);
+            this.label1.Location = new System.Drawing.Point(334, 226);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 13);
             this.label1.TabIndex = 34;
@@ -142,7 +144,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(122, 257);
+            this.label2.Location = new System.Drawing.Point(334, 257);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 35;
@@ -151,7 +153,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(122, 286);
+            this.label3.Location = new System.Drawing.Point(334, 315);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 36;
@@ -159,7 +161,7 @@
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(125, 329);
+            this.bCancelar.Location = new System.Drawing.Point(125, 346);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
             this.bCancelar.TabIndex = 37;
@@ -172,78 +174,78 @@
             this.lValorTotalVentas.AutoSize = true;
             this.lValorTotalVentas.Location = new System.Drawing.Point(38, 82);
             this.lValorTotalVentas.Name = "lValorTotalVentas";
-            this.lValorTotalVentas.Size = new System.Drawing.Size(25, 13);
+            this.lValorTotalVentas.Size = new System.Drawing.Size(10, 13);
             this.lValorTotalVentas.TabIndex = 38;
-            this.lValorTotalVentas.Text = "100";
+            this.lValorTotalVentas.Text = "-";
             // 
             // lValorTotalFacturacion
             // 
             this.lValorTotalFacturacion.AutoSize = true;
             this.lValorTotalFacturacion.Location = new System.Drawing.Point(38, 110);
             this.lValorTotalFacturacion.Name = "lValorTotalFacturacion";
-            this.lValorTotalFacturacion.Size = new System.Drawing.Size(25, 13);
+            this.lValorTotalFacturacion.Size = new System.Drawing.Size(10, 13);
             this.lValorTotalFacturacion.TabIndex = 39;
-            this.lValorTotalFacturacion.Text = "100";
+            this.lValorTotalFacturacion.Text = "-";
             // 
             // lValorProporcionFormaPago
             // 
             this.lValorProporcionFormaPago.AutoSize = true;
             this.lValorProporcionFormaPago.Location = new System.Drawing.Point(38, 136);
             this.lValorProporcionFormaPago.Name = "lValorProporcionFormaPago";
-            this.lValorProporcionFormaPago.Size = new System.Drawing.Size(25, 13);
+            this.lValorProporcionFormaPago.Size = new System.Drawing.Size(10, 13);
             this.lValorProporcionFormaPago.TabIndex = 40;
-            this.lValorProporcionFormaPago.Text = "100";
+            this.lValorProporcionFormaPago.Text = "-";
             // 
             // lValorMayorFactura
             // 
             this.lValorMayorFactura.AutoSize = true;
             this.lValorMayorFactura.Location = new System.Drawing.Point(38, 163);
             this.lValorMayorFactura.Name = "lValorMayorFactura";
-            this.lValorMayorFactura.Size = new System.Drawing.Size(25, 13);
+            this.lValorMayorFactura.Size = new System.Drawing.Size(10, 13);
             this.lValorMayorFactura.TabIndex = 41;
-            this.lValorMayorFactura.Text = "100";
+            this.lValorMayorFactura.Text = "-";
             // 
             // lValorMayorDeudor
             // 
             this.lValorMayorDeudor.AutoSize = true;
             this.lValorMayorDeudor.Location = new System.Drawing.Point(38, 194);
             this.lValorMayorDeudor.Name = "lValorMayorDeudor";
-            this.lValorMayorDeudor.Size = new System.Drawing.Size(25, 13);
+            this.lValorMayorDeudor.Size = new System.Drawing.Size(10, 13);
             this.lValorMayorDeudor.TabIndex = 42;
-            this.lValorMayorDeudor.Text = "100";
+            this.lValorMayorDeudor.Text = "-";
             // 
             // lValorVendedorAnio
             // 
             this.lValorVendedorAnio.AutoSize = true;
             this.lValorVendedorAnio.Location = new System.Drawing.Point(38, 226);
             this.lValorVendedorAnio.Name = "lValorVendedorAnio";
-            this.lValorVendedorAnio.Size = new System.Drawing.Size(25, 13);
+            this.lValorVendedorAnio.Size = new System.Drawing.Size(10, 13);
             this.lValorVendedorAnio.TabIndex = 43;
-            this.lValorVendedorAnio.Text = "100";
+            this.lValorVendedorAnio.Text = "-";
             // 
             // lValorProductoAnio
             // 
             this.lValorProductoAnio.AutoSize = true;
-            this.lValorProductoAnio.Location = new System.Drawing.Point(38, 257);
+            this.lValorProductoAnio.Location = new System.Drawing.Point(38, 286);
             this.lValorProductoAnio.Name = "lValorProductoAnio";
-            this.lValorProductoAnio.Size = new System.Drawing.Size(25, 13);
+            this.lValorProductoAnio.Size = new System.Drawing.Size(10, 13);
             this.lValorProductoAnio.TabIndex = 44;
-            this.lValorProductoAnio.Text = "100";
+            this.lValorProductoAnio.Text = "-";
             // 
             // lValorFaltanteStock
             // 
             this.lValorFaltanteStock.AutoSize = true;
-            this.lValorFaltanteStock.Location = new System.Drawing.Point(38, 286);
+            this.lValorFaltanteStock.Location = new System.Drawing.Point(38, 315);
             this.lValorFaltanteStock.Name = "lValorFaltanteStock";
-            this.lValorFaltanteStock.Size = new System.Drawing.Size(25, 13);
+            this.lValorFaltanteStock.Size = new System.Drawing.Size(10, 13);
             this.lValorFaltanteStock.TabIndex = 45;
-            this.lValorFaltanteStock.Text = "100";
+            this.lValorFaltanteStock.Text = "-";
             // 
             // FormTableroControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(290, 381);
+            this.ClientSize = new System.Drawing.Size(473, 381);
             this.Controls.Add(this.lValorFaltanteStock);
             this.Controls.Add(this.lValorProductoAnio);
             this.Controls.Add(this.lValorVendedorAnio);

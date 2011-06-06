@@ -26,7 +26,7 @@ namespace VentaElectrodomesticos.Modelo {
             set;
         }
 
-        public Byte cantidad {
+        public Int32 cantidad {
             get;
             set;
         }

@@ -23,5 +23,19 @@ namespace VentaElectrodomesticos.Modelo.Tablero {
             get;
             private set;
         }
+
+        public override string ToString() {
+            if (dni == 0) return "ninguno";
+            return apellido + ", " + nombre + " (" + dni + ")";
+        }
+    }
+
+    class NullMejorVendedor : MejorVendedor {
+        public NullMejorVendedor() : base(0,"","") {
+
+        }
+        public override string ToString() {
+            return "ninguno";
+        }
     }
 }

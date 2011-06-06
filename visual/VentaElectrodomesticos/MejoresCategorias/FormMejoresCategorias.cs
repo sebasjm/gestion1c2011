@@ -10,38 +10,36 @@ using System.Data.SqlClient;
 using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Controladores;
 
-namespace VentaElectrodomesticos.MejoresCategorias
-{
-    public partial class FormMejoresCategorias : Form
-    {
-        public FormMejoresCategorias()
-        {
+namespace VentaElectrodomesticos.MejoresCategorias {
+    public partial class FormMejoresCategorias : Form {
+        public FormMejoresCategorias() {
             InitializeComponent();
             fillAnios();
-            fillSucursal();
+            ViewHelper.fillComboSucursales(cmbSucursal);
         }
-        private void fillAnios()
-        {
-            for (int n = 1995; n <= 2100; n++)
-            {
+        private void fillAnios() {
+            for (int n = 1995; n <= 2100; n++) {
                 cmbAnioAnalizar.Items.Add(n);
             }
         }
-        void fillSucursal()
-        {
-            List<Sucursal> sucursalList = Context.instance.dao.sucursal.load();
-            try
-            {
-                cmbSucursal.DataSource = sucursalList;
-                cmbSucursal.DisplayMember = "direccion";
-                cmbSucursal.ValueMember = "id";
-                cmbSucursal.SelectedIndex = -1;
-            }
-            catch (NullReferenceException) { }
-        }
-        private void bCancelar_Click(object sender, EventArgs e)
-        {
+        private void bCancelar_Click(object sender, EventArgs e) {
             this.Close();
+        }
+
+        Sucursal sucursal = null;
+        String anio = "1995";
+
+        private void cmbSucursal_SelectedIndexChanged(object sender, EventArgs e) {
+            sucursal = (Sucursal)cmbSucursal.SelectedItem;
+            doSearch();
+        }
+
+        private void cmbAnioAnalizar_SelectedIndexChanged(object sender, EventArgs e) {
+            anio = (String)cmbAnioAnalizar.SelectedItem;
+            doSearch();
+        }
+        private void doSearch() {
+            if (sucursal == null) return;
         }
     }
 }

@@ -27,6 +27,7 @@ namespace VentaElectrodomesticos.Facturacion {
         double total = 0;
         double descuento = 0;
         byte cuotas = 0;
+        int stock_producto = 0;
 
         public FormFacturacion() {
             InitializeComponent();
@@ -36,6 +37,11 @@ namespace VentaElectrodomesticos.Facturacion {
 
             fillFormasPago();
             ShowMonto();
+            sucursal = Context.instance.security.loggedUser.empleado.sucursal;
+            cmbSucursal.SelectedItem = sucursal;
+            cmbProvincia.SelectedItem = sucursal.provincia;
+            cmbSucursal.Enabled = false;
+            cmbProvincia.Enabled = false;
 
             validatorAgregarItem = new Validator()
                 .add(txtCantidad, lErrorCantidad, Validator.Text.obligatorio, Validator.Text.numerico);
@@ -60,6 +66,7 @@ namespace VentaElectrodomesticos.Facturacion {
             if (form.MessageFromParent != null) {
                 producto = (Producto)form.MessageFromParent;
                 txtProducto.Text = producto == null ? "" : producto.codigo + " - " + producto.nombre;
+                stock_producto = Context.instance.dao.stock.find(sucursal, producto).stock;
             }
         }
 
@@ -103,10 +110,15 @@ namespace VentaElectrodomesticos.Facturacion {
 
         private void bAgregarProducto_Click(object sender, EventArgs e) {
             if (!validatorAgregarItem.check()) return;
-            byte cant = Byte.Parse(txtCantidad.Text);
+            Int32 cant = Int32.Parse(txtCantidad.Text);
+            if (cant > stock_producto) {
+                MessageBox.Show("La cantidad de items no puede ser mayor al stock actual: " + stock_producto, "Error");
+                return;
+            }
             if (itemsFacturaByProductoCodigo.ContainsKey(producto.codigo)) {
+                int old_cant = itemsFacturaByProductoCodigo[producto.codigo].cantidad;
+                total = total - producto.precio * old_cant;
                 itemsFacturaByProductoCodigo.Remove(producto.codigo);
-                total = total - producto.precio;
             }
             if (cant != 0) {
                 itemsFacturaByProductoCodigo.Add(
@@ -134,8 +146,22 @@ namespace VentaElectrodomesticos.Facturacion {
                 cliente, 
                 new List<ItemFacturaMock>(itemsFacturaByProductoCodigo.Values) 
             );
+            limpiar();
         }
 
+        private void limpiar() {
+            producto = null;
+            total = 0;
+            descuento = 0;
+            cuotas = 0;
+            stock_producto = 0;
+            ShowMonto();
+            txtProducto.Text = "";
+            txtCantidad.Text = "";
+            cmbFormasPago.SelectedIndex = 0;
+            itemsFacturaByProductoCodigo = new Dictionary<int, ItemFacturaMock>();
+            ViewHelper.fillDataGridItemFactura(dataListadoProductos, new List<ItemFacturaMock>());
+        }
 
         private void txtDescuento_Leave(object sender, EventArgs e) {
             Boolean error = false;

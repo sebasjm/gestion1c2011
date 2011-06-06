@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using VentaElectrodomesticos.Modelo;
+using VentaElectrodomesticos.Modelo.Tablero;
 namespace VentaElectrodomesticos.Controladores {
     class ViewHelper {
         public static void fillComboProvincias(ComboBox cmbProvincia) {
@@ -222,6 +223,32 @@ namespace VentaElectrodomesticos.Controladores {
                     item.producto.nombre,
                     item.precio,
                     item.cantidad
+                );
+            }
+        }
+
+        internal static void fillDataGridClientesPremium(DataGridView dataItems, List<ClientePremium> result) {
+            dataItems.ColumnCount = 7;
+            dataItems.Columns[0].Name = "Nombre";
+            dataItems.Columns[1].Name = "Apellido";
+            dataItems.Columns[2].Name = "DNI";
+            dataItems.Columns[3].Name = "Total";
+            dataItems.Columns[3].DefaultCellStyle.Format = "#,##0.00";
+            dataItems.Columns[4].Name = "Cantidad";
+            dataItems.Columns[5].Name = "Última compra";
+            dataItems.Columns[5].DefaultCellStyle.Format = "dd/MM";
+            dataItems.Columns[6].Name = "Último vendedor";
+
+            dataItems.Rows.Clear();
+            foreach (ClientePremium item in result) {
+                dataItems.Rows.Add(
+                    item.nombre,
+                    item.apellido,
+                    item.dni,
+                    item.total,
+                    item.cantidad,
+                    item.ultimaCompra,
+                    item.ultimoVendedor_dni
                 );
             }
         }

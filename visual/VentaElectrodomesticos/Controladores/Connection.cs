@@ -52,6 +52,17 @@ namespace VentaElectrodomesticos.Controladores {
             return new SqlCommand(String.Format(locale, sql, args), connection).ExecuteNonQuery();
         }
 
+
+        public int procedure(string sql, List<SqlParameter> parms) {
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            foreach (SqlParameter param_name in parms) {
+                cmd.Parameters.Add(param_name);
+            }
+
+            return cmd.ExecuteNonQuery();
+        }
     }
 
 }

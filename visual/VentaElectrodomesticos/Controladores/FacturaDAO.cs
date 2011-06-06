@@ -52,6 +52,7 @@ namespace VentaElectrodomesticos.Controladores {
         private static readonly String ULTIMA_FACTURA_CREADA_DEL_CLIENTE = "SELECT MAX(numero) FROM la_huerta.Factura WHERE cliente_dni = {0} AND empleado_dni = {1}";
         private static readonly String INSERT_PAGO_CONTADO = "INSERT INTO la_huerta.Pago VALUES ( {0},getdate(),0,{1})";
         private static readonly String INSERT_ITEM_FACTURA = "INSERT INTO la_huerta.ItemFactura VALUES ( {0},{1},{2},{3})";
+        private static readonly String UPDATE_STOCK_CANTIDAD = "UPDATE la_huerta.Stock SET stock = stock - {0} WHERE sucursal_id = {1} AND producto_codigo = {2}";
 
         public void nueva(double descuento, double total, byte cuotas, Cliente cliente, List<ItemFacturaMock> list) {
             Empleado empleado = Context.instance.security.loggedUser.empleado;
@@ -70,11 +71,16 @@ namespace VentaElectrodomesticos.Controladores {
                 );
             }
             foreach (ItemFactura itf in list) {
-                connection.update(INSERT_ITEM_FACTURA, 
+                connection.update(INSERT_ITEM_FACTURA,
                     nro_factura,
-                    itf.producto_codigo, 
-                    itf.precio, 
+                    itf.producto_codigo,
+                    itf.precio,
                     itf.cantidad
+                );
+                connection.update(UPDATE_STOCK_CANTIDAD,
+                    itf.cantidad,
+                    empleado.sucursalId,
+                    itf.producto_codigo
                 );
             }
         }
