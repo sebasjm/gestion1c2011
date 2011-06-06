@@ -1,10 +1,16 @@
 USE gd1c2011
 GO
 
-DROP FUNCTION la_huerta.get_categoria_fullname
+DROP PROCEDURE la_huerta.dias_sin_stock;
+
+GO
+
+DROP FUNCTION la_huerta.get_categoria_fullname;
+DROP FUNCTION la_huerta.get_categoria_id;
 drop function la_huerta.split;
 drop function la_huerta.back_split;
 drop function la_huerta.categoria_id_collection;
+drop function la_huerta.stock_a_la_fecha;
 
 GO
 
