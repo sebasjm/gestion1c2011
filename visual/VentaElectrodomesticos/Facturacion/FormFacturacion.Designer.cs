@@ -54,9 +54,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.bAgregarProducto = new System.Windows.Forms.Button();
-            this.lErrorCantidad = new System.Windows.Forms.Label();
             this.lCuota = new System.Windows.Forms.Label();
             this.lTotalCuota = new System.Windows.Forms.Label();
+            this.lErrorCantidad = new System.Windows.Forms.Label();
             this.lErrorDescuento = new System.Windows.Forms.Label();
             this.lErrorCuotas = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoProductos)).BeginInit();
@@ -65,7 +65,7 @@
             // lProvincia
             // 
             this.lProvincia.AutoSize = true;
-            this.lProvincia.Location = new System.Drawing.Point(12, 19);
+            this.lProvincia.Location = new System.Drawing.Point(17, 14);
             this.lProvincia.Name = "lProvincia";
             this.lProvincia.Size = new System.Drawing.Size(54, 13);
             this.lProvincia.TabIndex = 0;
@@ -74,7 +74,7 @@
             // lSucursal
             // 
             this.lSucursal.AutoSize = true;
-            this.lSucursal.Location = new System.Drawing.Point(285, 17);
+            this.lSucursal.Location = new System.Drawing.Point(283, 12);
             this.lSucursal.Name = "lSucursal";
             this.lSucursal.Size = new System.Drawing.Size(51, 13);
             this.lSucursal.TabIndex = 1;
@@ -83,7 +83,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 53);
+            this.label1.Location = new System.Drawing.Point(17, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 2;
@@ -101,16 +101,16 @@
             // cmbSucursal
             // 
             this.cmbSucursal.FormattingEnabled = true;
-            this.cmbSucursal.Location = new System.Drawing.Point(342, 14);
+            this.cmbSucursal.Location = new System.Drawing.Point(340, 9);
             this.cmbSucursal.Name = "cmbSucursal";
-            this.cmbSucursal.Size = new System.Drawing.Size(128, 21);
+            this.cmbSucursal.Size = new System.Drawing.Size(109, 21);
             this.cmbSucursal.TabIndex = 4;
             // 
             // bBuscarCliente
             // 
-            this.bBuscarCliente.Location = new System.Drawing.Point(288, 48);
+            this.bBuscarCliente.Location = new System.Drawing.Point(286, 36);
             this.bBuscarCliente.Name = "bBuscarCliente";
-            this.bBuscarCliente.Size = new System.Drawing.Size(119, 23);
+            this.bBuscarCliente.Size = new System.Drawing.Size(163, 23);
             this.bBuscarCliente.TabIndex = 6;
             this.bBuscarCliente.Text = "Buscar cliente";
             this.bBuscarCliente.UseVisualStyleBackColor = true;
@@ -119,7 +119,7 @@
             // lListadoProductos
             // 
             this.lListadoProductos.AutoSize = true;
-            this.lListadoProductos.Location = new System.Drawing.Point(12, 98);
+            this.lListadoProductos.Location = new System.Drawing.Point(17, 72);
             this.lListadoProductos.Name = "lListadoProductos";
             this.lListadoProductos.Size = new System.Drawing.Size(110, 13);
             this.lListadoProductos.TabIndex = 7;
@@ -127,9 +127,9 @@
             // 
             // bBuscarProducto
             // 
-            this.bBuscarProducto.Location = new System.Drawing.Point(288, 88);
+            this.bBuscarProducto.Location = new System.Drawing.Point(286, 67);
             this.bBuscarProducto.Name = "bBuscarProducto";
-            this.bBuscarProducto.Size = new System.Drawing.Size(119, 23);
+            this.bBuscarProducto.Size = new System.Drawing.Size(163, 23);
             this.bBuscarProducto.TabIndex = 9;
             this.bBuscarProducto.Text = "Buscar producto";
             this.bBuscarProducto.UseVisualStyleBackColor = true;
@@ -138,7 +138,7 @@
             // lDescuento
             // 
             this.lDescuento.AutoSize = true;
-            this.lDescuento.Location = new System.Drawing.Point(15, 359);
+            this.lDescuento.Location = new System.Drawing.Point(17, 363);
             this.lDescuento.Name = "lDescuento";
             this.lDescuento.Size = new System.Drawing.Size(62, 13);
             this.lDescuento.TabIndex = 10;
@@ -146,16 +146,16 @@
             // 
             // txtDescuento
             // 
-            this.txtDescuento.Location = new System.Drawing.Point(126, 352);
+            this.txtDescuento.Location = new System.Drawing.Point(126, 356);
             this.txtDescuento.Name = "txtDescuento";
-            this.txtDescuento.Size = new System.Drawing.Size(121, 20);
+            this.txtDescuento.Size = new System.Drawing.Size(131, 20);
             this.txtDescuento.TabIndex = 11;
             this.txtDescuento.Leave += new System.EventHandler(this.txtDescuento_Leave);
             // 
             // lFormaPago
             // 
             this.lFormaPago.AutoSize = true;
-            this.lFormaPago.Location = new System.Drawing.Point(15, 381);
+            this.lFormaPago.Location = new System.Drawing.Point(17, 386);
             this.lFormaPago.Name = "lFormaPago";
             this.lFormaPago.Size = new System.Drawing.Size(82, 13);
             this.lFormaPago.TabIndex = 12;
@@ -164,9 +164,9 @@
             // cmbFormasPago
             // 
             this.cmbFormasPago.FormattingEnabled = true;
-            this.cmbFormasPago.Location = new System.Drawing.Point(126, 378);
+            this.cmbFormasPago.Location = new System.Drawing.Point(126, 383);
             this.cmbFormasPago.Name = "cmbFormasPago";
-            this.cmbFormasPago.Size = new System.Drawing.Size(121, 21);
+            this.cmbFormasPago.Size = new System.Drawing.Size(131, 21);
             this.cmbFormasPago.TabIndex = 13;
             this.cmbFormasPago.SelectedIndexChanged += new System.EventHandler(this.cmbFormasPago_SelectedIndexChanged);
             // 
@@ -192,7 +192,7 @@
             // lCuotas
             // 
             this.lCuotas.AutoSize = true;
-            this.lCuotas.Location = new System.Drawing.Point(285, 386);
+            this.lCuotas.Location = new System.Drawing.Point(283, 387);
             this.lCuotas.Name = "lCuotas";
             this.lCuotas.Size = new System.Drawing.Size(43, 13);
             this.lCuotas.TabIndex = 17;
@@ -201,9 +201,9 @@
             // 
             // txtCuotas
             // 
-            this.txtCuotas.Location = new System.Drawing.Point(370, 379);
+            this.txtCuotas.Location = new System.Drawing.Point(403, 384);
             this.txtCuotas.Name = "txtCuotas";
-            this.txtCuotas.Size = new System.Drawing.Size(100, 20);
+            this.txtCuotas.Size = new System.Drawing.Size(67, 20);
             this.txtCuotas.TabIndex = 18;
             this.txtCuotas.Visible = false;
             this.txtCuotas.Leave += new System.EventHandler(this.txtCuotas_Leave);
@@ -214,26 +214,26 @@
             this.dataListadoProductos.AllowUserToDeleteRows = false;
             this.dataListadoProductos.AllowUserToOrderColumns = true;
             this.dataListadoProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListadoProductos.Location = new System.Drawing.Point(15, 150);
+            this.dataListadoProductos.Location = new System.Drawing.Point(15, 127);
             this.dataListadoProductos.Name = "dataListadoProductos";
             this.dataListadoProductos.ReadOnly = true;
             this.dataListadoProductos.RowHeadersVisible = false;
             this.dataListadoProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListadoProductos.Size = new System.Drawing.Size(455, 168);
+            this.dataListadoProductos.Size = new System.Drawing.Size(465, 191);
             this.dataListadoProductos.TabIndex = 19;
             // 
             // txtCliente
             // 
             this.txtCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCliente.Location = new System.Drawing.Point(128, 48);
+            this.txtCliente.Location = new System.Drawing.Point(126, 40);
             this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(129, 21);
+            this.txtCliente.Size = new System.Drawing.Size(131, 21);
             this.txtCliente.TabIndex = 20;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(123, 330);
+            this.label2.Location = new System.Drawing.Point(17, 337);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 22;
@@ -242,15 +242,15 @@
             // lTotal
             // 
             this.lTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lTotal.Location = new System.Drawing.Point(163, 323);
+            this.lTotal.Location = new System.Drawing.Point(126, 330);
             this.lTotal.Name = "lTotal";
-            this.lTotal.Size = new System.Drawing.Size(100, 20);
+            this.lTotal.Size = new System.Drawing.Size(131, 20);
             this.lTotal.TabIndex = 23;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(285, 330);
+            this.label3.Location = new System.Drawing.Point(283, 337);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 13);
             this.label3.TabIndex = 24;
@@ -259,7 +259,7 @@
             // lTotalDescuento
             // 
             this.lTotalDescuento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lTotalDescuento.Location = new System.Drawing.Point(403, 323);
+            this.lTotalDescuento.Location = new System.Drawing.Point(403, 330);
             this.lTotalDescuento.Name = "lTotalDescuento";
             this.lTotalDescuento.Size = new System.Drawing.Size(67, 20);
             this.lTotalDescuento.TabIndex = 25;
@@ -267,15 +267,15 @@
             // txtProducto
             // 
             this.txtProducto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProducto.Location = new System.Drawing.Point(128, 90);
+            this.txtProducto.Location = new System.Drawing.Point(126, 71);
             this.txtProducto.Name = "txtProducto";
-            this.txtProducto.Size = new System.Drawing.Size(129, 21);
+            this.txtProducto.Size = new System.Drawing.Size(131, 21);
             this.txtProducto.TabIndex = 26;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 125);
+            this.label5.Location = new System.Drawing.Point(17, 101);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 27;
@@ -283,35 +283,25 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(126, 122);
+            this.txtCantidad.Location = new System.Drawing.Point(126, 98);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(131, 20);
             this.txtCantidad.TabIndex = 28;
             // 
             // bAgregarProducto
             // 
-            this.bAgregarProducto.Location = new System.Drawing.Point(288, 120);
+            this.bAgregarProducto.Location = new System.Drawing.Point(286, 96);
             this.bAgregarProducto.Name = "bAgregarProducto";
-            this.bAgregarProducto.Size = new System.Drawing.Size(116, 23);
+            this.bAgregarProducto.Size = new System.Drawing.Size(163, 23);
             this.bAgregarProducto.TabIndex = 29;
             this.bAgregarProducto.Text = "Agregar producto";
             this.bAgregarProducto.UseVisualStyleBackColor = true;
             this.bAgregarProducto.Click += new System.EventHandler(this.bAgregarProducto_Click);
             // 
-            // lErrorCantidad
-            // 
-            this.lErrorCantidad.AutoSize = true;
-            this.lErrorCantidad.Location = new System.Drawing.Point(87, 127);
-            this.lErrorCantidad.Name = "lErrorCantidad";
-            this.lErrorCantidad.Size = new System.Drawing.Size(11, 13);
-            this.lErrorCantidad.TabIndex = 30;
-            this.lErrorCantidad.Text = "*";
-            this.lErrorCantidad.Visible = false;
-            // 
             // lCuota
             // 
             this.lCuota.AutoSize = true;
-            this.lCuota.Location = new System.Drawing.Point(283, 355);
+            this.lCuota.Location = new System.Drawing.Point(283, 363);
             this.lCuota.Name = "lCuota";
             this.lCuota.Size = new System.Drawing.Size(82, 13);
             this.lCuota.TabIndex = 31;
@@ -321,29 +311,45 @@
             // lTotalCuota
             // 
             this.lTotalCuota.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lTotalCuota.Location = new System.Drawing.Point(403, 352);
+            this.lTotalCuota.Location = new System.Drawing.Point(403, 359);
             this.lTotalCuota.Name = "lTotalCuota";
             this.lTotalCuota.Size = new System.Drawing.Size(67, 20);
             this.lTotalCuota.TabIndex = 32;
             this.lTotalCuota.Visible = false;
             // 
+            // lErrorCantidad
+            // 
+            this.lErrorCantidad.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorCantidad.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lErrorCantidad.ForeColor = System.Drawing.Color.Red;
+            this.lErrorCantidad.Location = new System.Drawing.Point(263, 96);
+            this.lErrorCantidad.Name = "lErrorCantidad";
+            this.lErrorCantidad.Size = new System.Drawing.Size(22, 15);
+            this.lErrorCantidad.TabIndex = 71;
+            this.lErrorCantidad.Text = "*";
+            this.lErrorCantidad.Visible = false;
+            // 
             // lErrorDescuento
             // 
-            this.lErrorDescuento.AutoSize = true;
-            this.lErrorDescuento.Location = new System.Drawing.Point(5, 358);
+            this.lErrorDescuento.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorDescuento.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lErrorDescuento.ForeColor = System.Drawing.Color.Red;
+            this.lErrorDescuento.Location = new System.Drawing.Point(263, 356);
             this.lErrorDescuento.Name = "lErrorDescuento";
-            this.lErrorDescuento.Size = new System.Drawing.Size(11, 13);
-            this.lErrorDescuento.TabIndex = 33;
+            this.lErrorDescuento.Size = new System.Drawing.Size(22, 15);
+            this.lErrorDescuento.TabIndex = 72;
             this.lErrorDescuento.Text = "*";
             this.lErrorDescuento.Visible = false;
             // 
             // lErrorCuotas
             // 
-            this.lErrorCuotas.AutoSize = true;
-            this.lErrorCuotas.Location = new System.Drawing.Point(268, 386);
+            this.lErrorCuotas.BackColor = System.Drawing.Color.Transparent;
+            this.lErrorCuotas.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lErrorCuotas.ForeColor = System.Drawing.Color.Red;
+            this.lErrorCuotas.Location = new System.Drawing.Point(476, 385);
             this.lErrorCuotas.Name = "lErrorCuotas";
-            this.lErrorCuotas.Size = new System.Drawing.Size(11, 13);
-            this.lErrorCuotas.TabIndex = 34;
+            this.lErrorCuotas.Size = new System.Drawing.Size(22, 15);
+            this.lErrorCuotas.TabIndex = 73;
             this.lErrorCuotas.Text = "*";
             this.lErrorCuotas.Visible = false;
             // 
@@ -351,12 +357,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 459);
+            this.ClientSize = new System.Drawing.Size(494, 435);
             this.Controls.Add(this.lErrorCuotas);
             this.Controls.Add(this.lErrorDescuento);
+            this.Controls.Add(this.lErrorCantidad);
             this.Controls.Add(this.lTotalCuota);
             this.Controls.Add(this.lCuota);
-            this.Controls.Add(this.lErrorCantidad);
             this.Controls.Add(this.bAgregarProducto);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.label5);
@@ -420,9 +426,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Button bAgregarProducto;
-        private System.Windows.Forms.Label lErrorCantidad;
         private System.Windows.Forms.Label lCuota;
         private System.Windows.Forms.Label lTotalCuota;
+        private System.Windows.Forms.Label lErrorCantidad;
         private System.Windows.Forms.Label lErrorDescuento;
         private System.Windows.Forms.Label lErrorCuotas;
     }

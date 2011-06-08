@@ -130,13 +130,11 @@ namespace VentaElectrodomesticos.Facturacion {
             ViewHelper.fillDataGridItemFactura(dataListadoProductos, new List<ItemFacturaMock>(itemsFacturaByProductoCodigo.Values));
             ShowMonto();
         }
-
         private void ShowMonto() {
             lTotal.Text = String.Format("{0:#,##0.00}", total);
             lTotalDescuento.Text = String.Format("{0:#,##0.00}", total * (1 - descuento));
             lTotalCuota.Text = String.Format("{0:#,##0.00}", (total/cuotas) * (1 - descuento));
         }
-
         private void bAceptar_Click(object sender, EventArgs e) {
             if (!validatorCrearFactura.check()) return;
             Context.instance.dao.factura.nueva(
@@ -148,7 +146,6 @@ namespace VentaElectrodomesticos.Facturacion {
             );
             limpiar();
         }
-
         private void limpiar() {
             producto = null;
             total = 0;
@@ -162,7 +159,6 @@ namespace VentaElectrodomesticos.Facturacion {
             itemsFacturaByProductoCodigo = new Dictionary<int, ItemFacturaMock>();
             ViewHelper.fillDataGridItemFactura(dataListadoProductos, new List<ItemFacturaMock>());
         }
-
         private void txtDescuento_Leave(object sender, EventArgs e) {
             Boolean error = false;
             try {
@@ -178,7 +174,6 @@ namespace VentaElectrodomesticos.Facturacion {
             descuento = Double.Parse(txtDescuento.Text);
             ShowMonto();
         }
-
         private void txtCuotas_Leave(object sender, EventArgs e) {
             cuotas = Byte.Parse(txtCuotas.Text);
             if (cuotas < 1 || cuotas > 12) {
@@ -187,6 +182,5 @@ namespace VentaElectrodomesticos.Facturacion {
             txtCuotas.Text = String.Format("{0}", cuotas);
             ShowMonto();
         }
-
     }
 }

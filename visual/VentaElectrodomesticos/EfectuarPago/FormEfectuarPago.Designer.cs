@@ -46,7 +46,7 @@
             // 
             // txtCuotas
             // 
-            this.txtCuotas.Location = new System.Drawing.Point(96, 288);
+            this.txtCuotas.Location = new System.Drawing.Point(96, 292);
             this.txtCuotas.Name = "txtCuotas";
             this.txtCuotas.Size = new System.Drawing.Size(90, 20);
             this.txtCuotas.TabIndex = 37;
@@ -62,7 +62,7 @@
             // 
             // bAceptar
             // 
-            this.bAceptar.Location = new System.Drawing.Point(505, 331);
+            this.bAceptar.Location = new System.Drawing.Point(527, 324);
             this.bAceptar.Name = "bAceptar";
             this.bAceptar.Size = new System.Drawing.Size(75, 23);
             this.bAceptar.TabIndex = 34;
@@ -72,7 +72,7 @@
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(11, 331);
+            this.bCancelar.Location = new System.Drawing.Point(15, 324);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
             this.bCancelar.TabIndex = 33;
@@ -82,7 +82,7 @@
             // 
             // bBuscarCliente
             // 
-            this.bBuscarCliente.Location = new System.Drawing.Point(327, 33);
+            this.bBuscarCliente.Location = new System.Drawing.Point(407, 36);
             this.bBuscarCliente.Name = "bBuscarCliente";
             this.bBuscarCliente.Size = new System.Drawing.Size(119, 23);
             this.bBuscarCliente.TabIndex = 26;
@@ -93,25 +93,25 @@
             // cmbSucursal
             // 
             this.cmbSucursal.FormattingEnabled = true;
-            this.cmbSucursal.Location = new System.Drawing.Point(96, 68);
+            this.cmbSucursal.Location = new System.Drawing.Point(176, 65);
             this.cmbSucursal.Name = "cmbSucursal";
-            this.cmbSucursal.Size = new System.Drawing.Size(301, 21);
+            this.cmbSucursal.Size = new System.Drawing.Size(350, 21);
             this.cmbSucursal.TabIndex = 24;
             this.cmbSucursal.SelectedIndexChanged += new System.EventHandler(this.cmbSucursal_SelectedIndexChanged);
             // 
             // cmbProvincia
             // 
             this.cmbProvincia.FormattingEnabled = true;
-            this.cmbProvincia.Location = new System.Drawing.Point(96, 6);
+            this.cmbProvincia.Location = new System.Drawing.Point(176, 9);
             this.cmbProvincia.Name = "cmbProvincia";
-            this.cmbProvincia.Size = new System.Drawing.Size(301, 21);
+            this.cmbProvincia.Size = new System.Drawing.Size(350, 21);
             this.cmbProvincia.TabIndex = 23;
             this.cmbProvincia.SelectedIndexChanged += new System.EventHandler(this.cmbProvincia_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 41);
+            this.label1.Location = new System.Drawing.Point(88, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 22;
@@ -120,7 +120,7 @@
             // lSucursal
             // 
             this.lSucursal.AutoSize = true;
-            this.lSucursal.Location = new System.Drawing.Point(10, 76);
+            this.lSucursal.Location = new System.Drawing.Point(88, 73);
             this.lSucursal.Name = "lSucursal";
             this.lSucursal.Size = new System.Drawing.Size(51, 13);
             this.lSucursal.TabIndex = 21;
@@ -129,7 +129,7 @@
             // lProvincia
             // 
             this.lProvincia.AutoSize = true;
-            this.lProvincia.Location = new System.Drawing.Point(8, 14);
+            this.lProvincia.Location = new System.Drawing.Point(88, 17);
             this.lProvincia.Name = "lProvincia";
             this.lProvincia.Size = new System.Drawing.Size(54, 13);
             this.lProvincia.TabIndex = 20;
@@ -138,7 +138,7 @@
             // lFactura
             // 
             this.lFactura.AutoSize = true;
-            this.lFactura.Location = new System.Drawing.Point(10, 105);
+            this.lFactura.Location = new System.Drawing.Point(10, 92);
             this.lFactura.Name = "lFactura";
             this.lFactura.Size = new System.Drawing.Size(46, 13);
             this.lFactura.TabIndex = 39;
@@ -147,7 +147,7 @@
             // txtCliente
             // 
             this.txtCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCliente.Location = new System.Drawing.Point(96, 33);
+            this.txtCliente.Location = new System.Drawing.Point(176, 36);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(226, 21);
             this.txtCliente.TabIndex = 41;
@@ -157,19 +157,19 @@
             this.dataFacturas.AllowUserToAddRows = false;
             this.dataFacturas.AllowUserToDeleteRows = false;
             this.dataFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataFacturas.Location = new System.Drawing.Point(13, 122);
+            this.dataFacturas.Location = new System.Drawing.Point(13, 108);
             this.dataFacturas.Name = "dataFacturas";
             this.dataFacturas.ReadOnly = true;
             this.dataFacturas.RowHeadersVisible = false;
             this.dataFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataFacturas.Size = new System.Drawing.Size(557, 150);
+            this.dataFacturas.Size = new System.Drawing.Size(589, 178);
             this.dataFacturas.TabIndex = 42;
             // 
             // FormEfectuarPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 371);
+            this.ClientSize = new System.Drawing.Size(614, 359);
             this.Controls.Add(this.dataFacturas);
             this.Controls.Add(this.txtCliente);
             this.Controls.Add(this.lFactura);

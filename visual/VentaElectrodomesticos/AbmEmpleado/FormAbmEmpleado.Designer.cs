@@ -169,7 +169,7 @@
             // cmbSucursal
             // 
             this.cmbSucursal.FormattingEnabled = true;
-            this.cmbSucursal.Location = new System.Drawing.Point(322, 103);
+            this.cmbSucursal.Location = new System.Drawing.Point(322, 102);
             this.cmbSucursal.Name = "cmbSucursal";
             this.cmbSucursal.Size = new System.Drawing.Size(121, 21);
             this.cmbSucursal.TabIndex = 16;
@@ -178,7 +178,7 @@
             // cmbTipoEmpleado
             // 
             this.cmbTipoEmpleado.FormattingEnabled = true;
-            this.cmbTipoEmpleado.Location = new System.Drawing.Point(322, 131);
+            this.cmbTipoEmpleado.Location = new System.Drawing.Point(322, 128);
             this.cmbTipoEmpleado.Name = "cmbTipoEmpleado";
             this.cmbTipoEmpleado.Size = new System.Drawing.Size(121, 21);
             this.cmbTipoEmpleado.TabIndex = 17;

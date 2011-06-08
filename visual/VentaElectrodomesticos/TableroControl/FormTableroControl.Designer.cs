@@ -56,7 +56,7 @@
             this.cmbSucursal.FormattingEnabled = true;
             this.cmbSucursal.Location = new System.Drawing.Point(125, 12);
             this.cmbSucursal.Name = "cmbSucursal";
-            this.cmbSucursal.Size = new System.Drawing.Size(179, 21);
+            this.cmbSucursal.Size = new System.Drawing.Size(208, 21);
             this.cmbSucursal.TabIndex = 26;
             this.cmbSucursal.SelectedIndexChanged += new System.EventHandler(this.cmbSucursal_SelectedIndexChanged);
             // 
@@ -74,7 +74,7 @@
             this.cmbAnioAnalizar.FormattingEnabled = true;
             this.cmbAnioAnalizar.Location = new System.Drawing.Point(125, 39);
             this.cmbAnioAnalizar.Name = "cmbAnioAnalizar";
-            this.cmbAnioAnalizar.Size = new System.Drawing.Size(179, 21);
+            this.cmbAnioAnalizar.Size = new System.Drawing.Size(208, 21);
             this.cmbAnioAnalizar.TabIndex = 28;
             this.cmbAnioAnalizar.SelectedIndexChanged += new System.EventHandler(this.cmbAnioAnalizar_SelectedIndexChanged);
             // 
@@ -126,7 +126,7 @@
             // lMayorDeudor
             // 
             this.lMayorDeudor.AutoSize = true;
-            this.lMayorDeudor.Location = new System.Drawing.Point(334, 194);
+            this.lMayorDeudor.Location = new System.Drawing.Point(335, 194);
             this.lMayorDeudor.Name = "lMayorDeudor";
             this.lMayorDeudor.Size = new System.Drawing.Size(74, 13);
             this.lMayorDeudor.TabIndex = 33;
@@ -135,7 +135,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(334, 226);
+            this.label1.Location = new System.Drawing.Point(335, 226);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 13);
             this.label1.TabIndex = 34;
@@ -153,7 +153,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(334, 315);
+            this.label3.Location = new System.Drawing.Point(334, 282);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 36;
@@ -161,7 +161,7 @@
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(125, 346);
+            this.bCancelar.Location = new System.Drawing.Point(199, 328);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
             this.bCancelar.TabIndex = 37;
@@ -226,7 +226,7 @@
             // lValorProductoAnio
             // 
             this.lValorProductoAnio.AutoSize = true;
-            this.lValorProductoAnio.Location = new System.Drawing.Point(38, 286);
+            this.lValorProductoAnio.Location = new System.Drawing.Point(38, 257);
             this.lValorProductoAnio.Name = "lValorProductoAnio";
             this.lValorProductoAnio.Size = new System.Drawing.Size(10, 13);
             this.lValorProductoAnio.TabIndex = 44;
@@ -235,7 +235,7 @@
             // lValorFaltanteStock
             // 
             this.lValorFaltanteStock.AutoSize = true;
-            this.lValorFaltanteStock.Location = new System.Drawing.Point(38, 315);
+            this.lValorFaltanteStock.Location = new System.Drawing.Point(38, 282);
             this.lValorFaltanteStock.Name = "lValorFaltanteStock";
             this.lValorFaltanteStock.Size = new System.Drawing.Size(10, 13);
             this.lValorFaltanteStock.TabIndex = 45;
@@ -245,7 +245,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 381);
+            this.ClientSize = new System.Drawing.Size(473, 360);
             this.Controls.Add(this.lValorFaltanteStock);
             this.Controls.Add(this.lValorProductoAnio);
             this.Controls.Add(this.lValorVendedorAnio);

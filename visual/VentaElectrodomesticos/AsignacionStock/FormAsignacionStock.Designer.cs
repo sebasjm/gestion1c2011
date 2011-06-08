@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lProducto = new System.Windows.Forms.Label();
             this.lSucursal = new System.Windows.Forms.Label();
             this.lAuditor = new System.Windows.Forms.Label();
@@ -85,7 +85,7 @@
             // 
             // bProducto
             // 
-            this.bProducto.Location = new System.Drawing.Point(215, 13);
+            this.bProducto.Location = new System.Drawing.Point(204, 8);
             this.bProducto.Name = "bProducto";
             this.bProducto.Size = new System.Drawing.Size(75, 23);
             this.bProducto.TabIndex = 6;
@@ -95,7 +95,7 @@
             // 
             // bAuditor
             // 
-            this.bAuditor.Location = new System.Drawing.Point(215, 82);
+            this.bAuditor.Location = new System.Drawing.Point(204, 81);
             this.bAuditor.Name = "bAuditor";
             this.bAuditor.Size = new System.Drawing.Size(75, 23);
             this.bAuditor.TabIndex = 7;
@@ -108,34 +108,34 @@
             this.dataStock.AllowUserToAddRows = false;
             this.dataStock.AllowUserToDeleteRows = false;
             this.dataStock.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataStock.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataStock.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataStock.Location = new System.Drawing.Point(19, 120);
             this.dataStock.MultiSelect = false;
             this.dataStock.Name = "dataStock";
             this.dataStock.RowHeadersVisible = false;
             this.dataStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataStock.Size = new System.Drawing.Size(493, 259);
+            this.dataStock.Size = new System.Drawing.Size(568, 259);
             this.dataStock.TabIndex = 8;
             // 
             // bAsignarOtro
             // 
-            this.bAsignarOtro.Location = new System.Drawing.Point(205, 385);
+            this.bAsignarOtro.Location = new System.Drawing.Point(431, 385);
             this.bAsignarOtro.Name = "bAsignarOtro";
             this.bAsignarOtro.Size = new System.Drawing.Size(75, 23);
             this.bAsignarOtro.TabIndex = 66;
@@ -145,7 +145,7 @@
             // 
             // bLimpiar
             // 
-            this.bLimpiar.Location = new System.Drawing.Point(109, 385);
+            this.bLimpiar.Location = new System.Drawing.Point(100, 385);
             this.bLimpiar.Name = "bLimpiar";
             this.bLimpiar.Size = new System.Drawing.Size(75, 23);
             this.bLimpiar.TabIndex = 65;
@@ -155,7 +155,7 @@
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(15, 385);
+            this.bCancelar.Location = new System.Drawing.Point(19, 385);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
             this.bCancelar.TabIndex = 64;
@@ -165,7 +165,7 @@
             // 
             // bAceptar
             // 
-            this.bAceptar.Location = new System.Drawing.Point(305, 385);
+            this.bAceptar.Location = new System.Drawing.Point(512, 385);
             this.bAceptar.Name = "bAceptar";
             this.bAceptar.Size = new System.Drawing.Size(75, 23);
             this.bAceptar.TabIndex = 63;
@@ -195,7 +195,7 @@
             this.lErrorAuditor.BackColor = System.Drawing.Color.Transparent;
             this.lErrorAuditor.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lErrorAuditor.ForeColor = System.Drawing.Color.Red;
-            this.lErrorAuditor.Location = new System.Drawing.Point(300, 82);
+            this.lErrorAuditor.Location = new System.Drawing.Point(285, 82);
             this.lErrorAuditor.Name = "lErrorAuditor";
             this.lErrorAuditor.Size = new System.Drawing.Size(22, 29);
             this.lErrorAuditor.TabIndex = 76;
@@ -206,7 +206,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 420);
+            this.ClientSize = new System.Drawing.Size(605, 420);
             this.Controls.Add(this.lErrorAuditor);
             this.Controls.Add(this.txtAuditor);
             this.Controls.Add(this.txtProducto);
