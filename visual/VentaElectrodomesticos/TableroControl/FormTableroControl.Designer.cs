@@ -153,7 +153,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(334, 282);
+            this.label3.Location = new System.Drawing.Point(334, 303);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 36;
@@ -225,17 +225,16 @@
             // 
             // lValorProductoAnio
             // 
-            this.lValorProductoAnio.AutoSize = true;
             this.lValorProductoAnio.Location = new System.Drawing.Point(38, 257);
             this.lValorProductoAnio.Name = "lValorProductoAnio";
-            this.lValorProductoAnio.Size = new System.Drawing.Size(10, 13);
+            this.lValorProductoAnio.Size = new System.Drawing.Size(290, 46);
             this.lValorProductoAnio.TabIndex = 44;
             this.lValorProductoAnio.Text = "-";
             // 
             // lValorFaltanteStock
             // 
             this.lValorFaltanteStock.AutoSize = true;
-            this.lValorFaltanteStock.Location = new System.Drawing.Point(38, 282);
+            this.lValorFaltanteStock.Location = new System.Drawing.Point(38, 303);
             this.lValorFaltanteStock.Name = "lValorFaltanteStock";
             this.lValorFaltanteStock.Size = new System.Drawing.Size(10, 13);
             this.lValorFaltanteStock.TabIndex = 45;

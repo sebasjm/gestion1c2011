@@ -48,7 +48,8 @@ namespace VentaElectrodomesticos.Controladores {
         class ProporcionFormasDePagoMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
                 return new ProporcionFormasDePago(
-                        sdr.GetDouble(0)
+                        sdr.GetInt32(0),
+                        sdr.GetInt32(1)
                     );
             }
         }
@@ -175,7 +176,11 @@ namespace VentaElectrodomesticos.Controladores {
             "ORDER BY sum(cantidad) DESC ";
 
         private static readonly String TABLERO_PROPORCIONAL_FORMA_DE_PAGO =
-            "";
+             "SELECT  ISNULL(sum(CASE WHEN cuotas = 0  THEN 1 ELSE 0 END ),0) as contado , " +
+             "        ISNULL(sum(CASE WHEN cuotas > 0  THEN 1 ELSE 0 END ),0) as cuotas " +
+             "FROM la_huerta.Factura AS f " +
+             "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni " +
+             FILTRO_SUCURSAL_ANIO;
 
         private static readonly String TABLERO_FALTANTE_STOCK =
             "la_huerta.dias_sin_stock";

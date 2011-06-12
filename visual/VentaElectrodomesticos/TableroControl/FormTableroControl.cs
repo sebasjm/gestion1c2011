@@ -44,7 +44,7 @@ namespace VentaElectrodomesticos.TableroControl {
             if (sucursal == null) return;
             lValorTotalVentas.Text = "" + Context.instance.dao.tablero.calcularTotalVentas(sucursal.id, anio);
             lValorMayorFactura.Text = "" + Context.instance.dao.tablero.calcularMayorFactura(sucursal.id, anio);
-            //lProporcionFormaPago.Text = "" + Context.instance.dao.tablero.calcularProporcionFormasDePago(sucursal.id, anio);
+            lValorProporcionFormaPago.Text = "" + Context.instance.dao.tablero.calcularProporcionFormasDePago(sucursal.id, anio);
             lValorTotalFacturacion.Text = "" + Context.instance.dao.tablero.calcularTotalFacturacion(sucursal.id, anio);
             lValorFaltanteStock.Text = "" + Context.instance.dao.tablero.calcularFaltanteStock(sucursal.id, anio);
             lValorMayorDeudor.Text = "" + Context.instance.dao.tablero.calcularMayorDeudor(sucursal.id, anio);
