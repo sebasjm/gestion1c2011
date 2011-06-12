@@ -4,23 +4,23 @@ using System.Linq;
 using System.Text;
 
 namespace VentaElectrodomesticos.Modelo.Tablero {
-    class ProporcionFormasDePago {
-        public ProporcionFormasDePago(Double contado) {
-            this.contado = contado;
+    class ProporcionFormasDePago    {
+        public ProporcionFormasDePago(Int32 _contado, Int32 _cuotas)        {
+            this.contado = _contado;
+            this.cuotas = _cuotas;
         }
-
-        public Double contado {
+        public Int32 contado        {
             get;
             private set;
         }
-
-        public Double cuotas {
-            get { return 1 - contado; }
+        public Int32 cuotas        {
+            get;
+            private set;
         }
-
-        public override string ToString() {
-            return "" + contado + " - " + cuotas;
+        public override string ToString()        {
+            Int32 total = contado + cuotas;
+            if (total == 0) total = 1;
+            return "" + (contado / total) * 100 + "% - " + (cuotas / total) * 100 + "%";
         }
-
     }
 }
