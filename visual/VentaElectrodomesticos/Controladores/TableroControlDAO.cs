@@ -176,6 +176,7 @@ namespace VentaElectrodomesticos.Controladores {
 
         private static readonly String TABLERO_PROPORCIONAL_FORMA_DE_PAGO =
             "";
+
         private static readonly String TABLERO_FALTANTE_STOCK =
             "la_huerta.dias_sin_stock";
 

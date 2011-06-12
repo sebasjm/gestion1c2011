@@ -19,8 +19,9 @@ namespace VentaElectrodomesticos.MejoresCategorias {
         }
         private void fillAnios() {
             for (int n = 1995; n <= 2100; n++) {
-                cmbAnioAnalizar.Items.Add(n);
+                cmbAnioAnalizar.Items.Add(""+n);
             }
+            cmbAnioAnalizar.SelectedItem = anio;
         }
         private void bCancelar_Click(object sender, EventArgs e) {
             this.Close();
@@ -38,6 +39,7 @@ namespace VentaElectrodomesticos.MejoresCategorias {
             anio = (String)cmbAnioAnalizar.SelectedItem;
             doSearch();
         }
+        
         private void doSearch() {
             if (sucursal == null) return;
         }

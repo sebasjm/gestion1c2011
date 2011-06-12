@@ -532,8 +532,8 @@ ORDER BY
 INSERT INTO [la_huerta].[Pago] 
 SELECT 
 	factura_nro as factura,
-	pago_fecha as fecha,
-	f.cuotas * pago_monto / (f.total * (1-f.descuento)) as cuotas,
+	pago_fecha as fecha,	
+	0.001 + f.cuotas * pago_monto / (f.total * (1-f.descuento)) as cuotas,
 	f.empleado_dni as empleado
 FROM gd_esquema.Maestra 
 JOIN la_huerta.Factura as f ON factura_nro = f.numero
@@ -734,6 +734,7 @@ insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (10,'Me
 ----------------
 
 -- Se agregaron los insert de las Funcionalidades del Admin.
+insert into la_huerta.Rol (nombre,descripcion,activo) values ('Admin', 'Rol administrador',1)
 insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 1)
 insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 2)
 insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 3)
@@ -744,3 +745,5 @@ insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 ,
 insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 8)
 insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 9)
 insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 10)
+
+insert into la_huerta.UsuarioRol values ( 1, 1 )
