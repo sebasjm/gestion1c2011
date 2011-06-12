@@ -551,77 +551,54 @@ ORDER BY pago_fecha
 -- 8
 insert into la_huerta.Categoria
 select 
-	row_number() OVER (ORDER BY nombre) AS id, 
+	row_number() OVER (ORDER BY la_huerta.split(producto_cate,'¦',0)) AS id, 
 	NULL as categoria_padre,
-	nombre
-from (
-	select
 	la_huerta.split(producto_cate,'¦',0) as nombre
-	from gd_esquema.Maestra
-	where producto_cate is not null
-	group by producto_cate
-) tabla
-where nombre <> ''
-group by nombre
-order by nombre
+from gd_esquema.Maestra
+where producto_cate is not null
+and la_huerta.split(producto_cate,'¦',0) <> ''
+group by la_huerta.split(producto_cate,'¦',0)
+order by la_huerta.split(producto_cate,'¦',0)
 
 -- 30
 insert into la_huerta.Categoria
 select 
-	row_number() OVER (order by cat.id, tabla.nombre) + 8 AS id, 
+	row_number() OVER (order by cat.id, la_huerta.split(producto_cate,'¦',1)) + 8 AS id, 
 	cat.id,
-	tabla.nombre
-from (
-select 
-	la_huerta.split(producto_cate,'¦',1) as nombre,
-	la_huerta.split(producto_cate,'¦',0) as categoria_padre
-	from gd_esquema.Maestra
-	where producto_cate is not null
-	group by producto_cate
-) tabla
-join la_huerta.Categoria as cat on cat.nombre = tabla.categoria_padre
-where tabla.nombre <> ''
-group by cat.id, tabla.nombre
-order by cat.id, tabla.nombre
+	la_huerta.split(producto_cate,'¦',1) as nombreT
+from gd_esquema.Maestra
+join la_huerta.Categoria as cat on cat.nombre = la_huerta.split(producto_cate,'¦',0)
+where producto_cate is not null
+and la_huerta.split(producto_cate,'¦',1) <> ''
+group by cat.id, la_huerta.split(producto_cate,'¦',1)
+order by cat.id, la_huerta.split(producto_cate,'¦',1)
 
 
 -- 31
 insert into la_huerta.Categoria
 select 
-	row_number() OVER (order by cat.id, tabla.nombre) + 38 AS id, 
+	row_number() OVER (order by cat.id, la_huerta.split(producto_cate,'¦',2)) + 38 AS id, 
 	cat.id,
-	tabla.nombre
-from (
-select 
-	la_huerta.split(producto_cate,'¦',2) as nombre,
-	la_huerta.split(producto_cate,'¦',1) as categoria_padre
-	from gd_esquema.Maestra
-	where producto_cate is not null
-	group by producto_cate
-) tabla
-join la_huerta.Categoria as cat on cat.nombre = tabla.categoria_padre
-where tabla.nombre <> ''
-group by cat.id, tabla.nombre
-order by cat.id, tabla.nombre
+	la_huerta.split(producto_cate,'¦',2)
+from gd_esquema.Maestra
+join la_huerta.Categoria as cat on cat.nombre = la_huerta.split(producto_cate,'¦',1)
+where producto_cate is not null
+and la_huerta.split(producto_cate,'¦',2) <> ''
+group by cat.id, la_huerta.split(producto_cate,'¦',2)
+order by cat.id, la_huerta.split(producto_cate,'¦',2)
 
 -- 24
 insert into la_huerta.Categoria
 select 
-	row_number() OVER (order by cat.id, tabla.nombre) + 69 AS id, 
+	row_number() OVER (order by cat.id, la_huerta.split(producto_cate,'¦',3)) + 69 AS id, 
 	cat.id,
-	tabla.nombre
-from (
-select 
-	la_huerta.split(producto_cate,'¦',3) as nombre,
-	la_huerta.split(producto_cate,'¦',2) as categoria_padre
-	from gd_esquema.Maestra
-	where producto_cate is not null
-	group by producto_cate
-) tabla
-join la_huerta.Categoria as cat on cat.nombre = tabla.categoria_padre
-where tabla.nombre <> ''
-group by cat.id, tabla.nombre
-order by cat.id, tabla.nombre
+	la_huerta.split(producto_cate,'¦',3)
+from gd_esquema.Maestra
+join la_huerta.Categoria as cat on cat.nombre = la_huerta.split(producto_cate,'¦',2)
+where producto_cate is not null
+and la_huerta.split(producto_cate,'¦',3) <> ''
+group by cat.id, la_huerta.split(producto_cate,'¦',3)
+order by cat.id, la_huerta.split(producto_cate,'¦',3)
 
 -- 99
 INSERT INTO [la_huerta].[Producto] 
