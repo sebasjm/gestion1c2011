@@ -33,7 +33,7 @@
             this.lAnioAnalizar = new System.Windows.Forms.Label();
             this.cmbSucursal = new System.Windows.Forms.ComboBox();
             this.lSucursal = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataCategorias = new System.Windows.Forms.DataGridView();
             this.NombreCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadSubCategorias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MontoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,12 +41,12 @@
             this.NombreProductoMasMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreProductoMasCaro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreApellidoVendedorMasVendio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataCategorias)).BeginInit();
             this.SuspendLayout();
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(700, 231);
+            this.bCancelar.Location = new System.Drawing.Point(865, 346);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
             this.bCancelar.TabIndex = 43;
@@ -90,11 +90,14 @@
             this.lSucursal.TabIndex = 39;
             this.lSucursal.Text = "Sucursal:";
             // 
-            // dataGridView1
+            // dataCategorias
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataCategorias.AllowUserToAddRows = false;
+            this.dataCategorias.AllowUserToDeleteRows = false;
+            this.dataCategorias.AllowUserToOrderColumns = true;
+            this.dataCategorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataCategorias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NombreCategoria,
             this.CantidadSubCategorias,
             this.MontoTotal,
@@ -102,52 +105,68 @@
             this.NombreProductoMasMonto,
             this.NombreProductoMasCaro,
             this.NombreApellidoVendedorMasVendio});
-            this.dataGridView1.Location = new System.Drawing.Point(32, 75);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(743, 150);
-            this.dataGridView1.TabIndex = 44;
+            this.dataCategorias.Location = new System.Drawing.Point(32, 75);
+            this.dataCategorias.Name = "dataCategorias";
+            this.dataCategorias.ReadOnly = true;
+            this.dataCategorias.RowHeadersVisible = false;
+            this.dataCategorias.Size = new System.Drawing.Size(908, 265);
+            this.dataCategorias.TabIndex = 44;
             // 
             // NombreCategoria
             // 
             this.NombreCategoria.HeaderText = "Nombre de la Categoría";
             this.NombreCategoria.Name = "NombreCategoria";
+            this.NombreCategoria.ReadOnly = true;
+            this.NombreCategoria.Width = 83;
             // 
             // CantidadSubCategorias
             // 
             this.CantidadSubCategorias.HeaderText = "Cantidad de Sub Categorías";
             this.CantidadSubCategorias.Name = "CantidadSubCategorias";
+            this.CantidadSubCategorias.ReadOnly = true;
+            this.CantidadSubCategorias.Width = 85;
             // 
             // MontoTotal
             // 
             this.MontoTotal.HeaderText = "Monto Total";
             this.MontoTotal.Name = "MontoTotal";
+            this.MontoTotal.ReadOnly = true;
+            this.MontoTotal.Width = 82;
             // 
             // CodigoNombreProductoMasVendido
             // 
             this.CodigoNombreProductoMasVendido.HeaderText = "Código y Nombre del Producto más Vendido";
             this.CodigoNombreProductoMasVendido.Name = "CodigoNombreProductoMasVendido";
+            this.CodigoNombreProductoMasVendido.ReadOnly = true;
+            this.CodigoNombreProductoMasVendido.Width = 92;
             // 
             // NombreProductoMasMonto
             // 
             this.NombreProductoMasMonto.HeaderText = "Código y Nombre de Producto con más Monto Total";
             this.NombreProductoMasMonto.Name = "NombreProductoMasMonto";
+            this.NombreProductoMasMonto.ReadOnly = true;
+            this.NombreProductoMasMonto.Width = 91;
             // 
             // NombreProductoMasCaro
             // 
             this.NombreProductoMasCaro.HeaderText = "Código y Nombre de Producto que se vendió mas caro";
             this.NombreProductoMasCaro.Name = "NombreProductoMasCaro";
+            this.NombreProductoMasCaro.ReadOnly = true;
+            this.NombreProductoMasCaro.Width = 106;
             // 
             // NombreApellidoVendedorMasVendio
             // 
             this.NombreApellidoVendedorMasVendio.HeaderText = "Nombre y Apellido del Vendedor que más Vendió";
             this.NombreApellidoVendedorMasVendio.Name = "NombreApellidoVendedorMasVendio";
+            this.NombreApellidoVendedorMasVendio.ReadOnly = true;
+            this.NombreApellidoVendedorMasVendio.Width = 94;
             // 
             // FormMejoresCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(791, 266);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(952, 381);
+            this.Controls.Add(this.dataCategorias);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.cmbAnioAnalizar);
             this.Controls.Add(this.lAnioAnalizar);
@@ -156,7 +175,7 @@
             this.Name = "FormMejoresCategorias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mejores Categorías";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataCategorias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,7 +188,7 @@
         private System.Windows.Forms.Label lAnioAnalizar;
         private System.Windows.Forms.ComboBox cmbSucursal;
         private System.Windows.Forms.Label lSucursal;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataCategorias;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn CantidadSubCategorias;
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoTotal;

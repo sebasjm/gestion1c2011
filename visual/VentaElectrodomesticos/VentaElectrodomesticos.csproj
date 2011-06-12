@@ -190,6 +190,7 @@
     <Compile Include="Modelo\Tablero\ClientePremium.cs" />
     <Compile Include="Modelo\Tablero\FaltanteStock.cs" />
     <Compile Include="Modelo\Tablero\MayorDeudor.cs" />
+    <Compile Include="Modelo\Tablero\MejorCategoria.cs" />
     <Compile Include="Modelo\Tablero\MejorProducto.cs" />
     <Compile Include="Modelo\Tablero\ProporcionFormasDePago.cs" />
     <Compile Include="Modelo\Tablero\MejorVendedor.cs" />

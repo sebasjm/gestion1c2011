@@ -42,6 +42,11 @@ namespace VentaElectrodomesticos.MejoresCategorias {
         
         private void doSearch() {
             if (sucursal == null) return;
+            ViewHelper.fillDataGridMejoresCategorias(
+                dataCategorias,
+                Context.instance.dao.tablero.mejoresCategorias(sucursal.id, anio)
+            );
+
         }
     }
 }

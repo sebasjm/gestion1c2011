@@ -227,7 +227,7 @@ namespace VentaElectrodomesticos.Controladores {
             }
         }
 
-        internal static void fillDataGridClientesPremium(DataGridView dataItems, List<ClientePremium> result) {
+        public static void fillDataGridClientesPremium(DataGridView dataItems, List<ClientePremium> result) {
             dataItems.ColumnCount = 7;
             dataItems.Columns[0].Name = "Nombre";
             dataItems.Columns[1].Name = "Apellido";
@@ -249,6 +249,31 @@ namespace VentaElectrodomesticos.Controladores {
                     item.cantidad,
                     item.ultimaCompra,
                     item.ultimoVendedor_dni
+                );
+            }
+        }
+
+        public static void fillDataGridMejoresCategorias(DataGridView dataItems, List<MejorCategoria> result) {
+            dataItems.ColumnCount = 7;
+            dataItems.Columns[0].Name = "Nombre";
+            dataItems.Columns[1].Name = "Cantidad subcategorias";
+            dataItems.Columns[2].Name = "Total facturado";
+            dataItems.Columns[2].DefaultCellStyle.Format = "#,##0.00";
+            dataItems.Columns[3].Name = "Producto mas vendido";
+            dataItems.Columns[4].Name = "Producto mas facturado";
+            dataItems.Columns[5].Name = "Producto mas caro";
+            dataItems.Columns[6].Name = "Mejor vendedor";
+
+            dataItems.Rows.Clear();
+            foreach (MejorCategoria item in result) {
+                dataItems.Rows.Add(
+                    item.nombre,
+                    item.cantidadSubcategorias,
+                    item.facturacion,
+                    item.productoMasVendido,
+                    item.productoMasFacturado,
+                    item.productoMasCaro,
+                    item.mejorVendedor
                 );
             }
         }

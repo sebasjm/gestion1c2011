@@ -216,6 +216,16 @@ begin
 	return;
 end
 go
+create function la_huerta.categoria_root(  @id as int ) 
+returns int 
+begin
+	declare @parent as int, @cat_id as int
+	select @cat_id = id, @parent = categoria_padre from la_huerta.Categoria where id = @id;
+	if ( @parent is null ) 
+		return @cat_id;
+	return la_huerta.categoria_root( @parent );
+end
+go
 create function la_huerta.split(  @str as varchar(200), @delimiter as char, @index as int ) 
 returns varchar(200)
 begin

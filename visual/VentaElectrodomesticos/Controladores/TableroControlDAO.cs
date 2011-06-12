@@ -17,6 +17,7 @@ namespace VentaElectrodomesticos.Controladores {
             Context.instance.dao.addMapper(typeof(MejorVendedor), new MejorVendedorMapper());
             Context.instance.dao.addMapper(typeof(ProporcionFormasDePago), new ProporcionFormasDePagoMapper());
             Context.instance.dao.addMapper(typeof(ClientePremium), new ClientePremiumMapper());
+            Context.instance.dao.addMapper(typeof(MejorCategoria), new MejorCategoriaMapper());
         }
         class MayorDeudorMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
@@ -48,8 +49,7 @@ namespace VentaElectrodomesticos.Controladores {
         class ProporcionFormasDePagoMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
                 return new ProporcionFormasDePago(
-                        sdr.GetInt32(0),
-                        sdr.GetInt32(1)
+                        sdr.GetDouble(0)
                     );
             }
         }
@@ -64,6 +64,19 @@ namespace VentaElectrodomesticos.Controladores {
                         sdr.GetDateTime(5),
                         sdr.GetInt32(6)
                     );
+            }
+        }
+        class MejorCategoriaMapper : Mapper<Object> {
+            public Object getInstance(SqlDataReader sdr) {
+                return sdr.HasRows ? new MejorCategoria(
+                        sdr.IsDBNull(0) ? "" : sdr.GetString(0),
+                        sdr.IsDBNull(1) ? 0 :sdr.GetInt32(1),
+                        sdr.IsDBNull(2) ? 0d : sdr.GetDouble(2),
+                        sdr.IsDBNull(3) ? "" : sdr.GetString(3),
+                        sdr.IsDBNull(4) ? "" : sdr.GetString(4),
+                        sdr.IsDBNull(5) ? "" : sdr.GetString(5),
+                        sdr.IsDBNull(6) ? "" : sdr.GetString(6)
+                    ) : null;
             }
         }
 
@@ -91,6 +104,9 @@ namespace VentaElectrodomesticos.Controladores {
         }
         public List<ClientePremium> mejoresClientes(int sucursal_id, string anio) {
             return connection.query<ClientePremium>(PREMIUM_MEJORES_CLIENTES, sucursal_id, anio);
+        }
+        public List<MejorCategoria> mejoresCategorias(int sucursal_id, string anio) {
+            return connection.query<MejorCategoria>(PREMIUM_MEJORES_CATEGORIAS, sucursal_id, anio);
         }
 
         public FaltanteStock calcularFaltanteStock(int sucursal_id, string anio) {
@@ -176,11 +192,11 @@ namespace VentaElectrodomesticos.Controladores {
             "ORDER BY sum(cantidad) DESC ";
 
         private static readonly String TABLERO_PROPORCIONAL_FORMA_DE_PAGO =
-             "SELECT  ISNULL(sum(CASE WHEN cuotas = 0  THEN 1 ELSE 0 END ),0) as contado , " +
-             "        ISNULL(sum(CASE WHEN cuotas > 0  THEN 1 ELSE 0 END ),0) as cuotas " +
+            " SELECT convert( float, count(*) ) / convert( float, (select count(*) from la_huerta.Factura) ) " +
              "FROM la_huerta.Factura AS f " +
              "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni " +
-             FILTRO_SUCURSAL_ANIO;
+             FILTRO_SUCURSAL_ANIO +
+            " AND cuotas = 1";
 
         private static readonly String TABLERO_FALTANTE_STOCK =
             "la_huerta.dias_sin_stock";
@@ -194,6 +210,73 @@ namespace VentaElectrodomesticos.Controladores {
             FILTRO_SUCURSAL_ANIO +
             "GROUP BY c.dni, c.nombre, c.apellido " +
             "ORDER BY sum(total*(1-descuento)) DESC ";
+
+        private static readonly String CATEGORIA_CANT_SUBCATEGORIAS =
+            "SELECT count(*) " +
+            "FROM la_huerta.Categoria " +
+            "WHERE c.id <> id AND c.id = la_huerta.categoria_root(id) ";
+
+        private static readonly String FILTRO_CATEGORIA =
+            FILTRO_SUCURSAL_ANIO +
+            " AND la_huerta.categoria_root(p.categoria_id) = c.id ";
+
+        private static readonly String CATEGORIA_MONTO =
+            "SELECT sum( itf.producto_precio*itf.cantidad*(1-f.descuento) ) " +
+            "FROM la_huerta.ItemFactura AS itf " +
+            "join la_huerta.Producto as p on p.codigo = itf.producto_codigo " +
+            "join la_huerta.Factura as f on f.numero = itf.factura_numero " +
+            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni " +
+            FILTRO_CATEGORIA;
+
+        private static readonly String CATEGORIA_PROD_MAS_VENDIDO =
+            "SELECT TOP 1 convert(varchar(50),itf.producto_codigo)+' -- '+p.nombre " +
+            "FROM la_huerta.ItemFactura AS itf " +
+            "join la_huerta.Producto as p on p.codigo = itf.producto_codigo " +
+            "join la_huerta.Factura as f on f.numero = itf.factura_numero " +
+            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni " +
+            FILTRO_CATEGORIA +
+            "GROUP BY itf.producto_codigo,p.nombre "+
+            "ORDER BY sum(itf.cantidad) DESC";
+
+        private static readonly String CATEGORIA_PROD_MAS_FACTURADO =
+            "SELECT TOP 1 convert(varchar(50),itf.producto_codigo)+' -- '+p.nombre+' -- $'+convert(varchar(50),sum( itf.producto_precio*itf.cantidad*(1-f.descuento) )) " +
+            "FROM la_huerta.ItemFactura AS itf " + 
+            "join la_huerta.Producto as p on p.codigo = itf.producto_codigo " +
+            "join la_huerta.Factura as f on f.numero = itf.factura_numero " +
+            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni  " +
+            FILTRO_CATEGORIA +
+            "GROUP BY itf.producto_codigo,p.nombre " +
+            "ORDER BY sum( itf.producto_precio*itf.cantidad*(1-f.descuento) ) DESC";
+
+        private static readonly String CATEGORIA_PROD_MAS_CARO =
+            "SELECT TOP 1 convert(varchar(50),itf.producto_codigo) + ' -- ' +p.nombre + ' -- $'+ convert(varchar(50),itf.producto_precio*itf.cantidad*(1-f.descuento)) " +
+            "FROM la_huerta.ItemFactura AS itf  " +
+            "join la_huerta.Producto as p on p.codigo = itf.producto_codigo " +
+            "join la_huerta.Factura as f on f.numero = itf.factura_numero " +
+            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni  " +
+            FILTRO_CATEGORIA +
+            "ORDER BY itf.producto_precio*itf.cantidad*(1-f.descuento) DESC";
+
+        private static readonly String CATEGORIA_MEJOR_VENEDOR =
+            "SELECT TOP 1 e.apellido + ', ' + e.nombre " +
+            "FROM la_huerta.ItemFactura AS itf  " +
+            "join la_huerta.Producto as p on p.codigo = itf.producto_codigo " +
+            "join la_huerta.Factura as f on f.numero = itf.factura_numero " +
+            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni  " +
+            FILTRO_CATEGORIA +
+            "GROUP BY e.dni, e.nombre, e.apellido " +
+            "ORDER BY sum(itf.cantidad) DESC, e.dni ";
+
+        private static readonly String PREMIUM_MEJORES_CATEGORIAS =
+            "SELECT c.nombre, " +
+            "(" + CATEGORIA_CANT_SUBCATEGORIAS + ") as sub_cats, " +
+            "(" + CATEGORIA_MONTO + ") as monto, " +
+            "(" + CATEGORIA_PROD_MAS_VENDIDO + ") as prod_mas_vendido," +
+            "(" + CATEGORIA_PROD_MAS_FACTURADO + ") as prod_mas_facturado, " +
+            "(" + CATEGORIA_PROD_MAS_CARO + ") as prod_mas_caro, " +
+            "(" + CATEGORIA_MEJOR_VENEDOR + ") as mejor_vendedor " +
+            "from la_huerta.Categoria as c " +
+            "where categoria_padre is null ";
 
 
     }
