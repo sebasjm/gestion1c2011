@@ -125,7 +125,7 @@ namespace VentaElectrodomesticos.Controladores {
                 connection.update(INTENTOS, 0 ,usuario);
             }
         }
-        private static readonly String DESHABILITAR = "UPDATE EL_GRUPO.Usuario SET activo=0 WHERE username={0}";
+        private static readonly String DESHABILITAR = "UPDATE EL_GRUPO.Usuario SET activo=0 WHERE username='{0}'";
         public void desahabilitar(String usuario)
         {
             connection.update(DESHABILITAR, usuario);
