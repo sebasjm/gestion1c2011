@@ -14,6 +14,8 @@ using VentaElectrodomesticos.Vista;
 namespace VentaElectrodomesticos.AbmEmpleado {
     public partial class FormAbmEmpleado : Form {
         private Empleado empleado;
+        Sucursal sucursal = null;
+
         Validator validator;
         public FormAbmEmpleado() {
             InitializeComponent();
@@ -77,6 +79,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             cmbProvincia.SelectedValue = 0;
             cmbSucursal.SelectedValue = 0;
             cmbTipoEmpleado.SelectedValue = 0;
+            sucursal = null;
             bCrearOtro.Show();
             bCrear.Show();
             bModificar.Hide();
@@ -147,11 +150,13 @@ namespace VentaElectrodomesticos.AbmEmpleado {
         }
 
         private void cmbSucursal_SelectedIndexChanged(object sender, EventArgs e) {
-            Sucursal item = (Sucursal)cmbSucursal.SelectedItem;
+            sucursal = (Sucursal)cmbSucursal.SelectedItem;
+            cmbProvincia.SelectedItem = sucursal != null ? sucursal.provincia : null;
         }
 
         private void cmbProvincia_SelectedIndexChanged(object sender, EventArgs e) {
             Provincia item = (Provincia)cmbProvincia.SelectedItem;
+            cmbSucursal.SelectedItem = item != null ? item.sucursal : null;
         }
     }
 }

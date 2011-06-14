@@ -105,6 +105,7 @@
             this.cmbSucursal.Name = "cmbSucursal";
             this.cmbSucursal.Size = new System.Drawing.Size(109, 21);
             this.cmbSucursal.TabIndex = 4;
+            this.cmbSucursal.SelectedIndexChanged += new System.EventHandler(this.cmbSucursal_SelectedIndexChanged);
             // 
             // bBuscarCliente
             // 

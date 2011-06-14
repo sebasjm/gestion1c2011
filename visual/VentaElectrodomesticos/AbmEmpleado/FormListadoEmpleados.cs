@@ -13,6 +13,7 @@ using VentaElectrodomesticos.Controladores;
 namespace VentaElectrodomesticos.AbmEmpleado {
     public partial class FormListadoEmpleados : Form {
         private Object messageFromParent = null;
+        Sucursal sucursal = null;
         public Object MessageFromParent {
             get { return messageFromParent; }
             set { messageFromParent = value; }
@@ -51,7 +52,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 txtNombre.Text,
                 txtApellido.Text,
                 Convert.ToInt32(txtDni.Text),
-                (Sucursal)cmbSucursal.SelectedItem,
+                sucursal,
                 (TipoEmpleado)cmbTipoEmpleado.SelectedItem
             );
             ViewHelper.fillDataGridEmpleados(dataEmpleados, result);
@@ -76,11 +77,13 @@ namespace VentaElectrodomesticos.AbmEmpleado {
         }
 
         private void cmbSucursal_SelectedIndexChanged(object sender, EventArgs e) {
-            Sucursal item = (Sucursal)cmbSucursal.SelectedItem;
+            sucursal = (Sucursal)cmbSucursal.SelectedItem;
+            cmbProvincia.SelectedItem = sucursal != null ? sucursal.provincia : null;
         }
 
         private void cmbProvincia_SelectedIndexChanged(object sender, EventArgs e) {
             Provincia item = (Provincia)cmbProvincia.SelectedItem;
+            cmbSucursal.SelectedItem = item != null ? item.sucursal : null;
         }
 
     }
