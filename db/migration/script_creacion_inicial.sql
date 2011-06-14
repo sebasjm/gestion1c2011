@@ -1,15 +1,15 @@
 USE gd1c2011
 GO
-CREATE SCHEMA [la_huerta] AUTHORIZATION [gd]
+CREATE SCHEMA [EL_GRUPO] AUTHORIZATION [gd]
 GO
-CREATE TABLE [la_huerta].[Provincia](
+CREATE TABLE [EL_GRUPO].[Provincia](
 	[id] [tinyint] NOT NULL,
 	[nombre] [varchar](60) NOT NULL,
 	primary key (id),
 	unique (nombre)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[Cliente](
+CREATE TABLE [EL_GRUPO].[Cliente](
 	[dni] [int] NOT NULL,
 	[nombre] [varchar](50) NOT NULL,
 	[apellido] [varchar](50) NOT NULL,
@@ -19,18 +19,18 @@ CREATE TABLE [la_huerta].[Cliente](
 	[provincia_id] [tinyint] NULL ,
     [activo] [bit] NOT NULL DEFAULT 1,
 	primary key (dni),
-    foreign key (provincia_id) references [la_huerta].[Provincia](id),
+    foreign key (provincia_id) references [EL_GRUPO].[Provincia](id),
 --	unique (mail)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[TipoEmpleado](
+CREATE TABLE [EL_GRUPO].[TipoEmpleado](
 	[id] [tinyint] NOT NULL,
 	[nombre] [varchar](10) NOT NULL,
 	primary key (id),
 	unique (nombre)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[Marca](
+CREATE TABLE [EL_GRUPO].[Marca](
 	[id] [smallint] IDENTITY(1,1) NOT NULL,
 	[nombre] [varchar](20) NOT NULL,
     [activo] [bit] NOT NULL DEFAULT 1,
@@ -38,26 +38,26 @@ CREATE TABLE [la_huerta].[Marca](
 	unique (nombre)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[TipoSucursal](
+CREATE TABLE [EL_GRUPO].[TipoSucursal](
 	[id] [tinyint] NOT NULL,
 	[nombre] [varchar](20) NULL,
 	primary key (id),
 	unique (nombre)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[Sucursal](
+CREATE TABLE [EL_GRUPO].[Sucursal](
 	[id] [tinyint] NOT NULL,
 	[direccion] [varchar](60) NOT NULL,
 	[telefono] [varchar](20) NOT NULL,
 	[tipoSucursal_id] [tinyint] NOT NULL,
 	[provincia_id] [tinyint] NOT NULL,
 	primary key (id),
-    foreign key (tipoSucursal_id) references [la_huerta].[TipoSucursal](id),
-    foreign key (provincia_id) references [la_huerta].[Provincia](id),
+    foreign key (tipoSucursal_id) references [EL_GRUPO].[TipoSucursal](id),
+    foreign key (provincia_id) references [EL_GRUPO].[Provincia](id),
 	unique (direccion),
 	unique (telefono)
 ) ON [PRIMARY]
-CREATE TABLE [la_huerta].[Empleado](
+CREATE TABLE [EL_GRUPO].[Empleado](
 	[dni] [int] NOT NULL,
 	[nombre] [varchar](50) NOT NULL,
 	[apellido] [varchar](50) NOT NULL,
@@ -68,35 +68,35 @@ CREATE TABLE [la_huerta].[Empleado](
 	[sucursal_id] [tinyint] NOT NULL,
     [activo] [bit] NOT NULL DEFAULT 1,
 	primary key (dni),
-    foreign key (tipoEmpleado_id) references [la_huerta].[TipoEmpleado](id),
-    foreign key (sucursal_id) references [la_huerta].[Sucursal](id),
+    foreign key (tipoEmpleado_id) references [EL_GRUPO].[TipoEmpleado](id),
+    foreign key (sucursal_id) references [EL_GRUPO].[Sucursal](id),
 --	unique (mail),
 --	unique (usuario_id)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[Usuario](
+CREATE TABLE [EL_GRUPO].[Usuario](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[username] [varchar](10) NOT NULL,
 	[password] [varchar](64) NOT NULL,
     [activo] [bit] NOT NULL DEFAULT 1,
 	[empleado_dni] [int] NOT NULL DEFAULT NULL,
-	foreign key (empleado_dni) references [la_huerta].[Empleado](dni),
+	foreign key (empleado_dni) references [EL_GRUPO].[Empleado](dni),
 	primary key (id),
 	unique (username)
 ) ON [PRIMARY]
 
 
-CREATE TABLE [la_huerta].[Categoria](
+CREATE TABLE [EL_GRUPO].[Categoria](
 	[id] [smallint] NOT NULL,
 	[categoria_padre] [smallint] NULL,
 	[nombre] [varchar](30) NOT NULL,
 --	[descripcion] [varchar](50) NOT NULL,
 	primary key (id),
-    foreign key (categoria_padre) references [la_huerta].[Categoria](id)
+    foreign key (categoria_padre) references [EL_GRUPO].[Categoria](id)
 --	unique (nombre)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[Producto](
+CREATE TABLE [EL_GRUPO].[Producto](
 	[codigo] [int] NOT NULL,
 	[nombre] [varchar](70) NOT NULL, -- max 38
 	[descripcion] [varchar](200) NULL,
@@ -105,12 +105,12 @@ CREATE TABLE [la_huerta].[Producto](
 	[categoria_id] [smallint] NOT NULL,
     [activo] [bit] NOT NULL DEFAULT 1,
 	primary key (codigo),
-    foreign key (marca_id) references [la_huerta].[Marca](id),
-    foreign key (categoria_id) references [la_huerta].[Categoria](id),
+    foreign key (marca_id) references [EL_GRUPO].[Marca](id),
+    foreign key (categoria_id) references [EL_GRUPO].[Categoria](id),
 --	unique (nombre,marca_id)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[Factura](
+CREATE TABLE [EL_GRUPO].[Factura](
 	[numero] [int] IDENTITY(1,1) NOT NULL,
 	[descuento] [float] NOT NULL,
 	[total] [float] NOT NULL,
@@ -120,42 +120,42 @@ CREATE TABLE [la_huerta].[Factura](
 	[empleado_dni] [int] NOT NULL,
 	[cuotas_pagas] [tinyint] NOT NULL,
 	primary key (numero),
-    foreign key (cliente_dni) references [la_huerta].[Cliente](dni),
-    foreign key (empleado_dni) references [la_huerta].[Empleado](dni)
+    foreign key (cliente_dni) references [EL_GRUPO].[Cliente](dni),
+    foreign key (empleado_dni) references [EL_GRUPO].[Empleado](dni)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[Stock](
+CREATE TABLE [EL_GRUPO].[Stock](
 	[sucursal_id] [tinyint] NOT NULL,
 	[producto_codigo] [int] NOT NULL,
 	[stock] [int] NOT NULL,
 	primary key (sucursal_id,producto_codigo),
-    foreign key (sucursal_id) references [la_huerta].[Sucursal](id),
-    foreign key (producto_codigo) references [la_huerta].[Producto](codigo)
+    foreign key (sucursal_id) references [EL_GRUPO].[Sucursal](id),
+    foreign key (producto_codigo) references [EL_GRUPO].[Producto](codigo)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[IngresoStock](
+CREATE TABLE [EL_GRUPO].[IngresoStock](
 	[sucursal_id] [tinyint] NOT NULL,
 	[producto_codigo] [int] NOT NULL,
 	[empleado_dni] [int] NOT NULL,
 	[fecha] [datetime] NOT NULL,
 	[stock] [int] NOT NULL,
 	primary key (sucursal_id,producto_codigo,fecha),
-    foreign key (sucursal_id) references [la_huerta].[Sucursal](id),
-    foreign key (empleado_dni) references [la_huerta].[Empleado](dni),
-    foreign key (producto_codigo) references [la_huerta].[Producto](codigo)
+    foreign key (sucursal_id) references [EL_GRUPO].[Sucursal](id),
+    foreign key (empleado_dni) references [EL_GRUPO].[Empleado](dni),
+    foreign key (producto_codigo) references [EL_GRUPO].[Producto](codigo)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[Pago](
+CREATE TABLE [EL_GRUPO].[Pago](
 	[factura_numero] [int] NOT NULL,
 	[fecha] [datetime] NOT NULL,
 	[cuotas] [int] NOT NULL,
 	[empleado_dni] [int] NOT NULL,
 	primary key (factura_numero,fecha),
-    foreign key (empleado_dni) references [la_huerta].[Empleado](dni),
-    foreign key (factura_numero) references [la_huerta].[Factura](numero)
+    foreign key (empleado_dni) references [EL_GRUPO].[Empleado](dni),
+    foreign key (factura_numero) references [EL_GRUPO].[Factura](numero)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[Rol](
+CREATE TABLE [EL_GRUPO].[Rol](
 	[id] [tinyint] IDENTITY(1,1) NOT NULL,
 	[nombre] [varchar](10) NOT NULL,
 	[descripcion] [varchar](50) NOT NULL,
@@ -164,7 +164,7 @@ CREATE TABLE [la_huerta].[Rol](
 	unique (nombre)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[Funcionalidad](
+CREATE TABLE [EL_GRUPO].[Funcionalidad](
 	[id] [tinyint] NOT NULL,
 	[nombre] [varchar](20) NOT NULL,
 	[descripcion] [varchar](50) NOT NULL,
@@ -172,30 +172,30 @@ CREATE TABLE [la_huerta].[Funcionalidad](
 	unique (nombre)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[UsuarioRol](
+CREATE TABLE [EL_GRUPO].[UsuarioRol](
 	[usuario_id] [int] NOT NULL,
 	[rol_id] [tinyint] NOT NULL,
 	primary key (usuario_id,rol_id),
-    foreign key (usuario_id) references [la_huerta].[Usuario](id),
-    foreign key (rol_id) references [la_huerta].[Rol](id)
+    foreign key (usuario_id) references [EL_GRUPO].[Usuario](id),
+    foreign key (rol_id) references [EL_GRUPO].[Rol](id)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[RolFuncionalidad](
+CREATE TABLE [EL_GRUPO].[RolFuncionalidad](
 	[rol_id] [tinyint] NOT NULL,
 	[funcionalidad_id] [tinyint] NOT NULL,
 	primary key (rol_id,funcionalidad_id),
-    foreign key (rol_id) references [la_huerta].[Rol](id),
-    foreign key (funcionalidad_id) references [la_huerta].[Funcionalidad](id)
+    foreign key (rol_id) references [EL_GRUPO].[Rol](id),
+    foreign key (funcionalidad_id) references [EL_GRUPO].[Funcionalidad](id)
 ) ON [PRIMARY]
 
-CREATE TABLE [la_huerta].[ItemFactura](
+CREATE TABLE [EL_GRUPO].[ItemFactura](
 	[factura_numero] [int] NOT NULL,
 	[producto_codigo] [int] NOT NULL,
 	[producto_precio] [int] NOT NULL,	
 	[cantidad] [int] NOT NULL,
 	primary key (factura_numero,producto_codigo),
-    foreign key (factura_numero) references [la_huerta].[Factura](numero),
-    foreign key (producto_codigo) references [la_huerta].[Producto](codigo)
+    foreign key (factura_numero) references [EL_GRUPO].[Factura](numero),
+    foreign key (producto_codigo) references [EL_GRUPO].[Producto](codigo)
 ) ON [PRIMARY]
 
 GO
@@ -204,29 +204,29 @@ GO
 -- Funciones
 -----------------------------------------
 
-create function la_huerta.categoria_id_collection(  @id as int ) 
+create function EL_GRUPO.categoria_id_collection(  @id as int ) 
 returns @cats_id table ( id int ) as
 begin
 	if ( @id is null ) return;
 	insert @cats_id values( @id );
 	insert @cats_id 
-		select * from la_huerta.categoria_id_collection( 
-			(select categoria_padre from la_huerta.categoria where id = @id )
+		select * from EL_GRUPO.categoria_id_collection( 
+			(select categoria_padre from EL_GRUPO.categoria where id = @id )
 		);
 	return;
 end
 go
-create function la_huerta.categoria_root(  @id as int ) 
+create function EL_GRUPO.categoria_root(  @id as int ) 
 returns int 
 begin
 	declare @parent as int, @cat_id as int
-	select @cat_id = id, @parent = categoria_padre from la_huerta.Categoria where id = @id;
+	select @cat_id = id, @parent = categoria_padre from EL_GRUPO.Categoria where id = @id;
 	if ( @parent is null ) 
 		return @cat_id;
-	return la_huerta.categoria_root( @parent );
+	return EL_GRUPO.categoria_root( @parent );
 end
 go
-create function la_huerta.split(  @str as varchar(200), @delimiter as char, @index as int ) 
+create function EL_GRUPO.split(  @str as varchar(200), @delimiter as char, @index as int ) 
 returns varchar(200)
 begin
 	declare @pos as int
@@ -247,21 +247,21 @@ begin
 end
 go
 
-create function la_huerta.back_split(  @str as varchar(200), @delimiter as char, @index as int ) 
+create function EL_GRUPO.back_split(  @str as varchar(200), @delimiter as char, @index as int ) 
 returns varchar(200)
 begin
 	declare @pos as int
 	set @pos = 0
-	while ( la_huerta.split(@str, @delimiter, @pos) is not null )
+	while ( EL_GRUPO.split(@str, @delimiter, @pos) is not null )
 	begin
 		set @pos = @pos + 1
 	end
-	if ( @pos > @index ) return la_huerta.split(@str, @delimiter, @pos - @index  -1 )
+	if ( @pos > @index ) return EL_GRUPO.split(@str, @delimiter, @pos - @index  -1 )
 	return null
 end
 go
 
-create function la_huerta.get_categoria_fullname(  @categoria as smallint ) 
+create function EL_GRUPO.get_categoria_fullname(  @categoria as smallint ) 
 returns varchar(200)
 begin
 	declare @fullname as varchar(200)
@@ -270,7 +270,7 @@ begin
 	select 
 		@fullname = nombre,
 		@parent = categoria_padre 
-	from la_huerta.Categoria 
+	from EL_GRUPO.Categoria 
 	where id = @categoria;
 
 	while @parent is not null
@@ -278,7 +278,7 @@ begin
 		select 
 			@fullname = nombre + '¦' + @fullname,
 			@parent = categoria_padre 
-		from la_huerta.Categoria 
+		from EL_GRUPO.Categoria 
 		where id = @parent
 	end
 	
@@ -286,7 +286,7 @@ begin
 end
 go
 
-create function la_huerta.get_categoria_id(  @categoria as varchar(200) ) 
+create function EL_GRUPO.get_categoria_id(  @categoria as varchar(200) ) 
 returns smallint
 begin
 	declare @fullname as varchar(200)
@@ -297,7 +297,7 @@ begin
 	select @name = parsename(replace(@categoria,'¦','.'),1)
 
 	declare CURSORITO cursor for 
-		select categoria_padre, id from la_huerta.Categoria where nombre = @name
+		select categoria_padre, id from EL_GRUPO.Categoria where nombre = @name
 	open CURSORITO
 
 	fetch next from CURSORITO into @parent, @id
@@ -310,7 +310,7 @@ begin
 			select 
 				@fullname = nombre + '¦' + @fullname,
 				@parent = categoria_padre 
-			from la_huerta.Categoria 
+			from EL_GRUPO.Categoria 
 			where id = @parent
 		end
 		if @fullname = @categoria return @id
@@ -322,20 +322,20 @@ begin
 end
 go
 
-CREATE FUNCTION la_huerta.stock_a_la_fecha(@sucursal as int, @producto as int, @fecha as datetime)
+CREATE FUNCTION EL_GRUPO.stock_a_la_fecha(@sucursal as int, @producto as int, @fecha as datetime)
 RETURNS int
 BEGIN
 	DECLARE @stock int;
 
 	SELECT @stock = sum(ins.stock)
-	FROM la_huerta.IngresoStock as ins
+	FROM EL_GRUPO.IngresoStock as ins
 	WHERE sucursal_id  = @sucursal and ins.producto_codigo = @producto and
 		fecha < @fecha;
 
 	SELECT @stock = @stock - sum(itf.cantidad)
-	FROM la_huerta.ItemFactura as itf
-	JOIN la_huerta.Factura as f ON itf.factura_numero = f.numero
-	JOIN la_huerta.Empleado as e ON e.dni = f.empleado_dni
+	FROM EL_GRUPO.ItemFactura as itf
+	JOIN EL_GRUPO.Factura as f ON itf.factura_numero = f.numero
+	JOIN EL_GRUPO.Empleado as e ON e.dni = f.empleado_dni
 	WHERE sucursal_id = @sucursal and itf.producto_codigo = @producto and
 		fecha < @fecha;
 
@@ -345,7 +345,7 @@ go
 -----------------------------------------
 -- Stored procedures
 -----------------------------------------
-CREATE PROCEDURE la_huerta.dias_sin_stock(@suc as int, @anio as varchar(10), @out_prod as int output, @out_dias as int output)
+CREATE PROCEDURE EL_GRUPO.dias_sin_stock(@suc as int, @anio as varchar(10), @out_prod as int output, @out_dias as int output)
 AS
 BEGIN
 	DECLARE @inicio as datetime;
@@ -356,13 +356,13 @@ BEGIN
 
 	DECLARE movimiento CURSOR FOR 
 			SELECT f.fecha as fecha, itf.producto_codigo as prod, -1*itf.cantidad as cant
-				FROM la_huerta.ItemFactura as itf
-				JOIN la_huerta.Factura as f ON itf.factura_numero = f.numero
-				JOIN la_huerta.Empleado as e ON e.dni = f.empleado_dni
+				FROM EL_GRUPO.ItemFactura as itf
+				JOIN EL_GRUPO.Factura as f ON itf.factura_numero = f.numero
+				JOIN EL_GRUPO.Empleado as e ON e.dni = f.empleado_dni
 				WHERE sucursal_id = @suc and f.fecha > @inicio AND f.fecha < @fin
 			UNION
 			SELECT ins.fecha as fecha, ins.producto_codigo as prod, ins.stock
-				FROM la_huerta.IngresoStock as ins
+				FROM EL_GRUPO.IngresoStock as ins
 				WHERE sucursal_id = @suc and ins.fecha > @inicio AND ins.fecha < @fin
 			ORDER BY prod,fecha;
 
@@ -380,7 +380,7 @@ BEGIN
 	WHILE(@@FETCH_STATUS = 0)
 	BEGIN
 		SELECT @dias = 0;
-		SELECT @stock = la_huerta.stock_a_la_fecha(@suc, @producto, @inicio);
+		SELECT @stock = EL_GRUPO.stock_a_la_fecha(@suc, @producto, @inicio);
 
 		SELECT @ant_prod = @producto;
 		WHILE (@@FETCH_STATUS = 0 AND @producto = @ant_prod)
@@ -411,7 +411,7 @@ go
 -----------------------------------------
 
 -- 2 
-INSERT INTO [la_huerta].[TipoSucursal] 
+INSERT INTO [EL_GRUPO].[TipoSucursal] 
 SELECT 
 	row_number() OVER (ORDER BY suc_tipo) AS id, 
 	suc_tipo
@@ -420,7 +420,7 @@ GROUP BY suc_tipo
 ORDER BY suc_tipo
 
 -- 140
-INSERT INTO [la_huerta].[Cliente] 
+INSERT INTO [EL_GRUPO].[Cliente] 
 SELECT 
 	cli_dni as dni, 
 	cli_nombre as nombre,
@@ -436,7 +436,7 @@ GROUP BY cli_dni, cli_nombre, cli_apellido, cli_mail
 ORDER BY cli_dni
 
 -- 11
-INSERT INTO [la_huerta].[Marca] 
+INSERT INTO [EL_GRUPO].[Marca] 
 SELECT 
 	producto_marca as marca,
 	1 as activo
@@ -447,7 +447,7 @@ GROUP BY
 ORDER BY producto_marca
 
 -- 24
-INSERT INTO [la_huerta].[Provincia] 
+INSERT INTO [EL_GRUPO].[Provincia] 
 SELECT 
 	row_number() OVER (ORDER BY suc_provincia) AS id, 
 	suc_provincia as nombre
@@ -458,7 +458,7 @@ GROUP BY
 ORDER BY suc_provincia
 
 -- 24
-INSERT INTO [la_huerta].[Sucursal] 
+INSERT INTO [EL_GRUPO].[Sucursal] 
 SELECT 
 	row_number() OVER (ORDER BY suc_dir) AS id, 
 	suc_dir as direccion,
@@ -466,8 +466,8 @@ SELECT
 	ts.id as tipo,
 	p.id as provincia
 FROM gd_esquema.Maestra 
-JOIN la_huerta.TipoSucursal as ts ON suc_tipo = ts.nombre
-JOIN la_huerta.Provincia as p ON suc_provincia = p.nombre
+JOIN EL_GRUPO.TipoSucursal as ts ON suc_tipo = ts.nombre
+JOIN EL_GRUPO.Provincia as p ON suc_provincia = p.nombre
 WHERE suc_dir is not null
 GROUP BY 
 	suc_dir,
@@ -477,7 +477,7 @@ GROUP BY
 ORDER BY suc_dir
 
 -- 2
-INSERT INTO [la_huerta].[TipoEmpleado] 
+INSERT INTO [EL_GRUPO].[TipoEmpleado] 
 SELECT 
 	row_number() OVER (ORDER BY empleado_tipo) AS id, 
     empleado_tipo
@@ -488,7 +488,7 @@ GROUP BY
 ORDER BY empleado_tipo
 
 -- 53
-INSERT INTO [la_huerta].[Empleado] 
+INSERT INTO [EL_GRUPO].[Empleado] 
 SELECT 
 	empleado_dni as dni,
     empleado_nombre as nombre,
@@ -500,9 +500,9 @@ SELECT
 	s.id as sucursal_id,
 	1 as activo
 FROM gd_esquema.Maestra 
-JOIN la_huerta.TipoEmpleado as te ON empleado_tipo = te.nombre
-JOIN la_huerta.Provincia as p ON empleado_provincia = p.nombre
-JOIN la_huerta.Sucursal as s ON p.id = s.provincia_id
+JOIN EL_GRUPO.TipoEmpleado as te ON empleado_tipo = te.nombre
+JOIN EL_GRUPO.Provincia as p ON empleado_provincia = p.nombre
+JOIN EL_GRUPO.Sucursal as s ON p.id = s.provincia_id
 WHERE empleado_dni is not null
 GROUP BY 
 	empleado_dni,
@@ -515,7 +515,7 @@ GROUP BY
 ORDER BY empleado_dni
 
 -- 26855
-INSERT INTO [la_huerta].[Factura]
+INSERT INTO [EL_GRUPO].[Factura]
 SELECT 
 --	factura_nro as numero,
 	factura_descuento as descuento,
@@ -539,14 +539,14 @@ ORDER BY
 	factura_nro
 
 -- 118338
-INSERT INTO [la_huerta].[Pago] 
+INSERT INTO [EL_GRUPO].[Pago] 
 SELECT 
 	factura_nro as factura,
 	pago_fecha as fecha,	
 	0.001 + f.cuotas * pago_monto / (f.total * (1-f.descuento)) as cuotas,
 	f.empleado_dni as empleado
 FROM gd_esquema.Maestra 
-JOIN la_huerta.Factura as f ON factura_nro = f.numero
+JOIN EL_GRUPO.Factura as f ON factura_nro = f.numero
 WHERE pago_fecha is not null
 GROUP BY 
 	pago_fecha,
@@ -559,70 +559,70 @@ GROUP BY
 ORDER BY pago_fecha
 
 -- 8
-insert into la_huerta.Categoria
+insert into EL_GRUPO.Categoria
 select 
-	row_number() OVER (ORDER BY la_huerta.split(producto_cate,'¦',0)) AS id, 
+	row_number() OVER (ORDER BY EL_GRUPO.split(producto_cate,'¦',0)) AS id, 
 	NULL as categoria_padre,
-	la_huerta.split(producto_cate,'¦',0) as nombre
+	EL_GRUPO.split(producto_cate,'¦',0) as nombre
 from gd_esquema.Maestra
 where producto_cate is not null
-and la_huerta.split(producto_cate,'¦',0) <> ''
-group by la_huerta.split(producto_cate,'¦',0)
-order by la_huerta.split(producto_cate,'¦',0)
+and EL_GRUPO.split(producto_cate,'¦',0) <> ''
+group by EL_GRUPO.split(producto_cate,'¦',0)
+order by EL_GRUPO.split(producto_cate,'¦',0)
 
 -- 30
-insert into la_huerta.Categoria
+insert into EL_GRUPO.Categoria
 select 
-	row_number() OVER (order by cat.id, la_huerta.split(producto_cate,'¦',1)) + 8 AS id, 
+	row_number() OVER (order by cat.id, EL_GRUPO.split(producto_cate,'¦',1)) + 8 AS id, 
 	cat.id,
-	la_huerta.split(producto_cate,'¦',1) as nombreT
+	EL_GRUPO.split(producto_cate,'¦',1) as nombreT
 from gd_esquema.Maestra
-join la_huerta.Categoria as cat on cat.nombre = la_huerta.split(producto_cate,'¦',0)
+join EL_GRUPO.Categoria as cat on cat.nombre = EL_GRUPO.split(producto_cate,'¦',0)
 where producto_cate is not null
-and la_huerta.split(producto_cate,'¦',1) <> ''
-group by cat.id, la_huerta.split(producto_cate,'¦',1)
-order by cat.id, la_huerta.split(producto_cate,'¦',1)
+and EL_GRUPO.split(producto_cate,'¦',1) <> ''
+group by cat.id, EL_GRUPO.split(producto_cate,'¦',1)
+order by cat.id, EL_GRUPO.split(producto_cate,'¦',1)
 
 
 -- 31
-insert into la_huerta.Categoria
+insert into EL_GRUPO.Categoria
 select 
-	row_number() OVER (order by cat.id, la_huerta.split(producto_cate,'¦',2)) + 38 AS id, 
+	row_number() OVER (order by cat.id, EL_GRUPO.split(producto_cate,'¦',2)) + 38 AS id, 
 	cat.id,
-	la_huerta.split(producto_cate,'¦',2)
+	EL_GRUPO.split(producto_cate,'¦',2)
 from gd_esquema.Maestra
-join la_huerta.Categoria as cat on cat.nombre = la_huerta.split(producto_cate,'¦',1)
+join EL_GRUPO.Categoria as cat on cat.nombre = EL_GRUPO.split(producto_cate,'¦',1)
 where producto_cate is not null
-and la_huerta.split(producto_cate,'¦',2) <> ''
-group by cat.id, la_huerta.split(producto_cate,'¦',2)
-order by cat.id, la_huerta.split(producto_cate,'¦',2)
+and EL_GRUPO.split(producto_cate,'¦',2) <> ''
+group by cat.id, EL_GRUPO.split(producto_cate,'¦',2)
+order by cat.id, EL_GRUPO.split(producto_cate,'¦',2)
 
 -- 24
-insert into la_huerta.Categoria
+insert into EL_GRUPO.Categoria
 select 
-	row_number() OVER (order by cat.id, la_huerta.split(producto_cate,'¦',3)) + 69 AS id, 
+	row_number() OVER (order by cat.id, EL_GRUPO.split(producto_cate,'¦',3)) + 69 AS id, 
 	cat.id,
-	la_huerta.split(producto_cate,'¦',3)
+	EL_GRUPO.split(producto_cate,'¦',3)
 from gd_esquema.Maestra
-join la_huerta.Categoria as cat on cat.nombre = la_huerta.split(producto_cate,'¦',2)
+join EL_GRUPO.Categoria as cat on cat.nombre = EL_GRUPO.split(producto_cate,'¦',2)
 where producto_cate is not null
-and la_huerta.split(producto_cate,'¦',3) <> ''
-group by cat.id, la_huerta.split(producto_cate,'¦',3)
-order by cat.id, la_huerta.split(producto_cate,'¦',3)
+and EL_GRUPO.split(producto_cate,'¦',3) <> ''
+group by cat.id, EL_GRUPO.split(producto_cate,'¦',3)
+order by cat.id, EL_GRUPO.split(producto_cate,'¦',3)
 
 -- 99
-INSERT INTO [la_huerta].[Producto] 
+INSERT INTO [EL_GRUPO].[Producto] 
 SELECT 
-	la_huerta.back_split(producto_nombre,' ',0) AS codigo, 
-    substring(producto_nombre,0,len(producto_nombre) - len(la_huerta.back_split(producto_nombre,' ',0))) as nombre,
+	EL_GRUPO.back_split(producto_nombre,' ',0) AS codigo, 
+    substring(producto_nombre,0,len(producto_nombre) - len(EL_GRUPO.back_split(producto_nombre,' ',0))) as nombre,
 	producto_desc as descripcion,
 	producto_precio as precio,
 	m.id as marca_id,
     cat.id as categoria_id ,
 	1 as activo
 FROM gd_esquema.Maestra 
-JOIN la_huerta.Categoria as cat ON la_huerta.get_categoria_id( producto_cate ) = cat.id
-JOIN la_huerta.Marca as m ON m.nombre = producto_marca
+JOIN EL_GRUPO.Categoria as cat ON EL_GRUPO.get_categoria_id( producto_cate ) = cat.id
+JOIN EL_GRUPO.Marca as m ON m.nombre = producto_marca
 WHERE producto_nombre is not null and producto_precio <> 0
 GROUP BY 
     producto_nombre,
@@ -633,15 +633,15 @@ GROUP BY
 ORDER BY producto_nombre
 
 -- 179238
-INSERT INTO [la_huerta].[ItemFactura] 
+INSERT INTO [EL_GRUPO].[ItemFactura] 
 SELECT 
 	f.numero as factura_numero, 
     p.codigo as producto_codigo,
 	producto_precio as producto_precio,
 	producto_cant
 FROM gd_esquema.Maestra 
-JOIN la_huerta.Factura as f ON f.numero = factura_nro
-JOIN la_huerta.Producto as p ON p.codigo = la_huerta.back_split(producto_nombre,' ',0)
+JOIN EL_GRUPO.Factura as f ON f.numero = factura_nro
+JOIN EL_GRUPO.Producto as p ON p.codigo = EL_GRUPO.back_split(producto_nombre,' ',0)
 WHERE factura_nro is not null
 GROUP BY 
 	f.numero, 
@@ -651,7 +651,7 @@ GROUP BY
 ORDER BY f.numero
 
 -- 174424
-insert into la_huerta.IngresoStock
+insert into EL_GRUPO.IngresoStock
 select 
 	s.id as sucursal_id, 
 	p.codigo as producto_codigo, 
@@ -659,8 +659,8 @@ select
 	llegada_stock_fecha as fecha, 
 	llegada_stock_cant as stock
 from gd_esquema.Maestra
-join la_huerta.Sucursal as s on s.direccion = suc_dir
-join la_huerta.Producto as p on p.codigo = la_huerta.back_split(producto_nombre,' ',0)
+join EL_GRUPO.Sucursal as s on s.direccion = suc_dir
+join EL_GRUPO.Producto as p on p.codigo = EL_GRUPO.back_split(producto_nombre,' ',0)
 where llegada_stock_fecha is not null
 group by
 	s.id, 
@@ -677,15 +677,15 @@ order by
 
 
 -- 2376
-insert into la_huerta.Stock 
+insert into EL_GRUPO.Stock 
 select s.sucursal_id, s.producto_codigo, sum(stock)  - isnull((
 	select sum(cantidad) as vendido
-	from (la_huerta.ItemFactura as i
-	join la_huerta.Factura as f on i.factura_numero = f.numero)
-	join la_huerta.Empleado as e on f.empleado_dni = e.dni
+	from (EL_GRUPO.ItemFactura as i
+	join EL_GRUPO.Factura as f on i.factura_numero = f.numero)
+	join EL_GRUPO.Empleado as e on f.empleado_dni = e.dni
 	where e.sucursal_id = s.sucursal_id and i.producto_codigo = s.producto_codigo 
 ), 0) as stock
-from la_huerta.IngresoStock as s
+from EL_GRUPO.IngresoStock as s
 group by sucursal_id, producto_codigo
 order by sucursal_id, producto_codigo
 
@@ -695,42 +695,42 @@ order by sucursal_id, producto_codigo
 -- coutas pagadas de cada factura
 ----------------
 -- 26855
-update la_huerta.Factura 
+update EL_GRUPO.Factura 
 set cuotas_pagas = 
-	(select sum(p.cuotas) from la_huerta.Pago as p where numero = p.factura_numero)
+	(select sum(p.cuotas) from EL_GRUPO.Pago as p where numero = p.factura_numero)
 
 ----------------
 -- Tablas de usuario
 ----------------
-insert into la_huerta.Usuario ( username , password, empleado_dni ) values ('admin','E6B87050BFCB8143FCB8DB0170A4DC9ED00D904DDD3E2A4AD1B1E8DC0FDC9BE7',352287)
+insert into EL_GRUPO.Usuario ( username , password, empleado_dni ) values ('admin','E6B87050BFCB8143FCB8DB0170A4DC9ED00D904DDD3E2A4AD1B1E8DC0FDC9BE7',352287)
 ----------------
 
 ----------------
 -- Funcionalidades del sistema.
 ----------------
-insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (1,'ABM de Empleado','ABM de Empleado')
-insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (2,'ABM de Rol','ABM de Rol')
-insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (3,'ABM de Usuario','ABM de Usuario')
-insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (4,'ABM de Cliente','ABM de Cliente')
-insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (5,'ABM de Producto','ABM de Producto')
-insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (6,'Asignación de stock','Asignación de stock')
-insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (7,'Facturación','Facturación')
-insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (8,'Efectuar Pago','Efectuar Pago')
-insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (9,'Tablero de Control','Tablero de Control')
-insert into la_huerta.funcionalidad ( id , nombre , descripcion ) values (10,'Mejores Categorías','Mejores Categorías')
+insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (1,'ABM de Empleado','ABM de Empleado')
+insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (2,'ABM de Rol','ABM de Rol')
+insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (3,'ABM de Usuario','ABM de Usuario')
+insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (4,'ABM de Cliente','ABM de Cliente')
+insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (5,'ABM de Producto','ABM de Producto')
+insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (6,'Asignación de stock','Asignación de stock')
+insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (7,'Facturación','Facturación')
+insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (8,'Efectuar Pago','Efectuar Pago')
+insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (9,'Tablero de Control','Tablero de Control')
+insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (10,'Mejores Categorías','Mejores Categorías')
 ----------------
 
 -- Se agregaron los insert de las Funcionalidades del Admin.
-insert into la_huerta.Rol (nombre,descripcion,activo) values ('Admin', 'Rol administrador',1)
-insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 1)
-insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 2)
-insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 3)
-insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 4)
-insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 5)
-insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 6)
-insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 7)
-insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 8)
-insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 9)
-insert into la_huerta.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 10)
+insert into EL_GRUPO.Rol (nombre,descripcion,activo) values ('Admin', 'Rol administrador',1)
+insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 1)
+insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 2)
+insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 3)
+insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 4)
+insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 5)
+insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 6)
+insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 7)
+insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 8)
+insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 9)
+insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 10)
 
-insert into la_huerta.UsuarioRol values ( 1, 1 )
+insert into EL_GRUPO.UsuarioRol values ( 1, 1 )
