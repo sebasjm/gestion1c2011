@@ -22,34 +22,34 @@ namespace VentaElectrodomesticos.Controladores {
         class MayorDeudorMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
                 return new MayorDeudor(
-                        sdr.GetInt32(0),
-                        sdr.GetString(1),
-                        sdr.GetString(2)
+                        sdr.IsDBNull(0) ? 0 : sdr.GetInt32(0),
+                        sdr.IsDBNull(1) ? "" : sdr.GetString(1),
+                        sdr.IsDBNull(2) ? "" : sdr.GetString(2)
                     );
             }
         }
         class MejorProductoMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
                 return new MejorProducto(
-                        sdr.GetInt32(0),
-                        sdr.GetString(1),
-                        sdr.GetString(2)
+                        sdr.IsDBNull(0) ? 0 : sdr.GetInt32(0),
+                        sdr.IsDBNull(1) ? "" : sdr.GetString(1),
+                        sdr.IsDBNull(2) ? "" : sdr.GetString(2)
                     );
             }
         }
         class MejorVendedorMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
                 return new MejorVendedor(
-                        sdr.GetInt32(0),
-                        sdr.GetString(1),
-                        sdr.GetString(2)
+                        sdr.IsDBNull(0) ? 0 : sdr.GetInt32(0),
+                        sdr.IsDBNull(1) ? "" : sdr.GetString(1),
+                        sdr.IsDBNull(2) ? "" : sdr.GetString(2)
                     );
             }
         }
         class ProporcionFormasDePagoMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
                 return new ProporcionFormasDePago(
-                        sdr.GetDouble(0)
+                        sdr.IsDBNull(0) ? 0 : sdr.GetDouble(0)
                     );
             }
         }
@@ -192,11 +192,10 @@ namespace VentaElectrodomesticos.Controladores {
             "ORDER BY sum(cantidad) DESC ";
 
         private static readonly String TABLERO_PROPORCIONAL_FORMA_DE_PAGO =
-            " SELECT convert( float, count(*) ) / convert( float, (select count(*) from EL_GRUPO.Factura) ) " +
+            " SELECT convert( float, sum( CASE cuotas WHEN 1 THEN 1 ELSE 0 END ) ) / convert( float, count(*) ) " +
              "FROM EL_GRUPO.Factura AS f " +
              "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
-             FILTRO_SUCURSAL_ANIO +
-            " AND cuotas = 1";
+             FILTRO_SUCURSAL_ANIO;
 
         private static readonly String TABLERO_FALTANTE_STOCK =
             "EL_GRUPO.dias_sin_stock";
@@ -275,8 +274,9 @@ namespace VentaElectrodomesticos.Controladores {
             "(" + CATEGORIA_PROD_MAS_FACTURADO + ") as prod_mas_facturado, " +
             "(" + CATEGORIA_PROD_MAS_CARO + ") as prod_mas_caro, " +
             "(" + CATEGORIA_MEJOR_VENEDOR + ") as mejor_vendedor " +
-            "from EL_GRUPO.Categoria as c " +
-            "where categoria_padre is null ";
+            "FROM EL_GRUPO.Categoria AS c " +
+            "WHERE categoria_padre IS NULL " + 
+            "ORDER BY ("+CATEGORIA_MONTO+") DESC";
 
 
     }
