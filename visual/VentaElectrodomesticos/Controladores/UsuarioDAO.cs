@@ -19,7 +19,8 @@ namespace VentaElectrodomesticos.Controladores {
                 return new Usuario((int)sdr.GetValue(0)) {
                     username = sdr.GetString(1),
                     password = sdr.GetString(2),
-                    empleado_dni = (int)sdr.GetValue(4)
+                    empleado_dni = (int)sdr.GetValue(4),
+                    intentos = (Byte)sdr.GetValue(5),
                 };
             }
         }
@@ -115,7 +116,20 @@ namespace VentaElectrodomesticos.Controladores {
                 .filter("username = '{0}'", username);
             return connection.find<Usuario>(q.build(), q.getParams());
         }
-
+        private static readonly String INTENTOS = "UPDATE EL_GRUPO.Usuario set intentos = {0} WHERE username = '{1}';";
+        public void intentos(String usuario , bool valor)
+        {
+            if(valor){
+                connection.update(INTENTOS, "intentos + 1" ,usuario);
+            }else{
+                connection.update(INTENTOS, 0 ,usuario);
+            }
+        }
+        private static readonly String DESHABILITAR = "UPDATE EL_GRUPO.Usuario SET activo=0 WHERE username={0}";
+        public void desahabilitar(String usuario)
+        {
+            connection.update(DESHABILITAR, usuario);
+        }
     }
 }
 

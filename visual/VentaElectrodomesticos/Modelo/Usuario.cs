@@ -23,6 +23,10 @@ namespace VentaElectrodomesticos.Modelo {
         public Empleado empleado {
             get { return Context.instance.dao.empleado.findByDni(empleado_dni); }
         }
-
+        public Byte intentos
+        {
+            get;
+            set;
+        }
     }
 }

@@ -56,6 +56,7 @@
             this.bCancelar.TabIndex = 15;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // tPassword
             // 

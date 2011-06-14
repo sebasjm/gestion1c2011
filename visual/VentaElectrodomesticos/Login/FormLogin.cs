@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using VentaElectrodomesticos.Controladores;
 using VentaElectrodomesticos.Exception;
+using VentaElectrodomesticos.Modelo;
 namespace VentaElectrodomesticos.Login
 {
     public partial class FormLogin : Form
@@ -22,9 +23,20 @@ namespace VentaElectrodomesticos.Login
                 Context.instance.authenticate(tUsername.Text, tPassword.Text);
             } catch (WrongUserOrPasswordException ) {
                 tUsername.Text = "Usuario o Contraseña incorrecta";
+                Usuario user = Context.instance.dao.user.findByName(tUsername.Text);
+                Context.instance.dao.user.intentos(tUsername.Text , true);
+                if (!(user == null)&&(user.intentos == 3)) {
+                    Context.instance.dao.user.desahabilitar(tUsername.Text);
+                }
                 return;
             }
+            Context.instance.dao.user.intentos(tUsername.Text, false);
             tUsername.Text = "right!";
+        }
+
+        private void bCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

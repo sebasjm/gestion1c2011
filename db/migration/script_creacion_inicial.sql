@@ -80,6 +80,7 @@ CREATE TABLE [EL_GRUPO].[Usuario](
 	[password] [varchar](64) NOT NULL,
     [activo] [bit] NOT NULL DEFAULT 1,
 	[empleado_dni] [int] NOT NULL DEFAULT NULL,
+	[intentos] [bit] NOT NULL DEFAULT 0,
 	foreign key (empleado_dni) references [EL_GRUPO].[Empleado](dni),
 	primary key (id),
 	unique (username)
