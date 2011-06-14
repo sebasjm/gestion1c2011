@@ -38,6 +38,7 @@ namespace VentaElectrodomesticos.AbmCliente {
                 bCrearOtro.Visible = false;
                 bModificar.Visible = true;
                 bBorrar.Visible = true;
+                txtDni.Enabled = false;
             }
         }
         private void cargarCliente(Cliente cargoCliente) {
@@ -66,6 +67,7 @@ namespace VentaElectrodomesticos.AbmCliente {
             txtDireccion.Text = "";
             txtTelefono.Text = "";
             cmbProvincia.SelectedIndex = 0;
+            txtDni.Enabled = true;
         }
         private void bCrear_Click(object sender, EventArgs e) {
             if (!validator.check()) return;

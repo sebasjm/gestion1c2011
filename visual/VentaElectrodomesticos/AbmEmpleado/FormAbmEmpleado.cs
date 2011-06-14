@@ -47,6 +47,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 bCrear.Hide();
                 bModificar.Show();
                 bBorrar.Show();
+                txtDni.Enabled = false;
             }
         }
         private void cargarEmpleado(Empleado cargoEmpleado) {
@@ -80,6 +81,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             cmbSucursal.SelectedValue = 0;
             cmbTipoEmpleado.SelectedValue = 0;
             sucursal = null;
+            txtDni.Enabled = true;
             bCrearOtro.Show();
             bCrear.Show();
             bModificar.Hide();
