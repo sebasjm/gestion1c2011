@@ -2,16 +2,15 @@ USE gd1c2011
 GO
 
 DROP PROCEDURE EL_GRUPO.dias_sin_stock;
-
 GO
 
 DROP FUNCTION EL_GRUPO.get_categoria_fullname;
 DROP FUNCTION EL_GRUPO.get_categoria_id;
 drop function EL_GRUPO.split;
 drop function EL_GRUPO.back_split;
+drop function EL_GRUPO.categoria_root;
 drop function EL_GRUPO.categoria_id_collection;
 drop function EL_GRUPO.stock_a_la_fecha;
-
 GO
 
 DROP TABLE [EL_GRUPO].[ItemFactura]
@@ -33,7 +32,7 @@ DROP TABLE [EL_GRUPO].[Marca]
 DROP TABLE [EL_GRUPO].[TipoEmpleado]
 DROP TABLE [EL_GRUPO].[Cliente]
 DROP TABLE [EL_GRUPO].[Provincia]
-
 GO
+
 DROP SCHEMA [EL_GRUPO]
 GO
