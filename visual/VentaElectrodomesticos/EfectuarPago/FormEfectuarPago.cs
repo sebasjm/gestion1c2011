@@ -65,8 +65,12 @@ namespace VentaElectrodomesticos.EfectuarPago {
                 MessageBox.Show("No puede pagar mas cuotas que las que faltan pagar", "Error", MessageBoxButtons.OK);
                 return;
             }
-            Context.instance.dao.factura.pagar(factura, cuotas);
-            FillFacturas();
+            if (MessageBox.Show("El total a pagar es : " + (factura.valorCuota * cuotas) + " ¿Esta seguro de realizar la transacción ?", "Confirmación", MessageBoxButtons.YesNo ) == DialogResult.Yes)
+              {
+                  Context.instance.dao.factura.pagar(factura, cuotas);
+                  FillFacturas();
+
+              }
         }
 
         private void cmbSucursal_SelectedIndexChanged(object sender, EventArgs e) {
