@@ -44,13 +44,16 @@ namespace VentaElectrodomesticos.Controladores {
 
         public void pagar(Factura factura, int cuotas) {
             Empleado empleado = Context.instance.security.loggedUser.empleado;
-            connection.update(INSERT_PAGO, factura.numero, cuotas, empleado.dni);
-            connection.update(UPDATE_FACTURA_COUTAS, cuotas, factura.numero);
+            pagar(factura.numero, cuotas, empleado.dni);
+        }
+
+        private void pagar(int numero, int cuotas, int dni) {
+            connection.update(INSERT_PAGO, numero, cuotas, dni);
+            connection.update(UPDATE_FACTURA_COUTAS, cuotas, numero);
         }
 
         private static readonly String INSERT_FACTURA = "INSERT INTO EL_GRUPO.Factura (descuento, total, fecha, cuotas, cliente_dni, empleado_dni, cuotas_pagas) VALUES({0},{1},getdate(),{2},{3},{4},0)";
         private static readonly String ULTIMA_FACTURA_CREADA_DEL_CLIENTE = "SELECT MAX(numero) FROM EL_GRUPO.Factura WHERE cliente_dni = {0} AND empleado_dni = {1}";
-        private static readonly String INSERT_PAGO_CONTADO = "INSERT INTO EL_GRUPO.Pago VALUES ( {0},getdate(),0,{1})";
         private static readonly String INSERT_ITEM_FACTURA = "INSERT INTO EL_GRUPO.ItemFactura VALUES ( {0},{1},{2},{3})";
         private static readonly String UPDATE_STOCK_CANTIDAD = "UPDATE EL_GRUPO.Stock SET stock = stock - {0} WHERE sucursal_id = {1} AND producto_codigo = {2}";
 
@@ -64,11 +67,8 @@ namespace VentaElectrodomesticos.Controladores {
                 empleado.dni
             );
             int nro_factura = connection.find<int>(ULTIMA_FACTURA_CREADA_DEL_CLIENTE,cliente.dni,empleado.dni);
-            if (cuotas == 0) {
-                connection.update(INSERT_PAGO_CONTADO, 
-                    nro_factura, 
-                    empleado.dni
-                );
+            if (cuotas == 1) {
+                pagar(nro_factura,cuotas,empleado.dni);
             }
             foreach (ItemFactura itf in list) {
                 connection.update(INSERT_ITEM_FACTURA,

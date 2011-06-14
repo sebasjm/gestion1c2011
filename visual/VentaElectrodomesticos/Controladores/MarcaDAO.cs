@@ -56,16 +56,16 @@ namespace VentaElectrodomesticos.Controladores {
         private static readonly String UPDATE = "UPDATE EL_GRUPO.Marca SET nombre='{1}' WHERE id={0}";
         private static readonly String DELETE = "UPDATE EL_GRUPO.Marca SET activo=0 WHERE id={0}";
 
-        public void insertar(Marca marca) {
+        public void insertar(String marca) {
             connection.update(
                 INSERT,
-                marca.nombre
+                marca
             );
         }
 
         public Marca findOrCreate(string p) {
             Marca m = findByNombre(p);
-            if (m == null) insertar(new Marca(0) { nombre = p });
+            if (m == null) insertar(p);
             return m == null ? findByNombre(p) : m;
         }
 

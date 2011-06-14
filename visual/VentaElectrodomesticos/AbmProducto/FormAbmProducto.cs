@@ -172,9 +172,7 @@ namespace VentaElectrodomesticos.AbmProducto
                     if (MessageBox.Show("¿Esta seguro que desea crear la Marca?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         // proceder con la creación de la marca
-                        Marca marcaCrear = new Marca(null);
-                        marcaCrear.nombre = txtMarca.Text;
-                        Context.instance.dao.marca.insertar(marcaCrear);
+                        Context.instance.dao.marca.insertar( txtMarca.Text);
                     }
                     else
                     {

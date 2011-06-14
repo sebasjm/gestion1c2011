@@ -166,12 +166,12 @@ namespace VentaElectrodomesticos.Facturacion {
             } catch (FormatException ) {
                 error = true;
             }
-            if (error || descuento < 0 || descuento > 0.3) {
+            if (error || descuento < 0 || descuento > 30) {
                 descuento = 0;
             }
             txtDescuento.Text = String.Format("{0:#,##0.00}", descuento);
             //con el formato se perdio presicion, releer descuento pero asumir buen formato
-            descuento = Double.Parse(txtDescuento.Text);
+            descuento = Double.Parse(txtDescuento.Text) / 100;
             ShowMonto();
         }
         private void txtCuotas_Leave(object sender, EventArgs e) {

@@ -64,8 +64,11 @@ namespace VentaElectrodomesticos.Vista {
         List<ValidationEntry> checks = new List<ValidationEntry>();
 
         public class Text {
+            public readonly static Func<TextBox, bool> texto = (TextBox campo) => {
+                return campo.Text.Length == 0 || Regex.Match(campo.Text.Trim(), "^[a-z][ a-zA-Z][a-z\\.]*$").Success;
+            };
             public readonly static Func<TextBox, bool> nombre = (TextBox campo) => {
-                return campo.Text.Length == 0 || Regex.Match(campo.Text.Trim(), "^[A-Z][ a-zA-Z]*$").Success;
+                return campo.Text.Length == 0 || Regex.Match(campo.Text.Trim(), "^[A-Z][ a-zA-Z][a-z]*$").Success;
             };
             public readonly static Func<TextBox, bool> mail = (TextBox campo) => {
                 return campo.Text.Length == 0 || Regex.Match(campo.Text.Trim(), "^[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,3}$").Success;
