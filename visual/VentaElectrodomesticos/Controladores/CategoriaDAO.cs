@@ -18,7 +18,7 @@ namespace VentaElectrodomesticos.Controladores {
         public List<Categoria> search(int codigo, string nombre) {
             QueryBuilder q = new QueryBuilder();
             q.select()
-                .from("la_huerta.Categoria")
+                .from("EL_GRUPO.Categoria")
                 .filterIf(codigo != 0, "id = {0}", codigo)
                 .filterIf(nombre.Length != 0, "nombre like '%{1}%' ", nombre);
             return connection.query<Categoria>(q.build(), q.getParams());
@@ -34,7 +34,7 @@ namespace VentaElectrodomesticos.Controladores {
         public Categoria findById(int id) {
             QueryBuilder q = new QueryBuilder();
             q.select()
-                .from("la_huerta.categoria")
+                .from("EL_GRUPO.categoria")
                 .filterIf(id != 0, "id = {0}", id);
             return connection.find<Categoria>(q.build(), q.getParams());
         }
@@ -42,7 +42,7 @@ namespace VentaElectrodomesticos.Controladores {
         public List<Categoria> load() {
             QueryBuilder q = new QueryBuilder();
             q.select()
-                .from("la_huerta.Categoria");
+                .from("EL_GRUPO.Categoria");
             return connection.query<Categoria>(q.build() + " order by categoria_padre", q.getParams());
         }
     }

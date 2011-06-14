@@ -22,7 +22,7 @@ namespace VentaElectrodomesticos.Controladores {
                 };
             }
         }
-        public static readonly String INSERT_ROL_FUNCIONALIDAD = "INSERT INTO la_huerta.RolFuncionalidad VALUES ({0},{1})";
+        public static readonly String INSERT_ROL_FUNCIONALIDAD = "INSERT INTO EL_GRUPO.RolFuncionalidad VALUES ({0},{1})";
         public void insertar(Rol rol , Funcionalidad fun)
         {      
             connection.update(INSERT_ROL_FUNCIONALIDAD, rol.id, fun.id);

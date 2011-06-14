@@ -142,127 +142,127 @@ namespace VentaElectrodomesticos.Controladores {
 
         private static readonly String TABLERO_CANTIDAD_VENTAS =
             "SELECT count(*) " +
-            "FROM la_huerta.Factura AS f " +
-            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni " +
+            "FROM EL_GRUPO.Factura AS f " +
+            "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
             FILTRO_SUCURSAL_ANIO;
 
         private static readonly String TABLERO_TOTAL_FACTURADO =
             "SELECT sum( (total)*(1-descuento) ) " +
-            "FROM la_huerta.Factura AS f " +
-            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni " +
+            "FROM EL_GRUPO.Factura AS f " +
+            "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
             FILTRO_SUCURSAL_ANIO;
 
         private static readonly String TABLERO_MAYOR_FACTURA =
-            "SELECT max(total) " +
-            "FROM la_huerta.Factura AS f " +
-            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni " +
+            "SELECT max(total*(1-descuento)) " +
+            "FROM EL_GRUPO.Factura AS f " +
+            "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
             FILTRO_SUCURSAL_ANIO;
 
         private static readonly String CANTIDAD_PAGOS_CLIENTE =
             "SELECT sum(cuotas) " +
-            "FROM la_huerta.Pago " +
+            "FROM EL_GRUPO.Pago " +
             "WHERE factura_numero = f.numero AND " +
             FILTRO_ANIO +
             "GROUP BY factura_numero ";
 
         private static readonly String TABLERO_MAYOR_DEUDOR =
             "SELECT TOP 1 c.dni, c.nombre, c.apellido " +
-            "FROM la_huerta.Factura AS f " +
-            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni " +
-            "JOIN la_huerta.Cliente AS c ON c.dni = f.cliente_dni " +
+            "FROM EL_GRUPO.Factura AS f " +
+            "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
+            "JOIN EL_GRUPO.Cliente AS c ON c.dni = f.cliente_dni " +
             FILTRO_SUCURSAL_ANIO +
             "ORDER BY f.total*(1-f.descuento)*(1- ( CASE WHEN f.cuotas = 0 THEN 0 ELSE (" + CANTIDAD_PAGOS_CLIENTE + ")/f.cuotas END )) DESC ";
 
         private static readonly String TABLERO_MEJOR_VENDEDOR =
             "SELECT TOP 1 e.dni, e.nombre, e.apellido " +
-            "FROM la_huerta.Factura AS f " +
-            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni " +
+            "FROM EL_GRUPO.Factura AS f " +
+            "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
             FILTRO_SUCURSAL_ANIO +
             "GROUP BY e.dni, e.nombre, e.apellido " +
             "ORDER BY sum(total*(1-descuento)) DESC ";
 
         private static readonly String TABLERO_MEJOR_PRODUCTO =
-            "SELECT TOP 1 p.codigo, p.nombre, la_huerta.get_categoria_fullname( p.categoria_id )" +
-            "FROM la_huerta.ItemFactura AS itf " +
-            "JOIN la_huerta.Factura AS f ON f.numero = itf.factura_numero " +
-            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni " +
-            "JOIN la_huerta.Producto AS p ON p.codigo = itf.producto_codigo " +
+            "SELECT TOP 1 p.codigo, p.nombre, EL_GRUPO.get_categoria_fullname( p.categoria_id )" +
+            "FROM EL_GRUPO.ItemFactura AS itf " +
+            "JOIN EL_GRUPO.Factura AS f ON f.numero = itf.factura_numero " +
+            "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
+            "JOIN EL_GRUPO.Producto AS p ON p.codigo = itf.producto_codigo " +
             FILTRO_SUCURSAL_ANIO +
             "GROUP BY p.codigo, p.nombre, p.categoria_id " +
             "ORDER BY sum(cantidad) DESC ";
 
         private static readonly String TABLERO_PROPORCIONAL_FORMA_DE_PAGO =
-            " SELECT convert( float, count(*) ) / convert( float, (select count(*) from la_huerta.Factura) ) " +
-             "FROM la_huerta.Factura AS f " +
-             "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni " +
+            " SELECT convert( float, count(*) ) / convert( float, (select count(*) from EL_GRUPO.Factura) ) " +
+             "FROM EL_GRUPO.Factura AS f " +
+             "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
              FILTRO_SUCURSAL_ANIO +
             " AND cuotas = 1";
 
         private static readonly String TABLERO_FALTANTE_STOCK =
-            "la_huerta.dias_sin_stock";
+            "EL_GRUPO.dias_sin_stock";
 
         private static readonly String PREMIUM_MEJORES_CLIENTES =
-            "SELECT TOP 30 c.dni, c.nombre, c.apellido, sum(total*(1-descuento)), sum(itf.cantidad), max(f.fecha), (select top 1 empleado_dni from la_huerta.Factura where numero = max(f.numero) ) " +
-            "FROM la_huerta.Factura AS f " +
-            "JOIN la_huerta.Cliente AS c ON c.dni = f.cliente_dni " +
-            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni " +
-            "JOIN la_huerta.ItemFactura AS itf ON itf.factura_numero = f.numero " +
+            "SELECT TOP 30 c.dni, c.nombre, c.apellido, sum(total*(1-descuento)), sum(itf.cantidad), max(f.fecha), (select top 1 empleado_dni from EL_GRUPO.Factura where numero = max(f.numero) ) " +
+            "FROM EL_GRUPO.Factura AS f " +
+            "JOIN EL_GRUPO.Cliente AS c ON c.dni = f.cliente_dni " +
+            "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
+            "JOIN EL_GRUPO.ItemFactura AS itf ON itf.factura_numero = f.numero " +
             FILTRO_SUCURSAL_ANIO +
             "GROUP BY c.dni, c.nombre, c.apellido " +
             "ORDER BY sum(total*(1-descuento)) DESC ";
 
         private static readonly String CATEGORIA_CANT_SUBCATEGORIAS =
             "SELECT count(*) " +
-            "FROM la_huerta.Categoria " +
-            "WHERE c.id <> id AND c.id = la_huerta.categoria_root(id) ";
+            "FROM EL_GRUPO.Categoria " +
+            "WHERE c.id <> id AND c.id = EL_GRUPO.categoria_root(id) ";
 
         private static readonly String FILTRO_CATEGORIA =
             FILTRO_SUCURSAL_ANIO +
-            " AND la_huerta.categoria_root(p.categoria_id) = c.id ";
+            " AND EL_GRUPO.categoria_root(p.categoria_id) = c.id ";
 
         private static readonly String CATEGORIA_MONTO =
             "SELECT sum( itf.producto_precio*itf.cantidad*(1-f.descuento) ) " +
-            "FROM la_huerta.ItemFactura AS itf " +
-            "join la_huerta.Producto as p on p.codigo = itf.producto_codigo " +
-            "join la_huerta.Factura as f on f.numero = itf.factura_numero " +
-            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni " +
+            "FROM EL_GRUPO.ItemFactura AS itf " +
+            "join EL_GRUPO.Producto as p on p.codigo = itf.producto_codigo " +
+            "join EL_GRUPO.Factura as f on f.numero = itf.factura_numero " +
+            "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
             FILTRO_CATEGORIA;
 
         private static readonly String CATEGORIA_PROD_MAS_VENDIDO =
             "SELECT TOP 1 convert(varchar(50),itf.producto_codigo)+' -- '+p.nombre " +
-            "FROM la_huerta.ItemFactura AS itf " +
-            "join la_huerta.Producto as p on p.codigo = itf.producto_codigo " +
-            "join la_huerta.Factura as f on f.numero = itf.factura_numero " +
-            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni " +
+            "FROM EL_GRUPO.ItemFactura AS itf " +
+            "join EL_GRUPO.Producto as p on p.codigo = itf.producto_codigo " +
+            "join EL_GRUPO.Factura as f on f.numero = itf.factura_numero " +
+            "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
             FILTRO_CATEGORIA +
             "GROUP BY itf.producto_codigo,p.nombre "+
             "ORDER BY sum(itf.cantidad) DESC";
 
         private static readonly String CATEGORIA_PROD_MAS_FACTURADO =
             "SELECT TOP 1 convert(varchar(50),itf.producto_codigo)+' -- '+p.nombre+' -- $'+convert(varchar(50),sum( itf.producto_precio*itf.cantidad*(1-f.descuento) )) " +
-            "FROM la_huerta.ItemFactura AS itf " + 
-            "join la_huerta.Producto as p on p.codigo = itf.producto_codigo " +
-            "join la_huerta.Factura as f on f.numero = itf.factura_numero " +
-            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni  " +
+            "FROM EL_GRUPO.ItemFactura AS itf " + 
+            "join EL_GRUPO.Producto as p on p.codigo = itf.producto_codigo " +
+            "join EL_GRUPO.Factura as f on f.numero = itf.factura_numero " +
+            "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni  " +
             FILTRO_CATEGORIA +
             "GROUP BY itf.producto_codigo,p.nombre " +
             "ORDER BY sum( itf.producto_precio*itf.cantidad*(1-f.descuento) ) DESC";
 
         private static readonly String CATEGORIA_PROD_MAS_CARO =
             "SELECT TOP 1 convert(varchar(50),itf.producto_codigo) + ' -- ' +p.nombre + ' -- $'+ convert(varchar(50),itf.producto_precio*itf.cantidad*(1-f.descuento)) " +
-            "FROM la_huerta.ItemFactura AS itf  " +
-            "join la_huerta.Producto as p on p.codigo = itf.producto_codigo " +
-            "join la_huerta.Factura as f on f.numero = itf.factura_numero " +
-            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni  " +
+            "FROM EL_GRUPO.ItemFactura AS itf  " +
+            "join EL_GRUPO.Producto as p on p.codigo = itf.producto_codigo " +
+            "join EL_GRUPO.Factura as f on f.numero = itf.factura_numero " +
+            "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni  " +
             FILTRO_CATEGORIA +
             "ORDER BY itf.producto_precio*itf.cantidad*(1-f.descuento) DESC";
 
         private static readonly String CATEGORIA_MEJOR_VENEDOR =
             "SELECT TOP 1 e.apellido + ', ' + e.nombre " +
-            "FROM la_huerta.ItemFactura AS itf  " +
-            "join la_huerta.Producto as p on p.codigo = itf.producto_codigo " +
-            "join la_huerta.Factura as f on f.numero = itf.factura_numero " +
-            "JOIN la_huerta.Empleado AS e ON e.dni = f.empleado_dni  " +
+            "FROM EL_GRUPO.ItemFactura AS itf  " +
+            "join EL_GRUPO.Producto as p on p.codigo = itf.producto_codigo " +
+            "join EL_GRUPO.Factura as f on f.numero = itf.factura_numero " +
+            "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni  " +
             FILTRO_CATEGORIA +
             "GROUP BY e.dni, e.nombre, e.apellido " +
             "ORDER BY sum(itf.cantidad) DESC, e.dni ";
@@ -275,7 +275,7 @@ namespace VentaElectrodomesticos.Controladores {
             "(" + CATEGORIA_PROD_MAS_FACTURADO + ") as prod_mas_facturado, " +
             "(" + CATEGORIA_PROD_MAS_CARO + ") as prod_mas_caro, " +
             "(" + CATEGORIA_MEJOR_VENEDOR + ") as mejor_vendedor " +
-            "from la_huerta.Categoria as c " +
+            "from EL_GRUPO.Categoria as c " +
             "where categoria_padre is null ";
 
 

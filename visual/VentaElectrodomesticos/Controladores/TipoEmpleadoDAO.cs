@@ -16,7 +16,7 @@ namespace VentaElectrodomesticos.Controladores {
         public List<TipoEmpleado> load() {
             if (cache == null) {
                 QueryBuilder q = new QueryBuilder();
-                q.select().from("la_huerta.TipoEmpleado");
+                q.select().from("EL_GRUPO.TipoEmpleado");
                 cache = connection.query<TipoEmpleado>(q.build(), q.getParams());
             }
             return new List<TipoEmpleado>( cache );

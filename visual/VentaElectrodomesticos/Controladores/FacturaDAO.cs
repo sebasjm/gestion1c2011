@@ -32,15 +32,15 @@ namespace VentaElectrodomesticos.Controladores {
 
         public List<Factura> search(Cliente cliente, Sucursal sucursal) {
             QueryBuilder q = new QueryBuilder().select()
-                .from("la_huerta.Factura as f JOIN la_huerta.Empleado as e ON e.dni = f.empleado_dni")
+                .from("EL_GRUPO.Factura as f JOIN EL_GRUPO.Empleado as e ON e.dni = f.empleado_dni")
                 .filterIf(cliente != null && cliente.dni != 0, " f.cliente_dni = {0}", cliente == null ? 0 : cliente.dni)
                 .filterIf(sucursal != null && sucursal.id != 0, " e.sucursal_id = {1}", sucursal == null ? 0 : sucursal.id)
                 .filter(" f.cuotas_pagas < f.cuotas");
             return connection.query<Factura>(q.build(), q.getParams());
         }
 
-        private static readonly String INSERT_PAGO = "INSERT INTO la_huerta.Pago VALUES ({0},getdate(),{1},{2})";
-        private static readonly String UPDATE_FACTURA_COUTAS = "UPDATE la_huerta.Factura SET cuotas_pagas = cuotas_pagas + {0} where numero = {1}";
+        private static readonly String INSERT_PAGO = "INSERT INTO EL_GRUPO.Pago VALUES ({0},getdate(),{1},{2})";
+        private static readonly String UPDATE_FACTURA_COUTAS = "UPDATE EL_GRUPO.Factura SET cuotas_pagas = cuotas_pagas + {0} where numero = {1}";
 
         public void pagar(Factura factura, int cuotas) {
             Empleado empleado = Context.instance.security.loggedUser.empleado;
@@ -48,11 +48,11 @@ namespace VentaElectrodomesticos.Controladores {
             connection.update(UPDATE_FACTURA_COUTAS, cuotas, factura.numero);
         }
 
-        private static readonly String INSERT_FACTURA = "INSERT INTO la_huerta.Factura (descuento, total, fecha, cuotas, cliente_dni, empleado_dni, cuotas_pagas) VALUES({0},{1},getdate(),{2},{3},{4},0)";
-        private static readonly String ULTIMA_FACTURA_CREADA_DEL_CLIENTE = "SELECT MAX(numero) FROM la_huerta.Factura WHERE cliente_dni = {0} AND empleado_dni = {1}";
-        private static readonly String INSERT_PAGO_CONTADO = "INSERT INTO la_huerta.Pago VALUES ( {0},getdate(),0,{1})";
-        private static readonly String INSERT_ITEM_FACTURA = "INSERT INTO la_huerta.ItemFactura VALUES ( {0},{1},{2},{3})";
-        private static readonly String UPDATE_STOCK_CANTIDAD = "UPDATE la_huerta.Stock SET stock = stock - {0} WHERE sucursal_id = {1} AND producto_codigo = {2}";
+        private static readonly String INSERT_FACTURA = "INSERT INTO EL_GRUPO.Factura (descuento, total, fecha, cuotas, cliente_dni, empleado_dni, cuotas_pagas) VALUES({0},{1},getdate(),{2},{3},{4},0)";
+        private static readonly String ULTIMA_FACTURA_CREADA_DEL_CLIENTE = "SELECT MAX(numero) FROM EL_GRUPO.Factura WHERE cliente_dni = {0} AND empleado_dni = {1}";
+        private static readonly String INSERT_PAGO_CONTADO = "INSERT INTO EL_GRUPO.Pago VALUES ( {0},getdate(),0,{1})";
+        private static readonly String INSERT_ITEM_FACTURA = "INSERT INTO EL_GRUPO.ItemFactura VALUES ( {0},{1},{2},{3})";
+        private static readonly String UPDATE_STOCK_CANTIDAD = "UPDATE EL_GRUPO.Stock SET stock = stock - {0} WHERE sucursal_id = {1} AND producto_codigo = {2}";
 
         public void nueva(double descuento, double total, byte cuotas, Cliente cliente, List<ItemFacturaMock> list) {
             Empleado empleado = Context.instance.security.loggedUser.empleado;

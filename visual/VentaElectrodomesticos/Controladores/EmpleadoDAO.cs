@@ -27,7 +27,7 @@ namespace VentaElectrodomesticos.Controladores {
         public List<Empleado> search(string nombre, string apellido, int dni, Sucursal suc, TipoEmpleado tipoEmp) {
             QueryBuilder q = new QueryBuilder();
             q.select()
-                .from("la_huerta.Empleado")
+                .from("EL_GRUPO.Empleado")
                 .filterIf(nombre.Length != 0, "nombre like '%{0}%' ", nombre)
                 .filterIf(apellido.Length != 0, "apellido like '%{1}%' ", apellido)
                 .filterIf(dni != 0, "dni = {2} ", dni)
@@ -37,9 +37,9 @@ namespace VentaElectrodomesticos.Controladores {
             return connection.query<Empleado>(q.build(), q.getParams());
         }
 
-        private static readonly String INSERT = "INSERT INTO la_huerta.Empleado VALUES({0},'{1}','{2}','{3}','{4}','{5}',{6},{7},1)";
-        private static readonly String UPDATE = "UPDATE la_huerta.Empleado SET nombre='{1}',apellido='{2}',mail='{3}',telefono='{4}',direccion='{5}',tipoEmpleado_id={6},sucursal_id={7} WHERE dni={0}";
-        private static readonly String DELETE = "UPDATE la_huerta.Empleado SET activo=0 WHERE dni={0}";
+        private static readonly String INSERT = "INSERT INTO EL_GRUPO.Empleado VALUES({0},'{1}','{2}','{3}','{4}','{5}',{6},{7},1)";
+        private static readonly String UPDATE = "UPDATE EL_GRUPO.Empleado SET nombre='{1}',apellido='{2}',mail='{3}',telefono='{4}',direccion='{5}',tipoEmpleado_id={6},sucursal_id={7} WHERE dni={0}";
+        private static readonly String DELETE = "UPDATE EL_GRUPO.Empleado SET activo=0 WHERE dni={0}";
 
         public void insertar(Empleado empleado) {
             connection.update(
@@ -75,7 +75,7 @@ namespace VentaElectrodomesticos.Controladores {
         }
         public Empleado findByDni(int dni){
             QueryBuilder q = new QueryBuilder();
-            q.select().from("la_huerta.Empleado")
+            q.select().from("EL_GRUPO.Empleado")
                 .filter("dni = {0}", dni);
             return connection.find<Empleado>(q.build(), q.getParams());
         }

@@ -19,7 +19,7 @@ namespace VentaElectrodomesticos.Controladores {
         {
             QueryBuilder q = new QueryBuilder();
             q.select()
-                .from("la_huerta.funcionalidad")
+                .from("EL_GRUPO.funcionalidad")
                 .filterIf(nombre.Length != 0, "nombre like '%{0}%' ", nombre);
             return connection.query<Funcionalidad>(q.build(), q.getParams());
         }
@@ -28,7 +28,7 @@ namespace VentaElectrodomesticos.Controladores {
         {
             QueryBuilder q = new QueryBuilder();
             q.select()
-                .from("la_huerta.funcionalidad")
+                .from("EL_GRUPO.funcionalidad")
                 .filterIf(nombre.Length != 0, "nombre like '%{0}%' ", nombre);
           List<Funcionalidad> funcionalidads = connection.query<Funcionalidad>(q.build(), q.getParams());
           if (funcionalidads.Count == 0)
@@ -41,7 +41,7 @@ namespace VentaElectrodomesticos.Controladores {
             if (cache == null)
             {
                 QueryBuilder q = new QueryBuilder();
-                q.select().from("la_huerta.Funcionalidad");
+                q.select().from("EL_GRUPO.Funcionalidad");
                 cache = connection.query<Funcionalidad>(q.build(), q.getParams());
             }
             return cache;

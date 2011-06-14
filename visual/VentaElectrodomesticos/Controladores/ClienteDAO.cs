@@ -16,7 +16,7 @@ namespace VentaElectrodomesticos.Controladores {
         public List<Cliente> search(string nombre, string apellido, int dni, Provincia provincia) {
             QueryBuilder q = new QueryBuilder();
             q.select()
-                .from("la_huerta.Cliente")
+                .from("EL_GRUPO.Cliente")
                 .filterIf(nombre != null && nombre.Length != 0, " nombre like '%{0}%'", nombre)
                 .filterIf(apellido != null && apellido.Length != 0, " apellido like '%{1}%'", apellido)
                 .filterIf(dni != 0, " dni = {2} ", dni)
@@ -38,9 +38,9 @@ namespace VentaElectrodomesticos.Controladores {
             }
         }
 
-        private static readonly String INSERT = "INSERT INTO la_huerta.Cliente VALUES({0},{1},{2},{3},{4},{5},{6},1)";
-        private static readonly String UPDATE = "UPDATE la_huerta.Cliente SET nombre='{1}',apellido='{2}',mail='{3}',telefono='{4}',direccion='{5}',provincia_id={6} WHERE dni={0}";
-        private static readonly String DELETE = "UPDATE la_huerta.Cliente SET activo=0 WHERE dni={0}";
+        private static readonly String INSERT = "INSERT INTO EL_GRUPO.Cliente VALUES({0},{1},{2},{3},{4},{5},{6},1)";
+        private static readonly String UPDATE = "UPDATE EL_GRUPO.Cliente SET nombre='{1}',apellido='{2}',mail='{3}',telefono='{4}',direccion='{5}',provincia_id={6} WHERE dni={0}";
+        private static readonly String DELETE = "UPDATE EL_GRUPO.Cliente SET activo=0 WHERE dni={0}";
 
         public void insertar(Cliente cliente) {
             connection.update( 

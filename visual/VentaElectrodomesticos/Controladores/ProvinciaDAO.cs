@@ -22,7 +22,7 @@ namespace VentaElectrodomesticos.Controladores {
         public List<Provincia> load() {
             if (cache == null) {
                 QueryBuilder q = new QueryBuilder();
-                q.select().from("la_huerta.Provincia");
+                q.select().from("EL_GRUPO.Provincia");
                 cache = connection.query<Provincia>(q.build(), q.getParams());
             }
             return new List<Provincia>( cache );

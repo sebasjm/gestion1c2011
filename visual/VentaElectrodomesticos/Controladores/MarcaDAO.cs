@@ -18,28 +18,28 @@ namespace VentaElectrodomesticos.Controladores {
         public List<Marca> search(string nombre) {
             QueryBuilder q = new QueryBuilder();
             q.select()
-                .from("la_huerta.marca")
+                .from("EL_GRUPO.marca")
                 .filterIf(nombre.Length != 0, "nombre like '%{0}%' ", nombre);
             return connection.query<Marca>(q.build(), q.getParams());
         }
         public Marca findById(int id) {
             QueryBuilder q = new QueryBuilder();
             q.select()
-                .from("la_huerta.marca")
+                .from("EL_GRUPO.marca")
                 .filter("id = {0}", id);
             return connection.find<Marca>(q.build(), q.getParams());
         }
 
         public List<Marca> load() {
             QueryBuilder q = new QueryBuilder();
-            q.select().from("la_huerta.Marca");
+            q.select().from("EL_GRUPO.Marca");
             return connection.query<Marca>(q.build(), q.getParams());
         }
 
         public Marca findByNombre(string nombre) {
             QueryBuilder q = new QueryBuilder();
             q.select()
-                .from("la_huerta.marca")
+                .from("EL_GRUPO.marca")
                 .filter(" nombre = '{0}' ", nombre);
             return connection.find<Marca>(q.build(), q.getParams());
         }
@@ -52,9 +52,9 @@ namespace VentaElectrodomesticos.Controladores {
             }
         }
 
-        private static readonly String INSERT = "INSERT INTO la_huerta.Marca ( nombre , activo ) VALUES('{0}',1)";
-        private static readonly String UPDATE = "UPDATE la_huerta.Marca SET nombre='{1}' WHERE id={0}";
-        private static readonly String DELETE = "UPDATE la_huerta.Marca SET activo=0 WHERE id={0}";
+        private static readonly String INSERT = "INSERT INTO EL_GRUPO.Marca ( nombre , activo ) VALUES('{0}',1)";
+        private static readonly String UPDATE = "UPDATE EL_GRUPO.Marca SET nombre='{1}' WHERE id={0}";
+        private static readonly String DELETE = "UPDATE EL_GRUPO.Marca SET activo=0 WHERE id={0}";
 
         public void insertar(Marca marca) {
             connection.update(

@@ -26,7 +26,7 @@ namespace VentaElectrodomesticos.Controladores {
         public List<Sucursal> load() {
             if (cache == null) {
                 QueryBuilder q = new QueryBuilder();
-                q.select().from("la_huerta.Sucursal");
+                q.select().from("EL_GRUPO.Sucursal");
                 cache = connection.query<Sucursal>(q.build(), q.getParams());
             }
             return new List<Sucursal>( cache );
