@@ -122,6 +122,7 @@
             // 
             this.txtCodigoProducto.Location = new System.Drawing.Point(131, 40);
             this.txtCodigoProducto.Name = "txtCodigoProducto";
+            this.txtCodigoProducto.ReadOnly = true;
             this.txtCodigoProducto.Size = new System.Drawing.Size(172, 20);
             this.txtCodigoProducto.TabIndex = 45;
             // 

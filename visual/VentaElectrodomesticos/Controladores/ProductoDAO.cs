@@ -75,5 +75,11 @@ namespace VentaElectrodomesticos.Controladores {
                 codigo
             );
         }
+
+        public static readonly String FIND_LAST_ID = "SELECT TOP 1 codigo FROM EL_GRUPO.Producto ORDER BY codigo desc";
+
+        public int findNextId() {
+            return connection.find<int>(FIND_LAST_ID) + 1;
+        }
     }
 }

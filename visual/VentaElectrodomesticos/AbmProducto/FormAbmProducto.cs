@@ -30,6 +30,7 @@ namespace VentaElectrodomesticos.AbmProducto
                 .add(treeCategorias, lErrorCategoria, Validator.Tree.obligatorio)
                 .add(txtPrecio, lErrorPrecio, Validator.Text.obligatorio, Validator.Text.numerico);
             ViewHelper.fillComboMarcas(cmbMarcas);
+            txtCodigoProducto.Text = "" + Context.instance.dao.producto.findNextId();
         }
 
         private void buildtree() {
@@ -223,7 +224,7 @@ namespace VentaElectrodomesticos.AbmProducto
             bBorrar.Visible = false;
         }
         private void limpiar() {
-            txtCodigoProducto.Text = "";
+            txtCodigoProducto.Text = "" + Context.instance.dao.producto.findNextId();
             txtDescripcion.Text = "";
             txtNombre.Text = "";
             labelCategoria.Text = "";
