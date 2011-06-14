@@ -39,7 +39,6 @@ namespace VentaElectrodomesticos.AbmUsuario
             form.ShowDialog(this);
             if (form.MessageFromParent != null)
             {
-                this.limpiar();
                 this.cargarEmpleado((Empleado)form.MessageFromParent);
                 Usuario userEmpleado = Context.instance.dao.user.findBy(this.empleado);
                 if (userEmpleado != null) {
