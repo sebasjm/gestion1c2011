@@ -58,7 +58,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             ViewHelper.fillDataGridEmpleados(dataEmpleados, result);
         }
         private void bSeleccionar_Click(object sender, EventArgs e) {
-            Empleado empleado = (Empleado)dataEmpleados.SelectedRows[0].Cells[0].Value;
+            Empleado empleado = dataEmpleados.SelectedRows.Count == 0 ? null : (Empleado)dataEmpleados.SelectedRows[0].Cells[0].Value;
             if (empleado != null) {
                 this.messageFromParent = empleado;
                 this.Close();

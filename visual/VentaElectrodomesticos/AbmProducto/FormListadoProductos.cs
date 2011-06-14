@@ -97,7 +97,7 @@ namespace VentaElectrodomesticos.AbmProducto {
             dataProductos.Rows.Clear();
         }
         private void bSeleccionar_Click(object sender, EventArgs e) {
-            Producto prod = (Producto)dataProductos.SelectedRows[0].Cells[0].Value;
+            Producto prod = dataProductos.SelectedRows.Count == 0 ? null : (Producto)dataProductos.SelectedRows[0].Cells[0].Value;
             if (prod != null) {
                 this.messageFromParent = prod;
                 this.Close();

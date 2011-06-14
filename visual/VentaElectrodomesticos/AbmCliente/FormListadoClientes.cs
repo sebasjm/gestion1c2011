@@ -32,7 +32,7 @@ namespace VentaElectrodomesticos.AbmCliente {
             this.Close();
         }
         private void bSeleccionar_Click(object sender, EventArgs e) {
-            Cliente cliente = (Cliente)dataClientes.SelectedRows[0].Cells[0].Value;
+            Cliente cliente = dataClientes.SelectedRows.Count == 0 ? null : (Cliente)dataClientes.SelectedRows[0].Cells[0].Value;
             if (cliente != null) {
                 this.messageFromParent = cliente;
                 this.Close();

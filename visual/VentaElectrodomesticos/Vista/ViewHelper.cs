@@ -28,7 +28,7 @@ namespace VentaElectrodomesticos.Controladores {
             chkRoles.DataSource = RolList;
             chkRoles.DisplayMember = "nombre";
             chkRoles.ValueMember = "id";
-            chkRoles.SelectedIndex = -1;
+            chkRoles.SelectedIndex = 0;
         }
 
         public static void fillComboSucursales(ComboBox cmbSucursal) {

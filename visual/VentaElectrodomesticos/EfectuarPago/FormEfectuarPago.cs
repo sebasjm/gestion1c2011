@@ -53,7 +53,7 @@ namespace VentaElectrodomesticos.EfectuarPago {
         }
 
         private void bAceptar_Click(object sender, EventArgs e) {
-            Factura factura = cliente != null && sucursal != null ? (Factura)dataFacturas.SelectedRows[0].Cells[0].Value : null;
+            Factura factura = cliente != null && sucursal != null ? (dataFacturas.SelectedRows.Count == 0 ? null : (Factura)dataFacturas.SelectedRows[0].Cells[0].Value) : null;
             if (factura == null) return;
             int cuotas = 0;
             try {
