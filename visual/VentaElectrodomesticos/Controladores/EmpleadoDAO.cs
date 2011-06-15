@@ -24,7 +24,7 @@ namespace VentaElectrodomesticos.Controladores {
                 };
             }
         }
-        public List<Empleado> search(string nombre, string apellido, int dni, Sucursal suc, TipoEmpleado tipoEmp) {
+        public List<Empleado> search(string nombre, string apellido, int dni, Sucursal suc, TipoEmpleado tipoEmp, bool activo) {
             QueryBuilder q = new QueryBuilder();
             q.select()
                 .from("EL_GRUPO.Empleado")
@@ -33,13 +33,14 @@ namespace VentaElectrodomesticos.Controladores {
                 .filterIf(dni != 0, "dni = {2} ", dni)
                 .filterIf(suc != null && suc.id != 0, "sucursal_id = {3} ", suc != null ? suc.id : 0)
                 .filterIf(tipoEmp != null && tipoEmp.id != 0, "tipoEmpleado_id = {4} ", tipoEmp != null ? tipoEmp.id : 0)
-                .filter("activo = 1 ");
+                .filter("activo = {5} ", activo?1:0);
             return connection.query<Empleado>(q.build(), q.getParams());
         }
 
         private static readonly String INSERT = "INSERT INTO EL_GRUPO.Empleado VALUES({0},'{1}','{2}','{3}','{4}','{5}',{6},{7},1)";
         private static readonly String UPDATE = "UPDATE EL_GRUPO.Empleado SET nombre='{1}',apellido='{2}',mail='{3}',telefono='{4}',direccion='{5}',tipoEmpleado_id={6},sucursal_id={7} WHERE dni={0}";
         private static readonly String DELETE = "UPDATE EL_GRUPO.Empleado SET activo=0 WHERE dni={0}";
+        private static readonly String HABILITAR = "UPDATE EL_GRUPO.Empleado SET activo=1 WHERE dni={0}";
 
         public void insertar(Empleado empleado) {
             connection.update(
@@ -78,6 +79,14 @@ namespace VentaElectrodomesticos.Controladores {
             q.select().from("EL_GRUPO.Empleado")
                 .filter("dni = {0}", dni);
             return connection.find<Empleado>(q.build(), q.getParams());
+        }
+
+
+        public void habilitar(int dni) {
+            connection.update(
+                HABILITAR,
+                dni
+            );
         }
     }
 }

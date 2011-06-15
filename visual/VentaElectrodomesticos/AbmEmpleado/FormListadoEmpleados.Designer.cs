@@ -46,6 +46,7 @@
             this.bSeleccionar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
+            this.chkEliminados = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataEmpleados)).BeginInit();
             this.grpFiltrosBusqueda.SuspendLayout();
             this.SuspendLayout();
@@ -233,11 +234,22 @@
             this.bLimpiar.UseVisualStyleBackColor = true;
             this.bLimpiar.Click += new System.EventHandler(this.bLimpiar_Click);
             // 
+            // chkEliminados
+            // 
+            this.chkEliminados.AutoSize = true;
+            this.chkEliminados.Location = new System.Drawing.Point(751, 19);
+            this.chkEliminados.Name = "chkEliminados";
+            this.chkEliminados.Size = new System.Drawing.Size(75, 17);
+            this.chkEliminados.TabIndex = 14;
+            this.chkEliminados.Text = "eliminados";
+            this.chkEliminados.UseVisualStyleBackColor = true;
+            // 
             // FormListadoEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 417);
+            this.Controls.Add(this.chkEliminados);
             this.Controls.Add(this.bSeleccionar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bLimpiar);
@@ -250,6 +262,7 @@
             this.grpFiltrosBusqueda.ResumeLayout(false);
             this.grpFiltrosBusqueda.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -273,5 +286,6 @@
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bLimpiar;
         private System.Windows.Forms.DataGridView dataEmpleados;
+        private System.Windows.Forms.CheckBox chkEliminados;
     }
 }

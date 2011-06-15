@@ -14,6 +14,8 @@ namespace VentaElectrodomesticos.AbmEmpleado {
     public partial class FormListadoEmpleados : Form {
         private Object messageFromParent = null;
         Sucursal sucursal = null;
+        public bool empleadosActivos = true;
+
         public Object MessageFromParent {
             get { return messageFromParent; }
             set { messageFromParent = value; }
@@ -48,12 +50,14 @@ namespace VentaElectrodomesticos.AbmEmpleado {
         private void bBuscar_Click(object sender, EventArgs e) {
             if (txtDni.Text.Length == 0)
                 txtDni.Text = "0";
+            empleadosActivos = !chkEliminados.Checked;
             List<Empleado> result = Context.instance.dao.empleado.search(
                 txtNombre.Text,
                 txtApellido.Text,
                 Convert.ToInt32(txtDni.Text),
                 sucursal,
-                (TipoEmpleado)cmbTipoEmpleado.SelectedItem
+                (TipoEmpleado)cmbTipoEmpleado.SelectedItem,
+                empleadosActivos
             );
             ViewHelper.fillDataGridEmpleados(dataEmpleados, result);
         }

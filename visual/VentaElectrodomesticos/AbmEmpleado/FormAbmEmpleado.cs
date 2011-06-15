@@ -45,8 +45,21 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 this.cargarEmpleado((Empleado)form.MessageFromParent);
                 bCrearOtro.Hide();
                 bCrear.Hide();
-                bModificar.Show();
-                bBorrar.Show();
+                if (form.empleadosActivos) {
+                    bModificar.Show();
+                    bBorrar.Show();
+                } else {
+                    bBorrar.Show();
+                    bBorrar.Text = "Habilitar";
+                    txtApellido.Enabled = false;
+                    txtNombre.Enabled = false;
+                    txtMail.Enabled = false;
+                    txtTelefono.Enabled = false;
+                    txtDireccion.Enabled = false;
+                    cmbProvincia.Enabled = false;
+                    cmbSucursal.Enabled = false;
+                    cmbTipoEmpleado.Enabled = false;
+                }
                 txtDni.Enabled = false;
             }
         }
@@ -82,10 +95,19 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             cmbTipoEmpleado.SelectedValue = 0;
             sucursal = null;
             txtDni.Enabled = true;
+            txtApellido.Enabled = true;
+            txtNombre.Enabled = true;
+            txtMail.Enabled = true;
+            txtTelefono.Enabled = true;
+            txtDireccion.Enabled = true;
+            cmbProvincia.Enabled = true;
+            cmbSucursal.Enabled = true;
+            cmbTipoEmpleado.Enabled = true;
             bCrearOtro.Show();
             bCrear.Show();
             bModificar.Hide();
             bBorrar.Hide();
+            bBorrar.Text = "Borrar";
         }
         private void bCrear_Click(object sender, EventArgs e) {
             if (!validator.check()) return;
@@ -118,6 +140,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 this.empleado.direccion = txtDireccion.Text;
                 this.empleado.sucursalId = (Byte)cmbSucursal.SelectedValue  ;
                 this.empleado.tipoEmpleadoId = (Byte)cmbTipoEmpleado.SelectedValue;
+
                 Context.instance.dao.empleado.modificar(this.empleado);
                 this.Close();
             }
@@ -127,7 +150,11 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             if (MessageBox.Show("¿Esta seguro que desea eliminar al Empleado?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el borrado
-                Context.instance.dao.empleado.eliminar(empleado.dni);
+                if ("Habilitar".Equals(bBorrar.Text)) {
+                    Context.instance.dao.empleado.habilitar(empleado.dni);
+                } else {
+                    Context.instance.dao.empleado.eliminar(empleado.dni);
+                }
                 this.Close();
             }
         }
