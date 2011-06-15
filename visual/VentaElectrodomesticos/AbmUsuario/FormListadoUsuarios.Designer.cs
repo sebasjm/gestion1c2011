@@ -40,6 +40,7 @@
             this.chkListadoRoles = new System.Windows.Forms.CheckedListBox();
             this.lNombreEmpleado = new System.Windows.Forms.Label();
             this.bSeleccionar = new System.Windows.Forms.Button();
+            this.chkEliminados = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataUsuarios)).BeginInit();
             this.grpListadoRoles.SuspendLayout();
             this.SuspendLayout();
@@ -165,11 +166,22 @@
             this.bSeleccionar.UseVisualStyleBackColor = true;
             this.bSeleccionar.Click += new System.EventHandler(this.bSeleccionar_Click);
             // 
+            // chkEliminados
+            // 
+            this.chkEliminados.AutoSize = true;
+            this.chkEliminados.Location = new System.Drawing.Point(12, 204);
+            this.chkEliminados.Name = "chkEliminados";
+            this.chkEliminados.Size = new System.Drawing.Size(76, 17);
+            this.chkEliminados.TabIndex = 97;
+            this.chkEliminados.Text = "Eliminados";
+            this.chkEliminados.UseVisualStyleBackColor = true;
+            // 
             // FormListadoUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 437);
+            this.Controls.Add(this.chkEliminados);
             this.Controls.Add(this.bSeleccionar);
             this.Controls.Add(this.lNombreEmpleado);
             this.Controls.Add(this.grpListadoRoles);
@@ -181,6 +193,7 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lUsername);
             this.Controls.Add(this.lEmpleado);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormListadoUsuarios";
             this.Text = "Listado de Usuarios";
             ((System.ComponentModel.ISupportInitialize)(this.dataUsuarios)).EndInit();
@@ -204,5 +217,6 @@
         private System.Windows.Forms.CheckedListBox chkListadoRoles;
         private System.Windows.Forms.Label lNombreEmpleado;
         private System.Windows.Forms.Button bSeleccionar;
+        private System.Windows.Forms.CheckBox chkEliminados;
     }
 }

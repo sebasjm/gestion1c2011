@@ -58,13 +58,13 @@
             this.dataEmpleados.AllowUserToOrderColumns = true;
             this.dataEmpleados.AllowUserToResizeRows = false;
             this.dataEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataEmpleados.Location = new System.Drawing.Point(14, 167);
+            this.dataEmpleados.Location = new System.Drawing.Point(14, 134);
             this.dataEmpleados.MultiSelect = false;
             this.dataEmpleados.Name = "dataEmpleados";
             this.dataEmpleados.ReadOnly = true;
             this.dataEmpleados.RowHeadersVisible = false;
             this.dataEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataEmpleados.Size = new System.Drawing.Size(847, 207);
+            this.dataEmpleados.Size = new System.Drawing.Size(679, 240);
             this.dataEmpleados.TabIndex = 4;
             // 
             // grpFiltrosBusqueda
@@ -83,7 +83,7 @@
             this.grpFiltrosBusqueda.Controls.Add(this.txtNombre);
             this.grpFiltrosBusqueda.Location = new System.Drawing.Point(13, 13);
             this.grpFiltrosBusqueda.Name = "grpFiltrosBusqueda";
-            this.grpFiltrosBusqueda.Size = new System.Drawing.Size(492, 119);
+            this.grpFiltrosBusqueda.Size = new System.Drawing.Size(680, 86);
             this.grpFiltrosBusqueda.TabIndex = 0;
             this.grpFiltrosBusqueda.TabStop = false;
             this.grpFiltrosBusqueda.Text = "Filtros Búsqueda de Empleado";
@@ -93,7 +93,7 @@
             this.cmbTipoEmpleado.FormattingEnabled = true;
             this.cmbTipoEmpleado.Items.AddRange(new object[] {
             "Seleccione..."});
-            this.cmbTipoEmpleado.Location = new System.Drawing.Point(336, 77);
+            this.cmbTipoEmpleado.Location = new System.Drawing.Point(544, 50);
             this.cmbTipoEmpleado.Name = "cmbTipoEmpleado";
             this.cmbTipoEmpleado.Size = new System.Drawing.Size(121, 21);
             this.cmbTipoEmpleado.TabIndex = 45;
@@ -103,7 +103,7 @@
             this.cmbSucursal.FormattingEnabled = true;
             this.cmbSucursal.Items.AddRange(new object[] {
             "Seleccione..."});
-            this.cmbSucursal.Location = new System.Drawing.Point(336, 50);
+            this.cmbSucursal.Location = new System.Drawing.Point(544, 23);
             this.cmbSucursal.Name = "cmbSucursal";
             this.cmbSucursal.Size = new System.Drawing.Size(121, 21);
             this.cmbSucursal.TabIndex = 44;
@@ -112,7 +112,7 @@
             // cmbProvincia
             // 
             this.cmbProvincia.FormattingEnabled = true;
-            this.cmbProvincia.Location = new System.Drawing.Point(336, 20);
+            this.cmbProvincia.Location = new System.Drawing.Point(291, 50);
             this.cmbProvincia.Name = "cmbProvincia";
             this.cmbProvincia.Size = new System.Drawing.Size(121, 21);
             this.cmbProvincia.TabIndex = 43;
@@ -121,7 +121,7 @@
             // lTipoEmpleado
             // 
             this.lTipoEmpleado.AutoSize = true;
-            this.lTipoEmpleado.Location = new System.Drawing.Point(227, 84);
+            this.lTipoEmpleado.Location = new System.Drawing.Point(435, 57);
             this.lTipoEmpleado.Name = "lTipoEmpleado";
             this.lTipoEmpleado.Size = new System.Drawing.Size(93, 13);
             this.lTipoEmpleado.TabIndex = 42;
@@ -130,7 +130,7 @@
             // lSucursal
             // 
             this.lSucursal.AutoSize = true;
-            this.lSucursal.Location = new System.Drawing.Point(227, 53);
+            this.lSucursal.Location = new System.Drawing.Point(435, 26);
             this.lSucursal.Name = "lSucursal";
             this.lSucursal.Size = new System.Drawing.Size(48, 13);
             this.lSucursal.TabIndex = 41;
@@ -139,7 +139,7 @@
             // lProvincia
             // 
             this.lProvincia.AutoSize = true;
-            this.lProvincia.Location = new System.Drawing.Point(227, 23);
+            this.lProvincia.Location = new System.Drawing.Point(219, 55);
             this.lProvincia.Name = "lProvincia";
             this.lProvincia.Size = new System.Drawing.Size(51, 13);
             this.lProvincia.TabIndex = 40;
@@ -147,16 +147,16 @@
             // 
             // txtDni
             // 
-            this.txtDni.Location = new System.Drawing.Point(106, 77);
+            this.txtDni.Location = new System.Drawing.Point(290, 23);
             this.txtDni.MaxLength = 8;
             this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(100, 20);
+            this.txtDni.Size = new System.Drawing.Size(122, 20);
             this.txtDni.TabIndex = 39;
             // 
             // lDni
             // 
             this.lDni.AutoSize = true;
-            this.lDni.Location = new System.Drawing.Point(35, 77);
+            this.lDni.Location = new System.Drawing.Point(219, 26);
             this.lDni.Name = "lDni";
             this.lDni.Size = new System.Drawing.Size(26, 13);
             this.lDni.TabIndex = 38;
@@ -196,7 +196,7 @@
             // 
             // bBuscar
             // 
-            this.bBuscar.Location = new System.Drawing.Point(430, 138);
+            this.bBuscar.Location = new System.Drawing.Point(618, 105);
             this.bBuscar.Name = "bBuscar";
             this.bBuscar.Size = new System.Drawing.Size(75, 23);
             this.bBuscar.TabIndex = 2;
@@ -206,7 +206,7 @@
             // 
             // bSeleccionar
             // 
-            this.bSeleccionar.Location = new System.Drawing.Point(787, 380);
+            this.bSeleccionar.Location = new System.Drawing.Point(618, 380);
             this.bSeleccionar.Name = "bSeleccionar";
             this.bSeleccionar.Size = new System.Drawing.Size(75, 23);
             this.bSeleccionar.TabIndex = 13;
@@ -237,18 +237,18 @@
             // chkEliminados
             // 
             this.chkEliminados.AutoSize = true;
-            this.chkEliminados.Location = new System.Drawing.Point(751, 19);
+            this.chkEliminados.Location = new System.Drawing.Point(14, 111);
             this.chkEliminados.Name = "chkEliminados";
-            this.chkEliminados.Size = new System.Drawing.Size(75, 17);
+            this.chkEliminados.Size = new System.Drawing.Size(76, 17);
             this.chkEliminados.TabIndex = 14;
-            this.chkEliminados.Text = "eliminados";
+            this.chkEliminados.Text = "Eliminados";
             this.chkEliminados.UseVisualStyleBackColor = true;
             // 
             // FormListadoEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 417);
+            this.ClientSize = new System.Drawing.Size(707, 417);
             this.Controls.Add(this.chkEliminados);
             this.Controls.Add(this.bSeleccionar);
             this.Controls.Add(this.bCancelar);
@@ -256,6 +256,7 @@
             this.Controls.Add(this.dataEmpleados);
             this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.grpFiltrosBusqueda);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormListadoEmpleados";
             this.Text = "Listado de Selección de Empleado";
             ((System.ComponentModel.ISupportInitialize)(this.dataEmpleados)).EndInit();

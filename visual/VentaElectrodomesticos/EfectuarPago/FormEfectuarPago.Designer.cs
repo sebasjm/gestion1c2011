@@ -183,6 +183,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lSucursal);
             this.Controls.Add(this.lProvincia);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormEfectuarPago";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Efectuar Pago";

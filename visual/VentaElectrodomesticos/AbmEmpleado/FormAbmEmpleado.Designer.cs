@@ -394,7 +394,7 @@
             // 
             // bBorrar
             // 
-            this.bBorrar.Location = new System.Drawing.Point(122, 187);
+            this.bBorrar.Location = new System.Drawing.Point(120, 187);
             this.bBorrar.Name = "bBorrar";
             this.bBorrar.Size = new System.Drawing.Size(94, 23);
             this.bBorrar.TabIndex = 82;
@@ -442,6 +442,7 @@
             this.Controls.Add(this.lNombre);
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormAbmEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ABM Empleado";

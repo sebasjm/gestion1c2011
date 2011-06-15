@@ -104,6 +104,7 @@
             this.Controls.Add(this.tUsername);
             this.Controls.Add(this.lPassword);
             this.Controls.Add(this.lUsername);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";

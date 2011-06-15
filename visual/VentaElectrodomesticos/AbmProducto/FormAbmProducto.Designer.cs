@@ -363,6 +363,7 @@
             this.Controls.Add(this.lNombreMarca);
             this.Controls.Add(this.lCodProd);
             this.Controls.Add(this.txtCodigoProducto);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormAbmProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ABM Producto";

@@ -117,14 +117,14 @@
             this.NombreCategoria.HeaderText = "Nombre de la Categoría";
             this.NombreCategoria.Name = "NombreCategoria";
             this.NombreCategoria.ReadOnly = true;
-            this.NombreCategoria.Width = 83;
+            this.NombreCategoria.Width = 90;
             // 
             // CantidadSubCategorias
             // 
             this.CantidadSubCategorias.HeaderText = "Cantidad de Sub Categorías";
             this.CantidadSubCategorias.Name = "CantidadSubCategorias";
             this.CantidadSubCategorias.ReadOnly = true;
-            this.CantidadSubCategorias.Width = 85;
+            this.CantidadSubCategorias.Width = 151;
             // 
             // MontoTotal
             // 
@@ -138,28 +138,28 @@
             this.CodigoNombreProductoMasVendido.HeaderText = "Código y Nombre del Producto más Vendido";
             this.CodigoNombreProductoMasVendido.Name = "CodigoNombreProductoMasVendido";
             this.CodigoNombreProductoMasVendido.ReadOnly = true;
-            this.CodigoNombreProductoMasVendido.Width = 92;
+            this.CodigoNombreProductoMasVendido.Width = 163;
             // 
             // NombreProductoMasMonto
             // 
             this.NombreProductoMasMonto.HeaderText = "Código y Nombre de Producto con más Monto Total";
             this.NombreProductoMasMonto.Name = "NombreProductoMasMonto";
             this.NombreProductoMasMonto.ReadOnly = true;
-            this.NombreProductoMasMonto.Width = 91;
+            this.NombreProductoMasMonto.Width = 180;
             // 
             // NombreProductoMasCaro
             // 
             this.NombreProductoMasCaro.HeaderText = "Código y Nombre de Producto que se vendió mas caro";
             this.NombreProductoMasCaro.Name = "NombreProductoMasCaro";
             this.NombreProductoMasCaro.ReadOnly = true;
-            this.NombreProductoMasCaro.Width = 106;
+            this.NombreProductoMasCaro.Width = 193;
             // 
             // NombreApellidoVendedorMasVendio
             // 
             this.NombreApellidoVendedorMasVendio.HeaderText = "Nombre y Apellido del Vendedor que más Vendió";
             this.NombreApellidoVendedorMasVendio.Name = "NombreApellidoVendedorMasVendio";
             this.NombreApellidoVendedorMasVendio.ReadOnly = true;
-            this.NombreApellidoVendedorMasVendio.Width = 94;
+            this.NombreApellidoVendedorMasVendio.Width = 169;
             // 
             // FormMejoresCategorias
             // 
@@ -172,6 +172,7 @@
             this.Controls.Add(this.lAnioAnalizar);
             this.Controls.Add(this.cmbSucursal);
             this.Controls.Add(this.lSucursal);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormMejoresCategorias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mejores Categorías";

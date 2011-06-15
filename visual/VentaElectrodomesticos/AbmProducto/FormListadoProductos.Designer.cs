@@ -30,6 +30,7 @@
         {
             this.bBuscar = new System.Windows.Forms.Button();
             this.grpFiltroBusqueda = new System.Windows.Forms.GroupBox();
+            this.lMarca = new System.Windows.Forms.Label();
             this.cmbMarcas = new System.Windows.Forms.ComboBox();
             this.grpPrecios = new System.Windows.Forms.GroupBox();
             this.lHasta = new System.Windows.Forms.Label();
@@ -46,7 +47,7 @@
             this.bSeleccionar = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.bLimpiar = new System.Windows.Forms.Button();
-            this.lMarca = new System.Windows.Forms.Label();
+            this.chkEliminados = new System.Windows.Forms.CheckBox();
             this.grpFiltroBusqueda.SuspendLayout();
             this.grpPrecios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataProductos)).BeginInit();
@@ -54,7 +55,7 @@
             // 
             // bBuscar
             // 
-            this.bBuscar.Location = new System.Drawing.Point(362, 234);
+            this.bBuscar.Location = new System.Drawing.Point(446, 234);
             this.bBuscar.Name = "bBuscar";
             this.bBuscar.Size = new System.Drawing.Size(75, 23);
             this.bBuscar.TabIndex = 71;
@@ -75,10 +76,19 @@
             this.grpFiltroBusqueda.Controls.Add(this.txtCodigoProducto);
             this.grpFiltroBusqueda.Location = new System.Drawing.Point(13, 13);
             this.grpFiltroBusqueda.Name = "grpFiltroBusqueda";
-            this.grpFiltroBusqueda.Size = new System.Drawing.Size(421, 215);
+            this.grpFiltroBusqueda.Size = new System.Drawing.Size(508, 215);
             this.grpFiltroBusqueda.TabIndex = 75;
             this.grpFiltroBusqueda.TabStop = false;
             this.grpFiltroBusqueda.Text = "Filtros de Búsqueda";
+            // 
+            // lMarca
+            // 
+            this.lMarca.AutoSize = true;
+            this.lMarca.Location = new System.Drawing.Point(11, 75);
+            this.lMarca.Name = "lMarca";
+            this.lMarca.Size = new System.Drawing.Size(37, 13);
+            this.lMarca.TabIndex = 95;
+            this.lMarca.Text = "Marca";
             // 
             // cmbMarcas
             // 
@@ -94,7 +104,7 @@
             this.grpPrecios.Controls.Add(this.lDesde);
             this.grpPrecios.Controls.Add(this.txtPrecioHasta);
             this.grpPrecios.Controls.Add(this.txtPrecioDesde);
-            this.grpPrecios.Location = new System.Drawing.Point(8, 102);
+            this.grpPrecios.Location = new System.Drawing.Point(14, 102);
             this.grpPrecios.Name = "grpPrecios";
             this.grpPrecios.Size = new System.Drawing.Size(243, 100);
             this.grpPrecios.TabIndex = 86;
@@ -135,15 +145,15 @@
             // 
             // treeCategorias
             // 
-            this.treeCategorias.Location = new System.Drawing.Point(273, 49);
+            this.treeCategorias.Location = new System.Drawing.Point(274, 49);
             this.treeCategorias.Name = "treeCategorias";
-            this.treeCategorias.Size = new System.Drawing.Size(120, 153);
+            this.treeCategorias.Size = new System.Drawing.Size(213, 153);
             this.treeCategorias.TabIndex = 85;
             // 
             // lCategoria
             // 
             this.lCategoria.AutoSize = true;
-            this.lCategoria.Location = new System.Drawing.Point(270, 22);
+            this.lCategoria.Location = new System.Drawing.Point(271, 27);
             this.lCategoria.Name = "lCategoria";
             this.lCategoria.Size = new System.Drawing.Size(52, 13);
             this.lCategoria.TabIndex = 84;
@@ -194,12 +204,12 @@
             this.dataProductos.ReadOnly = true;
             this.dataProductos.RowHeadersVisible = false;
             this.dataProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataProductos.Size = new System.Drawing.Size(421, 142);
+            this.dataProductos.Size = new System.Drawing.Size(508, 142);
             this.dataProductos.TabIndex = 76;
             // 
             // bSeleccionar
             // 
-            this.bSeleccionar.Location = new System.Drawing.Point(359, 411);
+            this.bSeleccionar.Location = new System.Drawing.Point(446, 411);
             this.bSeleccionar.Name = "bSeleccionar";
             this.bSeleccionar.Size = new System.Drawing.Size(75, 23);
             this.bSeleccionar.TabIndex = 79;
@@ -227,26 +237,29 @@
             this.bLimpiar.UseVisualStyleBackColor = true;
             this.bLimpiar.Click += new System.EventHandler(this.bLimpiar_Click);
             // 
-            // lMarca
+            // chkEliminados
             // 
-            this.lMarca.AutoSize = true;
-            this.lMarca.Location = new System.Drawing.Point(11, 75);
-            this.lMarca.Name = "lMarca";
-            this.lMarca.Size = new System.Drawing.Size(37, 13);
-            this.lMarca.TabIndex = 95;
-            this.lMarca.Text = "Marca";
+            this.chkEliminados.AutoSize = true;
+            this.chkEliminados.Location = new System.Drawing.Point(14, 240);
+            this.chkEliminados.Name = "chkEliminados";
+            this.chkEliminados.Size = new System.Drawing.Size(76, 17);
+            this.chkEliminados.TabIndex = 96;
+            this.chkEliminados.Text = "Eliminados";
+            this.chkEliminados.UseVisualStyleBackColor = true;
             // 
             // FormListadoProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 441);
+            this.ClientSize = new System.Drawing.Size(541, 441);
+            this.Controls.Add(this.chkEliminados);
             this.Controls.Add(this.bSeleccionar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.dataProductos);
             this.Controls.Add(this.grpFiltroBusqueda);
             this.Controls.Add(this.bBuscar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormListadoProductos";
             this.Text = "Listado de Productos";
             this.grpFiltroBusqueda.ResumeLayout(false);
@@ -255,6 +268,7 @@
             this.grpPrecios.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataProductos)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -279,6 +293,7 @@
         private System.Windows.Forms.Button bLimpiar;
         private System.Windows.Forms.ComboBox cmbMarcas;
         private System.Windows.Forms.Label lMarca;
+        private System.Windows.Forms.CheckBox chkEliminados;
 
     }
 }

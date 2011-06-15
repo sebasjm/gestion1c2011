@@ -266,6 +266,7 @@
             this.Controls.Add(this.lAnioAnalizar);
             this.Controls.Add(this.cmbSucursal);
             this.Controls.Add(this.lSucursal);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormTableroControl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tablero de Control";

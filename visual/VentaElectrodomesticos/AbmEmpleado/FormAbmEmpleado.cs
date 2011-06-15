@@ -15,7 +15,6 @@ namespace VentaElectrodomesticos.AbmEmpleado {
     public partial class FormAbmEmpleado : Form {
         private Empleado empleado;
         Sucursal sucursal = null;
-
         Validator validator;
         public FormAbmEmpleado() {
             InitializeComponent();
@@ -24,7 +23,6 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado);
             bModificar.Hide();
             bBorrar.Hide();
-
             validator = new Validator()
                 .add(txtNombre, lErrorNombre, Validator.Text.obligatorio, Validator.Text.nombre)
                 .add(txtApellido, lErrorApellido, Validator.Text.obligatorio, Validator.Text.nombre)
@@ -36,7 +34,6 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 .add(cmbSucursal, lErrorSucursal, Validator.Combo.obligatorio)
                 .add(cmbTipoEmpleado, lErrorTipoEmpleado, Validator.Combo.obligatorio);
         }
-
         private void bBuscar_Click(object sender, EventArgs e) {
             FormListadoEmpleados form = new FormListadoEmpleados();
             form.MessageFromParent = null;
@@ -140,25 +137,27 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 this.empleado.direccion = txtDireccion.Text;
                 this.empleado.sucursalId = (Byte)cmbSucursal.SelectedValue  ;
                 this.empleado.tipoEmpleadoId = (Byte)cmbTipoEmpleado.SelectedValue;
-
                 Context.instance.dao.empleado.modificar(this.empleado);
                 this.Close();
             }
         }
         private void bBorrar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Esta seguro que desea eliminar al Empleado?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                // proceder con el borrado
-                if ("Habilitar".Equals(bBorrar.Text)) {
+            if ("Habilitar".Equals(bBorrar.Text)) {
+                if (MessageBox.Show("¿Esta seguro que desea habilitar al Empleado?", "Confirmar Habilitación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    // proceder con el borrado
                     Context.instance.dao.empleado.habilitar(empleado.dni);
-                } else {
+                }
+            } else {
+                if (MessageBox.Show("¿Esta seguro que desea eliminar al Empleado?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    // proceder con la habilitación
                     Context.instance.dao.empleado.eliminar(empleado.dni);
                 }
-                this.Close();
             }
+            this.Close();
         }
-
         private void bCrearOtro_Click(object sender, EventArgs e)
         {
             if (!validator.check()) return;
@@ -177,12 +176,10 @@ namespace VentaElectrodomesticos.AbmEmpleado {
                 this.limpiar();
             }
         }
-
         private void cmbSucursal_SelectedIndexChanged(object sender, EventArgs e) {
             sucursal = (Sucursal)cmbSucursal.SelectedItem;
             cmbProvincia.SelectedItem = sucursal != null ? sucursal.provincia : null;
         }
-
         private void cmbProvincia_SelectedIndexChanged(object sender, EventArgs e) {
             Provincia item = (Provincia)cmbProvincia.SelectedItem;
             cmbSucursal.SelectedItem = item != null ? item.sucursal : null;

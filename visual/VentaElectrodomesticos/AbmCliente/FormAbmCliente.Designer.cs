@@ -70,7 +70,7 @@
             // 
             // bCrear
             // 
-            this.bCrear.Location = new System.Drawing.Point(332, 175);
+            this.bCrear.Location = new System.Drawing.Point(311, 175);
             this.bCrear.Name = "bCrear";
             this.bCrear.Size = new System.Drawing.Size(105, 23);
             this.bCrear.TabIndex = 43;
@@ -188,7 +188,7 @@
             // 
             // bCrearOtro
             // 
-            this.bCrearOtro.Location = new System.Drawing.Point(332, 204);
+            this.bCrearOtro.Location = new System.Drawing.Point(310, 204);
             this.bCrearOtro.Name = "bCrearOtro";
             this.bCrearOtro.Size = new System.Drawing.Size(105, 23);
             this.bCrearOtro.TabIndex = 62;
@@ -251,7 +251,7 @@
             this.lErrorMail.BackColor = System.Drawing.Color.Transparent;
             this.lErrorMail.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lErrorMail.ForeColor = System.Drawing.Color.Red;
-            this.lErrorMail.Location = new System.Drawing.Point(420, 56);
+            this.lErrorMail.Location = new System.Drawing.Point(415, 56);
             this.lErrorMail.Name = "lErrorMail";
             this.lErrorMail.Size = new System.Drawing.Size(22, 29);
             this.lErrorMail.TabIndex = 67;
@@ -264,7 +264,7 @@
             this.lErrorTelefono.BackColor = System.Drawing.Color.Transparent;
             this.lErrorTelefono.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lErrorTelefono.ForeColor = System.Drawing.Color.Red;
-            this.lErrorTelefono.Location = new System.Drawing.Point(420, 83);
+            this.lErrorTelefono.Location = new System.Drawing.Point(415, 83);
             this.lErrorTelefono.Name = "lErrorTelefono";
             this.lErrorTelefono.Size = new System.Drawing.Size(22, 29);
             this.lErrorTelefono.TabIndex = 68;
@@ -277,7 +277,7 @@
             this.lErrorProvincia.BackColor = System.Drawing.Color.Transparent;
             this.lErrorProvincia.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lErrorProvincia.ForeColor = System.Drawing.Color.Red;
-            this.lErrorProvincia.Location = new System.Drawing.Point(420, 112);
+            this.lErrorProvincia.Location = new System.Drawing.Point(415, 112);
             this.lErrorProvincia.Name = "lErrorProvincia";
             this.lErrorProvincia.Size = new System.Drawing.Size(22, 29);
             this.lErrorProvincia.TabIndex = 69;
@@ -297,7 +297,7 @@
             this.lErrorDireccion.BackColor = System.Drawing.Color.Transparent;
             this.lErrorDireccion.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lErrorDireccion.ForeColor = System.Drawing.Color.Red;
-            this.lErrorDireccion.Location = new System.Drawing.Point(420, 143);
+            this.lErrorDireccion.Location = new System.Drawing.Point(415, 140);
             this.lErrorDireccion.Name = "lErrorDireccion";
             this.lErrorDireccion.Size = new System.Drawing.Size(22, 29);
             this.lErrorDireccion.TabIndex = 73;
@@ -325,7 +325,7 @@
             // 
             // bModificar
             // 
-            this.bModificar.Location = new System.Drawing.Point(332, 175);
+            this.bModificar.Location = new System.Drawing.Point(310, 175);
             this.bModificar.Name = "bModificar";
             this.bModificar.Size = new System.Drawing.Size(105, 23);
             this.bModificar.TabIndex = 75;
@@ -338,7 +338,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 243);
+            this.ClientSize = new System.Drawing.Size(436, 243);
             this.Controls.Add(this.bModificar);
             this.Controls.Add(this.bBorrar);
             this.Controls.Add(this.txtDireccion);
@@ -367,6 +367,7 @@
             this.Controls.Add(this.lNombre);
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormAbmCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ABM de Cliente";

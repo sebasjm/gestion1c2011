@@ -37,6 +37,7 @@
             this.chkListadoRoles = new System.Windows.Forms.CheckedListBox();
             this.labelRoles = new System.Windows.Forms.Label();
             this.dataRoles = new System.Windows.Forms.DataGridView();
+            this.chkEliminados = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataRoles)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,11 +129,22 @@
             this.dataRoles.Size = new System.Drawing.Size(321, 102);
             this.dataRoles.TabIndex = 90;
             // 
+            // chkEliminados
+            // 
+            this.chkEliminados.AutoSize = true;
+            this.chkEliminados.Location = new System.Drawing.Point(18, 196);
+            this.chkEliminados.Name = "chkEliminados";
+            this.chkEliminados.Size = new System.Drawing.Size(76, 17);
+            this.chkEliminados.TabIndex = 97;
+            this.chkEliminados.Text = "Eliminados";
+            this.chkEliminados.UseVisualStyleBackColor = true;
+            // 
             // FormListadoRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 370);
+            this.Controls.Add(this.chkEliminados);
             this.Controls.Add(this.dataRoles);
             this.Controls.Add(this.labelRoles);
             this.Controls.Add(this.chkListadoRoles);
@@ -142,6 +154,7 @@
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.bBuscar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormListadoRoles";
             this.Text = "Listado de Selección de Roles";
             ((System.ComponentModel.ISupportInitialize)(this.dataRoles)).EndInit();
@@ -161,5 +174,6 @@
         private System.Windows.Forms.CheckedListBox chkListadoRoles;
         private System.Windows.Forms.Label labelRoles;
         private System.Windows.Forms.DataGridView dataRoles;
+        private System.Windows.Forms.CheckBox chkEliminados;
     }
 }
