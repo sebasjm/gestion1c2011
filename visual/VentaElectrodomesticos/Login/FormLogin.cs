@@ -22,10 +22,9 @@ namespace VentaElectrodomesticos.Login
             try {
                 Context.instance.authenticate(tUsername.Text, tPassword.Text);
             } catch (WrongUserOrPasswordException ) {
-                
                 Usuario user = Context.instance.dao.user.findByName(tUsername.Text);
                 Context.instance.dao.user.intentos(tUsername.Text , true);
-                if (!(user == null)&&(user.intentos >= 3)) {
+                if ((!(user == null))&&(user.intentos == 2)) {
                     Context.instance.dao.user.desahabilitar(tUsername.Text);
                 }
                 tUsername.Text = "Usuario o Contraseña incorrecta";
