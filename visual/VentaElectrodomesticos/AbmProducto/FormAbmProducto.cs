@@ -164,7 +164,7 @@ namespace VentaElectrodomesticos.AbmProducto
         }
 
         private bool validar() {
-            if (cmbMarcas.Text != "") 
+            if (cmbMarcas.Text != "---") 
             {
                 lErrorMarca.Hide();
             }
@@ -172,7 +172,7 @@ namespace VentaElectrodomesticos.AbmProducto
                 lErrorMarca.Show();
             }
 
-            return (validator.check())&& cmbMarcas.Text != "";
+            return (validator.check()) && cmbMarcas.Text != "---";
         }
         private void bCrear_Click(object sender, EventArgs e)        {
             if (!this.validar()) return;
