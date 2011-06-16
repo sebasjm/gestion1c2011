@@ -30,8 +30,14 @@ namespace VentaElectrodomesticos.Controladores {
                 .from("EL_GRUPO.usuario as u")
                 .filterIf(username.Length != 0, "u.username like '%{0}%' ", username)
                 .filterIf(empleado != null && empleado.dni != 0, "u.empleado_dni = {1} ", empleado != null ? empleado.dni : 0)
-                .filter("u.activo = {2} ", activo ? 1 : 0)
-                .filterIf(lista.Count > 0, "u.id IN ( SELECT ur.usuario_id FROM [EL_GRUPO].UsuarioRol as ur WHERE ur.rol_id IN ( {3} )) ", String.Join(",", lista.ToArray()));
+                .filter("u.activo = {2} ", activo ? 1 : 0);
+            foreach (string rol in lista) {
+               QueryBuilder q2 = new QueryBuilder();
+               q2.select().from("[EL_GRUPO].UsuarioRol as ur");
+               q2.filter("ur.usuario_id = u.id");
+               q2.filter("ur.rol_id= " + rol);
+               q.filter("exists (" + q2.build() + ")");
+           }
             return connection.query<Usuario>(q.build(), q.getParams());
         }
         public Usuario searchById(int id) {

@@ -34,16 +34,18 @@ namespace VentaElectrodomesticos.Controladores {
             connection.update(DELETE_FUNCIONALIDADES_DEL_ROL, rol.id);
         }
         public List<Rol> search(string nombre, List<string> lista ,bool activo) {
-            QueryBuilder q = new QueryBuilder();
-            q.select().from("[EL_GRUPO].rol as r")
-                        .filterIf(nombre.Length != 0, "nombre like '%{0}%'", nombre)
-                        .filter("activo = {1} ", activo ? 1 : 0)
-                        .filterIf(lista.Count > 0 , "r.id in (" +
-                                "SELECT rl.rol_id FROM [EL_GRUPO].RolFuncionalidad as rl " +
-                                "WHERE funcionalidad_id IN ({1})"+
-                                " ) ", String.Join(",",lista.ToArray()) );
-            String query = q.build() ;
-            return connection.query<Rol>(query, q.getParams());
+           QueryBuilder q = new QueryBuilder();
+           q.select().from("[EL_GRUPO].rol as r")
+              .filterIf(nombre.Length != 0, "nombre like '%{0}%'", nombre)
+              .filter("activo = {1} ", activo ? 1 : 0);
+            foreach (string funcionalidad in lista) {
+               QueryBuilder q2 = new QueryBuilder();
+               q2.select().from("[EL_GRUPO].RolFuncionalidad");
+               q2.filter("rol_id = r.id");
+               q2.filter("funcionalidad_id= " + funcionalidad);
+               q.filter("exists (" + q2.build() + ")");
+           }
+           return connection.query<Rol>(q.build(), q.getParams());
         }
         public List<Funcionalidad> getFuncionalidades(Byte? id) {
             QueryBuilder q = new QueryBuilder();
