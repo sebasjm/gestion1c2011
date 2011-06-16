@@ -132,6 +132,7 @@
             // txtPrecioHasta
             // 
             this.txtPrecioHasta.Location = new System.Drawing.Point(116, 54);
+            this.txtPrecioHasta.MaxLength = 10;
             this.txtPrecioHasta.Name = "txtPrecioHasta";
             this.txtPrecioHasta.Size = new System.Drawing.Size(121, 20);
             this.txtPrecioHasta.TabIndex = 80;
@@ -139,6 +140,7 @@
             // txtPrecioDesde
             // 
             this.txtPrecioDesde.Location = new System.Drawing.Point(116, 25);
+            this.txtPrecioDesde.MaxLength = 10;
             this.txtPrecioDesde.Name = "txtPrecioDesde";
             this.txtPrecioDesde.Size = new System.Drawing.Size(121, 20);
             this.txtPrecioDesde.TabIndex = 79;
@@ -180,6 +182,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(130, 49);
+            this.txtNombre.MaxLength = 70;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(121, 20);
             this.txtNombre.TabIndex = 81;
@@ -187,6 +190,7 @@
             // txtCodigoProducto
             // 
             this.txtCodigoProducto.Location = new System.Drawing.Point(130, 22);
+            this.txtCodigoProducto.MaxLength = 14;
             this.txtCodigoProducto.Name = "txtCodigoProducto";
             this.txtCodigoProducto.Size = new System.Drawing.Size(121, 20);
             this.txtCodigoProducto.TabIndex = 80;

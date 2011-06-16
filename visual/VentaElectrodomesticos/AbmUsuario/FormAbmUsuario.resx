@@ -248,6 +248,9 @@
   <data name="txtUsername.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 76</value>
   </data>
+  <data name="txtUsername.MaxLength" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
   <data name="txtUsername.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 20</value>
   </data>
@@ -268,6 +271,9 @@
   </data>
   <data name="txtPassword.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 108</value>
+  </data>
+  <data name="txtPassword.MaxLength" type="System.Int32, mscorlib">
+    <value>20</value>
   </data>
   <data name="txtPassword.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
     <value>*</value>
@@ -412,6 +418,9 @@
   </data>
   <data name="txtConfirmarPassword.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 134</value>
+  </data>
+  <data name="txtConfirmarPassword.MaxLength" type="System.Int32, mscorlib">
+    <value>20</value>
   </data>
   <data name="txtConfirmarPassword.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
     <value>*</value>

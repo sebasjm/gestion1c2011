@@ -88,6 +88,7 @@
             // txtMail
             // 
             this.txtMail.Location = new System.Drawing.Point(293, 56);
+            this.txtMail.MaxLength = 50;
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(121, 20);
             this.txtMail.TabIndex = 40;
@@ -165,6 +166,7 @@
             // txtApellido
             // 
             this.txtApellido.Location = new System.Drawing.Point(87, 83);
+            this.txtApellido.MaxLength = 50;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(100, 20);
             this.txtApellido.TabIndex = 27;
@@ -172,6 +174,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(87, 56);
+            this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 26;
@@ -287,6 +290,7 @@
             // txtDireccion
             // 
             this.txtDireccion.Location = new System.Drawing.Point(87, 137);
+            this.txtDireccion.MaxLength = 60;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(327, 20);
             this.txtDireccion.TabIndex = 72;

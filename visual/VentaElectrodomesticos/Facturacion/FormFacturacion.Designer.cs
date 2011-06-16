@@ -148,6 +148,7 @@
             // txtDescuento
             // 
             this.txtDescuento.Location = new System.Drawing.Point(126, 356);
+            this.txtDescuento.MaxLength = 2;
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(131, 20);
             this.txtDescuento.TabIndex = 11;
@@ -203,6 +204,7 @@
             // txtCuotas
             // 
             this.txtCuotas.Location = new System.Drawing.Point(403, 384);
+            this.txtCuotas.MaxLength = 2;
             this.txtCuotas.Name = "txtCuotas";
             this.txtCuotas.Size = new System.Drawing.Size(67, 20);
             this.txtCuotas.TabIndex = 18;
@@ -285,6 +287,7 @@
             // txtCantidad
             // 
             this.txtCantidad.Location = new System.Drawing.Point(126, 98);
+            this.txtCantidad.MaxLength = 6;
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(131, 20);
             this.txtCantidad.TabIndex = 28;
