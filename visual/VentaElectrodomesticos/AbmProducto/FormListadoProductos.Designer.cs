@@ -260,6 +260,8 @@
             this.Controls.Add(this.grpFiltroBusqueda);
             this.Controls.Add(this.bBuscar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormListadoProductos";
             this.Text = "Listado de Productos";
             this.grpFiltroBusqueda.ResumeLayout(false);

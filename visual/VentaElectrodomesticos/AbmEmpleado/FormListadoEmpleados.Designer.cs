@@ -257,6 +257,8 @@
             this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.grpFiltrosBusqueda);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormListadoEmpleados";
             this.Text = "Listado de Selección de Empleado";
             ((System.ComponentModel.ISupportInitialize)(this.dataEmpleados)).EndInit();

@@ -227,6 +227,8 @@
             this.Controls.Add(this.lEmpleado);
             this.Controls.Add(this.lErrorRoles);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormAbmUsuario";
             this.grpListadoRoles.ResumeLayout(false);
             this.ResumeLayout(false);

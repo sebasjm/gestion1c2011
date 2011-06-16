@@ -209,6 +209,8 @@
             this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.grpFiltrosBusqueda);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormListadoClientes";
             this.Text = "Listado de Selección de Clientes";
             ((System.ComponentModel.ISupportInitialize)(this.dataClientes)).EndInit();

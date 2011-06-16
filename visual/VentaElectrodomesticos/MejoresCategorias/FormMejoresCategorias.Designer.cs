@@ -173,6 +173,8 @@
             this.Controls.Add(this.cmbSucursal);
             this.Controls.Add(this.lSucursal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormMejoresCategorias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mejores Categorías";

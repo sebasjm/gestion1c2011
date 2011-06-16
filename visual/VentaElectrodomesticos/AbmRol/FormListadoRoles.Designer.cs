@@ -155,6 +155,8 @@
             this.Controls.Add(this.bLimpiar);
             this.Controls.Add(this.bBuscar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormListadoRoles";
             this.Text = "Listado de Selección de Roles";
             ((System.ComponentModel.ISupportInitialize)(this.dataRoles)).EndInit();

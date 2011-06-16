@@ -194,6 +194,8 @@
             this.Controls.Add(this.lUsername);
             this.Controls.Add(this.lEmpleado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormListadoUsuarios";
             this.Text = "Listado de Usuarios";
             ((System.ComponentModel.ISupportInitialize)(this.dataUsuarios)).EndInit();

@@ -222,6 +222,8 @@
             this.Controls.Add(this.lSucursal);
             this.Controls.Add(this.lProducto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormAsignacionStock";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asignación de Stock";
