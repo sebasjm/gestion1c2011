@@ -156,6 +156,7 @@ namespace VentaElectrodomesticos.Facturacion {
             ShowMonto();
             txtProducto.Text = "";
             txtCantidad.Text = "";
+            txtDescuento.Text = "";
             cmbFormasPago.SelectedIndex = 0;
             itemsFacturaByProductoCodigo = new Dictionary<int, ItemFacturaMock>();
             ViewHelper.fillDataGridItemFactura(dataListadoProductos, new List<ItemFacturaMock>());
