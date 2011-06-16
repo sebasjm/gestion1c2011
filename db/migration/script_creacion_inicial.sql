@@ -734,5 +734,6 @@ insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 
 insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 8)
 insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 9)
 insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 10)
+insert into EL_GRUPO.RolFuncionalidad ( rol_id , funcionalidad_id ) values (1 , 11)
 
 insert into EL_GRUPO.UsuarioRol values ( 1, 1 )
