@@ -53,5 +53,13 @@ namespace VentaElectrodomesticos.TableroControl {
             lValorVendedorAnio.Text = "" + Context.instance.dao.tablero.calcularMejorVendedor(sucursal.id, anio);
         }
 
+        private void FormTableroControl_Load(object sender, EventArgs e) {
+            if (!Context.instance.security.hasPermissionTo(Security.FUNCIONALIDAD_TABLERO_CONTROL)) {
+                MessageBox.Show("No tiene permisos suficiente para esta funcionalidad");
+                this.Close();
+                return;
+            };
+        }
+
     }
 }

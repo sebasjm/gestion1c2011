@@ -113,6 +113,7 @@
             this.Name = "FormClientesPremium";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes Premium";
+            this.Load += new System.EventHandler(this.FormClientesPremium_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

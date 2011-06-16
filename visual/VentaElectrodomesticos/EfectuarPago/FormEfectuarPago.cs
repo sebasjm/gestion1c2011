@@ -88,5 +88,13 @@ namespace VentaElectrodomesticos.EfectuarPago {
             this.Close();
         }
 
+        private void FormEfectuarPago_Load(object sender, EventArgs e) {
+            if (!Context.instance.security.hasPermissionTo(Security.FUNCIONALIDAD_OPERACION_PAGOS)) {
+                MessageBox.Show("No tiene permisos suficiente para esta funcionalidad");
+                this.Close();
+                return;
+            };
+        }
+
     }
 }

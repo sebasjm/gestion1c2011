@@ -8,7 +8,7 @@ namespace VentaElectrodomesticos.Modelo {
         public Usuario(Int32 id) {
             this.id = id;
         }
-        public Int32? id {
+        public Int32 id {
             get; private set;
         }
         public String username {

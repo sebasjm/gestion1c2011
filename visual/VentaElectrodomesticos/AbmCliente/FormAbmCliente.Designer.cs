@@ -377,6 +377,7 @@
             this.Name = "FormAbmCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ABM de Cliente";
+            this.Load += new System.EventHandler(this.FormAbmCliente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -453,6 +453,7 @@
             this.Name = "FormAbmEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ABM Empleado";
+            this.Load += new System.EventHandler(this.FormAbmEmpleado_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

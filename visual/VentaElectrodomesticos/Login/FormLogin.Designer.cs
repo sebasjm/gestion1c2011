@@ -99,6 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.bAceptar;
             this.ClientSize = new System.Drawing.Size(236, 120);
             this.Controls.Add(this.bAceptar);
             this.Controls.Add(this.bCancelar);
@@ -112,6 +113,9 @@
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.FormLogin_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLogin_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

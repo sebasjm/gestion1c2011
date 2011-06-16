@@ -7,18 +7,26 @@ using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Exception;
 
 namespace VentaElectrodomesticos.Controladores {
-    class SecurityMock : Security {
-        public SecurityMock() : base() {
-            //admin user
-            loggedUser = Context.instance.dao.user.searchById(1);
-        }
-    }
     class Security {
+
+        public static readonly byte FUNCIONALIDAD_ABM_EMPLEADO = 1;
+        public static readonly byte FUNCIONALIDAD_ABM_ROL = 2;
+        public static readonly byte FUNCIONALIDAD_ABM_USUARIO = 3;
+        public static readonly byte FUNCIONALIDAD_ABM_CLIENTE = 4;
+        public static readonly byte FUNCIONALIDAD_ABM_PRODUCTO = 5;
+        public static readonly byte FUNCIONALIDAD_OPERACION_STOCK = 6;
+        public static readonly byte FUNCIONALIDAD_OPERACION_FACTURACION = 7;
+        public static readonly byte FUNCIONALIDAD_OPERACION_PAGOS = 8;
+        public static readonly byte FUNCIONALIDAD_TABLERO_CONTROL = 9;
+        public static readonly byte FUNCIONALIDAD_TABLERO_CATEGORIAS = 10;
+        public static readonly byte FUNCIONALIDAD_TABLERO_CLIENTES = 11;
 
         public Usuario loggedUser {
             get; protected set;
         }
         public Security() { }
+
+        List<byte> permissionList = null;
 
         public Security(string user, string passwd) {
              loggedUser = Context.instance.dao.user.findUserWithPassword(
@@ -28,6 +36,7 @@ namespace VentaElectrodomesticos.Controladores {
              if (loggedUser == null) {
                  throw new WrongUserOrPasswordException();
              }
+             permissionList = Context.instance.dao.user.findPermissionList(loggedUser.id);
         }
 
         public string sha256encrypt(string phrase) {
@@ -44,6 +53,12 @@ namespace VentaElectrodomesticos.Controladores {
             }
             return output.ToString();
         }
-    
+
+        public bool hasPermissionTo(byte p) {
+            foreach(byte per in permissionList) {
+                if (per == p) return true;
+            }
+            return false;
+        }
     }
 }

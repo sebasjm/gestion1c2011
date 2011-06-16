@@ -178,6 +178,7 @@
             this.Name = "FormMejoresCategorias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mejores Categorías";
+            this.Load += new System.EventHandler(this.FormMejoresCategorias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataCategorias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

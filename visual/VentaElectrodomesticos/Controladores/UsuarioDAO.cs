@@ -140,6 +140,11 @@ namespace VentaElectrodomesticos.Controladores {
                 id
             );
         }
+        private static readonly String FIND_PERMISSION_LIST = "select funcionalidad_id from el_grupo.UsuarioRol as ur join el_grupo.RolFuncionalidad as rf on rf.rol_id = ur.rol_id where usuario_id = {0} group by funcionalidad_id ";
+
+        public List<byte> findPermissionList(int user_id) {
+            return connection.query<byte>(FIND_PERMISSION_LIST,user_id);
+        }
     }
 }
 

@@ -27,16 +27,24 @@ namespace VentaElectrodomesticos.Login
                 if ((!(user == null))&&(user.intentos == 2)) {
                     Context.instance.dao.user.desahabilitar(tUsername.Text);
                 }
-                tUsername.Text = "Usuario o Contraseña incorrecta";
+                MessageBox.Show("Usuario o Contraseña incorrecta", "Error");
                 return;
             }
             Context.instance.dao.user.intentos(tUsername.Text, false);
-            tUsername.Text = "right!";
+            this.Close();
         }
 
         private void bCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e) {
+
+        }
+
+        private void FormLogin_FormClosing(object sender, FormClosingEventArgs e) {
+            e.Cancel = Context.instance.security.loggedUser == null;
         }
     }
 }

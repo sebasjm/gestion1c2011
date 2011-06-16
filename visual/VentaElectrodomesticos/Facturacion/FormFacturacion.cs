@@ -31,6 +31,7 @@ namespace VentaElectrodomesticos.Facturacion {
 
         public FormFacturacion() {
             InitializeComponent();
+
             ViewHelper.fillComboProvincias(cmbProvincia);
             ViewHelper.fillComboSucursales(cmbSucursal);
             ViewHelper.fillDataGridItemFactura(dataListadoProductos, new List<ItemFacturaMock>( itemsFacturaByProductoCodigo.Values ));
@@ -181,6 +182,14 @@ namespace VentaElectrodomesticos.Facturacion {
             }
             txtCuotas.Text = String.Format("{0}", cuotas);
             ShowMonto();
+        }
+
+        private void FormFacturacion_Load(object sender, EventArgs e) {
+            if (!Context.instance.security.hasPermissionTo(Security.FUNCIONALIDAD_OPERACION_FACTURACION)) {
+                MessageBox.Show("No tiene permisos suficiente para esta funcionalidad");
+                this.Close();
+                return;
+            };
         }
     }
 }

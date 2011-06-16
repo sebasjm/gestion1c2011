@@ -47,5 +47,13 @@ namespace VentaElectrodomesticos.ClientesPremium {
             );
         }
 
+        private void FormClientesPremium_Load(object sender, EventArgs e) {
+            if (!Context.instance.security.hasPermissionTo(Security.FUNCIONALIDAD_TABLERO_CLIENTES)) {
+                MessageBox.Show("No tiene permisos suficiente para esta funcionalidad");
+                this.Close();
+                return;
+            };
+        }
+
     }
 }

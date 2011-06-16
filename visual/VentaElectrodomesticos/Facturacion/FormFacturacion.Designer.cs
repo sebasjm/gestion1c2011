@@ -399,6 +399,7 @@
             this.Name = "FormFacturacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facturación";
+            this.Load += new System.EventHandler(this.FormFacturacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoProductos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

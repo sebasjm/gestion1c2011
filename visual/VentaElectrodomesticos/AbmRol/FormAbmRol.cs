@@ -25,7 +25,7 @@ namespace VentaElectrodomesticos.AbmRol
             lErrorNombre.Visible = false;
             lErrorRoles.Visible = false;
             validator = new Validator()
-                .add(txtNombre, lErrorNombre, Validator.Text.obligatorio, Validator.Text.nombre)
+                .add(txtNombre, lErrorNombre, Validator.Text.obligatorio, Validator.Text.texto)
 //                .add(chkListadoRoles, lErrorRoles, Validator.sin_elementos )
                 ;
         }
@@ -170,6 +170,14 @@ namespace VentaElectrodomesticos.AbmRol
                     this.Close();
                 }
             }
+        }
+
+        private void FormAbmRol_Load(object sender, EventArgs e) {
+            if (!Context.instance.security.hasPermissionTo(Security.FUNCIONALIDAD_ABM_ROL)) {
+                MessageBox.Show("No tiene permisos suficiente para esta funcionalidad");
+                this.Close();
+                return;
+            };
         }
     }
 }

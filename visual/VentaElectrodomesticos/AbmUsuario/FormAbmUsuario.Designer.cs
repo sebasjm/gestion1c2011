@@ -230,6 +230,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormAbmUsuario";
+            this.Load += new System.EventHandler(this.FormAbmUsuario_Load);
             this.grpListadoRoles.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

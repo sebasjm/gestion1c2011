@@ -190,6 +190,7 @@
             this.Name = "FormEfectuarPago";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Efectuar Pago";
+            this.Load += new System.EventHandler(this.FormEfectuarPago_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataFacturas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

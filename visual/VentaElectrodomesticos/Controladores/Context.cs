@@ -12,10 +12,9 @@ namespace VentaElectrodomesticos.Controladores {
             private set { _instance = value; }
         }
 
-        private Security security_mock = null;
         public Security security {
-            get { if (security_mock == null) security_mock = new SecurityMock(); return security_mock; }
-            private set { }
+            get;
+            private set;
         }
 
         public DAOContext dao {

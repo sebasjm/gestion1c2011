@@ -719,6 +719,7 @@ insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (7,'Fact
 insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (8,'Efectuar Pago','Efectuar Pago')
 insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (9,'Tablero de Control','Tablero de Control')
 insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (10,'Mejores Categorías','Mejores Categorías')
+insert into EL_GRUPO.funcionalidad ( id , nombre , descripcion ) values (11,'Cliente Premium','Cliente Premium')
 ----------------
 
 -- Se agregaron los insert de las Funcionalidades del Admin.

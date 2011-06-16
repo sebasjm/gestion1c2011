@@ -363,6 +363,7 @@
             this.Name = "FormAbmProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ABM Producto";
+            this.Load += new System.EventHandler(this.FormAbmProducto_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

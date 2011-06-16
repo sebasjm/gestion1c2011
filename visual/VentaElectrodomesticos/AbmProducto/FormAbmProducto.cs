@@ -25,7 +25,7 @@ namespace VentaElectrodomesticos.AbmProducto
             bModificar.Visible = false;
             validator = new Validator()
                 .add(txtCodigoProducto, lErrorCodigo, Validator.Text.obligatorio, Validator.Text.numerico)
-                .add(txtDescripcion, lErrorDescripcion, Validator.Text.obligatorio, Validator.Text.nombre)
+                .add(txtDescripcion, lErrorDescripcion, Validator.Text.obligatorio, Validator.Text.texto)
                 .add(txtNombre, lErrorNombre, Validator.Text.obligatorio, Validator.Text.nombre)
                 .add(treeCategorias, lErrorCategoria, Validator.Tree.obligatorio)
                 .add(txtPrecio, lErrorPrecio, Validator.Text.obligatorio, Validator.Text.numerico);
@@ -249,6 +249,14 @@ namespace VentaElectrodomesticos.AbmProducto
 
         private void cmbMarcas_SelectedIndexChanged(object sender, EventArgs e) {
 
+        }
+
+        private void FormAbmProducto_Load(object sender, EventArgs e) {
+            if (!Context.instance.security.hasPermissionTo(Security.FUNCIONALIDAD_ABM_PRODUCTO)) {
+                MessageBox.Show("No tiene permisos suficiente para esta funcionalidad");
+                this.Close();
+                return;
+            };
         }
     }
 }

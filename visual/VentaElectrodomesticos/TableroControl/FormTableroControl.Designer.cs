@@ -272,6 +272,7 @@
             this.Name = "FormTableroControl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tablero de Control";
+            this.Load += new System.EventHandler(this.FormTableroControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

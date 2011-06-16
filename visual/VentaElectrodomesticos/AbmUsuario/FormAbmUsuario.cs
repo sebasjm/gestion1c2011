@@ -24,12 +24,12 @@ namespace VentaElectrodomesticos.AbmUsuario
             InitializeComponent();
             ViewHelper.fillRoles(chkListadoRoles);
             validator = new Validator()
-                .add(txtUsername, lErrorUsername, Validator.Text.obligatorio, Validator.Text.nombre)
+                .add(txtUsername, lErrorUsername, Validator.Text.obligatorio, Validator.Text.texto)
                 .add(txtPassword, lErrorPassword, Validator.Text.obligatorio)
                 .add(txtConfirmarPassword, lErrorConfirmPass, Validator.Text.obligatorio)
                 .add(txtEmpleado, lErrorEmpleado, Validator.Text.obligatorio);
             validatorModificar = new Validator()
-                .add(txtUsername, lErrorUsername, Validator.Text.obligatorio, Validator.Text.nombre)
+                .add(txtUsername, lErrorUsername, Validator.Text.obligatorio, Validator.Text.texto)
                 .add(txtEmpleado, lErrorEmpleado, Validator.Text.obligatorio);
         }
         private void bBuscarEmpleado_Click(object sender, EventArgs e)
@@ -216,6 +216,14 @@ namespace VentaElectrodomesticos.AbmUsuario
            lErrorPassword.Visible = false;
            lErrorConfirmPass.Visible = false;
            return true;
+        }
+
+        private void FormAbmUsuario_Load(object sender, EventArgs e) {
+            if (!Context.instance.security.hasPermissionTo(Security.FUNCIONALIDAD_ABM_USUARIO)) {
+                MessageBox.Show("No tiene permisos suficiente para esta funcionalidad");
+                this.Close();
+                return;
+            };
         }
     }
 }

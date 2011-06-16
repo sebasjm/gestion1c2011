@@ -18,6 +18,7 @@ namespace VentaElectrodomesticos.Controladores {
             );
             mappers = new Dictionary<Type, Mapper<object>>();
             addMapper(typeof(int), new IntMapper());
+            addMapper(typeof(byte), new ByteMapper());
             addMapper(typeof(double), new DoubleMapper());
             addMapper(typeof(double?), new DoubleMapper());
         }
@@ -25,6 +26,12 @@ namespace VentaElectrodomesticos.Controladores {
         class IntMapper : Mapper<Object> {
             public Object getInstance(SqlDataReader sdr) {
                 return sdr.IsDBNull(0) ? (Int32?)null : sdr.GetInt32(0);
+            }
+        }
+
+        class ByteMapper : Mapper<Object> {
+            public Object getInstance(SqlDataReader sdr) {
+                return sdr.IsDBNull(0) ? (Byte?)null : sdr.GetByte(0);
             }
         }
 

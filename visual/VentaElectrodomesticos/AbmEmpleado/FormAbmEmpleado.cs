@@ -184,5 +184,13 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             Provincia item = (Provincia)cmbProvincia.SelectedItem;
             cmbSucursal.SelectedItem = item != null ? item.sucursal : null;
         }
+
+        private void FormAbmEmpleado_Load(object sender, EventArgs e) {
+            if (!Context.instance.security.hasPermissionTo(Security.FUNCIONALIDAD_ABM_EMPLEADO)) {
+                MessageBox.Show("No tiene permisos suficiente para esta funcionalidad");
+                this.Close();
+                return;
+            };
+        }
     }
 }

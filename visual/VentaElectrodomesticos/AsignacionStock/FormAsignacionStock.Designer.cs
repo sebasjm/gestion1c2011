@@ -227,6 +227,7 @@
             this.Name = "FormAsignacionStock";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asignación de Stock";
+            this.Load += new System.EventHandler(this.FormAsignacionStock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataStock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

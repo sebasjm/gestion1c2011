@@ -161,5 +161,14 @@ namespace VentaElectrodomesticos.AbmCliente {
                 this.limpiar();
             }
         }
+
+        private void FormAbmCliente_Load(object sender, EventArgs e) {
+            if (!Context.instance.security.hasPermissionTo(Security.FUNCIONALIDAD_ABM_CLIENTE)) {
+                MessageBox.Show("No tiene permisos suficiente para esta funcionalidad");
+                this.Close();
+                return;
+            };
+
+        }
     }
 }
