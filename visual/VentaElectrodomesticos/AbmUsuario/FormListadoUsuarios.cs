@@ -23,7 +23,7 @@ namespace VentaElectrodomesticos.AbmUsuario {
             ViewHelper.fillRoles(chkListadoRoles);
         }
         private void bBuscarEmpleado_Click(object sender, EventArgs e) {
-            FormListadoEmpleados form = new FormListadoEmpleados();
+            FormListadoEmpleados form = new FormListadoEmpleados("ConUsuario");
             form.MessageFromParent = null;
             form.ShowDialog(this);
             if (form.MessageFromParent != null) {

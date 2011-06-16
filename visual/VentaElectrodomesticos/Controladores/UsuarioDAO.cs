@@ -56,8 +56,8 @@ namespace VentaElectrodomesticos.Controladores {
         }
 
         private static readonly String INSERT = "INSERT INTO EL_GRUPO.Usuario (username, password, activo, empleado_dni)VALUES( '{0}' , '{1}' , 1 , {2})";
-        private static readonly String UPDATE = "UPDATE EL_GRUPO.Usuario SET username='{0}',password='{1}',activo=1 where id='{2}'";
-        private static readonly String UPDATE_WITHOUT_PASS = "UPDATE EL_GRUPO.Usuario SET username='{0}',activo=1 where id='{1}'";
+        private static readonly String UPDATE = "UPDATE EL_GRUPO.Usuario SET username='{0}',password='{1}',empleado_dni={2},activo=1 where id='{3}'";
+        private static readonly String UPDATE_WITHOUT_PASS = "UPDATE EL_GRUPO.Usuario SET username='{0}',empleado_dni={1},activo=1 where id='{2}'";
         private static readonly String DELETE = "UPDATE EL_GRUPO.Usuario SET activo=0 WHERE id={0}";
 
         public void insertar(Usuario usuario) {
@@ -74,12 +74,14 @@ namespace VentaElectrodomesticos.Controladores {
                     UPDATE,
                         usuario.username,
                         sec.sha256encrypt(usuario.password),
+                        usuario.empleado_dni,
                         usuario.id
                 );
             } else {
                 connection.update(
                     UPDATE_WITHOUT_PASS,
                         usuario.username,
+                        usuario.empleado_dni,
                         usuario.id
                 );
             }

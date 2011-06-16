@@ -29,17 +29,26 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado);
         }
 
+        bool conFiltroUsuario = false;
+        bool conUsuario = false;
         public FormListadoEmpleados(String modo)
         {
+            InitializeComponent();
+            ViewHelper.fillComboProvincias(cmbProvincia);
+            ViewHelper.fillComboSucursales(cmbSucursal);
+            ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado);
+            chkEliminados.Enabled = false;
             if (modo == "Analista") {
-                InitializeComponent();
-                ViewHelper.fillComboProvincias(cmbProvincia);
-                ViewHelper.fillComboSucursales(cmbSucursal);
-                ViewHelper.fillComboTipoEmpleado(cmbTipoEmpleado);
                 cmbTipoEmpleado.SelectedIndex = 1;
                 cmbTipoEmpleado.Enabled = false;
-            } else { 
-            
+            }
+            if (modo == "SinUsuario") {
+                conFiltroUsuario = true;
+                conUsuario = false;
+            }
+            if (modo == "ConUsuario") {
+                conFiltroUsuario = true;
+                conUsuario = true;
             }
         }
 
@@ -51,14 +60,27 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             if (txtDni.Text.Length == 0)
                 txtDni.Text = "0";
             empleadosActivos = !chkEliminados.Checked;
-            List<Empleado> result = Context.instance.dao.empleado.search(
-                txtNombre.Text,
-                txtApellido.Text,
-                Convert.ToInt32(txtDni.Text),
-                sucursal,
-                (TipoEmpleado)cmbTipoEmpleado.SelectedItem,
-                empleadosActivos
-            );
+            List<Empleado> result = null;
+            if (conFiltroUsuario) {
+                result = Context.instance.dao.empleado.search(
+                    txtNombre.Text,
+                    txtApellido.Text,
+                    Convert.ToInt32(txtDni.Text),
+                    sucursal,
+                    (TipoEmpleado)cmbTipoEmpleado.SelectedItem,
+                    empleadosActivos,
+                    conUsuario
+                );
+            } else {
+                result = Context.instance.dao.empleado.search(
+                    txtNombre.Text,
+                    txtApellido.Text,
+                    Convert.ToInt32(txtDni.Text),
+                    sucursal,
+                    (TipoEmpleado)cmbTipoEmpleado.SelectedItem,
+                    empleadosActivos
+                );
+            }
             ViewHelper.fillDataGridEmpleados(dataEmpleados, result);
         }
         private void bSeleccionar_Click(object sender, EventArgs e) {

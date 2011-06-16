@@ -24,16 +24,28 @@ namespace VentaElectrodomesticos.Controladores {
                 };
             }
         }
-        public List<Empleado> search(string nombre, string apellido, int dni, Sucursal suc, TipoEmpleado tipoEmp, bool activo) {
-            QueryBuilder q = new QueryBuilder();
-            q.select()
+        private static QueryBuilder buildQuerySearch(string nombre, string apellido, int dni, Sucursal suc, TipoEmpleado tipoEmp, bool activo) {
+            return new QueryBuilder()
+                .select()
                 .from("EL_GRUPO.Empleado")
                 .filterIf(nombre.Length != 0, "nombre like '%{0}%' ", nombre)
                 .filterIf(apellido.Length != 0, "apellido like '%{1}%' ", apellido)
                 .filterIf(dni != 0, "dni = {2} ", dni)
                 .filterIf(suc != null && suc.id != 0, "sucursal_id = {3} ", suc != null ? suc.id : 0)
                 .filterIf(tipoEmp != null && tipoEmp.id != 0, "tipoEmpleado_id = {4} ", tipoEmp != null ? tipoEmp.id : 0)
-                .filter("activo = {5} ", activo?1:0);
+                .filter("activo = {5} ", activo ? 1 : 0);
+        }
+        public List<Empleado> search(string nombre, string apellido, int dni, Sucursal suc, TipoEmpleado tipoEmp, bool activo) {
+            QueryBuilder q = buildQuerySearch(nombre,apellido,dni,suc,tipoEmp,activo);
+            return connection.query<Empleado>(q.build(), q.getParams());
+        }
+        public List<Empleado> search(string nombre, string apellido, int dni, Sucursal suc, TipoEmpleado tipoEmp, bool activo, bool conUsuario) {
+            QueryBuilder q = buildQuerySearch(nombre,apellido,dni,suc,tipoEmp,activo);
+            if (conUsuario) {
+                q.filter(" dni in (select empleado_dni from el_grupo.usuario) ");
+            } else {
+                q.filter(" dni not in (select empleado_dni from el_grupo.usuario) ");
+            }
             return connection.query<Empleado>(q.build(), q.getParams());
         }
 

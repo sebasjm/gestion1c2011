@@ -34,21 +34,12 @@ namespace VentaElectrodomesticos.AbmUsuario
         }
         private void bBuscarEmpleado_Click(object sender, EventArgs e)
         {
-            FormListadoEmpleados form = new FormListadoEmpleados();
+            FormListadoEmpleados form = new FormListadoEmpleados("SinUsuario");
             form.MessageFromParent = null;
             form.ShowDialog(this);
             if (form.MessageFromParent != null)
             {
                 this.cargarEmpleado((Empleado)form.MessageFromParent);
-                Usuario userEmpleado = Context.instance.dao.user.findBy(this.empleado);
-                if (userEmpleado != null) {
-                    cargarUsuario(userEmpleado);
-                    cargarRoles();
-                    bCrearOtro.Hide();
-                    bCrear.Visible = false;
-                    bModificar.Visible = true;
-                    bBorrar.Visible = true;
-                }
 
             }
         }
@@ -171,6 +162,7 @@ namespace VentaElectrodomesticos.AbmUsuario
                 if (MessageBox.Show("¿Esta seguro que desea modificar al Usuario?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     // proceder con la modificacion
+                    user.empleado_dni = empleado.dni;
                     user.password = (String)this.txtPassword.Text;
                     user.username = (String)this.txtUsername.Text;
                     Context.instance.dao.user.modificar(user);
