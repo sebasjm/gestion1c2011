@@ -68,9 +68,22 @@ namespace VentaElectrodomesticos.AbmUsuario
                 cargarEmpleado(this.user.empleado);
                 cargarRoles();
                 bCrearOtro.Hide();
-                bCrear.Visible = false;
-                bModificar.Visible = true;
-                bBorrar.Visible = true;
+                bCrear.Hide();
+                if (form.usuariosActivos)
+                {
+                    bModificar.Show();
+                    bBorrar.Show();
+                }
+                else
+                {
+                    bBorrar.Show();
+                    bBorrar.Text = "Habilitar";
+                    txtUsername.Enabled = false;
+                    txtPassword.Enabled = false;
+                    txtConfirmarPassword.Enabled = false;
+                    chkListadoRoles.Enabled = false;
+                    bBuscarEmpleado.Enabled = false;
+                }
             }
         }
         private void cargarUsuario(Usuario cargoUsuario)
@@ -109,7 +122,17 @@ namespace VentaElectrodomesticos.AbmUsuario
             this.txtConfirmarPassword.Text = "";
             this.txtPassword.Text = "";
             for (int i = 0; i < chkListadoRoles.Items.Count; ++i)
-                chkListadoRoles.SetItemChecked(i, false);   
+                chkListadoRoles.SetItemChecked(i, false);
+            txtUsername.Enabled = true;
+            txtPassword.Enabled = true;
+            txtConfirmarPassword.Enabled = true;
+            chkListadoRoles.Enabled = true;
+            bBuscarEmpleado.Enabled = true;
+            bCrearOtro.Show();
+            bCrear.Show();
+            bModificar.Hide();
+            bBorrar.Hide();
+            bBorrar.Text = "Borrar";
         }
         private void bCrear_Click(object sender, EventArgs e)
         {
@@ -163,13 +186,23 @@ namespace VentaElectrodomesticos.AbmUsuario
         }
         private void bBorrar_Click(object sender, EventArgs e)
         {
-                if (MessageBox.Show("¿Esta seguro que desea eliminar al Usuario?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if ("Habilitar".Equals(bBorrar.Text))
                 {
-                    // proceder con la modificacion
-                    if (this.user.id == null) return;
-                    Context.instance.dao.user.eliminar((int)this.user.id);
-                    Context.instance.dao.user.limpiarRoles(this.user);
-                    this.Close();
+                    if (MessageBox.Show("¿Esta seguro que desea habilitar al Usuario?", "Confirmar Habilitación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        // proceder con la habilitación
+                        Context.instance.dao.user.habilitar((int)this.user.id);
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    if (MessageBox.Show("¿Esta seguro que desea eliminar al Usuario?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        // proceder con la eliminación
+                        Context.instance.dao.user.eliminar((int)user.id);
+                        this.Close();
+                    }
                 }
             }
         private void bCrearOtro_Click(object sender, EventArgs e)        {

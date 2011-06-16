@@ -80,8 +80,6 @@ namespace VentaElectrodomesticos.Controladores {
                 .filter("dni = {0}", dni);
             return connection.find<Empleado>(q.build(), q.getParams());
         }
-
-
         public void habilitar(int dni) {
             connection.update(
                 HABILITAR,

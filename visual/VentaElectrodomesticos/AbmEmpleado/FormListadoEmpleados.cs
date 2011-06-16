@@ -89,6 +89,5 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             Provincia item = (Provincia)cmbProvincia.SelectedItem;
             cmbSucursal.SelectedItem = item != null ? item.sucursal : null;
         }
-
     }
 }

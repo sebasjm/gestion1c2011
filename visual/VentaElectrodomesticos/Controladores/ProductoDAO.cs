@@ -19,7 +19,8 @@ namespace VentaElectrodomesticos.Controladores {
             int marca,
             int categoria,
             float precioDesde,
-            float precioHasta) {
+            float precioHasta,
+            bool activo) {
             QueryBuilder q = new QueryBuilder();
             q.select()
                 .from("EL_GRUPO.Producto")
@@ -29,7 +30,7 @@ namespace VentaElectrodomesticos.Controladores {
                 .filterIf(categoria != 0, " {3} in (select * from dbo.categoria_id_collection(categoria_id))", categoria)
                 .filterIf(precioDesde != 0, " precio >= {4}", precioDesde)
                 .filterIf(precioHasta != 0, " precio <= {5}", precioHasta)
-                .filter(" activo = 1 ");
+                .filter("activo = {6} ", activo ? 1 : 0);
             return connection.query<Producto>(q.build(), q.getParams());
         }
         class ProductoMapper : Mapper<Object> {
@@ -80,6 +81,16 @@ namespace VentaElectrodomesticos.Controladores {
 
         public int findNextId() {
             return connection.find<int>(FIND_LAST_ID) + 1;
+        }
+
+        private static readonly String HABILITAR = "UPDATE EL_GRUPO.Producto SET activo=1 WHERE codigo={0}";
+
+        public void habilitar(int codigo)
+        {
+            connection.update(
+                HABILITAR,
+                codigo
+            );
         }
     }
 }

@@ -13,7 +13,7 @@ namespace VentaElectrodomesticos.Controladores {
             this.connection = connection;
             Context.instance.dao.addMapper(typeof(Cliente), new ClienteMapper());
         }
-        public List<Cliente> search(string nombre, string apellido, int dni, Provincia provincia) {
+        public List<Cliente> search(string nombre, string apellido, int dni, Provincia provincia, bool activo) {
             QueryBuilder q = new QueryBuilder();
             q.select()
                 .from("EL_GRUPO.Cliente")
@@ -21,7 +21,7 @@ namespace VentaElectrodomesticos.Controladores {
                 .filterIf(apellido != null && apellido.Length != 0, " apellido like '%{1}%'", apellido)
                 .filterIf(dni != 0, " dni = {2} ", dni)
                 .filterIf(provincia != null && provincia.id != 0, " provincia_id = {3}", provincia != null ? provincia.id : 0)
-                .filter(" activo = 1 ");
+                .filter("activo = {4} ", activo ? 1 : 0);
 
             return connection.query<Cliente>(q.build(), q.getParams());
         }
@@ -70,6 +70,16 @@ namespace VentaElectrodomesticos.Controladores {
         public void eliminar(int dni) {
             connection.update(
                 DELETE,
+                dni
+            );
+        }
+
+        private static readonly String HABILITAR = "UPDATE EL_GRUPO.cliente SET activo=1 WHERE dni={0}";
+
+        public void habilitar(int dni)
+        {
+            connection.update(
+                HABILITAR,
                 dni
             );
         }

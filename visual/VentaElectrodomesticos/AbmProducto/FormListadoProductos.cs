@@ -17,6 +17,7 @@ namespace VentaElectrodomesticos.AbmProducto {
             get { return messageFromParent; }
             set { messageFromParent = value; }
         }
+        public bool productosActivos = true;
         List<Categoria> items = new List<Categoria>();
         public FormListadoProductos() {
             InitializeComponent();
@@ -73,13 +74,15 @@ namespace VentaElectrodomesticos.AbmProducto {
                 Categoria cate = (Categoria)NodoSeleccionado.Tag;
                 indice = cate.id;
             }
+            productosActivos = !chkEliminados.Checked;
             List<Producto> productosList = Context.instance.dao.producto.search(
                 txtCodigoProducto.Text,
                 txtNombre.Text,
                 cmbMarcas.SelectedIndex,
                 indice,
                 precioDesde,
-                precioHasta);
+                precioHasta,
+                productosActivos);
             ViewHelper.fillDataGridProductos(dataProductos, productosList);
         }
         private void bBuscar_Click(object sender, EventArgs e) {

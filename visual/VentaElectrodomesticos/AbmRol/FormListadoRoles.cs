@@ -21,29 +21,31 @@ namespace VentaElectrodomesticos.AbmRol
             get { return messageFromParent; }
             set { messageFromParent = value; }
         }
+        public bool rolesActivos = true;
         public FormListadoRoles()
         {
             InitializeComponent();
-            ViewHelper.fillFuncionalidades(chkListadoRoles);
+            ViewHelper.fillFuncionalidades(chkListadoFuncionalidades);
         }
         private void bBuscar_Click(object sender, EventArgs e)
         {
             if (txtNombre.Text.Length == 0) {
                 txtNombre.Text = "";
             }
+            rolesActivos = !chkEliminados.Checked;
             List<string> valores = new List<string>();
-            foreach (Funcionalidad funcionalidad in chkListadoRoles.CheckedItems) {
+            foreach (Funcionalidad funcionalidad in chkListadoFuncionalidades.CheckedItems) {
                 valores.Add("" + funcionalidad.id);
             }
-            
             dataRoles.DataSource = Context.instance.dao.rol.search(
                 txtNombre.Text,
-                valores
+                valores,
+                rolesActivos
             );
         }
         private void bSeleccionar_Click(object sender, EventArgs e)
         {
-            Rol rol = (Rol)dataRoles.Rows[dataRoles.CurrentCell.RowIndex].DataBoundItem;
+            Rol rol = dataRoles.CurrentCell == null ? null : (Rol)dataRoles.Rows[dataRoles.CurrentCell.RowIndex].DataBoundItem;
             if (rol != null)
             {
                 this.messageFromParent = rol;

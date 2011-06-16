@@ -34,7 +34,7 @@
             this.bBuscar = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lNombre = new System.Windows.Forms.Label();
-            this.chkListadoRoles = new System.Windows.Forms.CheckedListBox();
+            this.chkListadoFuncionalidades = new System.Windows.Forms.CheckedListBox();
             this.labelRoles = new System.Windows.Forms.Label();
             this.dataRoles = new System.Windows.Forms.DataGridView();
             this.chkEliminados = new System.Windows.Forms.CheckBox();
@@ -97,22 +97,22 @@
             this.lNombre.TabIndex = 86;
             this.lNombre.Text = "Nombre";
             // 
-            // chkListadoRoles
+            // chkListadoFuncionalidades
             // 
-            this.chkListadoRoles.FormattingEnabled = true;
-            this.chkListadoRoles.Location = new System.Drawing.Point(18, 60);
-            this.chkListadoRoles.Name = "chkListadoRoles";
-            this.chkListadoRoles.Size = new System.Drawing.Size(322, 124);
-            this.chkListadoRoles.TabIndex = 88;
+            this.chkListadoFuncionalidades.FormattingEnabled = true;
+            this.chkListadoFuncionalidades.Location = new System.Drawing.Point(18, 60);
+            this.chkListadoFuncionalidades.Name = "chkListadoFuncionalidades";
+            this.chkListadoFuncionalidades.Size = new System.Drawing.Size(322, 124);
+            this.chkListadoFuncionalidades.TabIndex = 88;
             // 
             // labelRoles
             // 
             this.labelRoles.AutoSize = true;
-            this.labelRoles.Location = new System.Drawing.Point(156, 44);
+            this.labelRoles.Location = new System.Drawing.Point(15, 44);
             this.labelRoles.Name = "labelRoles";
-            this.labelRoles.Size = new System.Drawing.Size(34, 13);
+            this.labelRoles.Size = new System.Drawing.Size(84, 13);
             this.labelRoles.TabIndex = 89;
-            this.labelRoles.Text = "Roles";
+            this.labelRoles.Text = "Funcionalidades";
             // 
             // dataRoles
             // 
@@ -147,7 +147,7 @@
             this.Controls.Add(this.chkEliminados);
             this.Controls.Add(this.dataRoles);
             this.Controls.Add(this.labelRoles);
-            this.Controls.Add(this.chkListadoRoles);
+            this.Controls.Add(this.chkListadoFuncionalidades);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lNombre);
             this.Controls.Add(this.bSeleccionar);
@@ -173,7 +173,7 @@
         private System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lNombre;
-        private System.Windows.Forms.CheckedListBox chkListadoRoles;
+        private System.Windows.Forms.CheckedListBox chkListadoFuncionalidades;
         private System.Windows.Forms.Label labelRoles;
         private System.Windows.Forms.DataGridView dataRoles;
         private System.Windows.Forms.CheckBox chkEliminados;

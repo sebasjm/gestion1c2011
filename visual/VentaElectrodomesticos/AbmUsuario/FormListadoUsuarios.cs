@@ -17,6 +17,7 @@ namespace VentaElectrodomesticos.AbmUsuario {
             get { return messageFromParent; }
             set { messageFromParent = value; }
         }
+        public bool usuariosActivos = true;
         public FormListadoUsuarios() {
             InitializeComponent();
             ViewHelper.fillRoles(chkListadoRoles);
@@ -39,17 +40,18 @@ namespace VentaElectrodomesticos.AbmUsuario {
                 foreach (Rol rol in chkListadoRoles.CheckedItems) {
                     valores.Add("" + rol.id);
                 }
-
+                usuariosActivos = !chkEliminados.Checked;
                 dataUsuarios.DataSource = Context.instance.dao.user.search(
                     txtUsername.Text,
                     valores,
-                    empleado);
+                    empleado,
+                    usuariosActivos);
             } catch (FormatException ex) {
                 MessageBox.Show(ex.ToString(), "Problema en Consulta");
             }
         }
         private void bSeleccionar_Click(object sender, EventArgs e) {
-            Usuario usuario = (Usuario)dataUsuarios.Rows[dataUsuarios.CurrentCell.RowIndex].DataBoundItem;
+            Usuario usuario = dataUsuarios.SelectedRows.Count == 0 ? null : (Usuario)dataUsuarios.Rows[dataUsuarios.CurrentCell.RowIndex].DataBoundItem;
             if (usuario != null) {
                 this.messageFromParent = usuario;
                 this.Close();
@@ -57,7 +59,6 @@ namespace VentaElectrodomesticos.AbmUsuario {
                 MessageBox.Show("Debe seleccionar un Empleado");
             }
         }
-
         private void bCancelar_Click(object sender, EventArgs e) {
             this.Close();
         }

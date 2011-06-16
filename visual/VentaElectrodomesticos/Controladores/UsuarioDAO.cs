@@ -24,22 +24,14 @@ namespace VentaElectrodomesticos.Controladores {
                 };
             }
         }
-        public List<Usuario> search(string username, List<string> lista, Empleado empleado) {
+        public List<Usuario> search(string username, List<string> lista, Empleado empleado , bool activo) {
             QueryBuilder q = new QueryBuilder();
             q.select()
                 .from("EL_GRUPO.usuario as u")
                 .filterIf(username.Length != 0, "u.username like '%{0}%' ", username)
                 .filterIf(empleado != null && empleado.dni != 0, "u.empleado_dni = {1} ", empleado != null ? empleado.dni : 0)
-                .filter("u.activo = 1");
-
-            foreach (string rol in lista) {
-                QueryBuilder q2 = new QueryBuilder();
-                q2.select().from("[EL_GRUPO].UsuarioRol as ur");
-                q2.filter("ur.usuario_id = u.id");
-                q2.filter("ur.rol_id= " + rol);
-                q.filter("exists (" + q2.build() + ")");
-            }
-
+                .filter("u.activo = {2} ", activo ? 1 : 0)
+                .filterIf(lista.Count > 0, "u.id IN ( SELECT ur.usuario_id FROM [EL_GRUPO].UsuarioRol as ur WHERE ur.rol_id IN ( {3} )) ", String.Join(",", lista.ToArray()));
             return connection.query<Usuario>(q.build(), q.getParams());
         }
         public Usuario searchById(int id) {
@@ -86,7 +78,7 @@ namespace VentaElectrodomesticos.Controladores {
                 );
             }
         }
-        public void eliminar(int id) {
+        public void eliminar(Int32 id) {
             connection.update(
                 DELETE,
                 id
@@ -129,6 +121,16 @@ namespace VentaElectrodomesticos.Controladores {
         public void desahabilitar(String usuario)
         {
             connection.update(DESHABILITAR, usuario);
+        }
+
+        private static readonly String HABILITAR = "UPDATE EL_GRUPO.Usuario SET activo=1 WHERE id={0}";
+
+        public void habilitar(int id)
+        {
+            connection.update(
+                HABILITAR,
+                id
+            );
         }
     }
 }

@@ -146,13 +146,13 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             if ("Habilitar".Equals(bBorrar.Text)) {
                 if (MessageBox.Show("¿Esta seguro que desea habilitar al Empleado?", "Confirmar Habilitación", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    // proceder con el borrado
+                    // proceder con la habilitación
                     Context.instance.dao.empleado.habilitar(empleado.dni);
                 }
             } else {
                 if (MessageBox.Show("¿Esta seguro que desea eliminar al Empleado?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    // proceder con la habilitación
+                    // proceder con la eliminación
                     Context.instance.dao.empleado.eliminar(empleado.dni);
                 }
             }

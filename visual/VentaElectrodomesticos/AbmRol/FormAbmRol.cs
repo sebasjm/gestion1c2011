@@ -38,9 +38,20 @@ namespace VentaElectrodomesticos.AbmRol
             {
                 this.cargarRol((Rol)form.MessageFromParent);
                 bCrearOtro.Hide();
-                bCrear.Visible = false;
-                bModificar.Visible = true;
-                bBorrar.Visible = true;
+                bCrear.Hide();
+                if (form.rolesActivos)
+                {
+                    bModificar.Show();
+                    bBorrar.Show();
+                }
+                else
+                {
+                    bBorrar.Show();
+                    bBorrar.Text = "Habilitar";
+                    txtDescripcion.Enabled = false;
+                    txtNombre.Enabled = false;
+                    chkListadoRoles.Enabled = false;
+                }
             }
         }
         private void cargarRol(Rol rol){
@@ -75,7 +86,15 @@ namespace VentaElectrodomesticos.AbmRol
             this.txtNombre.Text = "";
             this.txtDescripcion.Text = "";
             for (int i = 0; i < chkListadoRoles.Items.Count; ++i)
-                chkListadoRoles.SetItemChecked(i, false); 
+                chkListadoRoles.SetItemChecked(i, false);
+            txtDescripcion.Enabled = true;
+            txtNombre.Enabled = true;
+            chkListadoRoles.Enabled = true;
+            bCrearOtro.Show();
+            bCrear.Show();
+            bModificar.Hide();
+            bBorrar.Hide();
+            bBorrar.Text = "Borrar";
         }
         private void bCrearOtro_Click(object sender, EventArgs e) {
             if (!validator.check()) return;
@@ -133,9 +152,23 @@ namespace VentaElectrodomesticos.AbmRol
 
         private void bBorrar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Esta seguro que desea borrar el Rol?", "Confirmar Borrar", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if ("Habilitar".Equals(bBorrar.Text))
             {
-                // proceder con la modificacion
+                if (MessageBox.Show("¿Esta seguro que desea habilitar al Rol?", "Confirmar Habilitación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    // proceder con la habilitación
+                    Context.instance.dao.rol.habilitar((Int32)rol.id);
+                    this.Close();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("¿Esta seguro que desea eliminar al Rol?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    // proceder con la eliminación
+                    Context.instance.dao.rol.eliminar((Int32)rol.id);
+                    this.Close();
+                }
             }
         }
     }

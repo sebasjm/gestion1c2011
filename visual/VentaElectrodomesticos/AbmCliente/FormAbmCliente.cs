@@ -35,9 +35,24 @@ namespace VentaElectrodomesticos.AbmCliente {
             form.ShowDialog(this);
             if (form.MessageFromParent != null) {
                 this.cargarCliente((Cliente)form.MessageFromParent);
-                bCrearOtro.Visible = false;
-                bModificar.Visible = true;
-                bBorrar.Visible = true;
+                bCrearOtro.Hide();
+                bCrear.Hide();
+                if (form.clientesActivos)
+                {
+                    bModificar.Show();
+                    bBorrar.Show();
+                }
+                else
+                {
+                    bBorrar.Show();
+                    bBorrar.Text = "Habilitar";
+                    txtApellido.Enabled = false;
+                    txtNombre.Enabled = false;
+                    txtMail.Enabled = false;
+                    txtTelefono.Enabled = false;
+                    txtDireccion.Enabled = false;
+                    cmbProvincia.Enabled = false;
+                }
                 txtDni.Enabled = false;
             }
         }
@@ -68,6 +83,17 @@ namespace VentaElectrodomesticos.AbmCliente {
             txtTelefono.Text = "";
             cmbProvincia.SelectedIndex = 0;
             txtDni.Enabled = true;
+            txtApellido.Enabled = true;
+            txtNombre.Enabled = true;
+            txtMail.Enabled = true;
+            txtTelefono.Enabled = true;
+            txtDireccion.Enabled = true;
+            cmbProvincia.Enabled = true;
+            bCrearOtro.Show();
+            bCrear.Show();
+            bModificar.Hide();
+            bBorrar.Hide();
+            bBorrar.Text = "Borrar";
         }
         private void bCrear_Click(object sender, EventArgs e) {
             if (!validator.check()) return;
@@ -98,9 +124,23 @@ namespace VentaElectrodomesticos.AbmCliente {
             }
         }
         private void bBorrar_Click(object sender, EventArgs e) {
-            if (MessageBox.Show("¿Esta seguro que desea borrar al cliente?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                Context.instance.dao.cliente.eliminar(cliente.dni);
-                this.Close();
+            if ("Habilitar".Equals(bBorrar.Text))
+            {
+                if (MessageBox.Show("¿Esta seguro que desea habilitar al Cliente?", "Confirmar Habilitación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    // proceder con la habilitación
+                    Context.instance.dao.cliente.habilitar(cliente.dni);
+                    this.Close();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("¿Esta seguro que desea eliminar al Cliente?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    // proceder con la eliminación
+                    Context.instance.dao.cliente.eliminar(cliente.dni);
+                    this.Close();
+                }
             }
         }
         private void bCancelar_Click(object sender, EventArgs e) {

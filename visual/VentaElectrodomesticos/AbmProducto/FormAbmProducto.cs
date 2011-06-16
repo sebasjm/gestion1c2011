@@ -46,9 +46,24 @@ namespace VentaElectrodomesticos.AbmProducto
             {
                 this.cargarProducto((Producto)form.MessageFromParent);
                 bCrearOtro.Hide();
-                bBorrar.Visible = true;
-                bModificar.Visible = true;
-                bCrear.Visible = false;
+                bCrear.Hide();
+                if (form.productosActivos)
+                {
+                    bModificar.Show();
+                    bBorrar.Show();
+                }
+                else
+                {
+                    bBorrar.Show();
+                    bBorrar.Text = "Habilitar";
+                    txtCodigoProducto.Enabled = false;
+                    txtDescripcion.Enabled = false;
+                    txtMarca.Enabled = false;
+                    txtNombre.Enabled = false;
+                    txtPrecio.Enabled = false;
+                    cmbMarcas.Enabled = false;
+                    treeCategorias.Enabled = false;
+                }
             }
         }
         private void cargarProducto(Producto prod) {
@@ -58,15 +73,6 @@ namespace VentaElectrodomesticos.AbmProducto
             txtDescripcion.Text = prod.descripcion;
             txtNombre.Text = prod.nombre;
             txtPrecio.Text = "" + prod.precio;
-           /* Categoria cate = null;
-            foreach (TreeNode node in treeCategorias.Nodes)
-            {
-                cate = (Categoria)node.Tag;
-                if (cate.id == prod.categoria_id)
-                {
-                    treeCategorias.SelectedNode = node;
-                }
-            }*/
             TreeNode nodo = llamadaRecursivaSeleccionarCategoria(prod.categoria_id);
             treeCategorias.Select();
             labelCategoria.Text = ((Categoria)nodo.Tag).nombre;
@@ -134,12 +140,23 @@ namespace VentaElectrodomesticos.AbmProducto
             }
         }
         private void bBorrar_Click(object sender, EventArgs e)        {
-            if (!this.validar()) return;
-            if (MessageBox.Show("¿Esta seguro que desea borrar el Producto?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if ("Habilitar".Equals(bBorrar.Text))
             {
-                // proceder con la eliminacion del producto
-                Context.instance.dao.producto.eliminar(Int32.Parse(txtCodigoProducto.Text));
-                this.Close();
+                if (MessageBox.Show("¿Esta seguro que desea habilitar al Rol?", "Confirmar Habilitación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    // proceder con la habilitación
+                    Context.instance.dao.producto.habilitar(producto.codigo);
+                    this.Close();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("¿Esta seguro que desea eliminar al Rol?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    // proceder con la eliminación
+                    Context.instance.dao.producto.eliminar(producto.codigo);
+                    this.Close();
+                }
             }
         }
         private void bCancelar_Click(object sender, EventArgs e)        {
@@ -147,8 +164,8 @@ namespace VentaElectrodomesticos.AbmProducto
         }
         private bool validar() {
             if (((cmbMarcas.SelectedIndex != 0) && (txtMarca.Text == "")) ||
-                ((cmbMarcas.SelectedIndex == 0) && (txtMarca.Text != "")) ||
-                ((cmbMarcas.SelectedIndex == null) && (txtMarca.Text != ""))
+                ((cmbMarcas.SelectedIndex == 0) && (txtMarca.Text != "")) 
+                //||((cmbMarcas.SelectedIndex == null) && (txtMarca.Text != ""))
                 )
             {
                 lErrorMarca.Hide();
@@ -158,14 +175,15 @@ namespace VentaElectrodomesticos.AbmProducto
             }
             return (validator.check())&&(
                 ((cmbMarcas.SelectedIndex != 0) && (txtMarca.Text == "")) ||
-                ((cmbMarcas.SelectedIndex == 0) && (txtMarca.Text != "")) ||
-                ((cmbMarcas.SelectedIndex == null) && (txtMarca.Text != ""))
+                ((cmbMarcas.SelectedIndex == 0) && (txtMarca.Text != "")) 
+                //||((cmbMarcas.SelectedIndex == null) && (txtMarca.Text != ""))
                 );
         }
         private short gestorMarcas() {
             short marca_id = 0;
-            if (((cmbMarcas.SelectedIndex == 0) && (txtMarca.Text != "")) ||
-                ((cmbMarcas.SelectedIndex == null) && (txtMarca.Text != "")))
+            if (((cmbMarcas.SelectedIndex == 0) && (txtMarca.Text != ""))
+                //||((cmbMarcas.SelectedIndex == null) && (txtMarca.Text != ""))
+                )
             {
                 Marca marca = Context.instance.dao.marca.findByNombre(txtMarca.Text);
                 if (marca == null)
@@ -181,8 +199,9 @@ namespace VentaElectrodomesticos.AbmProducto
                     }
                 }
             }
-            if (((cmbMarcas.SelectedIndex == 0) && (txtMarca.Text != "")) ||
-                ((cmbMarcas.SelectedIndex == null) && (txtMarca.Text != "")))
+            if (((cmbMarcas.SelectedIndex == 0) && (txtMarca.Text != ""))
+                //||((cmbMarcas.SelectedIndex == null) && (txtMarca.Text != ""))
+                )
             {
                 Marca marca = Context.instance.dao.marca.findByNombre(txtMarca.Text);
                 marca_id = (short)marca.id;
@@ -229,6 +248,18 @@ namespace VentaElectrodomesticos.AbmProducto
             txtNombre.Text = "";
             labelCategoria.Text = "";
             txtPrecio.Text = "";
+            txtCodigoProducto.Enabled = true;
+            txtDescripcion.Enabled = true;
+            txtMarca.Enabled = true;
+            txtNombre.Enabled = true;
+            txtPrecio.Enabled = true;
+            cmbMarcas.Enabled = true;
+            treeCategorias.Enabled = true;
+            bCrearOtro.Show();
+            bCrear.Show();
+            bModificar.Hide();
+            bBorrar.Hide();
+            bBorrar.Text = "Borrar";
             treeCategorias.CollapseAll();
         }
         private void bCrearOtro_Click(object sender, EventArgs e)        {
