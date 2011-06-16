@@ -164,7 +164,7 @@ namespace VentaElectrodomesticos.AbmProducto
         }
 
         private bool validar() {
-            if (cmbMarcas.Text != "") 
+            if (cmbMarcas.Text != "---") 
             {
                 lErrorMarca.Hide();
             }
