@@ -58,6 +58,7 @@ namespace VentaElectrodomesticos.Controladores {
         private static readonly String UPDATE_STOCK_CANTIDAD = "UPDATE EL_GRUPO.Stock SET stock = stock - {0} WHERE sucursal_id = {1} AND producto_codigo = {2}";
 
         public void nueva(double descuento, double total, byte cuotas, Cliente cliente, List<ItemFacturaMock> list) {
+            if ((cliente == null)) return;
             Empleado empleado = Context.instance.security.loggedUser.empleado;
             connection.update(INSERT_FACTURA, 
                 descuento,

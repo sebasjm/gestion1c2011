@@ -69,6 +69,7 @@ namespace VentaElectrodomesticos.AbmProducto {
             txtPrecioHasta.Text = "";
             treeCategorias.CollapseAll();
             dataProductos.Rows.Clear();
+            chkEliminados.Checked = false;
         }
         private void bSeleccionar_Click(object sender, EventArgs e) {
             Producto prod = dataProductos.SelectedRows.Count == 0 ? null : (Producto)dataProductos.SelectedRows[0].Cells[0].Value;

@@ -31,7 +31,9 @@ namespace VentaElectrodomesticos.AbmCliente {
             txtDni.Text = "";
             txtNombre.Text = "";
             cmbProvincia.SelectedIndex = 0;
-            dataClientes.DataSource = null;
+            dataClientes.Rows.Clear();
+            txtApellido.Text = "";
+            chkEliminados.Checked = false;
         }
         private void bCancelar_Click(object sender, EventArgs e) {
             this.messageFromParent = null;
