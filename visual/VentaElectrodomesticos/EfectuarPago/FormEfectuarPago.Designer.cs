@@ -47,6 +47,7 @@
             // txtCuotas
             // 
             this.txtCuotas.Location = new System.Drawing.Point(96, 292);
+            this.txtCuotas.MaxLength = 2;
             this.txtCuotas.Name = "txtCuotas";
             this.txtCuotas.Size = new System.Drawing.Size(90, 20);
             this.txtCuotas.TabIndex = 37;
