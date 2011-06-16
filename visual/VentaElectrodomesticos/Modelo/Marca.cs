@@ -5,10 +5,10 @@ using System.Text;
 
 namespace VentaElectrodomesticos.Modelo {
     class Marca {
-        public Marca(Int32? _id) {   
+        public Marca(short _id) {   
             this.id = _id; 
         }
-        public Int32? id      {
+        public short id      {
             get; private set;
         }
         public String nombre {

@@ -21,6 +21,11 @@ namespace VentaElectrodomesticos.AbmCliente {
             InitializeComponent();
             ViewHelper.fillComboProvincias(cmbProvincia);
         }
+        public FormListadoClientes(String modo) {
+            InitializeComponent();
+            ViewHelper.fillComboProvincias(cmbProvincia);
+            chkEliminados.Enabled = false;
+        }
         private void bLimpiar_Click(object sender, EventArgs e) {
             txtApellido.Text = "";
             txtDni.Text = "";

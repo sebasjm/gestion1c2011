@@ -50,7 +50,7 @@ namespace VentaElectrodomesticos.Facturacion {
 //                .add(txtDescuento, lErrorDescuento, Validator.Text.obligatorio);
         }
         private void bBuscarCliente_Click(object sender, EventArgs e) {
-            FormListadoClientes form = new FormListadoClientes();
+            FormListadoClientes form = new FormListadoClientes("");
             form.MessageFromParent = null;
             form.ShowDialog(this);
             if (form.MessageFromParent != null) {
@@ -60,7 +60,7 @@ namespace VentaElectrodomesticos.Facturacion {
         }
 
         private void bBuscarProducto_Click(object sender, EventArgs e) {
-            FormListadoProductos form = new FormListadoProductos();
+            FormListadoProductos form = new FormListadoProductos("");
             form.MessageFromParent = null;
             form.ShowDialog(this);
             if (form.MessageFromParent != null) {

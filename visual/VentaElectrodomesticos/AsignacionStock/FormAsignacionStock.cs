@@ -25,7 +25,7 @@ namespace VentaElectrodomesticos.AsignacionStock {
             ViewHelper.fillComboSucursales(cmbSucursal);
         }
         private void bProducto_Click(object sender, EventArgs e) {
-            FormListadoProductos form = new FormListadoProductos();
+            FormListadoProductos form = new FormListadoProductos("");
             form.MessageFromParent = null;
             form.ShowDialog(this);
             if (form.MessageFromParent != null) {

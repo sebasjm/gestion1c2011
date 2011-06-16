@@ -31,7 +31,7 @@ namespace VentaElectrodomesticos.EfectuarPago {
         }
 
         private void bBuscarCliente_Click(object sender, EventArgs e) {
-            FormListadoClientes form = new FormListadoClientes();
+            FormListadoClientes form = new FormListadoClientes("");
             form.MessageFromParent = null;
             form.ShowDialog(this);
             if (form.MessageFromParent != null) {

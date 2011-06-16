@@ -55,7 +55,6 @@
             this.cmbMarcas = new System.Windows.Forms.ComboBox();
             this.lErrorMarca = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtMarca = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtPrecio
@@ -301,8 +300,9 @@
             this.cmbMarcas.FormattingEnabled = true;
             this.cmbMarcas.Location = new System.Drawing.Point(131, 95);
             this.cmbMarcas.Name = "cmbMarcas";
-            this.cmbMarcas.Size = new System.Drawing.Size(102, 21);
+            this.cmbMarcas.Size = new System.Drawing.Size(170, 21);
             this.cmbMarcas.TabIndex = 93;
+            this.cmbMarcas.SelectedIndexChanged += new System.EventHandler(this.cmbMarcas_SelectedIndexChanged);
             // 
             // lErrorMarca
             // 
@@ -325,20 +325,11 @@
             this.txtNombre.Size = new System.Drawing.Size(170, 20);
             this.txtNombre.TabIndex = 95;
             // 
-            // txtMarca
-            // 
-            this.txtMarca.Location = new System.Drawing.Point(239, 96);
-            this.txtMarca.MaxLength = 20;
-            this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(62, 20);
-            this.txtMarca.TabIndex = 97;
-            // 
             // FormAbmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(478, 275);
-            this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lErrorMarca);
             this.Controls.Add(this.cmbMarcas);
@@ -406,6 +397,5 @@
         private System.Windows.Forms.ComboBox cmbMarcas;
         private System.Windows.Forms.Label lErrorMarca;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtMarca;
     }
 }

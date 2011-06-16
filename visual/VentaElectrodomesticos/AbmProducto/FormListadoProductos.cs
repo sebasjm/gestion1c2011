@@ -21,47 +21,18 @@ namespace VentaElectrodomesticos.AbmProducto {
         List<Categoria> items = new List<Categoria>();
         public FormListadoProductos() {
             InitializeComponent();
-            buildtree();
             FillData();
             ViewHelper.fillComboMarcas(cmbMarcas);
+            this.items = Context.instance.dao.categoria.load();
+            ViewHelper.fillTreeViewCategorias(treeCategorias, items);
         }
-        private void buildtree() {
-            this.items = Context.instance.dao.categoria.search(0, "");
-            treeCategorias.Nodes.Clear();   
-            treeCategorias.BeginUpdate();   
-            LoadBaseNodes();           
-            treeCategorias.EndUpdate();
-            treeCategorias.Refresh();  
-        }
-        private void LoadBaseNodes() {
-            int? baseParent = null;                 
-            TreeNode node;
-            foreach (Categoria cat in items) {
-                if (cat.categoria_padre < baseParent)
-                    baseParent = cat.categoria_padre;
-            }
-            foreach (Categoria cat in items)        
-            {
-                if (cat.categoria_padre == baseParent)
-                {
-                    node = treeCategorias.Nodes.Add(cat.nombre);
-                    node.Tag = cat;                 
-                    getChildren(node);              
-                }
-            }
-        }
-        private void getChildren(TreeNode node) {
-            TreeNode Node = null;
-            Categoria nodeCat = (Categoria)node.Tag; 
-            foreach (Categoria cat in items)         
-            {
-                if (cat.categoria_padre == nodeCat.id)    
-                {
-                    Node = node.Nodes.Add(cat.nombre);    
-                    Node.Tag = cat;                         
-                    getChildren(Node);                      
-                }
-            }
+        public FormListadoProductos(String modo) {
+            InitializeComponent();
+            FillData();
+            ViewHelper.fillComboMarcas(cmbMarcas);
+            this.items = Context.instance.dao.categoria.load();
+            ViewHelper.fillTreeViewCategorias(treeCategorias, items);
+            chkEliminados.Enabled = false;
         }
         void FillData() {
             float precioDesde = (txtPrecioDesde.Text == "") ? 0 : float.Parse(txtPrecioDesde.Text);
