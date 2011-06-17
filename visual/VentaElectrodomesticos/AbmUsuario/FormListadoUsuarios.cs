@@ -68,6 +68,7 @@ namespace VentaElectrodomesticos.AbmUsuario {
             this.dataUsuarios.DataSource = null;
             for (int i = 0; i < chkListadoRoles.Items.Count; ++i)
                 chkListadoRoles.SetItemChecked(i, false);
+            chkEliminados.Checked = false;
         }
     }
 }

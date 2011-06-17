@@ -142,7 +142,7 @@ namespace VentaElectrodomesticos.AbmProducto
         private void bBorrar_Click(object sender, EventArgs e)        {
             if ("Habilitar".Equals(bBorrar.Text))
             {
-                if (MessageBox.Show("¿Esta seguro que desea habilitar al Rol?", "Confirmar Habilitación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("¿Esta seguro que desea habilitar el Producto?", "Confirmar Habilitación", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     // proceder con la habilitación
                     Context.instance.dao.producto.habilitar(producto.codigo);
@@ -151,7 +151,7 @@ namespace VentaElectrodomesticos.AbmProducto
             }
             else
             {
-                if (MessageBox.Show("¿Esta seguro que desea eliminar al Rol?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("¿Esta seguro que desea eliminar el Producto?", "Confirmar Eliminación", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     // proceder con la eliminación
                     Context.instance.dao.producto.eliminar(producto.codigo);
@@ -164,7 +164,7 @@ namespace VentaElectrodomesticos.AbmProducto
         }
 
         private bool validar() {
-            if (cmbMarcas.Text != "") 
+            if (cmbMarcas.Text != "---") 
             {
                 lErrorMarca.Hide();
             }
@@ -172,7 +172,7 @@ namespace VentaElectrodomesticos.AbmProducto
                 lErrorMarca.Show();
             }
 
-            return (validator.check())&& cmbMarcas.Text != "";
+            return (validator.check()) && cmbMarcas.Text != "---";
         }
         private void bCrear_Click(object sender, EventArgs e)        {
             if (!this.validar()) return;

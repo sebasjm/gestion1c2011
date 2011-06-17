@@ -64,6 +64,7 @@ namespace VentaElectrodomesticos.AbmRol
         {
             this.txtNombre.Text = "";
             dataRoles.DataSource = null;
+            chkEliminados.Checked = false;
         }
     }
 }

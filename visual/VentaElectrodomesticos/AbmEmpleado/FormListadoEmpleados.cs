@@ -100,6 +100,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             cmbSucursal.SelectedIndex = 0;
             cmbTipoEmpleado.SelectedIndex = 0;
             dataEmpleados.Rows.Clear();
+            chkEliminados.Checked = false;
         }
 
         private void cmbSucursal_SelectedIndexChanged(object sender, EventArgs e) {
