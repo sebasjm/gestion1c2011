@@ -34,6 +34,8 @@
             this.tUsername = new System.Windows.Forms.TextBox();
             this.lPassword = new System.Windows.Forms.Label();
             this.lUsername = new System.Windows.Forms.Label();
+            this.lErrorUser = new System.Windows.Forms.Label();
+            this.lErrorPass = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bAceptar
@@ -49,6 +51,7 @@
             // 
             // bCancelar
             // 
+            this.bCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.bCancelar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.bCancelar.Location = new System.Drawing.Point(14, 82);
             this.bCancelar.Name = "bCancelar";
@@ -95,12 +98,30 @@
             this.lUsername.TabIndex = 10;
             this.lUsername.Text = "Username";
             // 
+            // lErrorUser
+            // 
+            this.lErrorUser.AutoSize = true;
+            this.lErrorUser.Location = new System.Drawing.Point(78, 17);
+            this.lErrorUser.Name = "lErrorUser";
+            this.lErrorUser.Size = new System.Drawing.Size(0, 13);
+            this.lErrorUser.TabIndex = 17;
+            // 
+            // lErrorPass
+            // 
+            this.lErrorPass.AutoSize = true;
+            this.lErrorPass.Location = new System.Drawing.Point(78, 45);
+            this.lErrorPass.Name = "lErrorPass";
+            this.lErrorPass.Size = new System.Drawing.Size(0, 13);
+            this.lErrorPass.TabIndex = 18;
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.bAceptar;
+            this.CancelButton = this.bCancelar;
             this.ClientSize = new System.Drawing.Size(236, 120);
+            this.Controls.Add(this.lErrorPass);
+            this.Controls.Add(this.lErrorUser);
             this.Controls.Add(this.bAceptar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.tPassword);
@@ -129,6 +150,8 @@
         private System.Windows.Forms.TextBox tUsername;
         private System.Windows.Forms.Label lPassword;
         private System.Windows.Forms.Label lUsername;
+        private System.Windows.Forms.Label lErrorUser;
+        private System.Windows.Forms.Label lErrorPass;
 
     }
 }
