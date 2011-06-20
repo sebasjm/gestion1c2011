@@ -119,21 +119,24 @@ namespace VentaElectrodomesticos.AbmProducto
         private void bModificar_Click(object sender, EventArgs e)
         {
             if (!this.validar()) return;
+            TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
+            Categoria cate = null;
+            if (NodoSeleccionado != null) {
+                cate = (Categoria)NodoSeleccionado.Tag;
+            }
+            if (cate == null || cate.id == 0) {
+                MessageBox.Show("Eliga una categoria", "Error");
+                return;
+            }
             if (MessageBox.Show("¿Esta seguro que desea modificar el Producto?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la modificacion
-                TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
-                Categoria cate = null;
-                if (NodoSeleccionado != null)
-                {
-                    cate = (Categoria)NodoSeleccionado.Tag;
-                }
                 short marca_id = Context.instance.dao.marca.findOrCreate(cmbMarcas.Text).id;
 
                 this.producto.nombre = txtNombre.Text;
                 this.producto.marca_id = marca_id;
                 this.producto.descripcion = txtDescripcion.Text;
-                this.producto.categoria_id = (cate == null) ? this.producto.categoria_id : cate.id;
+                this.producto.categoria_id = cate.id;
                 this.producto.precio = Double.Parse(txtPrecio.Text);
                 Context.instance.dao.producto.modificar(this.producto);
                 this.Close();
@@ -176,16 +179,19 @@ namespace VentaElectrodomesticos.AbmProducto
         }
         private void bCrear_Click(object sender, EventArgs e)        {
             if (!this.validar()) return;
+            TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
+            Categoria cate = null;
+            if (NodoSeleccionado != null) {
+                cate = (Categoria)NodoSeleccionado.Tag;
+            }
+            if (cate == null || cate.id == 0) {
+                MessageBox.Show("Eliga una categoria", "Error");
+                return;
+            }
             if (MessageBox.Show("¿Esta seguro que desea crear el Producto?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la creacion del producto
                 Producto productoNew = new Producto(Int32.Parse(txtCodigoProducto.Text));
-                TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
-                Categoria cate = null;
-                if (NodoSeleccionado != null)
-                {
-                    cate = (Categoria)NodoSeleccionado.Tag;
-                }
                 short marca_id = Context.instance.dao.marca.findOrCreate(cmbMarcas.Text).id;
 
                 productoNew.nombre = txtNombre.Text;
@@ -225,16 +231,19 @@ namespace VentaElectrodomesticos.AbmProducto
         }
         private void bCrearOtro_Click(object sender, EventArgs e)        {
             if (!this.validar()) return;
+            TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
+            Categoria cate = null;
+            if (NodoSeleccionado != null) {
+                cate = (Categoria)NodoSeleccionado.Tag;
+            }
+            if (cate == null || cate.id == 0) {
+                MessageBox.Show("Eliga una categoria", "Error");
+                return;
+            }
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Producto?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el Guardado y la Creacion de otro
                 Producto productoNew = new Producto(Int32.Parse(txtCodigoProducto.Text));
-                TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
-                Categoria cate = null;
-                if (NodoSeleccionado != null)
-                {
-                    cate = (Categoria)NodoSeleccionado.Tag;
-                }
                 short marca_id = Context.instance.dao.marca.findOrCreate(cmbMarcas.Text).id;
 
                 productoNew.nombre = txtNombre.Text;
