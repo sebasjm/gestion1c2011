@@ -59,8 +59,8 @@ namespace VentaElectrodomesticos.EfectuarPago {
             try {
                 cuotas = Int32.Parse(txtCuotas.Text);
             } catch (FormatException ) {
-                return;
             }
+            if (cuotas == 0) return;
             if (cuotas > factura.cuotasPorPagar) {
                 MessageBox.Show("No puede pagar mas cuotas que las que faltan pagar", "Error", MessageBoxButtons.OK);
                 return;
