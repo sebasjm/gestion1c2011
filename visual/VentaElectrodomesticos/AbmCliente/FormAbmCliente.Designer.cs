@@ -325,6 +325,7 @@
             this.bBorrar.TabIndex = 74;
             this.bBorrar.Text = "Borrar";
             this.bBorrar.UseVisualStyleBackColor = true;
+            this.bBorrar.Visible = false;
             this.bBorrar.Click += new System.EventHandler(this.bBorrar_Click);
             // 
             // bModificar
