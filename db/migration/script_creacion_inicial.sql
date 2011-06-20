@@ -205,6 +205,11 @@ GO
 -- Funciones
 -----------------------------------------
 
+/**
+* categoria_id_collection
+* dada una categoria, devuelve el conjunto de supra categorias
+* que contienen dicha categoria
+**/
 create function EL_GRUPO.categoria_id_collection(  @id as int ) 
 returns @cats_id table ( id int ) as
 begin
@@ -217,6 +222,10 @@ begin
 	return;
 end
 go
+/**
+* categoria_root
+* dada una categoria devuelve la categoria principal
+**/
 create function EL_GRUPO.categoria_root(  @id as int ) 
 returns int 
 begin
@@ -227,6 +236,11 @@ begin
 	return EL_GRUPO.categoria_root( @parent );
 end
 go
+/**
+* split
+* dada una cadena, un caracter delimitador y una posicion, devuelve la subcadena
+* en la posicion indicada de la cadena principal dividida por el caracter delimitador
+**/
 create function EL_GRUPO.split(  @str as varchar(200), @delimiter as char, @index as int ) 
 returns varchar(200)
 begin
@@ -247,7 +261,10 @@ begin
 	return null
 end
 go
-
+/**
+* back_split
+* lo mismo que split pero la posicion es de derecha a izquierda
+**/
 create function EL_GRUPO.back_split(  @str as varchar(200), @delimiter as char, @index as int ) 
 returns varchar(200)
 begin
@@ -261,7 +278,11 @@ begin
 	return null
 end
 go
-
+/**
+* get_categoria_fullname
+* dado un id de categoria devuelve el nombre completo, concatenando
+* el nombre de sus supra categorias 
+**/
 create function EL_GRUPO.get_categoria_fullname(  @categoria as smallint ) 
 returns varchar(200)
 begin
@@ -286,7 +307,11 @@ begin
 	return @fullname;
 end
 go
-
+/**
+* get_categoria_id
+* dada el nombre completo de una categoria separado por '¦', recorre la tabla 
+* de categorias y devuelve el id de la categoria
+**/
 create function EL_GRUPO.get_categoria_id(  @categoria as varchar(200) ) 
 returns smallint
 begin
@@ -323,6 +348,10 @@ begin
 end
 go
 
+/**
+* stock_a_la_fecha
+* calcula el stock restante al dia de la fecha, para un producto y una sucursal
+**/
 CREATE FUNCTION EL_GRUPO.stock_a_la_fecha(@sucursal as int, @producto as int, @fecha as datetime)
 RETURNS int
 BEGIN
