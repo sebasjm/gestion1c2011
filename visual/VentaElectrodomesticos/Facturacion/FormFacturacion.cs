@@ -169,7 +169,7 @@ namespace VentaElectrodomesticos.Facturacion {
                 cliente, 
                 new List<ItemFacturaMock>(itemsFacturaByProductoCodigo.Values) 
             );
-            limpiar();
+            this.Close();
         }
         private void limpiar() {
             producto = null;
@@ -217,6 +217,10 @@ namespace VentaElectrodomesticos.Facturacion {
                 this.Close();
                 return;
             };
+        }
+
+        private void bCancelar_Click(object sender, EventArgs e) {
+            this.Close();
         }
     }
 }

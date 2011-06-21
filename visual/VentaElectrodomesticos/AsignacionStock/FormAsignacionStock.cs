@@ -76,16 +76,27 @@ namespace VentaElectrodomesticos.AsignacionStock {
             stocks = new Dictionary<Stock, int>();
             foreach (DataGridViewRow row in dataStock.Rows) {
                 try {
-                    int cant = Int32.Parse((String)row.Cells[1].Value);
+                    String value = (String)row.Cells[1].Value;
+                    if (value.Length > 4) {
+                        value = value.Substring(0, 4);
+                        row.Cells[1].Value = value;
+                        stocksError = true;
+                        MessageBox.Show("No se puede asignar mas de 9999 productos al mismo tiempo", "Asignar Stock");
+                        break;
+                    }
+                    int cant = value == null ? 0 : Int32.Parse(value);
                     if (cant > 0) {
                         stocks.Add((Stock)row.Cells[0].Value, cant);
                     } else {
                         stocksError = cant != 0;
                     }
                 } catch (FormatException ) {
+                    MessageBox.Show("Verifique el formato de la celda " + (row.Index+1), "Asignar Stock");
                     stocksError = true;
+                    break;
                 } catch (ArgumentNullException ) {
                     stocksError = true;
+                    break;
                 }
             }
 

@@ -162,6 +162,10 @@ namespace VentaElectrodomesticos.AbmCliente {
                 MessageBox.Show("No se puede crear el cliente porque existe un empleado con el mismo dni", "Error");
                 return;
             }
+            if (Context.instance.dao.cliente.findByDni(dni) != null) {
+                MessageBox.Show("No se puede crear el cliente porque existe un cliente con el mismo dni", "Error");
+                return;
+            }
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Cliente?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con el Guardado y la Creacion de otro
                 Cliente clienteNew = new Cliente(dni);
