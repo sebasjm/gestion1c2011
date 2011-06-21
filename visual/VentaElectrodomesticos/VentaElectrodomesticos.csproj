@@ -195,7 +195,6 @@
     <Compile Include="Modelo\Tablero\ProporcionFormasDePago.cs" />
     <Compile Include="Modelo\Tablero\MejorVendedor.cs" />
     <Compile Include="Modelo\TipoEmpleado.cs" />
-    <Compile Include="Modelo\TipoSucursal.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
