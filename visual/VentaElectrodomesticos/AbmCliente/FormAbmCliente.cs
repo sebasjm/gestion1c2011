@@ -97,9 +97,18 @@ namespace VentaElectrodomesticos.AbmCliente {
         }
         private void bCrear_Click(object sender, EventArgs e) {
             if (!validator.check()) return;
+            int dni = Int32.Parse(txtDni.Text);
+            if (Context.instance.dao.empleado.findByDni(dni) != null) {
+                MessageBox.Show("No se puede crear el cliente porque existe un empleado con el mismo dni", "Error");
+                return;
+            }
+            if (Context.instance.dao.cliente.findByDni(dni) != null) {
+                MessageBox.Show("No se puede crear el cliente porque existe un cliente con el mismo dni", "Error");
+                return;
+            }
             if (MessageBox.Show("¿Esta seguro que desea crear al cliente?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con la creacion
-                Cliente clienteNew = new Cliente(Int32.Parse(txtDni.Text));
+                Cliente clienteNew = new Cliente(dni);
                 clienteNew.apellido = txtApellido.Text;
                 clienteNew.nombre = txtNombre.Text;
                 clienteNew.mail = txtMail.Text;
@@ -148,9 +157,14 @@ namespace VentaElectrodomesticos.AbmCliente {
         }
         private void bCrearOtro_Click(object sender, EventArgs e) {
             if (!validator.check()) return;
+            int dni = Int32.Parse(txtDni.Text);
+            if (Context.instance.dao.empleado.findByDni(dni) != null) {
+                MessageBox.Show("No se puede crear el cliente porque existe un empleado con el mismo dni", "Error");
+                return;
+            }
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Cliente?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con el Guardado y la Creacion de otro
-                Cliente clienteNew = new Cliente(Int32.Parse(txtDni.Text));
+                Cliente clienteNew = new Cliente(dni);
                 clienteNew.apellido = txtApellido.Text;
                 clienteNew.nombre = txtNombre.Text;
                 clienteNew.mail = txtMail.Text;

@@ -38,7 +38,7 @@ namespace VentaElectrodomesticos.Controladores {
             }
         }
 
-        private static readonly String INSERT = "INSERT INTO EL_GRUPO.Cliente VALUES({0},{1},{2},{3},{4},{5},{6},1)";
+        private static readonly String INSERT = "INSERT INTO EL_GRUPO.Cliente VALUES({0},'{1}','{2}','{3}','{4}','{5}',{6},1)";
         private static readonly String UPDATE = "UPDATE EL_GRUPO.Cliente SET nombre='{1}',apellido='{2}',mail='{3}',telefono='{4}',direccion='{5}',provincia_id={6} WHERE dni={0}";
         private static readonly String DELETE = "UPDATE EL_GRUPO.Cliente SET activo=0 WHERE dni={0}";
 
@@ -82,6 +82,10 @@ namespace VentaElectrodomesticos.Controladores {
                 HABILITAR,
                 dni
             );
+        }
+
+        public Cliente findByDni(int dni) {
+            return connection.find<Cliente>("SELECT * FROM EL_GRUPO.Cliente WHERE dni = {0}", dni);
         }
     }
 }

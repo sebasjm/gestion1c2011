@@ -108,10 +108,15 @@ namespace VentaElectrodomesticos.AbmEmpleado {
         }
         private void bCrear_Click(object sender, EventArgs e) {
             if (!validator.check()) return;
+            int dni = Int32.Parse(txtDni.Text);
+            if (Context.instance.dao.empleado.findByDni(dni) != null) {
+                MessageBox.Show("No se puede crear el empelado porque existe un empleado con el mismo dni", "Error");
+                return;
+            }
             if (MessageBox.Show("¿Esta seguro que desea crear el Empleado?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la creacion
-                Empleado empleadoNew = new Empleado(Int32.Parse(txtDni.Text));
+                Empleado empleadoNew = new Empleado(dni);
                 empleadoNew.apellido = txtApellido.Text;
                 empleadoNew.nombre = txtNombre.Text;
                 empleadoNew.mail = txtMail.Text;
@@ -161,10 +166,15 @@ namespace VentaElectrodomesticos.AbmEmpleado {
         private void bCrearOtro_Click(object sender, EventArgs e)
         {
             if (!validator.check()) return;
+            int dni = Int32.Parse(txtDni.Text);
+            if (Context.instance.dao.empleado.findByDni(dni) != null) {
+                MessageBox.Show("No se puede crear el empelado porque existe un empleado con el mismo dni", "Error");
+                return;
+            }
             if (MessageBox.Show("¿Esta seguro que desea crear el Empleado?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con la creacion
-                Empleado empleadoNew = new Empleado(Int32.Parse(txtDni.Text));
+                Empleado empleadoNew = new Empleado(dni);
                 empleadoNew.apellido = txtApellido.Text;
                 empleadoNew.nombre = txtNombre.Text;
                 empleadoNew.mail = txtMail.Text;

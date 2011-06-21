@@ -55,6 +55,9 @@ namespace VentaElectrodomesticos.Controladores {
         private static readonly String HABILITAR = "UPDATE EL_GRUPO.Empleado SET activo=1 WHERE dni={0}";
 
         public void insertar(Empleado empleado) {
+            //inhabilitar si existe
+            Context.instance.dao.cliente.eliminar(empleado.dni);
+            //crear
             connection.update(
                 INSERT,
                 empleado.dni,

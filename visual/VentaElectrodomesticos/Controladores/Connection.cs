@@ -55,20 +55,7 @@ namespace VentaElectrodomesticos.Controladores {
         // Funcion para evitar sql inyection
         private Object[] SafeSql(params Object[] args)
         {
-            List<Object> list = new List<Object>();
-            foreach( Object parametro in args){
-                if (parametro.GetType().ToString() == "System.String" )
-                {   
-                    String para = (String)parametro;
-                    para = para.Replace("'", "''");
-                    list.Add((Object)para);
-                }
-                else {
-                    list.Add(parametro);
-                }
-            }
-            Object[] terms = list.ToArray();
-            return terms;
+            return args;
         }
     }
 }

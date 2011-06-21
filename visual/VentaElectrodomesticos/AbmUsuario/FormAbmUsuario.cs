@@ -200,6 +200,10 @@ namespace VentaElectrodomesticos.AbmUsuario
         private void bCrearOtro_Click(object sender, EventArgs e)        {
             if (!validator.check()) return;
             if (!checkConfirmPass()) return;
+            if (Context.instance.dao.user.findByName(txtUsername.Text) != null) {
+                MessageBox.Show("El usuario ya existe", "Error");
+                return;
+            }
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Usuario?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // proceder con el Guardado y la Creacion de otro
