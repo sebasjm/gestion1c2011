@@ -167,6 +167,7 @@ namespace VentaElectrodomesticos.Controladores {
             "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
             "JOIN EL_GRUPO.Cliente AS c ON c.dni = f.cliente_dni " +
             FILTRO_SUCURSAL_ANIO +
+            "AND cuotas <> cuotas_pagas " +
             "GROUP BY c.dni, c.nombre, c.apellido " +
             "ORDER BY sum( f.total*(1-f.descuento)*(1- EL_GRUPO.cantidad_de_cuotas_pagas(f.numero,'{1}')/f.cuotas) ) DESC";
 

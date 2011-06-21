@@ -109,7 +109,9 @@ namespace VentaElectrodomesticos.AsignacionStock {
 
         private void bAceptar_Click(object sender, EventArgs e) {
             if (!validate()) return;
-            MessageBox.Show("¿Esta seguro que desea asignar Stock?", "Asignar Stock");
+            if (MessageBox.Show("¿Esta seguro que desea asignar Stock?", "Asignar Stock", MessageBoxButtons.YesNo) == DialogResult.No) {
+                return;
+            }
 
             foreach (Stock s in stocks.Keys) {
                 Context.instance.dao.stock.add(s,auditor,stocks[s]);

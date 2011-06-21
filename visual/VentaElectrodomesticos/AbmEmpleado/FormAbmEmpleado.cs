@@ -110,7 +110,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             if (!validator.check()) return;
             int dni = Int32.Parse(txtDni.Text);
             if (Context.instance.dao.empleado.findByDni(dni) != null) {
-                MessageBox.Show("No se puede crear el empelado porque existe un empleado con el mismo dni", "Error");
+                MessageBox.Show("No se puede crear el empleado porque existe un empleado con el mismo dni", "Error");
                 return;
             }
             if (MessageBox.Show("¿Esta seguro que desea crear el Empleado?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -168,7 +168,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
             if (!validator.check()) return;
             int dni = Int32.Parse(txtDni.Text);
             if (Context.instance.dao.empleado.findByDni(dni) != null) {
-                MessageBox.Show("No se puede crear el empelado porque existe un empleado con el mismo dni", "Error");
+                MessageBox.Show("No se puede crear el empleado porque existe un empleado con el mismo dni", "Error");
                 return;
             }
             if (MessageBox.Show("¿Esta seguro que desea crear el Empleado?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)

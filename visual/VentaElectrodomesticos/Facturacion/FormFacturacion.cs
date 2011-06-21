@@ -157,7 +157,7 @@ namespace VentaElectrodomesticos.Facturacion {
             if (esPagoEnCuotas()) {
                 mensaje = String.Format("¿Crear la factura de {0} cuotas por {1} cada una?", cuotas, lTotalCuota.Text);
             } else {
-                mensaje = String.Format("¿Crear la factura al contado por un total de {0}?", lTotal.Text);
+                mensaje = String.Format("¿Crear la factura al contado por un total de {0}?", lTotalDescuento.Text);
             }
             if (MessageBox.Show(mensaje, "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.No) {
                 return;
