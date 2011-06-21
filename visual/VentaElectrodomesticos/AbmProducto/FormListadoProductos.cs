@@ -35,8 +35,10 @@ namespace VentaElectrodomesticos.AbmProducto {
             chkEliminados.Enabled = false;
         }
         void FillData() {
-            float precioDesde = (txtPrecioDesde.Text == "") ? 0 : float.Parse(txtPrecioDesde.Text);
-            float precioHasta = (txtPrecioHasta.Text == "") ? 0 : float.Parse(txtPrecioHasta.Text);
+            float precioDesde = 0;
+            float precioHasta = 0;
+            try { precioDesde = float.Parse(txtPrecioDesde.Text); } catch (FormatException) { txtPrecioDesde.Text = "0"; };
+            try { precioHasta = float.Parse(txtPrecioHasta.Text); } catch (FormatException) { txtPrecioHasta.Text = "0"; };
             TreeNode NodoSeleccionado = (TreeNode)treeCategorias.SelectedNode;
             int indice = 0;
             if (NodoSeleccionado == null) {
