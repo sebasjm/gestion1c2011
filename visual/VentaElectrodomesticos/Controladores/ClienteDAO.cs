@@ -23,6 +23,11 @@ namespace VentaElectrodomesticos.Controladores {
                 .filterIf(provincia != null && provincia.id != 0, " provincia_id = {3}", provincia != null ? provincia.id : 0)
                 .filter("activo = {4} ", activo ? 1 : 0);
 
+            if (!activo) {
+                //de los inactivos, no traer los clientes que son empleados
+                q.filter("dni not in (SELECT dni FROM EL_GRUPO.Empleado)");
+            } 
+
             return connection.query<Cliente>(q.build(), q.getParams());
         }
         class ClienteMapper : Mapper<Object> {
