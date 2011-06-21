@@ -116,7 +116,7 @@ namespace VentaElectrodomesticos.Controladores {
                 .filter("username = '{0}'", username);
             return connection.find<Usuario>(q.build(), q.getParams());
         }
-        private static readonly String FAIL_LOGIN = "UPDATE EL_GRUPO.Usuario set intentos = intentos + 1, activo = (CASE WHEN (intentos + 1 > 4) THEN 0 ELSE 1 END) WHERE username = '{0}';";
+        private static readonly String FAIL_LOGIN = "UPDATE EL_GRUPO.Usuario set intentos = intentos + 1, activo = (CASE WHEN (intentos + 1 >= 3) THEN 0 ELSE 1 END) WHERE username = '{0}';";
         private static readonly String RESET_FAIL_LOGIN = "UPDATE EL_GRUPO.Usuario set intentos = 0 WHERE username = '{0}';";
 
         public void failLogin(String usuario) {
