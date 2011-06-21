@@ -49,7 +49,7 @@ namespace VentaElectrodomesticos.Controladores {
         }
         public Usuario findUserWithPassword(string user, string passwd) {
             return connection.find<Usuario>(
-                "SELECT * FROM EL_GRUPO.Usuario WHERE username = '{0}' and password = '{1}'",
+                "SELECT * FROM EL_GRUPO.Usuario WHERE username = '{0}' and password = '{1}' and activo = 1",
                 user,
                 passwd
             );
@@ -116,15 +116,16 @@ namespace VentaElectrodomesticos.Controladores {
                 .filter("username = '{0}'", username);
             return connection.find<Usuario>(q.build(), q.getParams());
         }
-        private static readonly String INTENTOS = "UPDATE EL_GRUPO.Usuario set intentos = {0} WHERE username = '{1}';";
-        public void intentos(String usuario , bool valor)
-        {
-            if(valor){
-                connection.update(INTENTOS, "intentos + 1" ,usuario);
-            }else{
-                connection.update(INTENTOS, 0 ,usuario);
-            }
+        private static readonly String FAIL_LOGIN = "UPDATE EL_GRUPO.Usuario set intentos = intentos + 1, activo = (CASE WHEN (intentos + 1 > 4) THEN 0 ELSE 1 END) WHERE username = '{0}';";
+        private static readonly String RESET_FAIL_LOGIN = "UPDATE EL_GRUPO.Usuario set intentos = 0 WHERE username = '{0}';";
+
+        public void failLogin(String usuario) {
+            connection.update(FAIL_LOGIN, usuario);
         }
+        public void resetFailLogin(String user) {
+            connection.update(RESET_FAIL_LOGIN, user);
+        }
+
         private static readonly String DESHABILITAR = "UPDATE EL_GRUPO.Usuario SET activo=0 WHERE username='{0}'";
         public void desahabilitar(String usuario)
         {
@@ -145,6 +146,7 @@ namespace VentaElectrodomesticos.Controladores {
         public List<byte> findPermissionList(int user_id) {
             return connection.query<byte>(FIND_PERMISSION_LIST,user_id);
         }
+
     }
 }
 

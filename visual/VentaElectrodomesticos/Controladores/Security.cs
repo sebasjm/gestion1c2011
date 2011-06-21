@@ -29,14 +29,16 @@ namespace VentaElectrodomesticos.Controladores {
         List<byte> permissionList = null;
 
         public Security(string user, string passwd) {
-             loggedUser = Context.instance.dao.user.findUserWithPassword(
-                user,
-                sha256encrypt(passwd)
-             );
-             if (loggedUser == null) {
-                 throw new WrongUserOrPasswordException();
-             }
-             permissionList = Context.instance.dao.user.findPermissionList(loggedUser.id);
+            loggedUser = Context.instance.dao.user.findUserWithPassword(
+               user,
+               sha256encrypt(passwd)
+            );
+            if (loggedUser == null) {
+                Context.instance.dao.user.failLogin(user);
+                throw new WrongUserOrPasswordException();
+            }
+            Context.instance.dao.user.resetFailLogin(user);
+            permissionList = Context.instance.dao.user.findPermissionList(loggedUser.id);
         }
 
         public string sha256encrypt(string phrase) {

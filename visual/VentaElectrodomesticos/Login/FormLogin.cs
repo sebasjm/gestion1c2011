@@ -30,15 +30,9 @@ namespace VentaElectrodomesticos.Login {
                 }
                 Context.instance.authenticate(tUsername.Text, tPassword.Text);
             } catch (WrongUserOrPasswordException) {
-                Usuario user = Context.instance.dao.user.findByName(tUsername.Text);
-                Context.instance.dao.user.intentos(tUsername.Text, true);
-                if ((!(user == null)) && (user.intentos == 2)) {
-                    Context.instance.dao.user.desahabilitar(tUsername.Text);
-                }
                 MessageBox.Show("Usuario o Contraseña incorrecta", "Error");
                 return;
             }
-            Context.instance.dao.user.intentos(tUsername.Text, false);
             this.Close();
         }
 
