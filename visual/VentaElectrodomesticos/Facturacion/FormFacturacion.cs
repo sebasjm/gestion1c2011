@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using VentaElectrodomesticos.AbmProducto;
 using VentaElectrodomesticos.AbmCliente;
-using System.Data.SqlClient;
-using VentaElectrodomesticos.Modelo;
+using VentaElectrodomesticos.AbmProducto;
 using VentaElectrodomesticos.Controladores;
+using VentaElectrodomesticos.Modelo;
 using VentaElectrodomesticos.Vista;
 
 namespace VentaElectrodomesticos.Facturacion {
@@ -26,7 +26,7 @@ namespace VentaElectrodomesticos.Facturacion {
 
         double total = 0;
         double descuento = 0;
-        byte cuotas = 0;
+        byte cuotas = 1;
         int stock_producto = 0;
 
         public FormFacturacion() {
@@ -83,13 +83,13 @@ namespace VentaElectrodomesticos.Facturacion {
 
         private void cmbFormasPago_SelectedIndexChanged(object sender, EventArgs e) {
             if (esPagoEnCuotas()) {
-                cuotas = 1;
+                cuotas = 2;
                 lCuotas.Show();
                 txtCuotas.Show();
                 lCuota.Show();
                 lTotalCuota.Show();
             } else {
-                cuotas = 0;
+                cuotas = 1;
                 lCuotas.Hide();
                 txtCuotas.Hide();
                 lCuota.Hide();
@@ -135,9 +135,19 @@ namespace VentaElectrodomesticos.Facturacion {
             lTotal.Text = String.Format("{0:#,##0.00}", total);
             lTotalDescuento.Text = String.Format("{0:#,##0.00}", total * (1 - descuento));
             lTotalCuota.Text = String.Format("{0:#,##0.00}", (total/cuotas) * (1 - descuento));
+            txtCuotas.Text = "" + cuotas;
         }
         private void bAceptar_Click(object sender, EventArgs e) {
             if (!validatorCrearFactura.check()) return;
+            string mensaje = "";
+            if (esPagoEnCuotas()) {
+                mensaje = String.Format("¿Crear la factura de {0} cuotas por {1} cada una?", cuotas, lTotalCuota.Text);
+            } else {
+                mensaje = String.Format("¿Crear la factura al contado por un total de {0}?", lTotal.Text);
+            }
+            if (MessageBox.Show(mensaje, "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.No) {
+                return;
+            }
             Context.instance.dao.factura.nueva(
                 descuento,
                 total, 
@@ -151,7 +161,7 @@ namespace VentaElectrodomesticos.Facturacion {
             producto = null;
             total = 0;
             descuento = 0;
-            cuotas = 0;
+            cuotas = 1;
             stock_producto = 0;
             ShowMonto();
             txtProducto.Text = "";
@@ -177,9 +187,11 @@ namespace VentaElectrodomesticos.Facturacion {
             ShowMonto();
         }
         private void txtCuotas_Leave(object sender, EventArgs e) {
-            cuotas = Byte.Parse(txtCuotas.Text);
-            if (cuotas < 1 || cuotas > 12) {
-                cuotas = 1;
+            try {
+                cuotas = Byte.Parse(txtCuotas.Text);
+            } catch (FormatException) { }
+            if (cuotas < 2 || cuotas > 12) {
+                cuotas = 2;
             }
             txtCuotas.Text = String.Format("{0}", cuotas);
             ShowMonto();
