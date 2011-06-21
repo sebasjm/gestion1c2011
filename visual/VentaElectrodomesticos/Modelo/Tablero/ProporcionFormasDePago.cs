@@ -22,4 +22,12 @@ namespace VentaElectrodomesticos.Modelo.Tablero {
             return contado == 0 ? "-" : String.Format("{0:#0.00}% - {1:#0.00}%", 100 * contado, 100 * cuotas);
         }
     }
+    class ProporcionFormasDePagoSinValores: ProporcionFormasDePago{
+        public ProporcionFormasDePagoSinValores(): base(0) {
+
+        }
+        public override string ToString() {
+            return "sin valores";
+        }
+    }
 }

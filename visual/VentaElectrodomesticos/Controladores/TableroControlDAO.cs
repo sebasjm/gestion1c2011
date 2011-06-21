@@ -87,6 +87,9 @@ namespace VentaElectrodomesticos.Controladores {
             return connection.find<Double?>(TABLERO_TOTAL_FACTURADO, sucursal_id, anio);
         }
         public ProporcionFormasDePago calcularProporcionFormasDePago(int sucursal_id, string anio) {
+            if (connection.find<int>(TABLERO_TOTAL_FACTURAS, sucursal_id, anio) == 0) {
+                return new ProporcionFormasDePagoSinValores();
+            }
             return connection.find<ProporcionFormasDePago>(TABLERO_PROPORCIONAL_FORMA_DE_PAGO, sucursal_id, anio);
         }
         public Double? calcularMayorFactura(int sucursal_id, string anio) {
@@ -158,20 +161,14 @@ namespace VentaElectrodomesticos.Controladores {
             "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
             FILTRO_SUCURSAL_ANIO;
 
-        private static readonly String CANTIDAD_PAGOS_CLIENTE =
-            "SELECT sum(cuotas) " +
-            "FROM EL_GRUPO.Pago " +
-            "WHERE factura_numero = f.numero AND " +
-            FILTRO_ANIO +
-            "GROUP BY factura_numero ";
-
         private static readonly String TABLERO_MAYOR_DEUDOR =
             "SELECT TOP 1 c.dni, c.nombre, c.apellido " +
             "FROM EL_GRUPO.Factura AS f " +
             "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
             "JOIN EL_GRUPO.Cliente AS c ON c.dni = f.cliente_dni " +
             FILTRO_SUCURSAL_ANIO +
-            "ORDER BY f.total*(1-f.descuento)*(1- ( CASE WHEN f.cuotas = 0 THEN 0 ELSE (" + CANTIDAD_PAGOS_CLIENTE + ")/f.cuotas END )) DESC ";
+            "GROUP BY c.dni, c.nombre, c.apellido " +
+            "ORDER BY sum( f.total*(1-f.descuento)*(1- EL_GRUPO.cantidad_de_cuotas_pagas(f.numero,'{1}')/f.cuotas) ) DESC";
 
         private static readonly String TABLERO_MEJOR_VENDEDOR =
             "SELECT TOP 1 e.dni, e.nombre, e.apellido " +
@@ -190,6 +187,12 @@ namespace VentaElectrodomesticos.Controladores {
             FILTRO_SUCURSAL_ANIO +
             "GROUP BY p.codigo, p.nombre, p.categoria_id " +
             "ORDER BY sum(cantidad) DESC ";
+
+        private static readonly String TABLERO_TOTAL_FACTURAS =
+            "SELECT count(*) " +
+            "FROM EL_GRUPO.Factura AS f " + 
+            "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni " +
+            FILTRO_SUCURSAL_ANIO;
 
         private static readonly String TABLERO_PROPORCIONAL_FORMA_DE_PAGO =
             " SELECT convert( float, sum( CASE cuotas WHEN 1 THEN 1 ELSE 0 END ) ) / convert( float, count(*) ) " +
@@ -248,13 +251,13 @@ namespace VentaElectrodomesticos.Controladores {
             "ORDER BY sum( itf.producto_precio*itf.cantidad*(1-f.descuento) ) DESC";
 
         private static readonly String CATEGORIA_PROD_MAS_CARO =
-            "SELECT TOP 1 convert(varchar(50),itf.producto_codigo) + ' -- ' +p.nombre + ' -- $'+ convert(varchar(50),itf.producto_precio*itf.cantidad*(1-f.descuento)) " +
+            "SELECT TOP 1 convert(varchar(50),itf.producto_codigo) + ' -- ' +p.nombre + ' -- $'+ convert(varchar(50),itf.producto_precio*(1-f.descuento)) " +
             "FROM EL_GRUPO.ItemFactura AS itf  " +
             "join EL_GRUPO.Producto as p on p.codigo = itf.producto_codigo " +
             "join EL_GRUPO.Factura as f on f.numero = itf.factura_numero " +
             "JOIN EL_GRUPO.Empleado AS e ON e.dni = f.empleado_dni  " +
             FILTRO_CATEGORIA +
-            "ORDER BY itf.producto_precio*itf.cantidad*(1-f.descuento) DESC";
+            "ORDER BY itf.producto_precio*(1-f.descuento) DESC";
 
         private static readonly String CATEGORIA_MEJOR_VENEDOR =
             "SELECT TOP 1 e.apellido + ', ' + e.nombre " +

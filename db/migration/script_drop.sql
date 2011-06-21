@@ -11,6 +11,7 @@ drop function EL_GRUPO.back_split;
 drop function EL_GRUPO.categoria_root;
 drop function EL_GRUPO.categoria_id_collection;
 drop function EL_GRUPO.stock_a_la_fecha;
+drop function EL_GRUPO.cantidad_de_cuotas_pagas; 
 GO
 
 DROP TABLE [EL_GRUPO].[ItemFactura]

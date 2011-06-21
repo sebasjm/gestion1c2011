@@ -372,6 +372,14 @@ BEGIN
 	return @stock;
 END
 go
+create function EL_GRUPO.cantidad_de_cuotas_pagas(  @id as int, @anio as varchar(10) ) 
+returns int 
+begin
+	declare @cuotas as int
+	SELECT @cuotas = sum(cuotas) FROM EL_GRUPO.Pago WHERE factura_numero = @id AND fecha < CAST(@anio+'-12-31 23:59:59.9' AS datetime) GROUP BY factura_numero
+	return @cuotas
+end
+go
 -----------------------------------------
 -- Stored procedures
 -----------------------------------------
