@@ -23,11 +23,16 @@ namespace VentaElectrodomesticos.EfectuarPago {
             ViewHelper.fillComboProvincias(cmbProvincia);
             ViewHelper.fillComboSucursales(cmbSucursal);
 
-            sucursal = Context.instance.security.loggedUser.empleado.sucursal;
-            cmbSucursal.SelectedItem = sucursal;
-            cmbProvincia.SelectedItem = sucursal.provincia;
-            cmbSucursal.Enabled = false;
-            cmbProvincia.Enabled = false;
+            if (Context.instance.security.esAnalista()) {
+
+            } else {
+                sucursal = Context.instance.security.loggedUser.empleado.sucursal;
+                cmbSucursal.SelectedItem = sucursal;
+                cmbProvincia.SelectedItem = sucursal.provincia;
+                cmbSucursal.Enabled = false;
+                cmbProvincia.Enabled = false;
+            }
+
         }
 
         private void bBuscarCliente_Click(object sender, EventArgs e) {

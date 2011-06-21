@@ -38,11 +38,15 @@ namespace VentaElectrodomesticos.Facturacion {
 
             fillFormasPago();
             ShowMonto();
-            sucursal = Context.instance.security.loggedUser.empleado.sucursal;
-            cmbSucursal.SelectedItem = sucursal;
-            cmbProvincia.SelectedItem = sucursal.provincia;
-            cmbSucursal.Enabled = false;
-            cmbProvincia.Enabled = false;
+            if (Context.instance.security.esAnalista()) {
+
+            } else {
+                sucursal = Context.instance.security.loggedUser.empleado.sucursal;
+                cmbSucursal.SelectedItem = sucursal;
+                cmbProvincia.SelectedItem = sucursal.provincia;
+                cmbSucursal.Enabled = false;
+                cmbProvincia.Enabled = false;
+            }
 
             validatorAgregarItem = new Validator()
                 .add(txtCantidad, lErrorCantidad, Validator.Text.obligatorio, Validator.Text.numerico);
@@ -64,9 +68,16 @@ namespace VentaElectrodomesticos.Facturacion {
             FormListadoProductos form = new FormListadoProductos("");
             form.MessageFromParent = null;
             form.ShowDialog(this);
+            if (sucursal == null) {
+                MessageBox.Show("Seleccione una sucursal primero", "Error");
+                return;
+            }
             if (form.MessageFromParent != null) {
                 producto = (Producto)form.MessageFromParent;
                 txtProducto.Text = producto == null ? "" : producto.codigo + " - " + producto.nombre;
+                if (producto == null) {
+                    return;
+                }
                 stock_producto = Context.instance.dao.stock.find(sucursal, producto).stock;
             }
         }
@@ -139,6 +150,9 @@ namespace VentaElectrodomesticos.Facturacion {
         }
         private void bAceptar_Click(object sender, EventArgs e) {
             if (!validatorCrearFactura.check()) return;
+            if (sucursal == null || producto == null || cliente == null) {
+                return;
+            }
             string mensaje = "";
             if (esPagoEnCuotas()) {
                 mensaje = String.Format("¿Crear la factura de {0} cuotas por {1} cada una?", cuotas, lTotalCuota.Text);

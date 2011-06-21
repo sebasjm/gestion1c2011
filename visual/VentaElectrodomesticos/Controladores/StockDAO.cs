@@ -29,6 +29,7 @@ namespace VentaElectrodomesticos.Controladores {
         }
 
         public Stock find(Sucursal suc, Producto prod) {
+            if (suc == null || prod == null) return null;
             QueryBuilder q = new QueryBuilder().select()
                 .from("EL_GRUPO.Stock")
                 .filter("sucursal_id = {0} ", suc.id)

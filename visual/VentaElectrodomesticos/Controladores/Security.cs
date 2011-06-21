@@ -60,5 +60,9 @@ namespace VentaElectrodomesticos.Controladores {
             }
             return false;
         }
+
+        public bool esAnalista() {
+            return loggedUser.empleado.tipoEmpleadoId == 1;
+        }
     }
 }
