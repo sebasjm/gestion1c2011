@@ -17,9 +17,11 @@ namespace VentaElectrodomesticos.Controladores {
             connection = ssql;
         }
         ~Connection() {
-            if (open && _connection.State != System.Data.ConnectionState.Closed) {
+            //TODO: verificar porque no podemos cerrar la conexion en este momento
+            //igualmente la conexion se cierra
+//            if (open && _connection.State != System.Data.ConnectionState.Closed) {
 //                _connection.Close();
-            }
+//            }
         }
         public T find<T>(string sql, params Object[] args) {
             SqlDataReader sdr = new SqlCommand(String.Format(locale, sql, SafeSql(args)), connection).ExecuteReader();

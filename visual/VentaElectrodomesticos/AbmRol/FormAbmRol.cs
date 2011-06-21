@@ -98,6 +98,10 @@ namespace VentaElectrodomesticos.AbmRol
         }
         private void bCrearOtro_Click(object sender, EventArgs e) {
             if (!validator.check()) return;
+            if (Context.instance.dao.rol.findByNombre(txtNombre.Text) != null) {
+                MessageBox.Show("El rol ya existe", "Error");
+                return;
+            }
             if (MessageBox.Show("¿Esta seguro que desea Guardar y crear otro Rol?", "Confirmar Guardar y Crear Otro", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con el Guardado y la Creacion de otro
                 create_from_form();
@@ -121,6 +125,10 @@ namespace VentaElectrodomesticos.AbmRol
         private void bCrear_Click(object sender, EventArgs e)
         {
             if (!validator.check()) return;
+            if (Context.instance.dao.rol.findByNombre(txtNombre.Text) != null) {
+                MessageBox.Show("El rol ya existe", "Error");
+                return;
+            }
             if (MessageBox.Show("¿Esta seguro que desea crear al Rol?", "Confirmar Creación", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 create_from_form();
