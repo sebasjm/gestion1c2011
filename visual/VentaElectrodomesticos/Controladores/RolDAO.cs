@@ -67,8 +67,7 @@ namespace VentaElectrodomesticos.Controladores {
             q.select()
                 .from("EL_GRUPO.rol")
                 .filterIf(nombre.Length != 0, "nombre = '{0}' ", nombre);
-            List<Rol> roles = connection.query<Rol>(q.build(), q.getParams());
-            return roles[0];
+            return connection.find<Rol>(q.build(), q.getParams());
         }
         private static readonly String INSERT_ROL = "INSERT INTO EL_GRUPO.rol (nombre, descripcion) values ('{0}','{1}')";
         public void insertar(Rol rol) {

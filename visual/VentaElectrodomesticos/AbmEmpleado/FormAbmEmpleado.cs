@@ -133,7 +133,7 @@ namespace VentaElectrodomesticos.AbmEmpleado {
         }
         private void bModificar_Click(object sender, EventArgs e) {
             if (!validator.check()) return;
-            if (MessageBox.Show("¿Esta seguro que desea modificar al cliente?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+            if (MessageBox.Show("¿Esta seguro que desea modificar el empleado?", "Confirmar Modificación", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 // proceder con la modificacion
                 this.empleado.apellido = txtApellido.Text;
                 this.empleado.nombre = txtNombre.Text;
