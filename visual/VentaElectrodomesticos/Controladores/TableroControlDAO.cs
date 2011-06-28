@@ -134,9 +134,9 @@ namespace VentaElectrodomesticos.Controladores {
 
         private static readonly String FILTRO_ANIO =
             "fecha BETWEEN " +
-            "CAST('{1}'+'-01-01 00:00:00.0' AS datetime) " +
+            "convert(datetime,'{1}'+'-01-01 00:00:00.0',20) " +
             "AND " +
-            "CAST('{1}'+'-12-31 23:59:59.9' AS datetime) ";
+            "convert(datetime,'{1}'+'-12-31 23:59:59.9',20) ";
 
         private static readonly String FILTRO_SUCURSAL_ANIO =
             "WHERE " +
